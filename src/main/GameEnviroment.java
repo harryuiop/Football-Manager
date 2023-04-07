@@ -23,14 +23,15 @@ public class GameEnviroment {
 	 */
 	 public void chooseTeamName(Team team) {
 		 
-		 System.out.println("Choose your team name! :");
+		 System.out.println("Choose your team name! ");
 		 String name = scanner.nextLine();
 		 team.setName(name);
+		 System.out.println("\n" + "Your choosen team name is " + team.getName() + "\n");
 	 }
 	 
 	 
 	 /**
-	  * prompts user to pick the number of weeks desired in their season
+	  * prompts user to pick the number of weeks desired in their season, if input invalid will loop.
 	  * @param game
 	  */
 	 public void chooseNumWeeks(GameEnviroment game) {
@@ -39,26 +40,57 @@ public class GameEnviroment {
 		 
 		 while (!isInputValid) {
 		 
-			 System.out.println("Choose the number of desired weeks in your season! :");
+			 System.out.println("Choose the number of desired weeks in your season! ");
 			 
 			 try {
 				 int weeknums = scanner.nextInt();
 				 game.setChoosenNumWeeks(weeknums);
 				 isInputValid = true;
+				 System.out.println("\n" + "Your choosen season length is " + game.choosenNumWeeks + " weeks" + "\n");
 				 
 			 } catch(InputMismatchException e) {
-		         System.out.println("Invalid input. Please enter an integer.");
+		         System.out.println("Invalid input. Please enter an integer." + "\n");
 		         scanner.nextLine();
-		        
-			 }
-			 
-		 }
-		 
+	        
+			 } 
+		 } 
 	 }
 	 
 	 
+	 /**
+	  * prompts user to pick the game difficulty, if input invalid will loop.
+	  * @param game
+	  */
+	 public void chooseDifficulty(GameEnviroment game) {
+		 
+		 boolean isInputValid = false;
+			 
+		 while (!isInputValid) {
+		 
+			 System.out.println("Choose Difficulty Below " + "\n" + "\n" + "Amateur: Higher Starting Balance (Enter 1)" + "\n" + "\n" + "Pro: Lower Starting Balance (Enter 2)" );
+			 
+			 try { 
+				 int difficulty = scanner.nextInt();
+				 game.setDifficulty(difficulty);
+				 isInputValid = true;
+				 
+				 if (difficulty == 1) {
+				 System.out.println("\n" + "Your choosen game difficulty is Amateur");
+				 } else {
+				 System.out.println("\n" + "Your choosen game difficulty is Pro");
+				 }
+				 
+			 } catch(InputMismatchException e) {
+				 System.out.println("Invalid input. Please enter an integer." + "\n");
+		         scanner.nextLine();
+	        
+			 } 
+		 } 
+	 }
+		 
+		 
 	 
-	
+	 
 	 /**
 		 * all necessary setters and getters to the class
 		 * @return
@@ -104,8 +136,7 @@ public class GameEnviroment {
 		 
 		 game.chooseTeamName(team);
 		 game.chooseNumWeeks(game);
-		 System.out.println(team.getName());
-		 System.out.println(game.choosenNumWeeks);
+		 game.chooseDifficulty(game);
 	 }
 		 
 
