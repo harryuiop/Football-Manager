@@ -29,6 +29,46 @@ public class Item {
 	 public int getStaminaStat() {
 		 return this.staminaIncrease;
 	 }
+
+	public String getItemAtributes() {
+		return itemAtributes;
+	}
+
+	public void setItemAtributes(String itemAtributes) {
+		this.itemAtributes = itemAtributes;
+	}
+
+	public String getRarity() {
+		return Rarity;
+	}
+
+	public void setRarity(String rarity) {
+		Rarity = rarity;
+	}
+
+	public int getSellBackPriceprivate() {
+		return sellBackPriceprivate;
+	}
+
+	public void setSellBackPriceprivate(int sellBackPriceprivate) {
+		this.sellBackPriceprivate = sellBackPriceprivate;
+	}
+
+	public int getContractPrice() {
+		return contractPrice;
+	}
+
+	public void setContractPrice(int contractPrice) {
+		this.contractPrice = contractPrice;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	 
 	 
 	
