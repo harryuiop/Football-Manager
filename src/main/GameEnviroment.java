@@ -9,8 +9,17 @@ public class GameEnviroment {
 	 public int choosenNumGames; 
 	 public int currentInjuryCount;
 	 
+	 
+	/**
+	 * creates a scanner method to invoke the Scanner Class to use user inputs
+	 */
 	 Scanner scanner = new Scanner(System.in);
 	
+	 
+	/**
+	 * prompts user to pick a team name then users setter in Team Class
+	 * @param team
+	 */
 	 public void chooseTeamName(Team team) {
 		 
 		 System.out.println("Choose your team name! :");
@@ -18,11 +27,16 @@ public class GameEnviroment {
 		 team.setName(name);
 	 }
 	
+	 
 	 public static void main(String[] args) {
+		 
 		 GameEnviroment game = new GameEnviroment();
 		 Team team = new Team();
-		 game.chooseTeamName(team);
+		 Market market = new Market();
+		 Player player = new Player();
 		 
+		 game.chooseTeamName(team);
+		 System.out.println(team.getName());
 	 }
 		 
 

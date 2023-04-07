@@ -8,6 +8,12 @@ public class Team {
 	private ArrayList<Player> reserveNames;
 	
 	
+	
+	/**
+	 * all necessary setters and getters to the class
+	 * @return
+	 */
+	
 	public String getName() {
 		return name;
 	}
