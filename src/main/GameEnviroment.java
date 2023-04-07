@@ -34,7 +34,7 @@ public class GameEnviroment {
 	  * prompts user to pick the number of weeks desired in their season, if input invalid will loop.
 	  * @param game
 	  */
-	 public void chooseNumWeeks(GameEnviroment game) {
+	 public void chooseNumWeeks(GameEnviroment game) throws InputMismatchException {
 		 
 		 boolean isInputValid = false;
 		 
@@ -44,9 +44,13 @@ public class GameEnviroment {
 			 
 			 try {
 				 int weeknums = scanner.nextInt();
-				 game.setChoosenNumWeeks(weeknums);
-				 isInputValid = true;
-				 System.out.println("\n" + "Your choosen season length is " + game.choosenNumWeeks + " weeks" + "\n");
+				 if (weeknums > 0 && weeknums < 16) {
+					 game.setChoosenNumWeeks(weeknums);
+					 isInputValid = true;
+					 System.out.println("\n" + "Your choosen season length is " + game.choosenNumWeeks + " weeks" + "\n");
+				 } else {
+					 throw new InputMismatchException();
+				 }
 				 
 			 } catch(InputMismatchException e) {
 		         System.out.println("Invalid input. Please enter an integer." + "\n");
@@ -87,8 +91,6 @@ public class GameEnviroment {
 			 } 
 		 } 
 	 }
-		 
-		 
 	 
 	 
 	 /**

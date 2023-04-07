@@ -6,6 +6,13 @@ public class Market {
 	private ArrayList<Item> catalog;
 	private ArrayList<Athlete> wavierList;
 	
+	/**
+	 * adds athlete to wavierList being called from Athlete Class
+	 * @param athlete
+	 */
+	public void addPlayerToWavier(Athlete athlete) {
+		wavierList.add(athlete);
+	}
 	
 	/**
 	 * all necessary setters and getters to the class
