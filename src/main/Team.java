@@ -13,7 +13,6 @@ public class Team {
 	 * all necessary setters and getters to the class
 	 * @return
 	 */
-	
 	public String getName() {
 		return name;
 	}
