@@ -24,7 +24,6 @@ public class Item {
 	}
 
 	
-	
 	/**
 	 * all necessary setters and getters to the class
 	 * @return

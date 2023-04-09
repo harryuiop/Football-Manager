@@ -2,6 +2,7 @@ package main;
 
 public class Athlete {
 	
+	
 	private String name;
 	private int stamina;
 	private int offence;
@@ -12,8 +13,9 @@ public class Athlete {
 	private String description;
 	private int rarity;
 	
+	
 	/**
-	 * Athlete Constructuer
+	 * Athlete Constructor
 	 * @param offence
 	 * @param defence
 	 * @param position
@@ -33,29 +35,52 @@ public class Athlete {
 	}
 	
 	
+	/**
+	 * this method calculates the Athlete contract price for the Athlete Constructor.
+	 * @param defence
+	 * @param attack
+	 * @return
+	 */
 	public int generatePlayerContractPrice(int defence, int attack) {
 		return defence + attack;
-		
 	}
 	
+	
+	/**
+	 * this method calculates the Athlete Sell Back price for the Athlete Constructor.
+	 *  
+	 *  #NOT FINAL FORMULA 
+	 *  
+	 * @param contractPrice
+	 * @return
+	 */
 	public int generatePlayerSbPrice(int contractPrice) {
 		return Math.floorDiv(contractPrice, 2);
-		
 	}
 	
+	
+	/**
+	 * This method is a constructor for the description of each player object
+	 * @param defence
+	 * @param offence
+	 * @param name
+	 * @return
+	 */
 	public String generateDescription(int defence, int offence, String name) {
 		return ("My name is " + name + ", my defence is " + defence + " and my attack is " + offence);
-
 	}
 	
 	
+	/**
+	 * toString method to be able to print objects with human readable value
+	 */
 	public String toString() {
 		return (" Name: " + name + " Offence: " + offence + " Defense: " + defence + " Position: " + position + " Contract Price: " + contractPrice + " Sell Back Price " + sellBackPrice + " Rarity " + rarity);
 	}
 		
 	
 	/**
-	 * this method sets the stats after being calling from in the player class
+	 * this method sets the statistics after being calling from in the player class
 	 * @param item
 	 */
 	public void applyItemBuff(Item item) {

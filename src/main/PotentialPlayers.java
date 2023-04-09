@@ -5,21 +5,36 @@ import java.util.Random;
 
 public class PotentialPlayers {
 	
+	
 	private ArrayList<Athlete> allPlayers = new ArrayList<Athlete>();
 	private ArrayList<Athlete> PlayersTeam = new ArrayList<Athlete>();
+	
+	
+	/**
+	 * Hard coded names for the generateName() method to pull names from
+	 */
 	ArrayList<String> names = new ArrayList<>(Arrays.asList("Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Hernandez",
 			"Adams", "Anderson", "Thomas", "Jackson", "Harris", "Martin", "Thompson", "Garcia",
 			"Garcia", "Robinson", "Mitchell", "Perez", "Roberts", "Turner", "Phillips", "Evans")); 
 	
 	
+	/**
+	 * Creating an instance of Random
+	 */
 	Random rand = new Random();
 	
 	
+	/**
+	 * This creates a pool of all the needed players for the game and adds them to a single ArrayList called allPlayers
+	 * 
+	 * # Still to implement on this method
+	 * 		this still needs to be able to create the "correct" amount of players based on how many teams are in the season.
+	 */
 	public void createPlayers() {	
-		
 		
 		for (int iteration = 0; iteration < names.size(); iteration++) {
 					
+					//The format of the add method is = Offense (Integer), Defense (Integer), Position (Integer), Rarity (Integer), Name (String).
 			
 					// #Rarity: 1 #Attacker
 					String name1 = nameGenerator();
@@ -47,17 +62,15 @@ public class PotentialPlayers {
 					
 					// #Rarity: 3 #Defender
 					String name6 = nameGenerator();
-					allPlayers.add(new Athlete(rand.nextInt(40, 75), rand.nextInt(70, 100), 2, 3, name6));
-						
+					allPlayers.add(new Athlete(rand.nextInt(40, 75), rand.nextInt(70, 100), 2, 3, name6));				
 		}
-		
-		for (Athlete ath: allPlayers) {
-			System.out.println(ath);
-		}
-		
 	}
 	
-
+	
+	/**
+	 * This method pulls a random name from the names ArrayList then removes that said name from the list to ensure each are unique.
+	 * @return
+	 */
 	public String nameGenerator() {
 		if (names.size() > 0) {
 			int index = rand.nextInt(0, names.size());
@@ -69,11 +82,5 @@ public class PotentialPlayers {
 			return ("Ran out of names in the nameGenerator method please fix");
 			
 		}
-	}
-	
-	public static void main(String[] args) {
-		PotentialPlayers test = new PotentialPlayers();
-		test.createPlayers();
-		
 	}
 }

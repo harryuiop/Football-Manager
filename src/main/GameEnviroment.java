@@ -17,6 +17,9 @@ public class GameEnviroment {
 	 Scanner scanner = new Scanner(System.in);
 	
 	 
+	 /**
+	  * Constructor for GameEnviroment
+	  */
 	 public GameEnviroment() {
 		 this.difficulty = chooseDifficulty(); 
 		 this.choosenNumWeeks = chooseNumWeeks();
@@ -103,8 +106,14 @@ public class GameEnviroment {
 	 }
 	 
 	 
+	 /**
+	  * The main method to run the game, creating all the objects and making things run sequentially. 
+	  * This method is call from the RunApp class
+	  * @param game
+	  */
 	 public void startGame(GameEnviroment game) {
-		 
+		 PotentialPlayers potentialPlayers = new PotentialPlayers();
+		 potentialPlayers.createPlayers();
 	 }
 	 
 	 
