@@ -17,6 +17,12 @@ public class GameEnviroment {
 	 Scanner scanner = new Scanner(System.in);
 	
 	 
+	 public GameEnviroment() {
+		 this.difficulty = chooseDifficulty(); 
+		 this.choosenNumWeeks = chooseNumWeeks();
+	 }
+	 
+	 
 	/**
 	 * prompts user to pick a team name then users setter in Team Class
 	 * @param team
@@ -34,9 +40,10 @@ public class GameEnviroment {
 	  * prompts user to pick the number of weeks desired in their season, if input invalid will loop.
 	  * @param game
 	  */
-	 public void chooseNumWeeks(GameEnviroment game) throws InputMismatchException {
+	 public int chooseNumWeeks() throws InputMismatchException {
 		 
 		 boolean isInputValid = false;
+		 int finalWeekHolder = 0;
 		 
 		 while (!isInputValid) {
 		 
@@ -45,9 +52,9 @@ public class GameEnviroment {
 			 try {
 				 int weeknums = scanner.nextInt();
 				 if (weeknums > 0 && weeknums < 16) {
-					 game.setChoosenNumWeeks(weeknums);
+					 finalWeekHolder = weeknums;
 					 isInputValid = true;
-					 System.out.println("\n" + "Your choosen season length is " + game.choosenNumWeeks + " weeks" + "\n");
+					 System.out.println("\n" + "Your choosen season length is " + finalWeekHolder + " weeks" + "\n");
 				 } else {
 					 throw new InputMismatchException();
 				 }
@@ -57,25 +64,26 @@ public class GameEnviroment {
 		         scanner.nextLine();
 	        
 			 } 
-		 } 
+		 
+		}
+		 return finalWeekHolder;
 	 }
 	 
 	 
 	 /**
 	  * prompts user to pick the game difficulty, if input invalid will loop.
-	  * @param game
+	  * 
 	  */
-	 public void chooseDifficulty(GameEnviroment game) {
+	 public int chooseDifficulty() {
 		 
 		 boolean isInputValid = false;
 			 
 		 while (!isInputValid) {
 		 
-			 System.out.println("Choose Difficulty Below " + "\n" + "\n" + "Amateur: Higher Starting Balance (Enter 1)" + "\n" + "\n" + "Pro: Lower Starting Balance (Enter 2)" );
+			 System.out.println("Choose Difficulty Below " + "\n" + "\n" + "Amateur: Higher Starting Balance (Enter 1)" + "\n" + "\n" + "Pro: Lower Starting Balance (Enter 2)");
 			 
 			 try { 
 				 int difficulty = scanner.nextInt();
-				 game.setDifficulty(difficulty);
 				 isInputValid = true;
 				 
 				 if (difficulty == 1) {
@@ -89,13 +97,20 @@ public class GameEnviroment {
 		         scanner.nextLine();
 	        
 			 } 
-		 } 
+		 }
+		 
+		 return difficulty;
+	 }
+	 
+	 
+	 public void startGame(GameEnviroment game) {
+		 
 	 }
 	 
 	 
 	 /**
 		 * all necessary setters and getters to the class
-		 * @return
+		 * 
 		 */
 	 public int getCurrentWeekNum() {
 		return currentWeekNum;
@@ -128,18 +143,5 @@ public class GameEnviroment {
 		this.currentInjuryCount = currentInjuryCount;
 	}
 	
-
-	public static void main(String[] args) {
-		 
-		 GameEnviroment game = new GameEnviroment();
-		 Team team = new Team();
-		 Market market = new Market();
-		 Player player = new Player();
-		 
-		 game.chooseTeamName(team);
-		 game.chooseNumWeeks(game);
-		 game.chooseDifficulty(game);
-	 }
-		 
 
 }
