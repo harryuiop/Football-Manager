@@ -13,10 +13,12 @@ public class Athlete {
 	private int rarity;
 	
 	/**
-	 * Athlete Constructor
-	 * @param defence
+	 * Athlete Constructuer
 	 * @param offence
-	 * @param stamina
+	 * @param defence
+	 * @param position
+	 * @param rarity
+	 * @param name
 	 */
 	public Athlete(int offence, int defence, int position, int rarity, String name) {
 		
@@ -37,7 +39,7 @@ public class Athlete {
 	}
 	
 	public int generatePlayerSbPrice(int contractPrice) {
-		return Math.floorDiv(contractPrice, 3/4);
+		return Math.floorDiv(contractPrice, 2);
 		
 	}
 	
@@ -46,6 +48,11 @@ public class Athlete {
 
 	}
 	
+	
+	public String toString() {
+		return (" Name: " + name + " Offence: " + offence + " Defense: " + defence + " Position: " + position + " Contract Price: " + contractPrice + " Sell Back Price " + sellBackPrice + " Rarity " + rarity);
+	}
+		
 	
 	/**
 	 * this method sets the stats after being calling from in the player class
@@ -81,25 +88,6 @@ public class Athlete {
 		this.defence = defence;
 	}
 	
-	/**
-	 * This holds the object creation of all possible athlete within the league
-	 * 
-	 * Attacker is held as an Int for simplicity.   1 = Attacker     2 = Defender
-	 * 
-	 * Rarity is set from 1 - 3. 1 being the most common. 3 being the most rare
-	 * 
-	 * Rarity stat breakdown
-	 * 		  1 - for defenders, no more than 40 defending
-	 * 			  for attackers, no more than 40 attacking
-	 * 
-	 *		  2 - for defenders, 60 than 80 defending
-	 *		      for attackers, 60 than 80 attacking
-	 *		  
-	 *		  3 - for defenders, 60 to 100
-	 *		      for attackers, 60 to 100
-	 * 		
-	 */
 
-	
 	
 }

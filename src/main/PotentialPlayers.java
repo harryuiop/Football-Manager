@@ -5,18 +5,19 @@ import java.util.Random;
 
 public class PotentialPlayers {
 	
-	private ArrayList<Athlete> allPlayers;
-	private ArrayList<Athlete> PlayersTeam;
+	private ArrayList<Athlete> allPlayers = new ArrayList<Athlete>();
+	private ArrayList<Athlete> PlayersTeam = new ArrayList<Athlete>();
 	ArrayList<String> names = new ArrayList<>(Arrays.asList("Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Hernandez",
-															"Adams", "Anderson", "Thomas", "Jackson", "Harris", "Martin", "Thompson", "Garcia",
-															"Garcia", "Robinson", "Mitchell", "Perez", "Roberts", "Turner", "Phillips", "Evans"));
+			"Adams", "Anderson", "Thomas", "Jackson", "Harris", "Martin", "Thompson", "Garcia",
+			"Garcia", "Robinson", "Mitchell", "Perez", "Roberts", "Turner", "Phillips", "Evans")); 
 	
 	
 	Random rand = new Random();
 	
 	
 	public void createPlayers() {	
-				
+		
+		
 		for (int iteration = 0; iteration < names.size(); iteration++) {
 					
 			
@@ -26,28 +27,32 @@ public class PotentialPlayers {
 					
 					// #Rarity: 2 #Attacker
 					String name2 = nameGenerator();
-					allPlayers.add(new Athlete(rand.nextInt(40, 70), rand.nextInt(20, 40), 1, 1, name2));
+					allPlayers.add(new Athlete(rand.nextInt(40, 70), rand.nextInt(20, 40), 1, 2, name2));
 
 					
 					// #Rarity: 3 #Attacker
 					String name3 = nameGenerator();
-					allPlayers.add(new Athlete(rand.nextInt(70, 100), rand.nextInt(40, 75), 1, 1, name3));
+					allPlayers.add(new Athlete(rand.nextInt(70, 100), rand.nextInt(40, 75), 1, 3, name3));
 
 					
 					// #Rarity: 1 #Defender
 					String name4 = nameGenerator();
-					allPlayers.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 1, 1, name4));
+					allPlayers.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, name4));
 					
 					
 					// #Rarity: 2 #Defender
 					String name5 = nameGenerator();
-					allPlayers.add(new Athlete(rand.nextInt(20, 40), rand.nextInt(40, 70), 1, 1, name5));
+					allPlayers.add(new Athlete(rand.nextInt(20, 40), rand.nextInt(40, 70), 2, 2, name5));
 					
 					
 					// #Rarity: 3 #Defender
 					String name6 = nameGenerator();
-					allPlayers.add(new Athlete(rand.nextInt(40, 75), rand.nextInt(70, 100), 1, 1, name6));
+					allPlayers.add(new Athlete(rand.nextInt(40, 75), rand.nextInt(70, 100), 2, 3, name6));
 						
+		}
+		
+		for (Athlete ath: allPlayers) {
+			System.out.println(ath);
 		}
 		
 	}
@@ -68,8 +73,7 @@ public class PotentialPlayers {
 	
 	public static void main(String[] args) {
 		PotentialPlayers test = new PotentialPlayers();
-		String holder = test.nameGenerator();
+		test.createPlayers();
 		
-		System.out.println(holder);
 	}
 }
