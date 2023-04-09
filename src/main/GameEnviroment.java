@@ -11,6 +11,19 @@ public class GameEnviroment {
 	 private int currentInjuryCount;
 	 
 	 
+	 /**
+	  * The main method to run the game, creating all the objects and making things run sequentially. 
+	  * This method is call from the RunApp class
+	  * @param game
+	  */
+	 public void startGame(GameEnviroment game) {
+		 Team team = new Team();
+		 game.chooseTeamName(team);
+		 PotentialPlayers potentialPlayers = new PotentialPlayers();
+		 potentialPlayers.createPlayers(game.choosenNumWeeks);
+	 }
+	 
+	 
 	/**
 	 * creates a scanner method to invoke the Scanner Class to use user inputs
 	 */
@@ -32,8 +45,10 @@ public class GameEnviroment {
 	 */
 	 public void chooseTeamName(Team team) {
 		 
+		 Scanner scanner2 = new Scanner(System.in);
+		 
 		 System.out.println("Choose your team name! ");
-		 String name = scanner.nextLine();
+		 String name = scanner2.nextLine();
 		 team.setName(name);
 		 System.out.println("\n" + "Your choosen team name is " + team.getName() + "\n");
 	 }
@@ -83,7 +98,7 @@ public class GameEnviroment {
 			 
 		 while (!isInputValid) {
 		 
-			 System.out.println("Choose Difficulty Below " + "\n" + "\n" + "Amateur: Higher Starting Balance (Enter 1)" + "\n" + "\n" + "Pro: Lower Starting Balance (Enter 2)");
+			 System.out.println("Choose DifficultScanner scanner = new Scanner(System.in);y Below " + "\n" + "\n" + "Amateur: Higher Starting Balance (Enter 1)" + "\n" + "\n" + "Pro: Lower Starting Balance (Enter 2)");
 			 
 			 try { 
 				 int difficulty = scanner.nextInt();
@@ -103,17 +118,6 @@ public class GameEnviroment {
 		 }
 		 
 		 return difficulty;
-	 }
-	 
-	 
-	 /**
-	  * The main method to run the game, creating all the objects and making things run sequentially. 
-	  * This method is call from the RunApp class
-	  * @param game
-	  */
-	 public void startGame(GameEnviroment game) {
-		 PotentialPlayers potentialPlayers = new PotentialPlayers();
-		 potentialPlayers.createPlayers();
 	 }
 	 
 	 

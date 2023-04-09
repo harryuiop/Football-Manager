@@ -30,9 +30,9 @@ public class PotentialPlayers {
 	 * # Still to implement on this method
 	 * 		this still needs to be able to create the "correct" amount of players based on how many teams are in the season.
 	 */
-	public void createPlayers() {	
+	public void createPlayers(int numWeeks) {	
 		
-		for (int iteration = 0; iteration < names.size(); iteration++) {
+		for (int iteration = numWeeks; iteration > 0; iteration--) {
 					
 					//The format of the add method is = Offense (Integer), Defense (Integer), Position (Integer), Rarity (Integer), Name (String).
 			
