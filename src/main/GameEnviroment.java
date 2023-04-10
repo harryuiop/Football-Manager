@@ -29,7 +29,6 @@ public class GameEnviroment {
 		 potentialPlayers.getAllPlayerArray(); // makes the method add players to waiver list accessible 
 		 market.addPlayerToWavier(potentialPlayers); // creates the waiver list by adding from potential players to waiver list
 		 market.pickInitalTeam(market, team, player); // calls the main method for the logic behind creating the initial team
-		 
 	 }
 	 
 	 
@@ -142,9 +141,9 @@ public class GameEnviroment {
 	  */
 	 public void setPlayersStartBalance(GameEnviroment game, Player player) {
 		 if (game.difficulty == 1) {
-			 player.setMoneyBalance(1000);
+			 player.setMoneyBalance(600);
 		 } else {
-			 player.setMoneyBalance(700);
+			 player.setMoneyBalance(400);
 		 }
 	 }
 	 

@@ -74,9 +74,7 @@ public class PotentialPlayers {
 			names.remove(index);
 			return choosenName;
 		} else {
-			
 			return ("Ran out of names in the nameGenerator method please fix");
-			
 		}
 	}
 	
