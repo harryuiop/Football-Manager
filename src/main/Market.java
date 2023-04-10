@@ -85,7 +85,7 @@ public class Market {
 						System.out.println("\tYou remaining Balance: $" + player.getMoneyBalance());
 						break;	
 					} else {
-						System.out.println("Sorry, you cannot afford this player");
+						System.out.println("Sorry, you cannot afford this player"); 
 					}
 				} 
 			}
