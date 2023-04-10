@@ -107,7 +107,7 @@ public class GameEnviroment {
 			 
 		 while (!isInputValid) {
 		 
-			 System.out.println("Choose Difficulty Below " + "\n" + "\n" + "Amateur: Higher Starting Balance (Enter 1)" + "\n" + "\n" + "Pro: Lower Starting Balance (Enter 2)");
+			 System.out.println("Choose Difficulty Below " + "\n" + "Amateur: Higher Starting Balance (Enter 1)" + "\n" + "Pro: Lower Starting Balance (Enter 2)" + "\n");
 			 
 			 try { 
 				 int difficulty = scanner.nextInt();

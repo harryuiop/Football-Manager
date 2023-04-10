@@ -74,12 +74,15 @@ public class Market {
 						break;		
 					} 
 				}
+			} else {
+				System.out.println("Invalid Player Name"); // hits else if no name was matched
 			}
 		}
-		System.out.println("Your starting team is \n");
-		System.out.println(team.getStartingName());
+		System.out.println("\n" + "Your starting team is \n"); // after whole team has been choosen, prints off starting team
+		for (Athlete athlete : team.getStartingName()) {
+	        System.out.println(athlete);
+		}
 	}
-			
 	
 	
 	/**

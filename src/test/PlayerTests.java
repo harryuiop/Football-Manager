@@ -16,7 +16,7 @@ class PlayerTests {
 		Item testItem = new Item(defenceIncreaseValue, 0, 0);
 		
 		int initalDefence = 50;
-		Athlete testAthlete = new Athlete(100, 60, 20, 1, 100, 90, "TEST", 1);
+		Athlete testAthlete = new Athlete(100, 60, 1, 1, "TEST");
 		
 		assertEquals(initalDefence, testAthlete.getDefence());
 		testPlayer.useItem(testAthlete, testItem);
