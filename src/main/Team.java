@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class Team {
 	
 	private String name;
-	private ArrayList<Player> startingNames; 
-	private ArrayList<Player> reserveNames;
+	private ArrayList<Athlete> startingNames = new ArrayList<Athlete>(); 
+	private ArrayList<Athlete> reserveNames = new ArrayList<Athlete>();
 	
 	
 	
@@ -19,18 +19,14 @@ public class Team {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public ArrayList<Player> getStartingNames() {
-		return startingNames;
-	}
-	public void setStartingNames(ArrayList<Player> startingNames) {
-		this.startingNames = startingNames;
-	}
-	public ArrayList<Player> getReserveNames() {
-		return reserveNames;
-	}
-	public void setReserveNames(ArrayList<Player> reserveNames) {
-		this.reserveNames = reserveNames;
+	
+	public void addStartingPlayer(Athlete athlete) {
+		startingNames.add(athlete);
+		System.out.println(athlete.getName(athlete) + " Has been added to your team!");
 	}
 	
+	public ArrayList<Athlete> getStartingName() {
+		return startingNames;
+	}
 	
 }

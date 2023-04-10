@@ -113,6 +113,10 @@ public class Athlete {
 		this.defence = defence;
 	}
 	
+	public String getName(Athlete ath) {
+		return ath.name;
+	}
+	
 
 	
 }

@@ -17,10 +17,19 @@ public class GameEnviroment {
 	  * @param game
 	  */
 	 public void startGame(GameEnviroment game) {
-		 Team team = new Team();
-		 game.chooseTeamName(team);
-		 PotentialPlayers potentialPlayers = new PotentialPlayers();
-		 potentialPlayers.createPlayers(game.choosenNumWeeks);
+		 
+		 Team team = new Team(); // creates instance of the players team
+		 PotentialPlayers potentialPlayers = new PotentialPlayers(); // create an instance to the player creations
+		 Player player = new Player(); // creates instance of the player class
+		 Market market = new Market(); // creates instance of the market class
+		 
+		 game.chooseTeamName(team); // allows player to input their team name 
+		 potentialPlayers.createPlayers(game.choosenNumWeeks); // calls the method to create the players
+		 setPlayersStartBalance(game, player); // sets the players start balance with respect to difficulty 
+		 potentialPlayers.getAllPlayerArray(); // makes the method add players to waiver list accessible 
+		 market.addPlayerToWavier(potentialPlayers); // creates the waiver list by adding from potential players to waiver list
+		 market.pickInitalTeam(market, team, player); // calls the main method for the logic behind creating the initial team
+		 
 	 }
 	 
 	 
@@ -92,23 +101,27 @@ public class GameEnviroment {
 	  * prompts user to pick the game difficulty, if input invalid will loop.
 	  * 
 	  */
-	 public int chooseDifficulty() {
+	 public int chooseDifficulty() throws InputMismatchException {
 		 
 		 boolean isInputValid = false;
 			 
 		 while (!isInputValid) {
 		 
-			 System.out.println("Choose DifficultScanner scanner = new Scanner(System.in);y Below " + "\n" + "\n" + "Amateur: Higher Starting Balance (Enter 1)" + "\n" + "\n" + "Pro: Lower Starting Balance (Enter 2)");
+			 System.out.println("Choose Difficulty Below " + "\n" + "\n" + "Amateur: Higher Starting Balance (Enter 1)" + "\n" + "\n" + "Pro: Lower Starting Balance (Enter 2)");
 			 
 			 try { 
 				 int difficulty = scanner.nextInt();
-				 isInputValid = true;
 				 
 				 if (difficulty == 1) {
 				 System.out.println("\n" + "Your choosen game difficulty is Amateur");
-				 } else {
+				 isInputValid = true;
+				 } 
+				 
+				 else if (difficulty == 2) {
 				 System.out.println("\n" + "Your choosen game difficulty is Pro");
+				 isInputValid = true;
 				 }
+
 				 
 			 } catch(InputMismatchException e) {
 				 System.out.println("Invalid input. Please enter an integer." + "\n");
@@ -118,6 +131,21 @@ public class GameEnviroment {
 		 }
 		 
 		 return difficulty;
+	 }
+	 
+	 
+	 /**
+	  * This method sets the players start balance with respect to the game difficulty. 
+	  * Amateur will start with $1000 and pro will start with $700  
+	  * @param game
+	  * @param player
+	  */
+	 public void setPlayersStartBalance(GameEnviroment game, Player player) {
+		 if (game.difficulty == 1) {
+			 player.setMoneyBalance(1000);
+		 } else {
+			 player.setMoneyBalance(700);
+		 }
 	 }
 	 
 	 
