@@ -75,7 +75,7 @@ public class Athlete {
 	 * toString method to be able to print objects with human readable value
 	 */
 	public String toString() {
-		return (" Name: " + name + " Offence: " + offence + " Defense: " + defence + " Position: " + position + " Contract Price: " + contractPrice + " Sell Back Price " + sellBackPrice + " Rarity " + rarity);
+		return (name + "\n\tOffence: " + offence + "\n\tDefense: " + defence + "\n\tPosition: " + position + "\n\tContract Price: $" + contractPrice + "\n\tSell Back Price $" + sellBackPrice + "\n\tRarity " + rarity);
 	}
 		
 	
@@ -117,6 +117,9 @@ public class Athlete {
 		return ath.name;
 	}
 	
+	public int getContractPrice(Athlete ath) {
+		return ath.contractPrice;
+	}
 
 	
 }

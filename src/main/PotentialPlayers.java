@@ -36,33 +36,29 @@ public class PotentialPlayers {
 					
 					//The format of the add method is = Offense (Integer), Defense (Integer), Position (Integer), Rarity (Integer), Name (String).
 			
+			
 					// #Rarity: 1 #Attacker
-					String name1 = nameGenerator();
-					allPlayers.add(new Athlete(rand.nextInt(0, 40), rand.nextInt(0, 20), 1, 1, name1)); 
+					allPlayers.add(new Athlete(rand.nextInt(0, 40), rand.nextInt(0, 20), 1, 1, nameGenerator())); 
+					
 					
 					// #Rarity: 2 #Attacker
-					String name2 = nameGenerator();
-					allPlayers.add(new Athlete(rand.nextInt(40, 70), rand.nextInt(20, 40), 1, 2, name2));
+					allPlayers.add(new Athlete(rand.nextInt(40, 70), rand.nextInt(20, 40), 1, 2, nameGenerator()));
 
 					
 					// #Rarity: 3 #Attacker
-					String name3 = nameGenerator();
-					allPlayers.add(new Athlete(rand.nextInt(70, 100), rand.nextInt(40, 75), 1, 3, name3));
+					allPlayers.add(new Athlete(rand.nextInt(70, 100), rand.nextInt(40, 75), 1, 3, nameGenerator()));
 
 					
 					// #Rarity: 1 #Defender
-					String name4 = nameGenerator();
-					allPlayers.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, name4));
+					allPlayers.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
 					
 					
 					// #Rarity: 2 #Defender
-					String name5 = nameGenerator();
-					allPlayers.add(new Athlete(rand.nextInt(20, 40), rand.nextInt(40, 70), 2, 2, name5));
+					allPlayers.add(new Athlete(rand.nextInt(20, 40), rand.nextInt(40, 70), 2, 2, nameGenerator()));
 					
 					
 					// #Rarity: 3 #Defender
-					String name6 = nameGenerator();
-					allPlayers.add(new Athlete(rand.nextInt(40, 75), rand.nextInt(70, 100), 2, 3, name6));				
+					allPlayers.add(new Athlete(rand.nextInt(40, 75), rand.nextInt(70, 100), 2, 3, nameGenerator()));				
 		}
 	}
 	

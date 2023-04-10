@@ -56,10 +56,10 @@ public class GameEnviroment {
 		 
 		 Scanner scanner2 = new Scanner(System.in);
 		 
-		 System.out.println("Choose your team name! ");
+		 System.out.println("Choose your team name! \n");
 		 String name = scanner2.nextLine();
 		 team.setName(name);
-		 System.out.println("\n" + "Your choosen team name is " + team.getName() + "\n");
+		 System.out.println("\n\t" + "Your choosen team name is " + team.getName() + "\n");
 	 }
 	 
 	 
@@ -74,14 +74,14 @@ public class GameEnviroment {
 		 
 		 while (!isInputValid) {
 		 
-			 System.out.println("Choose the number of desired weeks in your season! ");
+			 System.out.println("Choose the number of desired weeks in your season! \n");
 			 
 			 try {
 				 int weeknums = scanner.nextInt();
 				 if (weeknums > 0 && weeknums < 16) {
 					 finalWeekHolder = weeknums;
 					 isInputValid = true;
-					 System.out.println("\n" + "Your choosen season length is " + finalWeekHolder + " weeks" + "\n");
+					 System.out.println("\n\t" + "Your choosen season length is " + finalWeekHolder + " weeks" + "\n");
 				 } else {
 					 throw new InputMismatchException();
 				 }
@@ -107,18 +107,18 @@ public class GameEnviroment {
 			 
 		 while (!isInputValid) {
 		 
-			 System.out.println("Choose Difficulty Below " + "\n" + "Amateur: Higher Starting Balance (Enter 1)" + "\n" + "Pro: Lower Starting Balance (Enter 2)" + "\n");
+			 System.out.println("Choose Difficulty Below " + "\n\t" + "Amateur: Higher Starting Balance (Enter 1)" + "\n\t" + "Pro: Lower Starting Balance (Enter 2)" + "\n");
 			 
 			 try { 
 				 int difficulty = scanner.nextInt();
 				 
 				 if (difficulty == 1) {
-				 System.out.println("\n" + "Your choosen game difficulty is Amateur");
+				 System.out.println("\n\t" + "Your choosen game difficulty is Amateur\n");
 				 isInputValid = true;
 				 } 
 				 
 				 else if (difficulty == 2) {
-				 System.out.println("\n" + "Your choosen game difficulty is Pro");
+				 System.out.println("\n\t" + "Your choosen game difficulty is Pro\n");
 				 isInputValid = true;
 				 }
 
