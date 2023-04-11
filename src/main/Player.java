@@ -28,7 +28,7 @@ public class Player {
 		this.inventory = inventory;
 	}
 	public int getMoneyBalance() {
-		return moneyBalance;
+		return moneyBalance; // test
 	}
 	public void setMoneyBalance(int moneyBalance) {
 		this.moneyBalance = moneyBalance;
