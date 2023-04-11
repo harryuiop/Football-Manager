@@ -64,6 +64,79 @@ public class PotentialPlayers {
 	
 	
 	/**
+	 * 
+	 */
+	public ArrayList<Athlete> createOpposingTeam(GameEnviroment game, int level) {
+		
+		
+		ArrayList<Athlete> opposingTeam = new ArrayList<Athlete>();
+		
+		switch (level) {
+		
+			case 1:
+				
+				// #Rarity: 1 #Attacker
+				opposingTeam.add(new Athlete(rand.nextInt(0, 40), rand.nextInt(0, 20), 1, 2, nameGenerator()));
+				
+				// #Rarity: 1 #Attacker
+				opposingTeam.add(new Athlete(rand.nextInt(0, 40), rand.nextInt(0, 20), 1, 3, nameGenerator()));
+				
+				// #Rarity: 1 #Defender
+				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
+			
+				// #Rarity: 1 #Defender
+				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 2, nameGenerator()));
+				
+				// #Rarity: 1 #Defender
+				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
+				
+				break;
+				
+			case 2:
+				
+				// #Rarity: 1 #Attacker
+				opposingTeam.add(new Athlete(rand.nextInt(40, 70), rand.nextInt(20, 40), 1, 2, nameGenerator()));
+				
+				// #Rarity: 1 #Attacker
+				opposingTeam.add(new Athlete(rand.nextInt(70, 100), rand.nextInt(40, 75), 1, 3, nameGenerator()));
+				
+				// #Rarity: 1 #Defender
+				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
+			
+				// #Rarity: 1 #Defender
+				opposingTeam.add(new Athlete(rand.nextInt(20, 40), rand.nextInt(40, 70), 2, 2, nameGenerator()));
+				
+				// #Rarity: 1 #Defender
+				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
+				
+				break;
+				
+			case 3:
+				
+				// #Rarity: 1 #Attacker
+				opposingTeam.add(new Athlete(rand.nextInt(40, 70), rand.nextInt(20, 40), 1, 2, nameGenerator()));
+				
+				// #Rarity: 1 #Attacker
+				opposingTeam.add(new Athlete(rand.nextInt(70, 100), rand.nextInt(40, 75), 1, 3, nameGenerator()));
+				
+				// #Rarity: 1 #Defender
+				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
+			
+				// #Rarity: 1 #Defender
+				opposingTeam.add(new Athlete(rand.nextInt(20, 40), rand.nextInt(40, 70), 2, 2, nameGenerator()));
+				
+				// #Rarity: 1 #Defender
+				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
+				
+				break;
+		
+		}
+		return opposingTeam;
+	}
+	
+	
+	
+	/**
 	 * This method pulls a random name from the names ArrayList then removes that said name from the list to ensure each are unique.
 	 * @return
 	 */
