@@ -77,10 +77,7 @@ public class Market {
 			}
 			for (Athlete athlete : wavierList) { // runs a loop on the whole list to get access to the requested player
 				if (athlete.getName(athlete).equals(pickName)) { // stops the loop on the requested player
-					if (player.getMoneyBalance() - athlete.getContractPrice(athlete) > 0) { 
-						player.setMoneyBalance(player.getMoneyBalance() - athlete.getContractPrice(athlete));
-						team.addStartingPlayer(athlete); // adds to the startPlayers array list in the player class 
-						wavierList.remove(athlete); // remove the players new athlete from the waiver list
+					if (buyPlayerAndMoneyUpdater(player, athlete, team)) { 
 						pickNumber++; 
 						System.out.println("\tYou remaining Balance: $" + player.getMoneyBalance());
 						break;	
@@ -93,6 +90,23 @@ public class Market {
 		System.out.println("\n" + "Your starting team is \n"); // after whole team has been choosen, prints off starting team
 		for (Athlete athlete : team.getStartingName()) {
 	        System.out.println(athlete);
+		}
+	}
+	
+	
+	/**
+	 * This method returns a boolean based on if the players requested can be afforded.
+	 * @return
+	 */
+	public boolean buyPlayerAndMoneyUpdater(Player player, Athlete athlete, Team team) {
+		
+		if (player.getMoneyBalance() - athlete.getContractPrice(athlete) > 0) { // checks if player has enough money
+			player.setMoneyBalance(player.getMoneyBalance() - athlete.getContractPrice(athlete)); // updates the new bank balance 
+			team.addStartingPlayer(athlete); // adds to the startPlayers array list in the player class 
+			wavierList.remove(athlete); // remove the players new athlete from the waiver list
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
