@@ -23,7 +23,7 @@ public class GameEnviroment {
 		 Player player = new Player(); // creates instance of the player class
 		 Market market = new Market(); // creates instance of the market class
 		 
-		 game.chooseTeamName(team); // allows player to input their team name 
+		 chooseTeamName(team); // allows player to input their team name 
 		 potentialPlayers.createPlayers(game.choosenNumWeeks); // calls the method to create the players
 		 setPlayersStartBalance(game, player); // sets the players start balance with respect to difficulty 
 		 potentialPlayers.getAllPlayerArray(); // makes the method add players to waiver list accessible 
@@ -51,13 +51,28 @@ public class GameEnviroment {
 	 * prompts user to pick a team name then users setter in Team Class
 	 * @param team
 	 */
-	 public void chooseTeamName(Team team) {
+	 public void chooseTeamName(Team team) throws InputMismatchException {
+		 
+		 boolean isLegalName = false;
 		 
 		 Scanner scanner2 = new Scanner(System.in);
 		 
-		 System.out.println("Choose your team name! \n");
-		 String name = scanner2.nextLine();
-		 team.setName(name);
+		 while(!isLegalName) {
+			 System.out.println("Choose your team name! \n");
+			 try {
+				 String name = scanner2.nextLine();
+				 if(name.matches("[a-zA-Z]+") && name.length() <= 15 && name.length() >= 3){
+					 team.setName(name);
+					 isLegalName = true;
+				 } else {
+					 throw new InputMismatchException();
+				 }
+
+			 } catch(InputMismatchException e) {
+				 System.out.println("Name has to be between 3-15 characters long and only regular letters" + "\n");
+			 }
+		 }
+
 		 System.out.println("\n\t" + "Your choosen team name is " + team.getName() + "\n");
 	 }
 	 
@@ -73,11 +88,11 @@ public class GameEnviroment {
 		 
 		 while (!isInputValid) {
 		 
-			 System.out.println("Choose the number of desired weeks in your season! \n");
+			 System.out.println("Choose your season length (5-15 weeks) \n");
 			 
 			 try {
 				 int weeknums = scanner.nextInt();
-				 if (weeknums > 0 && weeknums < 16) {
+				 if (weeknums >= 5 && weeknums <= 15) {
 					 finalWeekHolder = weeknums;
 					 isInputValid = true;
 					 System.out.println("\n\t" + "Your choosen season length is " + finalWeekHolder + " weeks" + "\n");
@@ -86,7 +101,7 @@ public class GameEnviroment {
 				 }
 				 
 			 } catch(InputMismatchException e) {
-		         System.out.println("Invalid input. Please enter an integer." + "\n");
+		         System.out.println("Invalid input. Please enter a valid integer." + "\n");
 		         scanner.nextLine();
 	        
 			 } 
