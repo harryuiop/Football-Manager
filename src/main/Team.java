@@ -4,9 +4,14 @@ import java.util.ArrayList;
 public class Team {
 	
 	private String name;
-	private ArrayList<Athlete> startingNames = new ArrayList<Athlete>(); 
-	private ArrayList<Athlete> reserveNames = new ArrayList<Athlete>();
+	private ArrayList<Athlete> startingNames; 
+	private ArrayList<Athlete> reserveNames;
 	
+	
+	Team(){
+		startingNames = new ArrayList<Athlete>();
+		reserveNames = new ArrayList<Athlete>();
+	}
 	
 	
 	/**
@@ -22,10 +27,19 @@ public class Team {
 	
 	public void addStartingPlayer(Athlete athlete) {
 		startingNames.add(athlete);
-		System.out.println(athlete.getName(athlete) + " Has been added to your team!");
+		System.out.println("\n" + athlete.getName(athlete) + " Has been added to your team!");
+	}
+	
+	public void addReservePlayer(Athlete athlete) {
+		reserveNames.add(athlete);
+		System.out.println("\n" + athlete.getName(athlete) + " Has been added to your team!");
 	}
 	
 	public ArrayList<Athlete> getStartingName() {
+		return startingNames;
+	}
+	
+	public ArrayList<Athlete> getReserveName() {
 		return startingNames;
 	}
 	

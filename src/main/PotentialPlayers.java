@@ -13,9 +13,11 @@ public class PotentialPlayers {
 	/**
 	 * Hard coded names for the generateName() method to pull names from
 	 */
-	ArrayList<String> names = new ArrayList<>(Arrays.asList("Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Hernandez",
+	ArrayList<String> first_names = new ArrayList<>(Arrays.asList("Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Hernandez",
 			"Adams", "Anderson", "Thomas", "Jackson", "Harris", "Martin", "Thompson", "Garcia",
 			"Garcia", "Robinson", "Mitchell", "Perez", "Roberts", "Turner", "Phillips", "Evans")); 
+	
+	ArrayList<String> last_names = new ArrayList<>(Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X" ,"Y", "Z"));
 	
 	
 	/**
@@ -141,14 +143,11 @@ public class PotentialPlayers {
 	 * @return
 	 */
 	public String nameGenerator() {
-		if (names.size() > 0) {
-			int index = rand.nextInt(0, names.size());
-			String choosenName = names.get(index);
-			names.remove(index);
-			return choosenName;
-		} else {
-			return ("Ran out of names in the nameGenerator method please fix");
-		}
+		int first_index = rand.nextInt(0, first_names.size());
+		int last_index = rand.nextInt(0, last_names.size());
+		String choosenName = first_names.get(first_index) + " " + last_names.get(last_index);
+		
+		return choosenName;
 	}
 	
 	public ArrayList<Athlete> getAllPlayerArray() {
