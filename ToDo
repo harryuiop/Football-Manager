@@ -1,0 +1,72 @@
+
+Market Class
+ 
+    -   add x hard coded items
+        -   upgraded boots - 
+        -   suspisious substances (has the chnace to get caught after being applied) - 
+        -   oranges 
+        -   attacking training day 
+        -   defensive training day        
+
+    -   create a method that can be called at the end of each in game weed to print out
+        all the nessassary bits (if the "go to market gets clicked" after displayed at the end of each week 
+        this is for that)
+
+    -   create a method to be called after each week to, refresh all items and players in the market, within
+        the funtion make sure to have a checker so the players and item are not the same as before. 
+    
+    -   when purchasing players, do not allow the user to pick players of all the same positions (we need 3 defenders
+        and 2 attackers) 
+
+    -   
+
+Match Class
+
+    HOW THE MATCH IS PLAYED
+        
+        1.  coin flip to see who strats the match, winner picks an attacker to start with
+        
+        2.  create a progression counter for the match to show how close on the field the ball is to goal
+
+        3.  innit goal counter
+        
+        4.  toss winner pick which attackers starts    
+
+        5.  make isThree() to check what the territory is and if it is 3 then add a goal to the corrosponding team
+
+            for (i = 20: i > 0: i--) {
+        
+        6.  create Matchup() that takes as argument the players in question and creates temp attack and defense stats based of their attack and deffense stats within a range then have an randomisor 
+            return who won the duel          
+
+        7.  pick a defender/attacker to go up against or pass the ball (battle must go from the attackers attacking stat against the defenders defending stat within a range off their stats)
+
+             
+            i. if pass works +1 territory give the ball to another player 
+                check isThree();
+                continue;
+
+            ii. if pass fails -1 territory and turn over the ball to player to a random player in opposing team
+                check isThree();
+                continue;
+
+            iii. if duel won same player holds players and 1+ to territory
+                check isThree();
+                matchUp();
+                continue;
+
+            iV. if duel lost, give ball to opposing duelist, don't change territory 
+                check isThree();
+                matchUp();
+                continue;
+            
+                
+            }
+            
+
+       
+        
+ 
+
+
+
