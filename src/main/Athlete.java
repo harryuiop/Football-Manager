@@ -97,18 +97,23 @@ public class Athlete {
 	public int getStamina() {
 		return stamina;
 	}
+	
 	public void setStamina(int stamina) {
 		this.stamina = stamina;
 	}
+	
 	public int getOffence() {
 		return offence;
 	}
+	
 	public void setOffence(int offence) {
 		this.offence = offence;
 	}
+	
 	public int getDefence() {
 		return defence;
 	}
+	
 	public void setDefence(int defence) {
 		this.defence = defence;
 	}
@@ -120,6 +125,11 @@ public class Athlete {
 	public int getContractPrice(Athlete ath) {
 		return ath.contractPrice;
 	}
+	
+	public int getRarity() {
+		return rarity;
+	}
+	
 
 	
 }

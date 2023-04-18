@@ -1,4 +1,7 @@
 package main;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -7,8 +10,9 @@ public class GameEnviroment {
 	 private int currentWeekNum; 
 	 private int playerLeaguePoints; 
 	 private int difficulty; 
-	 private int choosenNumWeeks; 
+	 private int chosenNumWeeks; 
 	 private int currentInjuryCount;
+	 private boolean starterStatus;  //checks to see if the player has selected their starting team
 	 
 	 
 	 /**
@@ -22,14 +26,95 @@ public class GameEnviroment {
 		 PotentialPlayers potentialPlayers = new PotentialPlayers(); // create an instance to the player creations
 		 Player player = new Player(); // creates instance of the player class
 		 Market market = new Market(); // creates instance of the market class
+
 		 
 		 chooseTeamName(team); // allows player to input their team name 
-		 potentialPlayers.createPlayers(game.choosenNumWeeks); // calls the method to create the players
+		 potentialPlayers.createPlayers(game.chosenNumWeeks); // calls the method to create the players
 		 setPlayersStartBalance(game, player); // sets the players start balance with respect to difficulty 
 		 potentialPlayers.getAllPlayerArray(); // makes the method add players to waiver list accessible 
 		 market.addPlayerToWavier(potentialPlayers); // creates the waiver list by adding from potential players to waiver list
-		 market.pickInitalTeam(market, team, player); // calls the main method for the logic behind creating the initial team
+		 
+		 // CHANGE OF STRUCTURE NEEDED FOR "pickInitialTeam": function to be the players initial
+		 market.pickInitalTeam(market, team, player, game); // calls the main method for the logic behind creating the initial team
+		 market.pickInitalTeam(market, team, player, game); // calls the function again to choose
+		 // CHANGE NEEDED: morphed into one call
+		 
+		 while (currentWeekNum <= chosenNumWeeks) {
+			 matchSelection(game, team, player);
+			 game.currentWeekNum++;
+		 }
+		 
+		 
 	 }
+	 
+	 public String matchSelectionString(GameEnviroment game, Team team, Player player, ArrayList<ArrayList<Athlete>> opponentsLeft) {
+		 return team.getName() + "\t" + player.getMoneyBalance() + "\t" + currentWeekNum + "/" + chosenNumWeeks + " Weeks\nType the number of the opponent you want to play: \n";
+	 }
+	 
+	 
+	 public void matchSelection(GameEnviroment game, Team team, Player player) {
+		 
+		 PotentialPlayers opponent = new PotentialPlayers();
+		 
+		 ArrayList<Athlete> easyOpponent = opponent.createOpposingTeam(game, 1);
+		 ArrayList<Athlete> mediumOpponent = opponent.createOpposingTeam(game, 2);
+		 ArrayList<Athlete> hardOpponent = opponent.createOpposingTeam(game, 3);
+		 
+		 
+		 ArrayList<String> opponentName = new ArrayList<String>();
+		 opponentName.add("Easy");
+		 opponentName.add("Medium");
+		 opponentName.add("Hard");
+	
+		 
+		 ArrayList<ArrayList<Athlete>> opponentsLeft = new ArrayList<ArrayList<Athlete>>(); 
+		 
+		 opponentsLeft.add(easyOpponent);
+		 opponentsLeft.add(mediumOpponent);
+		 opponentsLeft.add(hardOpponent);
+		 
+		 Scanner scanner3 = new Scanner(System.in);
+
+		 
+		 while (opponentsLeft.size() > 0) {
+			 System.out.println(matchSelectionString(game, team, player, opponentsLeft));
+			 
+			 int i = 1;
+			 for(String opp: opponentName) {
+
+				 System.out.println("\t" + i + ". " + opp);
+				 i++;
+			 }
+			 
+			 try {
+				 
+				 int opponentSelection = scanner3.nextInt();
+				 
+				 if (opponentSelection > 0 && opponentSelection <= opponentsLeft.size()) { 
+					 String result = matchPlay(player, team, opponentsLeft.get(opponentSelection-1));
+					 System.out.println(result);
+					 opponentsLeft.remove(opponentSelection-1);
+					 opponentName.remove(opponentSelection-1);
+				 } else {
+					 throw new InputMismatchException();
+				 }
+				 
+				 }
+			 catch(InputMismatchException e) {
+				 System.out.println("Invalid input!" + "\n");
+		         scanner.nextLine();
+	        
+			 } 
+			
+
+		 }
+	 }
+	 
+	 public String matchPlay(Player player, Team team, ArrayList<Athlete> opponent) {
+		 return "Win";
+	 }
+
+	 
 	 
 	 
 	/**
@@ -43,7 +128,8 @@ public class GameEnviroment {
 	  */
 	 public GameEnviroment() {
 		 this.difficulty = chooseDifficulty(); 
-		 this.choosenNumWeeks = chooseNumWeeks();
+		 this.chosenNumWeeks = chooseNumWeeks();
+		 this.starterStatus = true;
 	 }
 	 
 	 
@@ -55,13 +141,13 @@ public class GameEnviroment {
 		 
 		 boolean isLegalName = false;
 		 
-		 Scanner scanner2 = new Scanner(System.in);
+		Scanner scanner2 = new  Scanner(System.in);
 		 
 		 while(!isLegalName) {
 			 System.out.println("Choose your team name! \n");
 			 try {
 				 String name = scanner2.nextLine();
-				 if(name.matches("[a-zA-Z]+") && name.length() <= 15 && name.length() >= 3){
+				 if(name.matches("[a-zA-Z\s]+") && name.length() <= 15 && name.length() >= 3){
 					 team.setName(name);
 					 isLegalName = true;
 				 } else {
@@ -74,7 +160,9 @@ public class GameEnviroment {
 		 }
 
 		 System.out.println("\n\t" + "Your choosen team name is " + team.getName() + "\n");
+
 	 }
+	 
 	 
 	 
 	 /**
@@ -156,9 +244,9 @@ public class GameEnviroment {
 	  */
 	 public void setPlayersStartBalance(GameEnviroment game, Player player) {
 		 if (game.difficulty == 1) {
-			 player.setMoneyBalance(600);
+			 player.setMoneyBalance(6000);
 		 } else {
-			 player.setMoneyBalance(400);
+			 player.setMoneyBalance(4000);
 		 }
 	 }
 	 
@@ -186,10 +274,10 @@ public class GameEnviroment {
 		this.difficulty = difficulty;
 	}
 	public int getChoosenNumWeeks() {
-		return choosenNumWeeks;
+		return chosenNumWeeks;
 	}
 	public void setChoosenNumWeeks(int choosenNumWeeks) {
-		this.choosenNumWeeks = choosenNumWeeks;
+		this.chosenNumWeeks = choosenNumWeeks;
 	}
 	public int getCurrentInjuryCount() {
 		return currentInjuryCount;
@@ -197,6 +285,11 @@ public class GameEnviroment {
 	public void setCurrentInjuryCount(int currentInjuryCount) {
 		this.currentInjuryCount = currentInjuryCount;
 	}
-	
+	public boolean getStarterStatus() {
+		return starterStatus;
+	}
+	public void setStarterStatus() {
+		this.starterStatus = false;
+	}
 
 }

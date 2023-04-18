@@ -33,7 +33,7 @@ public class Market {
 	 */
 	public void waiverPrintFormatting(Market market) {
 		for (Athlete ath : market.getWavierList()) {
-			System.out.println(ath + "\n");
+			System.out.println(ath.getName(ath) + ": " + ath.getOffence() + "/" + ath.getDefence() + " (ATK/DEF) " + "(Rarity:" + ath.getRarity() + ") " + "$" + ath.getContractPrice(ath) + "\n");
 		}
 	}	
 		
@@ -59,16 +59,15 @@ public class Market {
 	 * @param market
 	 * @param team
 	 */
-	public void pickInitalTeam(Market market, Team team, Player player) {
+	public void pickInitalTeam(Market market, Team team, Player player, GameEnviroment game) {
 		
 		market.waiverPrintFormatting(market); 
 		
-		System.out.println("Your current balance is $" + player.getMoneyBalance() + "\n");
 		int pickNumber = 0; // runs a counter of player picks that can be made (max 4)
 				
 		while (pickNumber < 5) {
 						
-			System.out.println("Type in the players name the add to add to your team" + "\n" + ""); // give information to the player on game state
+			System.out.println("\n" + "Current Balance: $" +  player.getMoneyBalance()+ "\nType a players name to add to your team" + ""); // give information to the player on game state
 			String pickName = scanner.nextLine(); // gets the players input on player requested
 			
 			if (!wavierList.contains(findAthleteByName(market, pickName))) { // checks the players input against the waiver list to see if the player exists 
@@ -77,9 +76,8 @@ public class Market {
 			}
 			for (Athlete athlete : wavierList) { // runs a loop on the whole list to get access to the requested player
 				if (athlete.getName(athlete).equals(pickName)) { // stops the loop on the requested player
-					if (buyPlayerAndMoneyUpdater(player, athlete, team)) { 
+					if (buyPlayerAndMoneyUpdater(player, athlete, team, game)) { 
 						pickNumber++; 
-						System.out.println("\tYou remaining Balance: $" + player.getMoneyBalance());
 						break;	
 					} else {
 						System.out.println("Sorry, you cannot afford this player"); 
@@ -87,9 +85,28 @@ public class Market {
 				} 
 			}
 		}
-		System.out.println("\n" + "Your starting team is \n"); // after whole team has been choosen, prints off starting team
-		for (Athlete athlete : team.getStartingName()) {
-	        System.out.println(athlete);
+		
+		
+		if(game.getStarterStatus() == true) {
+			System.out.println("\n" + "Your starting team is \n"); // after whole team has been chosen, prints off starting team
+			for (Athlete athlete : team.getStartingName()) {
+		        System.out.println(athlete + "\n");		
+			}
+			game.setStarterStatus();
+			System.out.println("Now select your Reserves");
+			
+		} else {
+			System.out.println("\n" + "Your full team is \n"); // after whole team has been chosen, prints off the entire team
+			
+			System.out.println("Starters:\n");
+			for (Athlete athlete : team.getStartingName()) {
+		        System.out.println("\t" + athlete + "\n");	
+			}
+			
+			System.out.println("Reserves:\n");
+			for (Athlete athlete : team.getReserveName()) {
+		        System.out.println("\t" + athlete + "\n");	
+			}
 		}
 	}
 	
@@ -98,11 +115,18 @@ public class Market {
 	 * This method returns a boolean based on if the players requested can be afforded.
 	 * @return
 	 */
-	public boolean buyPlayerAndMoneyUpdater(Player player, Athlete athlete, Team team) {
+	public boolean buyPlayerAndMoneyUpdater(Player player, Athlete athlete, Team team, GameEnviroment game) {
 		
 		if (player.getMoneyBalance() - athlete.getContractPrice(athlete) > 0) { // checks if player has enough money
 			player.setMoneyBalance(player.getMoneyBalance() - athlete.getContractPrice(athlete)); // updates the new bank balance 
-			team.addStartingPlayer(athlete); // adds to the startPlayers array list in the player class 
+			
+			if(game.getStarterStatus() == true) {
+				team.addStartingPlayer(athlete); // adds to the startPlayers array list in the player class 
+			
+			} else {
+				team.addReservePlayer(athlete); // adds to the reservePlayers array list in the player class
+			}
+
 			wavierList.remove(athlete); // remove the players new athlete from the waiver list
 			return true;
 		} else {
