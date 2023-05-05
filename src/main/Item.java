@@ -2,8 +2,9 @@ package main;
 
 public class Item {
 	
+	 private String name;
 	 private String itemAtributes; 
-	 private String Rarity;
+	 private int rarity;
 	 private int sellBackPriceprivate ;
 	 private int contractPrice;
 	 private String description;
@@ -17,10 +18,17 @@ public class Item {
 	 * @param offenceIncrease
 	 * @param staminaIncrease
 	 */
-	public Item(int defenceIncrease, int offenceIncrease, int staminaIncrease) {
+	public Item(String name, int defenceIncrease, int offenceIncrease, int staminaIncrease, int rarity, int contractPrice) {
 		this.offenceIncrease = offenceIncrease;
 		this.defenceIncrease = defenceIncrease;
 		this.staminaIncrease = staminaIncrease;
+		this.contractPrice = contractPrice;
+		this.name = name;
+		this.rarity = rarity;
+	}
+	
+	public String toString() {
+		return (name + "\n\tOffence Increase: " + offenceIncrease + "\n\tDefense Increase: " + defenceIncrease + "\n\tPrice: $" + contractPrice + "\n\tRarity: " + rarity);
 	}
 
 	
@@ -43,11 +51,11 @@ public class Item {
 	public void setItemAtributes(String itemAtributes) {
 		this.itemAtributes = itemAtributes;
 	}
-	public String getRarity() {
-		return Rarity;
+	public int getRarity() {
+		return rarity;
 	}
-	public void setRarity(String rarity) {
-		Rarity = rarity;
+	public void setRarity(int rarity) {
+		rarity = rarity;
 	}
 	public int getSellBackPriceprivate() {
 		return sellBackPriceprivate;

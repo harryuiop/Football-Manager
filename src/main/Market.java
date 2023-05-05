@@ -1,13 +1,21 @@
 package main;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Market {
 	
 	
-	private ArrayList<Item> catalog;
+	private ArrayList<Item> catalog = new ArrayList<Item>();
 	private ArrayList<Athlete> wavierList = new ArrayList<Athlete>();
+	private ArrayList<Item> seenItems = new ArrayList<Item>();
+	private ArrayList<Item> unseenItems = new ArrayList<Item>();
+
 	
+	/**
+	 * Creating an instance of Random
+	 */
+	Random rand = new Random();
 	
 	/**
 	 * creates a scanner method to invoke the Scanner Class to use user inputs
@@ -25,6 +33,72 @@ public class Market {
 			wavierList.add(ath);
 		}
 	}
+	/**
+	 * Adds item to catalog
+	 * @param item
+	 */
+	public void addItemToUnseenItems(Item item) {
+		unseenItems.add(item);
+	}
+	
+	
+	/**
+	 * This method will get called once at the start of the program to set the first market rotation
+	 */
+	public void initalMarketItems() {
+		int counter = 0;
+		while (counter < 3) {
+			int nextItem = rand.nextInt(0, unseenItems.size());
+			Item choosenItem = unseenItems.get(nextItem);
+			catalog.add(choosenItem);
+			unseenItems.remove(choosenItem);
+			counter++;
+		}
+	}
+	
+	
+	/**
+	 * This method can be called at any time in order to 
+	 */
+	public void rotateMarketItems() {
+		if (unseenItems.size() < 3) {
+			for(Item item: seenItems) {
+				unseenItems.add(item);
+				seenItems.remove(item);
+			}
+		}
+		
+		for(Item item: catalog) {
+			catalog.remove(item);
+		}
+		
+		
+		int counter = 0;
+		while (counter < 3) {
+			int nextItem = rand.nextInt(0, unseenItems.size());
+			Item choosenItem = unseenItems.get(nextItem);
+			catalog.add(choosenItem);
+			unseenItems.remove(choosenItem);
+			counter++;
+		}
+		
+	}
+
+	
+	/**
+	 * this method will rotate the market and print it out for the users
+	 */
+	public void goToMarket() {
+		rotateMarketItems();
+		catalogPrintFormatting();
+	}
+	
+	
+	public void catalogPrintFormatting() {
+		for (Item item : catalog) {
+			System.out.println(item + "\n");
+		}
+	}	
 	
 	
 	/**
@@ -33,14 +107,14 @@ public class Market {
 	 */
 	public void waiverPrintFormatting(Market market) {
 		for (Athlete ath : market.getWavierList()) {
-			System.out.println(ath.getName(ath) + ": " + ath.getOffence() + "/" + ath.getDefence() + " (ATK/DEF) " + "(Rarity:" + ath.getRarity() + ") " + "$" + ath.getContractPrice(ath) + "\n");
+			System.out.println(ath + "\n");
 		}
 	}	
 		
 		
 	/**
 	 * This method is called whenever an athlete is to be accessed by name. 
-	 * @param market
+	 * @param marketYou can use any single capital letter as a non-terminal; S is the start symbol. Any lower-case letter and any digit is a terminal. An underscore _ denotes the empty string ε. There must be exactly one line for each non-terminal. A bar | is used to separate the choices on the right-hand side. Right-hand sides must not be empty; at least one option must be given. Each choice in a right-hand side must not be empty; it may be _ for ε. Productions must not contain spacing. In summary, every production must conform to the following Python regular expressio
 	 * @param name
 	 * @return
 	 */
@@ -59,15 +133,16 @@ public class Market {
 	 * @param market
 	 * @param team
 	 */
-	public void pickInitalTeam(Market market, Team team, Player player, GameEnviroment game) {
+	public void pickInitalTeam(Market market, Team team, Player player) {
 		
 		market.waiverPrintFormatting(market); 
 		
+		System.out.println("Your current balance is $" + player.getMoneyBalance() + "\n");
 		int pickNumber = 0; // runs a counter of player picks that can be made (max 4)
 				
 		while (pickNumber < 5) {
 						
-			System.out.println("\n" + "Current Balance: $" +  player.getMoneyBalance()+ "\nType a players name to add to your team" + ""); // give information to the player on game state
+			System.out.println("Type in the players name the add to add to your team" + "\n" + ""); // give information to the player on game state
 			String pickName = scanner.nextLine(); // gets the players input on player requested
 			
 			if (!wavierList.contains(findAthleteByName(market, pickName))) { // checks the players input against the waiver list to see if the player exists 
@@ -76,8 +151,9 @@ public class Market {
 			}
 			for (Athlete athlete : wavierList) { // runs a loop on the whole list to get access to the requested player
 				if (athlete.getName(athlete).equals(pickName)) { // stops the loop on the requested player
-					if (buyPlayerAndMoneyUpdater(player, athlete, team, game)) { 
+					if (buyPlayerAndMoneyUpdater(player, athlete, team)) { 
 						pickNumber++; 
+						System.out.println("\tYou remaining Balance: $" + player.getMoneyBalance());
 						break;	
 					} else {
 						System.out.println("Sorry, you cannot afford this player"); 
@@ -85,28 +161,9 @@ public class Market {
 				} 
 			}
 		}
-		
-		
-		if(game.getStarterStatus() == true) {
-			System.out.println("\n" + "Your starting team is \n"); // after whole team has been chosen, prints off starting team
-			for (Athlete athlete : team.getStartingName()) {
-		        System.out.println(athlete + "\n");		
-			}
-			game.setStarterStatus();
-			System.out.println("Now select your Reserves");
-			
-		} else {
-			System.out.println("\n" + "Your full team is \n"); // after whole team has been chosen, prints off the entire team
-			
-			System.out.println("Starters:\n");
-			for (Athlete athlete : team.getStartingName()) {
-		        System.out.println("\t" + athlete + "\n");	
-			}
-			
-			System.out.println("Reserves:\n");
-			for (Athlete athlete : team.getReserveName()) {
-		        System.out.println("\t" + athlete + "\n");	
-			}
+		System.out.println("\n" + "Your starting team is \n"); // after whole team has been choosen, prints off starting team
+		for (Athlete athlete : team.getStartingName()) {
+	        System.out.println(athlete);
 		}
 	}
 	
@@ -115,18 +172,11 @@ public class Market {
 	 * This method returns a boolean based on if the players requested can be afforded.
 	 * @return
 	 */
-	public boolean buyPlayerAndMoneyUpdater(Player player, Athlete athlete, Team team, GameEnviroment game) {
+	public boolean buyPlayerAndMoneyUpdater(Player player, Athlete athlete, Team team) {
 		
 		if (player.getMoneyBalance() - athlete.getContractPrice(athlete) > 0) { // checks if player has enough money
 			player.setMoneyBalance(player.getMoneyBalance() - athlete.getContractPrice(athlete)); // updates the new bank balance 
-			
-			if(game.getStarterStatus() == true) {
-				team.addStartingPlayer(athlete); // adds to the startPlayers array list in the player class 
-			
-			} else {
-				team.addReservePlayer(athlete); // adds to the reservePlayers array list in the player class
-			}
-
+			team.addStartingPlayer(athlete); // adds to the startPlayers array list in the player class 
 			wavierList.remove(athlete); // remove the players new athlete from the waiver list
 			return true;
 		} else {
@@ -134,6 +184,49 @@ public class Market {
 		}
 	}
 	
+	/**
+	 * this method is called in the game environment main loop in order to created all game items.
+	 */
+	public void createItems() {
+		
+		Item firstTeirBoots = new Item("First Teir Boots", 3, 2, 0, 1, 10);
+		Item secondTeirBoots = new Item("Second Teir Boots", 6, 3, 0, 2, 50);
+		Item thirdTeirBoots = new Item("Third Teir Boots", 10, 5, 0, 3, 100);
+		addItemToUnseenItems(firstTeirBoots);
+		addItemToUnseenItems(secondTeirBoots);
+		addItemToUnseenItems(thirdTeirBoots);
+		
+		Item firstTeirShinPads = new Item("First Teir Shinpads", 2, 7, 0, 1, 10);
+		Item secondTeirShinPads = new Item("Second Teir Shinpads", 4, 11, 0, 2, 50);
+		Item thirdTeirShinPads = new Item("Third Teir Shinpads", 6, 15, 0, 3, 100);
+		addItemToUnseenItems(firstTeirShinPads);
+		addItemToUnseenItems(secondTeirShinPads);
+		addItemToUnseenItems(thirdTeirShinPads);
+		
+		Item mildlySuspiciousSubstance = new Item("Mildly Suspicious Substance", 10, 10, 10, 2, 200);
+		Item moderatlySuspiciousSubstance = new Item("Moderatly Suspicious Substance", 10, 10, 10, 2, 200);
+		Item stronglySuspiciousSubstance = new Item("Strongly Suspicious Substance", 20, 20, 20, 3, 300);
+		addItemToUnseenItems(mildlySuspiciousSubstance);
+		addItemToUnseenItems(moderatlySuspiciousSubstance);
+		addItemToUnseenItems(stronglySuspiciousSubstance);
+		
+		Item oranges = new Item("Oranges", 2, 2, 30, 2, 30);
+		Item sweets = new Item("Sweets", 2, 2, 50, 1, 60);
+		Item hydrationDrink = new Item("Hydration Drink", 2, 2, 50, 2, 60);
+		addItemToUnseenItems(oranges);
+		addItemToUnseenItems(sweets);
+		addItemToUnseenItems(hydrationDrink);
+		
+		
+		Item attackingTrainingDay  = new Item("Attacking Training Day", 15, 0, 0, 1, 50);
+		Item defensiveTrainingDay = new Item("Defensive Training Day", 0, 15, 0, 1, 50);
+		Item gymDay = new Item("Gym Day", 10, 10, 10, 1, 50);
+		addItemToUnseenItems(attackingTrainingDay);
+		addItemToUnseenItems(defensiveTrainingDay);
+		addItemToUnseenItems(gymDay);
+		
+		initalMarketItems();
+	}
 	
 	/**
 	 * all necessary setters and getters to the class
@@ -150,6 +243,8 @@ public class Market {
 	public ArrayList<Athlete> getWavierList() {
 		return wavierList;
 	}
+	
+	
 
 	
 	
