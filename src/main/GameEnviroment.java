@@ -111,7 +111,10 @@ public class GameEnviroment {
 	 }
 	 
 	 public String matchPlay(Player player, Team team, ArrayList<Athlete> opponent) {
-		 return "Win";
+		 Match match = new Match();
+		 Boolean startingTeam = match.coinFlip();
+		 String matchResult = match.gamePlay(player, team, opponent, startingTeam);	
+		 return matchResult;
 	 }
 
 	 
@@ -139,7 +142,7 @@ public class GameEnviroment {
 	 */
 	 public void chooseTeamName(Team team) throws InputMismatchException {
 		 
-		 boolean isLegalName = false;
+		boolean isLegalName = false;
 		 
 		Scanner scanner2 = new  Scanner(System.in);
 		 
