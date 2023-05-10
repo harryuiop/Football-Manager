@@ -1,0 +1,25 @@
+public class SpaceFlight {
+	
+	private final double velocity;
+    private final double acceleration;
+	
+	SpaceFlight(double initialVelocity, double driveAcceleration){
+		this.velocity = initialVelocity;
+		this.acceleration = driveAcceleration;
+	}
+	
+	public double distanceAtTime(int time) {
+		double t = time;
+		return this.velocity*t+(0.5)*this.acceleration*t*t;
+	}
+	
+	public Stream<Double> simulateDistance(int skipSeconds, int modelDuration){
+		return Stream.iterate(0, i -> i + 1).skip(skipSeconds).map(i->distanceAtTime(i)).limit(modelDuration);
+	}
+	
+	public static void main(String[] args) {
+        SpaceFlight flight = new SpaceFlight(0, 1);
+        flight.simulateDistance(10, 10).forEach(x -> System.out.println(String.format("%.2fm", x)));
+	}
+
+}
