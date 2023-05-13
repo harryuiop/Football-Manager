@@ -74,17 +74,17 @@ public class Market {
 		
 		int counter = 0;
 		while (counter < 3) {
-			System.out.println(unseenItems.size());
 			if (unseenItems.size() > 0) {
 				int nextItem = rand.nextInt(0, unseenItems.size());
-				System.out.println("checkpoint 1");
 				Item choosenItem = unseenItems.get(nextItem);
 				catalog.add(choosenItem);
 				unseenItems.remove(choosenItem);
 				counter++;
+				} else {
+					counter++;					
 				}
+			
 		}
-		
 	}
 
 	
@@ -100,9 +100,11 @@ public class Market {
 	 * used for the CLI to formating the printing
 	 */
 	public void catalogPrintFormatting() {
+		System.out.println("\tMarket: \n");
 		for (Item item : catalog) {
-			System.out.println(item);
+			System.out.println(item + "\n");
 		}
+		System.out.println("\n");
 	}	
 	
 	

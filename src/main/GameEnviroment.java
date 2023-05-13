@@ -42,11 +42,7 @@ public class GameEnviroment {
 		 potentialPlayers.getAllPlayers(); // makes the method add players to waiver list accessible 
 		 market.addPlayerToWavier(potentialPlayers); // creates the waiver list by adding from potential players to waiver list
 		 market.createItems();
-		 
-		 for (int i=0 ; i<10 ; i++) {
-			 market.goToMarket();
-		 }
-		 
+		 market.goToMarket();
 		 
 		 market.pickInitalTeam(market, team, player); // calls the main method for the logic behind creating the initial team
 		 market.pickInitalReserves(market, team, player);
