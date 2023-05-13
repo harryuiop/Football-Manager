@@ -13,7 +13,7 @@ public class GameEnviroment {
 	 private int chosenNumWeeks; 
 	 private int currentInjuryCount;
 	 private boolean starterStatus;  //checks to see if the player has selected their starting team
-	 
+	 private int winAmount;
 	 
 	 /**
 		 * 	  creates a scanner method to invoke the Scanner Class to use user inputs
@@ -65,9 +65,16 @@ public class GameEnviroment {
 			 matchSelection(game, team, player);
 			 game.currentWeekNum++;
 		 }
+		 
+		gameEnd(player);
 	 }
+	 
+	public void gameEnd(Player player) {
+		System.out.println("You have finished the game with " + winAmount + " wins and " + "$" + player.getMoneyBalance());
+	}
 	
-	 public void matchSelection(GameEnviroment game, Team team, Player player) {
+
+	public void matchSelection(GameEnviroment game, Team team, Player player) {
 		 
 		 PotentialPlayers opponent = new PotentialPlayers();
 		 
@@ -207,7 +214,7 @@ public class GameEnviroment {
 		 
 		boolean isLegalName = false;
 		 
-		Scanner scanner2 = new  Scanner(System.in);
+		Scanner scanner2 = new Scanner(System.in);
 		 
 		 while(!isLegalName) {
 			 System.out.println("Choose your team name! \n");
@@ -321,6 +328,14 @@ public class GameEnviroment {
 		 * all necessary setters and getters to the class
 		 * 
 		 */
+	 public int getWinAmount() {
+		return winAmount;
+	}
+
+	public void setWinAmount(int winAmount) {
+		this.winAmount = winAmount;
+	}
+	 
 	 public int getCurrentWeekNum() {
 		return currentWeekNum;
 	}

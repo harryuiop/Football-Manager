@@ -11,29 +11,53 @@ public class Match {
 	private int opposingScore;
 	private int playersScore;
 	
+	
+	/**
+	 * The Main game-loop: Works by each players' starting athlete facing the opponents opposite and a 'point' is gained when 
+	 * an attackers offence stat is greater than a defenders defence stat
+	 * @param game
+	 * @param player
+	 * @param team
+	 * @param opponent
+	 * @return
+	 */
 	public String matchPlay(GameEnviroment game, Player player, Team team, ArrayList<Athlete> opponent){
 		String matchResult;
+		
+		setPlayersScore(0);
+		setOpposingScore(0);
+		
 		for(int i = 0; i < 5; i++){
 			Athlete opponentMatchUp = opponent.get(i);
 			Athlete playerMatchUp = team.getStartingName().get(i);
 
 			System.out.println(playerMatchUp.getName(playerMatchUp) + " is facing " + opponentMatchUp.getName(opponentMatchUp));
-			if (i < 3){
+			if (i < 2){
 				if (playerMatchUp.getOffence() > opponentMatchUp.getDefence()){
-					System.out.println("You have scored.\nScore " + playersScore + ":" + opposingScore + "\n");
 					playersScore++;
+					System.out.println("You have scored!\nScore " + playersScore + ":" + opposingScore + "\n");
+
 				} else {
-					System.out.println("You have failed to score\n");
+					System.out.println("You have failed to score\n" + playerMatchUp.getName(playerMatchUp) + "has lost stamina\n");
+					playerMatchUp.setStamina(playerMatchUp.getStamina() - 10);
 				}
 			} else {
 				if (playerMatchUp.getDefence() > opponentMatchUp.getOffence()){
-					System.out.println("You have fucked that cunt up.\n");
+					System.out.println("You have successfully defended.\n");
 				} else {
-					System.out.println("You have been scored on\nScore " + playersScore + ":" + opposingScore + "\n");
+					opposingScore++;
+					System.out.println("You have been scored on\nScore " + playersScore + ":" + opposingScore + "\n" + playerMatchUp.getName(playerMatchUp) + "has lost stamina\n");
+					playerMatchUp.setStamina(playerMatchUp.getStamina() - 10);
+
 				}
 			}
 
 		}
+		
+		for(Athlete ath: team.getStartingName()) {
+			ath.setStamina(ath.getStamina() - 10);
+		}
+		
 		if(playersScore > opposingScore){
 			matchResult = "You Win";
 		} else if(playersScore < opposingScore){
@@ -41,8 +65,7 @@ public class Match {
 		} else {
 			matchResult = "Draw";
 		}
-		setPlayersScore(0);
-		setOpposingScore(0);
+		
 		return matchResult;
 	}
 	
