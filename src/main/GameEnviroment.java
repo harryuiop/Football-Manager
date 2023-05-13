@@ -42,7 +42,6 @@ public class GameEnviroment {
 		 potentialPlayers.getAllPlayers(); // makes the method add players to waiver list accessible 
 		 market.addPlayerToWavier(potentialPlayers); // creates the waiver list by adding from potential players to waiver list
 		 market.createItems(); 
-		 market.goToMarket(player);
 		 
 		 market.pickInitalTeam(market, team, player); // calls the main method for the logic behind creating the initial team
 		 market.pickInitalReserves(market, team, player);
@@ -62,8 +61,10 @@ public class GameEnviroment {
 	 
 	 	//Main game-loop which sends the player to match selection which loops until the last week is hit
 		 while (currentWeekNum <= chosenNumWeeks) {
-			 matchSelection(game, team, player); //Game Selection screen 
+			 matchSelection(game, team, player, market); //Game Selection screen 
 			 game.currentWeekNum++; //Go to the next week
+			 
+			 
 		 }
 		 
 		gameEnd(player);
@@ -89,7 +90,7 @@ public class GameEnviroment {
 	 * @param team
 	 * @param player
 	 */
-	public void matchSelection(GameEnviroment game, Team team, Player player) {
+	public void matchSelection(GameEnviroment game, Team team, Player player, Market market) {
 		 
 		 PotentialPlayers opponent = new PotentialPlayers(); //creates an instance of potential players for the opposing team
 		 
@@ -148,8 +149,8 @@ public class GameEnviroment {
 	        
 			 } 
 			
-
 		 }
+		 market.goToMarket(player);
 	 }
 	 
 		 
