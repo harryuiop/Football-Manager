@@ -1,8 +1,5 @@
 package main;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
 
 public class Match {
 	
@@ -13,17 +10,41 @@ public class Match {
 	private ArrayList<Athlete> playersDefenders;
 	private int opposingScore;
 	private int playersScore;
-	private Random random = new Random();
 	
-	
-	public Boolean coinFlip() {
-		return random.nextBoolean();
+	public String matchPlay(GameEnviroment game, Player player, Team team, ArrayList<Athlete> opponent){
+		String matchResult;
+		for(int i = 0; i < 5; i++){
+			Athlete opponentMatchUp = opponent.get(i);
+			Athlete playerMatchUp = team.getStartingName().get(i);
+
+			System.out.println(playerMatchUp.getName(playerMatchUp) + " is facing " + opponentMatchUp.getName(opponentMatchUp));
+			if (i < 3){
+				if (playerMatchUp.getOffence() > opponentMatchUp.getDefence()){
+					System.out.println("You have scored.\nScore " + playersScore + ":" + opposingScore + "\n");
+					playersScore++;
+				} else {
+					System.out.println("You have failed to score\n");
+				}
+			} else {
+				if (playerMatchUp.getDefence() > opponentMatchUp.getOffence()){
+					System.out.println("You have fucked that cunt up.\n");
+				} else {
+					System.out.println("You have been scored on\nScore " + playersScore + ":" + opposingScore + "\n");
+				}
+			}
+
+		}
+		if(playersScore > opposingScore){
+			matchResult = "You Win";
+		} else if(playersScore < opposingScore){
+			matchResult = "You Lose";
+		} else {
+			matchResult = "Draw";
+		}
+		setPlayersScore(0);
+		setOpposingScore(0);
+		return matchResult;
 	}
-	
-	public void matchLoop(){
-		
-	}
-		
 	
 	/**
 	 * all necessary setters and getters to the class

@@ -59,15 +59,75 @@ public class GameEnviroment {
 		 	}
 	 	
 	 	market.goToMarket();
-	 }
 	 
 	 	
-//		  while (currentWeekNum <= chosenNumWeeks) {
-//		 	 matchSelection(game, team, player);
-//		 	 playGame+()
-//		 	 game.currentWeekNum++;
-//		  }
-		 	
+		 while (currentWeekNum <= chosenNumWeeks) {
+			 matchSelection(game, team, player);
+			 game.currentWeekNum++;
+		 }
+	 }
+	
+	 public void matchSelection(GameEnviroment game, Team team, Player player) {
+		 
+		 PotentialPlayers opponent = new PotentialPlayers();
+		 
+		 Match match = new Match();
+
+		 ArrayList<Athlete> easyOpponent = opponent.createOpposingTeam(game, 1);
+		 ArrayList<Athlete> mediumOpponent = opponent.createOpposingTeam(game, 2);
+		 ArrayList<Athlete> hardOpponent = opponent.createOpposingTeam(game, 3);
+		 
+		 
+		 ArrayList<String> opponentName = new ArrayList<String>();
+		 opponentName.add("Easy");
+		 opponentName.add("Medium");
+		 opponentName.add("Hard");
+	
+		 
+		 ArrayList<ArrayList<Athlete>> opponentsLeft = new ArrayList<ArrayList<Athlete>>(); 
+		 
+		 opponentsLeft.add(easyOpponent);
+		 opponentsLeft.add(mediumOpponent);
+		 opponentsLeft.add(hardOpponent);
+		 
+
+		 Scanner scanner3 = new Scanner(System.in);
+
+		 
+		 while (opponentsLeft.size() > 0) {
+			 System.out.println(matchSelectionString(game, team, player, opponentsLeft));
+			 
+			 int i = 1;
+			 for(String opp: opponentName) {
+
+				 System.out.println("\t" + i + ". " + opp);
+				 i++;
+			 }
+			 
+			 try {
+				 
+				 int opponentSelection = scanner3.nextInt();
+				 
+				 if (opponentSelection > 0 && opponentSelection <= opponentsLeft.size()) { 
+					 String result = match.matchPlay(game, player, team, opponentsLeft.get(opponentSelection-1));
+					 System.out.println(result);
+					 opponentsLeft.remove(opponentSelection-1);
+					 opponentName.remove(opponentSelection-1);
+				 } else {
+					 throw new InputMismatchException();
+				 }
+				 
+				 }
+			 catch(InputMismatchException e) {
+				 System.out.println("Invalid input!" + "\n");
+		         scanner.nextLine();
+	        
+			 } 
+			
+
+		 }
+	 }
+	 
 		 
 	 public int askToMakeSub() {
 		 boolean isInputValid = false;
