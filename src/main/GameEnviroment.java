@@ -60,39 +60,56 @@ public class GameEnviroment {
 	 	
 	 	market.goToMarket();
 	 
-	 	
+	 	//Main game-loop which sends the player to match selection which loops until the last week is hit
 		 while (currentWeekNum <= chosenNumWeeks) {
-			 matchSelection(game, team, player);
-			 game.currentWeekNum++;
+			 matchSelection(game, team, player); //Game Selection screen 
+			 game.currentWeekNum++; //Go to the next week
 		 }
 		 
 		gameEnd(player);
 	 }
 	 
+	/**
+	 * The game-end splash screen that prints out the players' win total and money amount
+	 * @param player
+	 */
 	public void gameEnd(Player player) {
 		System.out.println("You have finished the game with " + winAmount + " wins and " + "$" + player.getMoneyBalance());
 	}
 	
-
+	//String splash for the match selection
+	 public String matchSelectionString(GameEnviroment game, Team team, Player player, ArrayList<ArrayList<Athlete>> opponentsLeft) {
+		 return team.getName() + "\t" + player.getMoneyBalance() + "\t" + currentWeekNum + "/" + chosenNumWeeks + " Weeks\nType the number of the opponent you want to play: \n";
+	 }
+	
+	
+	/**
+	 * Function is called to allow the player to select a match between three opponents. Function is stopped when the 3 opponents have been played.
+	 * @param game
+	 * @param team
+	 * @param player
+	 */
 	public void matchSelection(GameEnviroment game, Team team, Player player) {
 		 
-		 PotentialPlayers opponent = new PotentialPlayers();
+		 PotentialPlayers opponent = new PotentialPlayers(); //creates an instance of potential players for the opposing team
 		 
-		 Match match = new Match();
-
+		 Match match = new Match(); //Creates a new match instance
+		 
+		 //Creates the three different teams the player can face
 		 ArrayList<Athlete> easyOpponent = opponent.createOpposingTeam(game, 1);
 		 ArrayList<Athlete> mediumOpponent = opponent.createOpposingTeam(game, 2);
 		 ArrayList<Athlete> hardOpponent = opponent.createOpposingTeam(game, 3);
 		 
-		 
+		 //Array for the available opponent; used for visual splash 
 		 ArrayList<String> opponentName = new ArrayList<String>();
 		 opponentName.add("Easy");
 		 opponentName.add("Medium");
 		 opponentName.add("Hard");
 	
-		 
+		 //Array of opponents that the player hasn't played as of yet
 		 ArrayList<ArrayList<Athlete>> opponentsLeft = new ArrayList<ArrayList<Athlete>>(); 
 		 
+		 //Adds the opponent teams to an array
 		 opponentsLeft.add(easyOpponent);
 		 opponentsLeft.add(mediumOpponent);
 		 opponentsLeft.add(hardOpponent);
@@ -100,9 +117,9 @@ public class GameEnviroment {
 
 		 Scanner scanner3 = new Scanner(System.in);
 
-		 
+		 //Loops until the all opponents have been faced
 		 while (opponentsLeft.size() > 0) {
-			 System.out.println(matchSelectionString(game, team, player, opponentsLeft));
+			 System.out.println(matchSelectionString(game, team, player, opponentsLeft)); //Output splash of the available opponents
 			 
 			 int i = 1;
 			 for(String opp: opponentName) {
@@ -110,7 +127,7 @@ public class GameEnviroment {
 				 System.out.println("\t" + i + ". " + opp);
 				 i++;
 			 }
-			 
+			 //Checks if the player has a valid input 
 			 try {
 				 
 				 int opponentSelection = scanner3.nextInt();
@@ -188,11 +205,6 @@ public class GameEnviroment {
 	 		
 	 	}
  	 }
-		 
-	 
-	 public String matchSelectionString(GameEnviroment game, Team team, Player player, ArrayList<ArrayList<Athlete>> opponentsLeft) {
-		 return team.getName() + "\t" + player.getMoneyBalance() + "\t" + currentWeekNum + "/" + chosenNumWeeks + " Weeks\nType the number of the opponent you want to play: \n";
-	 }
 	 
 	
 	 
