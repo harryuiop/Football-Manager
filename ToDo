@@ -18,7 +18,7 @@ Market Class
     -   when purchasing players, do not allow the user to pick players of all the same positions (we need 3 defenders
         and 2 attackers) 
 
-    -   
+    -   get rid of last names on players
 
 Match Class
 

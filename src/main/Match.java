@@ -15,50 +15,15 @@ public class Match {
 	private int playersScore;
 	private Random random = new Random();
 	
+	
 	public Boolean coinFlip() {
 		return random.nextBoolean();
 	}
 	
-	public Athlete playerSelection(Team team) {
-		System.out.println("\n" + "Current Balance: $" +  player.getMoneyBalance()+ "\nType a players name to add to your team" + ""); // give information to the player on game state
-		String pickName = scanner.nextLine(); // gets the players input on player requested
+	public void matchLoop(){
 		
-		if (!wavierList.contains(findAthleteByName(market, pickName))) { // checks the players input against the waiver list to see if the player exists 
-			System.out.println("Invalid Player Name"); // hits else if no name was matched
-			continue;
-		}
-		for (Athlete athlete : wavierList) { // runs a loop on the whole list to get access to the requested player
-			if (athlete.getName(athlete).equals(pickName)) { // stops the loop on the requested player
-				if (buyPlayerAndMoneyUpdater(player, athlete, team, game)) { 
-					pickNumber++; 
-					break;	
-				} else {
-					System.out.println("Sorry, you cannot afford this player"); 
-				}
-			} 
-		}
 	}
-	
-	public String gamePlay(Player player, Team team, ArrayList<Athlete> opponent, Boolean startingPlayer) {
-		String matchResult;
-		int progCounter = 0;
-		boolean playerPossession = startingPlayer;
 		
-		
-		if (playerPossession == true) {
-			Athlete chosenPlayer = playerSelection(team);
-		}
-		
-		for (int i = 20; i > 0; i--) {
-			
-		}
-		
-		
-		return matchResult;
-	}
-	
-	
-	
 	
 	/**
 	 * all necessary setters and getters to the class

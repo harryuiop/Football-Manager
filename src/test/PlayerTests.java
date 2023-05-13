@@ -13,7 +13,7 @@ class PlayerTests {
 		Player testPlayer = new Player();
 		
 		int defenceIncreaseValue = 10;
-		Item testItem = new Item(defenceIncreaseValue, 0, 0);
+		Item testItem = new Item("test", defenceIncreaseValue, 0, 0, 0, 0);
 		
 		int initalDefence = 50;
 		Athlete testAthlete = new Athlete(100, 60, 1, 1, "TEST");

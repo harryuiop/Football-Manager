@@ -13,12 +13,17 @@ public class PotentialPlayers {
 	/**
 	 * Hard coded names for the generateName() method to pull names from
 	 */
-	ArrayList<String> first_names = new ArrayList<>(Arrays.asList("Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Hernandez",
-			"Adams", "Anderson", "Thomas", "Jackson", "Harris", "Martin", "Thompson", "Garcia",
-			"Garcia", "Robinson", "Mitchell", "Perez", "Roberts", "Turner", "Phillips", "Evans")); 
-	
-	ArrayList<String> last_names = new ArrayList<>(Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X" ,"Y", "Z"));
-	
+	ArrayList<String> names = new ArrayList<>(Arrays.asList("hogan", "john", "robert", "michael", "william", "david",
+			"richard", "joseph", "charles", "thomas", "christopher", "daniel", "matthew", "anthony", "donald", "mark",
+			"paul", "george", "steven", "kenneth", "andrew", "edward", "joshua", "brian", "kevin", "ronald", "timothy", 
+			"jason", "jeffrey", "frank", "larry", "scott", "eric", "stephen", "justin", "brandon", "gregory", "samuel",
+			"benjamin", "patrick", "jack", "alexander", "tyler", "zachary", "ethan", "noah", "mason", "david", "carter",
+			"owen", "luke", "adam", "connor", "dylan", "lucas", "adrian", "cameron", "nathan", "isaac", "isaiah", "levi",
+			"jordan", "evan", "aaron", "blake", "cole", "derek", "gavin", "jesse", "jonah", "kyle", "marcus", "oliver",
+			"peter", "ryan", "sean", "shane", "simon", "spencer", "theo", "troy", "wyatt", "zachary", "aidan", "anthony",
+			"austin", "brayden", "caleb", "christian", "colin", "cooper", "dominic", "donovan", "easton", "elliot",
+			"elijah", "finn", "gabriel", "harrison", "hunter", "ian", "jackson"));
+		
 	
 	/**
 	 * Creating an instance of Random
@@ -143,14 +148,26 @@ public class PotentialPlayers {
 	 * @return
 	 */
 	public String nameGenerator() {
-		int first_index = rand.nextInt(0, first_names.size());
-		int last_index = rand.nextInt(0, last_names.size());
-		String choosenName = first_names.get(first_index) + " " + last_names.get(last_index);
-		
-		return choosenName;
+		if (names.size() > 0) {
+			int index = rand.nextInt(0, names.size());
+			String choosenName = names.get(index);
+			names.remove(index);
+			return choosenName;
+		} else {
+			
+			return ("Ran out of names in the nameGenerator method please fix");
+			
+		}
 	}
-	
-	public ArrayList<Athlete> getAllPlayerArray() {
+
+
+	public ArrayList<Athlete> getAllPlayers() {
 		return allPlayers;
 	}
+
+
+	public void setAllPlayers(ArrayList<Athlete> allPlayers) {
+		this.allPlayers = allPlayers;
+	}
+
 }

@@ -16,6 +16,14 @@ public class GameEnviroment {
 	 
 	 
 	 /**
+		 * 	  creates a scanner method to invoke the Scanner Class to use user inputs
+		 */
+		Scanner scanner = new Scanner(System.in);
+		Scanner scanner2 = new Scanner(System.in);
+		Scanner scanner3 = new Scanner(System.in);
+
+		
+	 /**
 	  * The main method to run the game, creating all the objects and making things run sequentially. 
 	  * This method is call from the RunApp class
 	  * @param game
@@ -31,99 +39,94 @@ public class GameEnviroment {
 		 chooseTeamName(team); // allows player to input their team name 
 		 potentialPlayers.createPlayers(game.chosenNumWeeks); // calls the method to create the players
 		 setPlayersStartBalance(game, player); // sets the players start balance with respect to difficulty 
-		 potentialPlayers.getAllPlayerArray(); // makes the method add players to waiver list accessible 
+		 potentialPlayers.getAllPlayers(); // makes the method add players to waiver list accessible 
 		 market.addPlayerToWavier(potentialPlayers); // creates the waiver list by adding from potential players to waiver list
+		 market.createItems();
 		 
-		 // CHANGE OF STRUCTURE NEEDED FOR "pickInitialTeam": function to be the players initial
-		 market.pickInitalTeam(market, team, player, game); // calls the main method for the logic behind creating the initial team
-		 market.pickInitalTeam(market, team, player, game); // calls the function again to choose
-		 // CHANGE NEEDED: morphed into one call
-		 
-		 while (currentWeekNum <= chosenNumWeeks) {
-			 matchSelection(game, team, player);
-			 game.currentWeekNum++;
+		 for (int i=0 ; i<10 ; i++) {
+			 market.goToMarket();
 		 }
 		 
 		 
+		 market.pickInitalTeam(market, team, player); // calls the main method for the logic behind creating the initial team
+		 market.pickInitalReserves(market, team, player);
+		 
+		 System.out.println("\n\n\n\tNow Travelling to Club ....\n\n\n");
+		 System.out.println(team.getName());
+		 System.out.println("\tYour starting team is: ");
+		 
+		 team.printFullRoster(team);
+		 int chooseToMakeSub = askToMakeSub();
+		 
+		 	if (chooseToMakeSub == 1) {
+		 		requestSub(team, market);
+		 	}
 	 }
+//		  while (currentWeekNum <= chosenNumWeeks) {
+//		 	 matchSelection(game, team, player);
+//		 	 playGame+()
+//		 	 game.currentWeekNum++;
+//		  }
+		 	
+		 
+	 public int askToMakeSub() {
+		 boolean isInputValid = false;
+		 int yesOrNo = 0;
+		 while (!isInputValid) {
+			 
+			 System.out.println("Would you like to make substituions?\n\n Enter 1 for YES or Enter 2 for NO ");
+			 
+			 try {
+				 int chooseToMakeSub = scanner.nextInt();
+				 if (chooseToMakeSub == 1) {
+					 isInputValid = true;
+					 yesOrNo = 1;
+				 } else if (chooseToMakeSub == 2) {
+					 isInputValid = true;
+					 yesOrNo = 2;
+				 } else {
+					 throw new InputMismatchException();
+				 }
+				 
+			 } catch(InputMismatchException e) {
+				 System.out.println("Invalid input. Please enter 1 or 2." + "\n");
+				 scanner.nextLine();
+			 }  
+		 }
+		 
+		 return yesOrNo;
+	 }
+		 	
+		  
+ 	 public void requestSub(Team team, Market market) {
+ 		 
+ 		int finishedSubs = 1;
+ 		 
+ 		while (finishedSubs == 1) {
+	 		System.out.println("Which player would you like to take off? ");
+	 		String playerToSubString = scanner3.nextLine();
+	 		
+	 		System.out.println("Which player would you like to put on? ");
+	 		String playerToPlayString = scanner2.nextLine();
+	 		
+	 		team.makeSubstituion(playerToSubString, playerToPlayString, market);
+	 		
+	 		team.printFullRoster(team);
+	 		
+	 		System.out.println("Would you like to make another Sub?");
+	 		
+	 		System.out.println("\tEnter 1 for YES or Enter 2 for NO ");
+	 		finishedSubs = scanner.nextInt();
+	 		
+	 		
+	 	}
+ 	 }
+		 
 	 
 	 public String matchSelectionString(GameEnviroment game, Team team, Player player, ArrayList<ArrayList<Athlete>> opponentsLeft) {
 		 return team.getName() + "\t" + player.getMoneyBalance() + "\t" + currentWeekNum + "/" + chosenNumWeeks + " Weeks\nType the number of the opponent you want to play: \n";
 	 }
 	 
-	 
-	 public void matchSelection(GameEnviroment game, Team team, Player player) {
-		 
-		 PotentialPlayers opponent = new PotentialPlayers();
-		 
-		 ArrayList<Athlete> easyOpponent = opponent.createOpposingTeam(game, 1);
-		 ArrayList<Athlete> mediumOpponent = opponent.createOpposingTeam(game, 2);
-		 ArrayList<Athlete> hardOpponent = opponent.createOpposingTeam(game, 3);
-		 
-		 
-		 ArrayList<String> opponentName = new ArrayList<String>();
-		 opponentName.add("Easy");
-		 opponentName.add("Medium");
-		 opponentName.add("Hard");
-	
-		 
-		 ArrayList<ArrayList<Athlete>> opponentsLeft = new ArrayList<ArrayList<Athlete>>(); 
-		 
-		 opponentsLeft.add(easyOpponent);
-		 opponentsLeft.add(mediumOpponent);
-		 opponentsLeft.add(hardOpponent);
-		 
-		 Scanner scanner3 = new Scanner(System.in);
-
-		 
-		 while (opponentsLeft.size() > 0) {
-			 System.out.println(matchSelectionString(game, team, player, opponentsLeft));
-			 
-			 int i = 1;
-			 for(String opp: opponentName) {
-
-				 System.out.println("\t" + i + ". " + opp);
-				 i++;
-			 }
-			 
-			 try {
-				 
-				 int opponentSelection = scanner3.nextInt();
-				 
-				 if (opponentSelection > 0 && opponentSelection <= opponentsLeft.size()) { 
-					 String result = matchPlay(player, team, opponentsLeft.get(opponentSelection-1));
-					 System.out.println(result);
-					 opponentsLeft.remove(opponentSelection-1);
-					 opponentName.remove(opponentSelection-1);
-				 } else {
-					 throw new InputMismatchException();
-				 }
-				 
-				 }
-			 catch(InputMismatchException e) {
-				 System.out.println("Invalid input!" + "\n");
-		         scanner.nextLine();
-	        
-			 } 
-			
-
-		 }
-	 }
-	 
-	 public String matchPlay(Player player, Team team, ArrayList<Athlete> opponent) {
-		 Match match = new Match();
-		 Boolean startingTeam = match.coinFlip();
-		 String matchResult = match.gamePlay(player, team, opponent, startingTeam);	
-		 return matchResult;
-	 }
-
-	 
-	 
-	 
-	/**
-	 * creates a scanner method to invoke the Scanner Class to use user inputs
-	 */
-	 Scanner scanner = new Scanner(System.in);
 	
 	 
 	 /**
