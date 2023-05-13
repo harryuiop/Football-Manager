@@ -68,10 +68,6 @@ public class Team {
 		} else {
 			System.out.println("No such athlete exists, please check your spelling");
 		}
-		
-		System.out.println(athleteToPlayObject);
-		System.out.println(athleteToSubObject);
-
 
 		if (startingNames.contains(athleteToSubObject)) {
 			

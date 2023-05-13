@@ -82,8 +82,7 @@ public class Market {
 				counter++;
 				} else {
 					counter++;					
-				}
-			
+			}
 		}
 	}
 
@@ -91,18 +90,66 @@ public class Market {
 	/**
 	 * this method will rotate the market and print it out for the users
 	 */
-	public void goToMarket() {
+	public void goToMarket(Player player) {
 		rotateMarketItems();
 		catalogPrintFormatting();
+		
+		System.out.println("\tTo purchase an item, enter it's number or 0 to exit");
+		System.out.println("\tYour balance is: $1" + player.getMoneyBalance());
+
+		int itemInput = scanner.nextInt();
+		if (itemInput == 0) {
+			return;
+		} else {
+
+			if (itemInput > catalog.size()) {
+				System.out.println("Please pick a valid number");
+				itemInput = scanner.nextInt();
+			} 	
+			player.setMoneyBalance(player.getMoneyBalance() - (catalog.get(itemInput - 1)).getContractPrice());
+			
+			while (catalog.size() > 0) {
+			
+			player.addItemToInventoy(catalog.get(itemInput - 1));
+			catalog.remove(catalog.get(itemInput - 1));
+			
+			catalogPrintFormatting();
+			System.out.println("\n\tTo purchase an item, enter it's numer or 0 to exit");
+			System.out.println("\tYour balance is: $" + player.getMoneyBalance());
+			itemInput = scanner.nextInt();
+			
+			if (itemInput > catalog.size()) {
+				System.out.println("Please pick a valid number");
+				itemInput = scanner.nextInt();
+			} 
+			
+			if (catalog.size() == 1) {
+				System.out.println("\n\tThe market is now empty\n");
+				player.setMoneyBalance(player.getMoneyBalance() - (catalog.get(itemInput - 1)).getContractPrice());
+				return;
+			}	
+			
+			if (itemInput == 0) {
+				return;
+			}
+			
+			
+			player.setMoneyBalance(player.getMoneyBalance() - (catalog.get(itemInput - 1)).getContractPrice());
+
+			
+			}
+		}
 	}
 	
 	/**
 	 * used for the CLI to formating the printing
 	 */
 	public void catalogPrintFormatting() {
-		System.out.println("\tMarket: \n");
+		System.out.println("\n\tMarket: \n");
+		int counter = 1;
 		for (Item item : catalog) {
-			System.out.println(item + "\n");
+			System.out.println(counter + ": " + item + "\n");
+			counter++;
 		}
 		System.out.println("\n");
 	}	
@@ -164,14 +211,8 @@ public class Market {
 						System.out.println("\tYou remaining Balance: $" + player.getMoneyBalance());
 						break;	
 					} else {
-						System.out.println("Sorry, you cannot afford this playe ----------------\n"
-								+ "adam\n"
-								+ "	Offence: 29\n"
-								+ "	Defense: 62\n"
-								+ "	Position: 2\n"
-								+ "	Contract Price: $91\n"
-								+ "	Sell Back Price $45\n"
-								+ "	Rarity 2r"); 
+						System.out.println("Sorry, you cannot afford this playe ----------------\n");
+								
 					}
 				} 
 			}

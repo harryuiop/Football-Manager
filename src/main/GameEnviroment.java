@@ -41,8 +41,8 @@ public class GameEnviroment {
 		 setPlayersStartBalance(game, player); // sets the players start balance with respect to difficulty 
 		 potentialPlayers.getAllPlayers(); // makes the method add players to waiver list accessible 
 		 market.addPlayerToWavier(potentialPlayers); // creates the waiver list by adding from potential players to waiver list
-		 market.createItems();
-		 market.goToMarket();
+		 market.createItems(); 
+		 market.goToMarket(player);
 		 
 		 market.pickInitalTeam(market, team, player); // calls the main method for the logic behind creating the initial team
 		 market.pickInitalReserves(market, team, player);
@@ -58,7 +58,7 @@ public class GameEnviroment {
 		 		requestSub(team, market);
 		 	}
 	 	
-	 	market.goToMarket();
+	 	market.goToMarket(player);
 	 
 	 	
 		 while (currentWeekNum <= chosenNumWeeks) {
@@ -166,7 +166,6 @@ public class GameEnviroment {
 		 	
 		  
  	 public void requestSub(Team team, Market market) {
- 		 
  		int finishedSubs = 1;
  		 
  		while (finishedSubs == 1) {

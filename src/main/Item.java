@@ -3,7 +3,14 @@ package main;
 public class Item {
 	
 	 private String name;
-	 private String itemAtributes; 
+	 public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	private String itemAtributes; 
 	 private int rarity;
 	 private int sellBackPriceprivate ;
 	 private int contractPrice;
