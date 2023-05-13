@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Player {
 	
-	private ArrayList<Item> inventory;
+	private ArrayList<Item> inventory = new ArrayList<Item>();
 	private int moneyBalance;
 	
 	/**
@@ -13,7 +13,11 @@ public class Player {
 	 */
 	public void useItem(Athlete athlete, Item item) {
 		athlete.applyItemBuff(item);
-		
+	}
+	
+	public void addItemToInventoy(Item item) {
+		inventory.add(item);
+		System.out.println("\nYou have purchased " + item.getName() + " and it has been added to your inventory");
 	}
 
 	
