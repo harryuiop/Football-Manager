@@ -57,7 +57,11 @@ public class GameEnviroment {
 		 	if (chooseToMakeSub == 1) {
 		 		requestSub(team, market);
 		 	}
+	 	
+	 	market.goToMarket();
 	 }
+	 
+	 	
 //		  while (currentWeekNum <= chosenNumWeeks) {
 //		 	 matchSelection(game, team, player);
 //		 	 playGame+()
