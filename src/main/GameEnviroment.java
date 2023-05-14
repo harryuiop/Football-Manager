@@ -22,7 +22,8 @@ public class GameEnviroment {
 		Scanner scanner2 = new Scanner(System.in);
 		Scanner scanner3 = new Scanner(System.in);
 
-		
+	
+	
 	 /**
 	  * The main method to run the game, creating all the objects and making things run sequentially. 
 	  * This method is call from the RunApp class
@@ -35,8 +36,9 @@ public class GameEnviroment {
 		 Player player = new Player(); // creates instance of the player class
 		 Market market = new Market(); // creates instance of the market class
 
+		 launchSetupGUI(team, game);
 		 
-		 chooseTeamName(team); // allows player to input their team name 
+		 
 		 potentialPlayers.createPlayers(game.chosenNumWeeks); // calls the method to create the players
 		 setPlayersStartBalance(game, player); // sets the players start balance with respect to difficulty 
 		 potentialPlayers.getAllPlayers(); // makes the method add players to waiver list accessible 
@@ -63,11 +65,18 @@ public class GameEnviroment {
 		 while (currentWeekNum <= chosenNumWeeks) {
 			 matchSelection(game, team, player, market); //Game Selection screen 
 			 game.currentWeekNum++; //Go to the next week
-			 
-			 
 		 }
-		 
 		gameEnd(player);
+	 }
+	 
+	 
+	 public void launchSetupGUI(Team team, GameEnviroment game) {
+		 SetupGUI setup = new SetupGUI(team, game);
+		 setup.frmSetupGUI.setVisible(true);
+	 }
+	 
+	 public void closeSetupGUI(Team team, GameEnviroment game, SetupGUI setup){
+		 setup.frmSetupGUI.dispose();
 	 }
 	 
 	/**
@@ -201,37 +210,23 @@ public class GameEnviroment {
 	 		
 	 		System.out.println("\tEnter 1 for YES or Enter 2 for NO ");
 	 		finishedSubs = scanner.nextInt();
-	 		
+ 		}
 	 		
 	 	}
- 	 }
-	 
-	
-	 
-	 /**
-	  * Constructor for GameEnviroment
-	  */
-	 public GameEnviroment() {
-		 this.difficulty = chooseDifficulty(); 
-		 this.chosenNumWeeks = chooseNumWeeks();
-		 this.starterStatus = true;
-	 }
-	 
+
 	 
 	/**
 	 * prompts user to pick a team name then users setter in Team Class
 	 * @param team
 	 */
-	 public void chooseTeamName(Team team) throws InputMismatchException {
+	 public boolean chooseTeamName(Team team, String name) throws InputMismatchException {
 		 
 		boolean isLegalName = false;
 		 
-		Scanner scanner2 = new Scanner(System.in);
 		 
 		 while(!isLegalName) {
 			 System.out.println("Choose your team name! \n");
 			 try {
-				 String name = scanner2.nextLine();
 				 if(name.matches("[a-zA-Z\s]+") && name.length() <= 15 && name.length() >= 3){
 					 team.setName(name);
 					 isLegalName = true;
@@ -240,11 +235,11 @@ public class GameEnviroment {
 				 }
 
 			 } catch(InputMismatchException e) {
-				 System.out.println("Name has to be between 3-15 characters long and only regular letters" + "\n");
+				 return false;
 			 }
 		 }
 
-		 System.out.println("\n\t" + "Your choosen team name is " + team.getName() + "\n");
+		 return true;
 
 	 }
 	 

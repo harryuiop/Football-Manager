@@ -1,10 +1,10 @@
-package gui;
+package main;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-public class Market {
+public class AthleteSelectionGUI {
 
 	private JFrame frame;
 
@@ -15,7 +15,7 @@ public class Market {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Market window = new Market();
+					AthleteSelectionGUI window = new AthleteSelectionGUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -27,7 +27,7 @@ public class Market {
 	/**
 	 * Create the application.
 	 */
-	public Market() {
+	public AthleteSelectionGUI() {
 		initialize();
 	}
 
