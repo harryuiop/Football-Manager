@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
 
 public class ClubGUI {
 
@@ -34,11 +36,14 @@ public class ClubGUI {
 		frmClub.getContentPane().setLayout(null);
 		
 		JLabel lblWelcomeToThe = new JLabel("Welcome to the Clubroom");
-		lblWelcomeToThe.setBounds(251, 12, 203, 15);
+		lblWelcomeToThe.setBounds(272, 6, 203, 15);
 		frmClub.getContentPane().add(lblWelcomeToThe);
 		
 		JLabel lblStartingLineup = new JLabel("Starting Lineup");
-		lblStartingLineup.setBounds(289, 34, 134, 15);
+		lblStartingLineup.setBounds(315, 33, 134, 15);
 		frmClub.getContentPane().add(lblStartingLineup);
+		
+		
+		
 	}
 }

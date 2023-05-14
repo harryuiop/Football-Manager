@@ -71,7 +71,7 @@ public class SetupGUI{
 		slider.setMajorTickSpacing(1);
 		slider.setMinimum(5);
 		slider.setMaximum(15);
-		slider.setBounds(229, 169, 235, 33);
+		slider.setBounds(229, 158, 235, 44);
 		frmSetupGUI.getContentPane().add(slider);
 		
 		
