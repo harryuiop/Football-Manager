@@ -1,7 +1,5 @@
 package main;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -30,14 +28,14 @@ public class SetupGUI{
 	/**
 	 * Create the application.
 	 */
-	public SetupGUI(Team team, GameEnviroment game) {
-		initialize(team, game, this);
+	public SetupGUI(Team team, GameEnviroment game,  Market market, PotentialPlayers poplayers, Player player) {
+		initialize(team, game, this, market, poplayers, player);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Team team, GameEnviroment game, SetupGUI setup) {
+	private void initialize(Team team, GameEnviroment game, SetupGUI setup, Market market, PotentialPlayers poplayers, Player player) {
 		frmSetupGUI = new JFrame();
 		frmSetupGUI.setSize(600, 400);
 		frmSetupGUI.setBackground(new Color(255, 255, 255));
@@ -58,10 +56,6 @@ public class SetupGUI{
 		lblNewLabel.setForeground(new Color(192, 28, 40));
 		lblNewLabel.setBounds(85, 140, 452, 35);
 		frmSetupGUI.getContentPane().add(lblNewLabel);
-
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(61, 282, 70, 15);
-		frmSetupGUI.getContentPane().add(lblNewLabel_1);
 		
 		JSlider slider = new JSlider();
 		slider.addChangeListener(new ChangeListener() {
@@ -99,7 +93,7 @@ public class SetupGUI{
 		        }
 				
 				if (isvalid == true && game.getDifficulty() == 1 | game.getDifficulty() == 0) {
-					game.closeSetupGUI(team, game, setup);
+					game.closeSetupGUI(team, game, setup, market, poplayers, player);
 				}
 				
 			}

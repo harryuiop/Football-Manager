@@ -56,6 +56,7 @@ public class Market {
 		}
 	
 	public void rotateWavier() {
+		
 		if (unSeenPlayers.size() < 3) {
 			for(Athlete ath: seenPlayers) {
 				unSeenPlayers.add(ath);

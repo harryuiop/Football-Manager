@@ -13,16 +13,16 @@ public class PotentialPlayers {
 	/**
 	 * Hard coded names for the generateName() method to pull names from
 	 */
-	ArrayList<String> names = new ArrayList<>(Arrays.asList("hogan", "john", "robert", "michael", "william", "david",
-			"richard", "joseph", "charles", "thomas", "christopher", "daniel", "matthew", "anthony", "donald", "mark",
-			"paul", "george", "steven", "kenneth", "andrew", "edward", "joshua", "brian", "kevin", "ronald", "timothy", 
-			"jason", "jeffrey", "frank", "larry", "scott", "eric", "stephen", "justin", "brandon", "gregory", "samuel",
-			"benjamin", "patrick", "jack", "alexander", "tyler", "zachary", "ethan", "noah", "mason", "david", "carter",
-			"owen", "luke", "adam", "connor", "dylan", "lucas", "adrian", "cameron", "nathan", "isaac", "isaiah", "levi",
-			"jordan", "evan", "aaron", "blake", "cole", "derek", "gavin", "jesse", "jonah", "kyle", "marcus", "oliver",
-			"peter", "ryan", "sean", "shane", "simon", "spencer", "theo", "troy", "wyatt", "zachary", "aidan", "anthony",
-			"austin", "brayden", "caleb", "christian", "colin", "cooper", "dominic", "donovan", "easton", "elliot",
-			"elijah", "finn", "gabriel", "harrison", "hunter", "ian", "jackson"));
+	ArrayList<String> names = new ArrayList<>(Arrays.asList("Hogan", "John", "Robert", "Michael", "William", "David",
+			"Richard", "Joseph", "Charles", "Thomas", "Christopher", "Daniel", "Matthew", "Anthony", "Donald", "Mark",
+			"Paul", "George", "Steven", "Kenneth", "Andrew", "Edward", "Joshua", "Brian", "Kevin", "Ronald", "Timothy",
+			"Jason", "Jeffrey", "Frank", "Larry", "Scott", "Eric", "Stephen", "Justin", "Brandon", "Gregory", "Samuel",
+			"Benjamin", "Patrick", "Jack", "Alexander", "Tyler", "Zachary", "Ethan", "Noah", "Mason", "David", "Carter",
+			"Owen", "Luke", "Adam", "Connor", "Dylan", "Lucas", "Adrian", "Cameron", "Nathan", "Isaac", "Isaiah", "Levi",
+			"Jordan", "Evan", "Aaron", "Blake", "Cole", "Derek", "Gavin", "Jesse", "Jonah", "Kyle", "Marcus", "Oliver",
+			"Peter", "Ryan", "Sean", "Shane", "Simon", "Spencer", "Theo", "Troy", "Wyatt", "Zachary", "Aidan", "Anthony",
+			"Austin", "Brayden", "Caleb", "Christian", "Colin", "Cooper", "Dominic", "Donovan", "Easton", "Elliot",
+			"Elijah", "Finn", "Gabriel", "Harrison", "Hunter", "Ian", "Jackson"));
 		
 	
 	/**
