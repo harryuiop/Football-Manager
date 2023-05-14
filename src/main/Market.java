@@ -7,9 +7,13 @@ public class Market {
 	
 	
 	private ArrayList<Item> catalog = new ArrayList<Item>();
-	private ArrayList<Athlete> wavierList = new ArrayList<Athlete>();
 	private ArrayList<Item> seenItems = new ArrayList<Item>();
 	private ArrayList<Item> unseenItems = new ArrayList<Item>();
+	
+	private ArrayList<Athlete> wavierList = new ArrayList<Athlete>();
+	private ArrayList<Athlete> unSeenPlayers = new ArrayList<Athlete>();
+	private ArrayList<Athlete> seenPlayers = new ArrayList<Athlete>();
+	
 	Scanner scanner2 = new  Scanner(System.in);
 
 
@@ -23,17 +27,7 @@ public class Market {
 	 */
 	Scanner scanner = new Scanner(System.in);
 	
-	 
-	/**
-	 * adds athlete to wavierList being called from Athlete Class
-	 * @param athlete
-	 */
-	public void addPlayerToWavier(PotentialPlayers potentialplayers) {
-		ArrayList<Athlete> getAllPlayers = potentialplayers.getAllPlayers();
-		for (Athlete ath: getAllPlayers) {
-			wavierList.add(ath);
-		}
-	}
+	
 	/**
 	 * Adds item to catalog
 	 * @param item
@@ -41,6 +35,51 @@ public class Market {
 	public void addItemToUnseenItems(Item item) {
 		unseenItems.add(item);
 	}
+	 
+	/**
+	 * adds athlete to wavierList being called from Athlete Class
+	 * @param athlete
+	 */
+	public void initalWavier(PotentialPlayers potentialplayers) {
+		
+		ArrayList<Athlete> unSeenPlayers = potentialplayers.getAllPlayers();
+
+		int counter = 0;
+		while (counter < 20) {
+			int nextPlayer = rand.nextInt(0, unSeenPlayers.size());
+			Athlete chooseAth = unSeenPlayers.get(nextPlayer);
+			unSeenPlayers.remove(chooseAth);
+			wavierList.add(chooseAth);
+			counter++;
+			}
+			
+		}
+	
+	public void rotateWavier() {
+		if (unSeenPlayers.size() < 3) {
+			for(Athlete ath: seenPlayers) {
+				unSeenPlayers.add(ath);
+				seenPlayers.remove(ath);
+			}
+		}
+		
+		wavierList.clear();
+		
+		int counter = 0;
+		while (counter < 3) {
+			if (unSeenPlayers.size() > 0) {
+				int nextPlayer = rand.nextInt(0, unSeenPlayers.size());
+				Athlete choosenPlayer = unSeenPlayers.get(nextPlayer);
+				wavierList.add(choosenPlayer);
+				unseenItems.remove(choosenPlayer);
+				counter++;
+				} else {
+					counter++;					
+			}
+		}
+	}
+	
+	
 	
 	
 	/**
@@ -85,17 +124,15 @@ public class Market {
 			}
 		}
 	}
-
+	
+	
+	
 	
 	/**
 	 * this method will rotate the market and print it out for the users
 	 */
 	public void goToMarket(Player player) {
 		rotateMarketItems();
-		catalogPrintFormatting();
-		
-		System.out.println("\tTo purchase an item, enter it's number or 0 to exit");
-		System.out.println("\tYour balance is: $1" + player.getMoneyBalance());
 
 		int itemInput = scanner.nextInt();
 		if (itemInput == 0) {
