@@ -190,7 +190,7 @@ public class Market {
 	 */
 	public void pickInitalTeam(Market market, Team team, Player player) {
 		
-		market.waiverPrintFormatting(market); 
+		//market.waiverPrintFormatting(market); 
 		
 		System.out.println("Your current balance is $" + player.getMoneyBalance() + "\n");
 		int pickNumber = 0; // runs a counter of player picks that can be made (max 4)
@@ -231,7 +231,7 @@ public class Market {
 	 */
 	public void pickInitalReserves(Market market, Team team, Player player) {
 		
-		System.out.println("\n\n\tNow pick your reserves");
+		//System.out.println("\n\n\tNow pick your reserves");
 		
 		market.waiverPrintFormatting(market); 
 		

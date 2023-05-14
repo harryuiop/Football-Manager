@@ -38,7 +38,6 @@ public class GameEnviroment {
 
 		 launchSetupGUI(team, game);
 		 
-		 
 		 potentialPlayers.createPlayers(game.chosenNumWeeks); // calls the method to create the players
 		 setPlayersStartBalance(game, player); // sets the players start balance with respect to difficulty 
 		 potentialPlayers.getAllPlayers(); // makes the method add players to waiver list accessible 
@@ -47,19 +46,14 @@ public class GameEnviroment {
 		 
 		 market.pickInitalTeam(market, team, player); // calls the main method for the logic behind creating the initial team
 		 market.pickInitalReserves(market, team, player);
-		 
-		 System.out.println("\n\n\n\tNow Travelling to Club ....\n\n\n");
-		 System.out.println(team.getName());
-		 System.out.println("\tYour starting team is: ");
-		 
-		 team.printFullRoster(team);
+		 		 
 		 int chooseToMakeSub = askToMakeSub();
 		 
 		 	if (chooseToMakeSub == 1) {
 		 		requestSub(team, market);
 		 	}
 	 	
-	 	market.goToMarket(player);
+	 	//market.goToMarket(player);
 	 
 	 	//Main game-loop which sends the player to match selection which loops until the last week is hit
 		 while (currentWeekNum <= chosenNumWeeks) {
@@ -77,7 +71,19 @@ public class GameEnviroment {
 	 
 	 public void closeSetupGUI(Team team, GameEnviroment game, SetupGUI setup){
 		 setup.frmSetupGUI.dispose();
+		 launchAthleteSelectionGUI(team, game);
 	 }
+	 
+	 public void launchAthleteSelectionGUI(Team team, GameEnviroment game) {
+		 AthleteSelectionGUI athsel = new AthleteSelectionGUI(team, game);
+		 athsel.frmAthleteSelection.setVisible(true);
+	 }
+	 
+	 public void closeAthleteSelectionGUI(Team team, GameEnviroment game, AthleteSelectionGUI athsel) {
+		 athsel.frmAthleteSelection.dispose();
+	 }
+	 
+	 
 	 
 	/**
 	 * The game-end splash screen that prints out the players' win total and money amount

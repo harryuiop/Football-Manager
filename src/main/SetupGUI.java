@@ -39,7 +39,7 @@ public class SetupGUI{
 	 */
 	private void initialize(Team team, GameEnviroment game, SetupGUI setup) {
 		frmSetupGUI = new JFrame();
-		frmSetupGUI.setSize(590, 400);
+		frmSetupGUI.setSize(600, 400);
 		frmSetupGUI.setBackground(new Color(255, 255, 255));
 		frmSetupGUI.getContentPane().setForeground(new Color(255, 255, 255));
 		frmSetupGUI.setTitle("Setup");
