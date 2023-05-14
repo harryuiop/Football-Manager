@@ -36,46 +36,46 @@ public class GameEnviroment {
 		 Player player = new Player(); // creates instance of the player class
 		 Market market = new Market(); // creates instance of the market class
 
-		 launchSetupGUI(team, game);
+		 launchSetupGUI(team, game,  market, potentialPlayers, player);
 		 
-		 potentialPlayers.createPlayers(game.chosenNumWeeks); // calls the method to create the players
-		 setPlayersStartBalance(game, player); // sets the players start balance with respect to difficulty 
-		 potentialPlayers.getAllPlayers(); // makes the method add players to waiver list accessible 
-		 market.addPlayerToWavier(potentialPlayers); // creates the waiver list by adding from potential players to waiver list
-		 market.createItems(); 
-		 
-		 market.pickInitalTeam(market, team, player); // calls the main method for the logic behind creating the initial team
-		 market.pickInitalReserves(market, team, player);
+		 //market.pickInitalTeam(market, team, player); // calls the main method for the logic behind creating the initial team
+		 //market.pickInitalReserves(market, team, player);
 		 		 
-		 int chooseToMakeSub = askToMakeSub();
+		 //int chooseToMakeSub = askToMakeSub();
 		 
-		 	if (chooseToMakeSub == 1) {
-		 		requestSub(team, market);
-		 	}
+		 	//if (chooseToMakeSub == 1) {
+		 		//equestSub(team, market);
+		 	//}
 	 	
 	 	//market.goToMarket(player);
 	 
 	 	//Main game-loop which sends the player to match selection which loops until the last week is hit
-		 while (currentWeekNum <= chosenNumWeeks) {
-			 matchSelection(game, team, player, market); //Game Selection screen 
-			 game.currentWeekNum++; //Go to the next week
-		 }
-		gameEnd(player);
+//		 while (currentWeekNum <= chosenNumWeeks) {
+//			 matchSelection(game, team, player, market); //Game Selection screen 
+//			 game.currentWeekNum++; //Go to the next week
+//		 }
+//		gameEnd(player);
 	 }
 	 
 	 
-	 public void launchSetupGUI(Team team, GameEnviroment game) {
-		 SetupGUI setup = new SetupGUI(team, game);
+	 public void launchSetupGUI(Team team, GameEnviroment game, Market market, PotentialPlayers poplayers, Player player) {
+		 SetupGUI setup = new SetupGUI(team, game, market, poplayers, player);
 		 setup.frmSetupGUI.setVisible(true);
 	 }
 	 
-	 public void closeSetupGUI(Team team, GameEnviroment game, SetupGUI setup){
+	 public void closeSetupGUI(Team team, GameEnviroment game, SetupGUI setup, Market market, PotentialPlayers poplayers, Player player){
 		 setup.frmSetupGUI.dispose();
-		 launchAthleteSelectionGUI(team, game);
+		 launchAthleteSelectionGUI(team, game, market, poplayers, player);
 	 }
 	 
-	 public void launchAthleteSelectionGUI(Team team, GameEnviroment game) {
-		 AthleteSelectionGUI athsel = new AthleteSelectionGUI(team, game);
+	 public void launchAthleteSelectionGUI(Team team, GameEnviroment game, Market market, PotentialPlayers poplayers, Player player) {
+		 poplayers.createPlayers(game.chosenNumWeeks); // calls the method to create the players
+		 setPlayersStartBalance(game, player); // sets the players start balance with respect to difficulty 
+		 poplayers.getAllPlayers(); // makes the method add players to waiver list accessible 
+		 market.initalWavier(poplayers); // creates the waiver list by adding from potential players to waiver list
+		 market.createItems(); 
+		 	
+		 AthleteSelectionGUI athsel = new AthleteSelectionGUI(team, game, market);
 		 athsel.frmAthleteSelection.setVisible(true);
 	 }
 	 
