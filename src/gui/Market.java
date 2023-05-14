@@ -1,12 +1,12 @@
-package main;
+package gui;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-public class TeamCreation {
+public class Market {
 
-	private JFrame frmTeamCreation;
+	private JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -15,8 +15,8 @@ public class TeamCreation {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TeamCreation window = new TeamCreation();
-					window.frmTeamCreation.setVisible(true);
+					Market window = new Market();
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -27,7 +27,7 @@ public class TeamCreation {
 	/**
 	 * Create the application.
 	 */
-	public TeamCreation() {
+	public Market() {
 		initialize();
 	}
 
@@ -35,10 +35,9 @@ public class TeamCreation {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmTeamCreation = new JFrame();
-		frmTeamCreation.setTitle("Team Creation");
-		frmTeamCreation.setBounds(100, 100, 800, 500);
-		frmTeamCreation.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
