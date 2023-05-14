@@ -74,14 +74,23 @@ public class GameEnviroment {
 		 poplayers.getAllPlayers(); // makes the method add players to waiver list accessible 
 		 market.initalWavier(poplayers); // creates the waiver list by adding from potential players to waiver list
 		 market.createItems(); 
-		 	
-		 AthleteSelectionGUI athsel = new AthleteSelectionGUI(team, game, market);
+		 
+		 AthleteSelectionGUI athsel = new AthleteSelectionGUI(team, game, market, player);
 		 athsel.frmAthleteSelection.setVisible(true);
 	 }
 	 
-	 public void closeAthleteSelectionGUI(Team team, GameEnviroment game, AthleteSelectionGUI athsel) {
+	 public void closeAthleteSelectionGUI(Team team, GameEnviroment game, AthleteSelectionGUI athsel, Market market, Player player) {
 		 athsel.frmAthleteSelection.dispose();
+		 
+		 ClubGUI club = new ClubGUI(team, game, market, player);
+		 club.frmClub.setVisible(true);
 	 }
+	 
+	 public void closeAthleteSelectionGUI() {
+		 
+		 
+	 }
+	 	
 	 
 	 
 	 
@@ -231,7 +240,7 @@ public class GameEnviroment {
 		 
 		 
 		 while(!isLegalName) {
-			 System.out.println("Choose your team name! \n");
+			 
 			 try {
 				 if(name.matches("[a-zA-Z\s]+") && name.length() <= 15 && name.length() >= 3){
 					 team.setName(name);

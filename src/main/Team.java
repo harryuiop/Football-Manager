@@ -103,12 +103,10 @@ public class Team {
 	
 	public void addStartingPlayer(Athlete athlete) {
 		startingNames.add(athlete);
-		System.out.println("\n" + athlete.getName(athlete) + " Has been added to your team!");
 	}
 	
 	public void addReservePlayer(Athlete athlete) {
 		reserveNames.add(athlete);
-		System.out.println("\n" + athlete.getName(athlete) + " Has been added to your team!");
 	}
 	
 	public ArrayList<Athlete> getStartingName() {

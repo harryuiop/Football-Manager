@@ -22,6 +22,7 @@ public class Market {
 	 */
 	Random rand = new Random();
 	
+	
 	/**
 	 * creates a scanner method to invoke the Scanner Class to use user inputs
 	 */
@@ -36,6 +37,7 @@ public class Market {
 		unseenItems.add(item);
 	}
 	 
+	
 	/**
 	 * adds athlete to wavierList being called from Athlete Class
 	 * @param athlete
@@ -55,6 +57,9 @@ public class Market {
 			
 		}
 	
+	/**
+	 * 
+	 */
 	public void rotateWavier() {
 		
 		if (unSeenPlayers.size() < 3) {
@@ -151,7 +156,6 @@ public class Market {
 			player.addItemToInventoy(catalog.get(itemInput - 1));
 			catalog.remove(catalog.get(itemInput - 1));
 			
-			catalogPrintFormatting();
 			System.out.println("\n\tTo purchase an item, enter it's numer or 0 to exit");
 			System.out.println("\tYour balance is: $" + player.getMoneyBalance());
 			itemInput = scanner.nextInt();
@@ -179,131 +183,6 @@ public class Market {
 		}
 	}
 	
-	/**
-	 * used for the CLI to formating the printing
-	 */
-	public void catalogPrintFormatting() {
-		System.out.println("\n\tMarket: \n");
-		int counter = 1;
-		for (Item item : catalog) {
-			System.out.println(counter + ": " + item + "\n");
-			counter++;
-		}
-		System.out.println("\n");
-	}	
-	
-	
-	/**
-	 * 
-	 * @param market
-	 */
-	public void waiverPrintFormatting(Market market) {
-		for (Athlete ath : market.getWavierList()) {
-			System.out.println(ath + "\n");
-		}
-	}	
-		
-		
-	/**
-	 * This method is called whenever an athlete is to be accessed by name. 
-	 * @param marketYou can use any single capital letter as a non-terminal; S is the start symbol. Any lower-case letter and any digit is a terminal. An underscore _ denotes the empty string ε. There must be exactly one line for each non-terminal. A bar | is used to separate the choices on the right-hand side. Right-hand sides must not be empty; at least one option must be given. Each choice in a right-hand side must not be empty; it may be _ for ε. Productions must not contain spacing. In summary, every production must conform to the following Python regular expressio
-	 * @param name
-	 * @return
-	 */
-	public Athlete findAthleteByNameInWavier(Market market, String name) {
-		for (Athlete athlete : wavierList) {
-	        if (athlete.getName(athlete).equals(name)) {
-	            return athlete;
-	        }
-	    }
-		System.out.println("No player with the name " + name + " exists");
-	    return null; // if no athlete with the given name is found
-	}
-	
-	
-	/**
-	 *  This method runs the logic for the initial team pick. There must only be 4 player picked and the player must be able to afford all of them.
-	 * @param market
-	 * @param team
-	 */
-	public void pickInitalTeam(Market market, Team team, Player player) {
-		
-		//market.waiverPrintFormatting(market); 
-		
-		System.out.println("Your current balance is $" + player.getMoneyBalance() + "\n");
-		int pickNumber = 0; // runs a counter of player picks that can be made (max 4)
-				
-		while (pickNumber < 5) {
-						
-			System.out.println("Type in the players name the add to add to your team" + "\n" + ""); // give information to the player on game state
-			String pickName = scanner.nextLine(); // gets the players input on player requested
-			
-			if (!wavierList.contains(findAthleteByNameInWavier(market, pickName))) { // checks the players input against the waiver list to see if the player exists 
-				System.out.println("Invalid Player Name"); // hits else if no name was matched
-				continue;
-			}
-			for (Athlete athlete : wavierList) { // runs a loop on the whole list to get access to the requested player
-				if (athlete.getName(athlete).equals(pickName)) { // stops the loop on the requested player
-					if (startingBuyPlayerAndMoneyUpdater(player, athlete, team)) { 
-						pickNumber++; 
-						System.out.println("\tYou remaining Balance: $" + player.getMoneyBalance());
-						break;	
-					} else {
-						System.out.println("Sorry, you cannot afford this playe ----------------\n");
-								
-					}
-				} 
-			}
-		}
-		System.out.println("\n" + "Your starting team is \n"); // after whole team has been choosen, prints off starting team
-		for (Athlete athlete : team.getStartingName()) {
-	        System.out.println(athlete);
-	    System.out.println("-----------------------------------------");
-		}
-	}
-	
-	/**
-	 *  This method runs the logic for the initial team pick. There must only be 4 player picked and the player must be able to afford all of them.
-	 * @param market
-	 * @param team
-	 */
-	public void pickInitalReserves(Market market, Team team, Player player) {
-		
-		//System.out.println("\n\n\tNow pick your reserves");
-		
-		market.waiverPrintFormatting(market); 
-		
-		System.out.println("Your current balance is $" + player.getMoneyBalance() + "\n");
-		int pickNumber = 0; // runs a counter of player picks that can be made (max 4)
-				
-		while (pickNumber < 3) {
-						
-			System.out.println("Now, type in the players name the add to add to your reserves" + "\n" + ""); // give information to the player on game state
-			String pickName = scanner.nextLine(); // gets the players input on player requested
-			
-			if (!wavierList.contains(findAthleteByNameInWavier(market, pickName))) { // checks the players input against the waiver list to see if the player exists 
-				System.out.println("Invalid Player Name"); // hits else if no name was matched
-				continue;
-			}
-			for (Athlete athlete : wavierList) { // runs a loop on the whole list to get access to the requested player
-				if (athlete.getName(athlete).equals(pickName)) { // stops the loop on the requested player
-					if (reserveBuyPlayerAndMoneyUpdater(player, athlete, team)) { 
-						pickNumber++; 
-						System.out.println("\tYou remaining Balance: $" + player.getMoneyBalance());
-						break;	
-					} else {
-						System.out.println("Sorry, you cannot afford this player"); 
-					}
-				} 
-			}
-		}
-		System.out.println("\n" + "Your reserves are \n"); // after whole team has been choosen, prints off starting team
-		for (Athlete athlete : team.getReserveName()) {
-	        System.out.println(athlete);
-        System.out.println("-----------------------------------------");
-		}
-	}
-	
 	
 	/**
 	 * This method returns a boolean based on if the players requested can be afforded. this verson is used if 
@@ -313,10 +192,26 @@ public class Market {
 		
 		if (player.getMoneyBalance() - athlete.getContractPrice(athlete) > 0) { // checks if player has enough money
 			player.setMoneyBalance(player.getMoneyBalance() - athlete.getContractPrice(athlete)); // updates the new bank balance 
-			
-					 
+				 
 			team.addReservePlayer(athlete); // adds to the startPlayers array list in the player class 
+			wavierList.remove(athlete); // remove the players new athlete from the waiver list
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
+	/**
+	 * This method returns a boolean based on if the players requested can be afforded. this verson is used if 
+	 * @return
+	 */
+	public boolean BuyPlayerAndMoneyUpdater(Player player, Athlete athlete, Team team) {
+		
+		if (player.getMoneyBalance() - athlete.getContractPrice(athlete) > 0) { // checks if player has enough money
+			player.setMoneyBalance(player.getMoneyBalance() - athlete.getContractPrice(athlete)); // updates the new bank balance 
 			
+			team.addStartingPlayer(athlete); // adds to the startPlayers array list in the player class 
 			wavierList.remove(athlete); // remove the players new athlete from the waiver list
 			return true;
 		} else {
@@ -324,24 +219,6 @@ public class Market {
 		}
 	}
 			 
-	 /**
-		 * This method returns a boolean based on if the players requested can be afforded.
-		 * @return
-		 */
-	public boolean startingBuyPlayerAndMoneyUpdater(Player player, Athlete athlete, Team team) {
-			
-			if (player.getMoneyBalance() - athlete.getContractPrice(athlete) > 0) { // checks if player has enough money
-				player.setMoneyBalance(player.getMoneyBalance() - athlete.getContractPrice(athlete)); // updates the new bank balance 
-				
-						 
-				team.addStartingPlayer(athlete); // adds to the startPlayers array list in the player class 
-				
-				wavierList.remove(athlete); // remove the players new athlete from the waiver list
-				return true;
-			} else {
-				return false;
-			}
-		}
 	
 	/**
 	 * this method is called in the game environment main loop in order to created all game items.
