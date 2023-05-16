@@ -18,6 +18,7 @@ import java.awt.Color;
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class ClubGUI {
 
@@ -86,16 +87,10 @@ public class ClubGUI {
 		renderer.setOpaque(true); // make the cell renderer background opaque
 		renderer.setBackground(Color.WHITE);
 		
-		JButton btnMakeSubstituion = new JButton("Make Substituion");
-		btnMakeSubstituion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnMakeSubstituion.setBounds(526, 441, 168, 25);
-		frmClub.getContentPane().add(btnMakeSubstituion);
 		
 		JLabel playerStats = new JLabel("");
-		playerStats.setBounds(12, 162, 256, 128);
+		playerStats.setHorizontalAlignment(SwingConstants.CENTER);
+		playerStats.setBounds(27, 162, 233, 128);
 		frmClub.getContentPane().add(playerStats);
 		
 		Athlete p1 = team.getStartingName().get(0);
@@ -188,12 +183,24 @@ public class ClubGUI {
 		reserveLabel.setBounds(377, 382, 84, 25);
 		frmClub.getContentPane().add(reserveLabel);
 		
+		JButton btnNewButton_5 = new JButton("Substitution");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+		        
+			}
+		});
+		
+		
+		
+		btnNewButton_5.setBounds(532, 410, 162, 49);
+		frmClub.getContentPane().add(btnNewButton_5);
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(ClubGUI.class.getResource("/main/images/clubroom.jpg")));
 		lblNewLabel.setBounds(-52, -24, 793, 538);
 		frmClub.getContentPane().add(lblNewLabel);
 		
-		
-		
 	}
+	
 }
