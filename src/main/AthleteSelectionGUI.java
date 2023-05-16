@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
+import javax.swing.border.EtchedBorder;
 
 public class AthleteSelectionGUI {
 	
@@ -44,15 +45,18 @@ public class AthleteSelectionGUI {
 		frmAthleteSelection.getContentPane().setLayout(null);
 		
 		JLabel displayerInfo = new JLabel();
-		displayerInfo.setForeground(new Color(28, 113, 216));
+		displayerInfo.setForeground(Color.BLACK);
 		displayerInfo.setBackground(new Color(255, 255, 255));
-		displayerInfo.setFont(new Font("Dialog", Font.PLAIN, 20));
-		displayerInfo.setBounds(212, 12, 310, 217);
+		displayerInfo.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+		displayerInfo.setBounds(174, 12, 221, 237);
 		frmAthleteSelection.getContentPane().add(displayerInfo);
 		
 		
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
 		JList<Athlete> athleteJList = new JList<Athlete>(athleteListModel);
+		athleteJList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		athleteJList.setForeground(Color.DARK_GRAY);
+		athleteJList.setBackground(Color.LIGHT_GRAY);
 		athleteJList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				Athlete ath = athleteJList.getSelectedValue();
@@ -63,13 +67,12 @@ public class AthleteSelectionGUI {
 		});
 		
 		athleteListModel.addAll(market.getWavierList());
-		athleteJList.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		athleteJList.setFont(new Font("Dialog", Font.BOLD, 15));
-		athleteJList.setBounds(18, 12, 181, 414);
+		athleteJList.setBounds(18, 12, 144, 414);
 		frmAthleteSelection.getContentPane().add(athleteJList);
 		JLabel balance = new JLabel();
-		balance.setFont(new Font("Dialog", Font.BOLD, 16));
-		balance.setBounds(571, 432, 117, 25);
+		balance.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		balance.setBounds(577, 432, 117, 25);
 		frmAthleteSelection.getContentPane().add(balance);
 		String balAsStr = "$" + player.getMoneyBalance();
 		balance.setText(balAsStr);
@@ -79,6 +82,7 @@ public class AthleteSelectionGUI {
 		frmAthleteSelection.getContentPane().add(lblCurrentTeam);
 		
 		JButton btnPurchase = new JButton("Purchase");
+		btnPurchase.setBackground(Color.GRAY);
 		btnPurchase.addActionListener(new ActionListener() {
 		int counter = 0;
 			public void actionPerformed(ActionEvent e) {
@@ -114,6 +118,7 @@ public class AthleteSelectionGUI {
 		frmAthleteSelection.getContentPane().add(btnPurchase);
 		
 		textField = new JTextField();
+		textField.setBackground(Color.LIGHT_GRAY);
 		textField.setBounds(149, 436, 114, 19);
 		frmAthleteSelection.getContentPane().add(textField);
 		textField.setColumns(10);

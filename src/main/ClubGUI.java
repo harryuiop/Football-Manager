@@ -49,11 +49,11 @@ public class ClubGUI {
 		JLabel lblWelcomeToThe = new JLabel("Welcome to the Clubroom");
 		lblWelcomeToThe.setForeground(new Color(0, 0, 0));
 		lblWelcomeToThe.setFont(new Font("Accanthis ADF Std No3", Font.BOLD, 15));
-		lblWelcomeToThe.setBounds(28, 137, 241, 55);
+		lblWelcomeToThe.setBounds(27, 122, 241, 55);
 		frmClub.getContentPane().add(lblWelcomeToThe);
 		
 		JLabel lblStartingLineup = new JLabel("Starting Lineup");
-		lblStartingLineup.setForeground(new Color(0, 0, 0));
+		lblStartingLineup.setForeground(Color.WHITE);
 		lblStartingLineup.setFont(new Font("Accanthis ADF Std No3", Font.BOLD, 14));
 		lblStartingLineup.setBounds(427, 234, 134, 15);
 		frmClub.getContentPane().add(lblStartingLineup);
@@ -62,21 +62,20 @@ public class ClubGUI {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				game.LaunchMarketGUI(team, game, market, player);
-				game.cl
 			}
 		});
-		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 11));
-		btnNewButton.setBounds(12, 433, 117, 25);
+		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnNewButton.setBounds(12, 409, 162, 49);
 		frmClub.getContentPane().add(btnNewButton);
 		
 		JButton btnSelectMatch = new JButton("Select Match");
-		btnSelectMatch.setFont(new Font("Dialog", Font.BOLD, 11));
-		btnSelectMatch.setBounds(12, 396, 117, 25);
+		btnSelectMatch.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnSelectMatch.setBounds(12, 360, 162, 47);
 		frmClub.getContentPane().add(btnSelectMatch);
 		
-		JLabel lblCurrentWeek = new JLabel("Current Week -");
-		lblCurrentWeek.setFont(new Font("Accanthis ADF Std No3", Font.BOLD, 14));
-		lblCurrentWeek.setBounds(38, 189, 168, 25);
+		JLabel lblCurrentWeek = new JLabel("Current Week ");
+		lblCurrentWeek.setFont(new Font("Dialog", Font.PLAIN, 13));
+		lblCurrentWeek.setBounds(6, 297, 168, 25);
 		frmClub.getContentPane().add(lblCurrentWeek);
 		
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
@@ -87,18 +86,59 @@ public class ClubGUI {
 		renderer.setBackground(Color.WHITE);
 		
 		JButton btnMakeSubstituion = new JButton("Make Substituion");
-		btnMakeSubstituion.setBounds(510, 433, 168, 25);
+		btnMakeSubstituion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnMakeSubstituion.setBounds(526, 441, 168, 25);
 		frmClub.getContentPane().add(btnMakeSubstituion);
+		
+		JLabel playerStats = new JLabel("");
+		playerStats.setBounds(12, 162, 256, 128);
+		frmClub.getContentPane().add(playerStats);
+		
+		JButton player1 = new JButton("Player 1");
+		player1.setBounds(348, 261, 117, 25);
+		frmClub.getContentPane().add(player1);
+		
+		JButton player2 = new JButton("Player 2");
+		player2.setBounds(464, 259, 117, 29);
+		frmClub.getContentPane().add(player2);
+		
+		JButton player3 = new JButton("Player 3");
+		player3.setBounds(348, 293, 117, 29);
+		frmClub.getContentPane().add(player3);
+		
+		JButton player4 = new JButton("Player 4");
+		player4.setBounds(464, 293, 117, 29);
+		frmClub.getContentPane().add(player4);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.setBounds(297, 439, 117, 29);
+		frmClub.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.setBounds(412, 439, 117, 29);
+		frmClub.getContentPane().add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("New button");
+		btnNewButton_3.setBounds(297, 409, 117, 29);
+		frmClub.getContentPane().add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("New button");
+		btnNewButton_4.setBounds(412, 409, 117, 29);
+		frmClub.getContentPane().add(btnNewButton_4);
+		
+		JLabel reserveLabel = new JLabel("Reserves");
+		reserveLabel.setForeground(Color.WHITE);
+		reserveLabel.setFont(new Font("Lucida Grande", Font.BOLD, 14));
+		reserveLabel.setBounds(377, 382, 84, 25);
+		frmClub.getContentPane().add(reserveLabel);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(ClubGUI.class.getResource("/main/images/clubroom.jpg")));
 		lblNewLabel.setBounds(-52, -24, 793, 538);
 		frmClub.getContentPane().add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(ClubGUI.class.getResource("/main/images/whiteboard.jpg")));
-		lblNewLabel_1.setBounds(509, 417, 270, 173);
-		frmClub.getContentPane().add(lblNewLabel_1);
 		
 		
 		

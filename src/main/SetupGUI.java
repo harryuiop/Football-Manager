@@ -16,6 +16,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JList;
 
 
 public class SetupGUI{
@@ -44,18 +46,14 @@ public class SetupGUI{
 		frmSetupGUI.getContentPane().setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(229, 111, 204, 35);
+		textField.setBackground(Color.GRAY);
+		textField.setBounds(247, 46, 204, 35);
 		frmSetupGUI.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		lblPleaseEnterYou = new JLabel("Teams Name: ");
-		lblPleaseEnterYou.setBounds(136, 116, 209, 24);
+		lblPleaseEnterYou.setBounds(147, 51, 209, 24);
 		frmSetupGUI.getContentPane().add(lblPleaseEnterYou);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setForeground(new Color(192, 28, 40));
-		lblNewLabel.setBounds(85, 140, 452, 35);
-		frmSetupGUI.getContentPane().add(lblNewLabel);
 		
 		JSlider slider = new JSlider();
 		slider.addChangeListener(new ChangeListener() {
@@ -71,9 +69,14 @@ public class SetupGUI{
 		slider.setMajorTickSpacing(1);
 		slider.setMinimum(5);
 		slider.setMaximum(15);
-		slider.setBounds(229, 158, 235, 44);
+		slider.setBounds(239, 120, 235, 44);
 		frmSetupGUI.getContentPane().add(slider);
 		
+		 JLabel lblNewLabel = new JLabel("");
+		 lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		 lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+	        lblNewLabel.setBounds(141, 104, 333, 23);
+	        frmSetupGUI.getContentPane().add(lblNewLabel);
 		
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() 
@@ -99,23 +102,24 @@ public class SetupGUI{
 			}
 		});
 		
-		btnConfirm.setBounds(240, 313, 94, 16);
+		btnConfirm.setBounds(247, 212, 94, 16);
 		frmSetupGUI.getContentPane().add(btnConfirm);
 		
 		JLabel lblSeasonLength = new JLabel("Season Length: ");
-		lblSeasonLength.setBounds(111, 180, 209, 24);
+		lblSeasonLength.setForeground(Color.BLACK);
+		lblSeasonLength.setBounds(147, 139, 209, 24);
 		frmSetupGUI.getContentPane().add(lblSeasonLength);
 		
 		JLabel lblDifficulty = new JLabel("Difficulty:");
-		lblDifficulty.setBounds(161, 225, 76, 24);
+		lblDifficulty.setBounds(156, 174, 76, 24);
 		frmSetupGUI.getContentPane().add(lblDifficulty);
 		
 		JToggleButton tglbtnNewToggleButton = new JToggleButton("Amature");
-		tglbtnNewToggleButton.setBounds(240, 225, 105, 25);
+		tglbtnNewToggleButton.setBounds(221, 175, 105, 25);
 		frmSetupGUI.getContentPane().add(tglbtnNewToggleButton);
 		
 		JToggleButton tglbtnPro = new JToggleButton("Pro");
-		tglbtnPro.setBounds(356, 224, 94, 25);
+		tglbtnPro.setBounds(338, 175, 94, 25);
 		frmSetupGUI.getContentPane().add(tglbtnPro);
 		
 		ButtonGroup buttonGroup = new ButtonGroup();
@@ -124,12 +128,20 @@ public class SetupGUI{
         
         JLabel lblFootballManager = new JLabel("Football Manager");
         lblFootballManager.setFont(new Font("Dialog", Font.BOLD, 32));
-        lblFootballManager.setBounds(136, 34, 332, 40);
+        lblFootballManager.setBounds(156, 6, 332, 40);
         frmSetupGUI.getContentPane().add(lblFootballManager);
         
-        JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setBounds(12, 0, 70, 15);
-        frmSetupGUI.getContentPane().add(lblNewLabel_1);
+        JList list = new JList();
+        list.setBackground(Color.GRAY);
+        list.setBounds(142, 104, 332, 136);
+        frmSetupGUI.getContentPane().add(list);
+        
+        JLabel lblNewLabel_2 = new JLabel("");
+        lblNewLabel_2.setIcon(new ImageIcon(SetupGUI.class.getResource("/main/images/liverpool dub.jpeg")));
+        lblNewLabel_2.setBounds(6, 0, 600, 372);
+        frmSetupGUI.getContentPane().add(lblNewLabel_2);
+        
+       
         
         
         tglbtnNewToggleButton.addActionListener(e -> {
