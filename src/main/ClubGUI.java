@@ -62,6 +62,7 @@ public class ClubGUI {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				game.LaunchMarketGUI(team, game, market, player);
+				game.cl
 			}
 		});
 		btnNewButton.setFont(new Font("Dialog", Font.BOLD, 11));
