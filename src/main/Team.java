@@ -42,28 +42,28 @@ public class Team {
 	    return null; // if no athlete with the given name is found
 	}
 	
-	public void makeSubstituion(String athleteToSub, String athleteToPlay, Market market) {
+	public void makeSubstituion(Athlete athleteToSub, Athlete athleteToPlay) {
 		
 		// first we find if the player is starting or not, then we hold them in a variable
 		
 		Athlete athleteToPlayObject = null;
 		Athlete athleteToSubObject = null;
 		
-		if (startingNames.contains(findAthleteByNameInStartingNames(market, athleteToSub))) {
-			athleteToSubObject = findAthleteByNameInStartingNames(market, athleteToSub);
+		if (startingNames.contains(athleteToSub)) {
+			athleteToSubObject = athleteToSub;
 			
-		} else if (reserveNames.contains(findAthleteByNameInReserveNames(market, athleteToSub))){
-			athleteToSubObject = findAthleteByNameInReserveNames(market, athleteToSub);
+		} else if (reserveNames.contains(athleteToSub)){
+			athleteToSubObject = athleteToSub;
 			
 		} else {
 			System.out.println("No such athlete exists, please check your spelling");
 		}
 		
-		if (startingNames.contains(findAthleteByNameInStartingNames(market, athleteToPlay))) {
-			athleteToPlayObject = findAthleteByNameInStartingNames(market, athleteToPlay);
+		if (startingNames.contains(athleteToPlay)) {
+			athleteToPlayObject = athleteToPlay;
 			
-		} else if (reserveNames.contains(findAthleteByNameInReserveNames(market, athleteToPlay))){
-			athleteToPlayObject = findAthleteByNameInReserveNames(market, athleteToPlay);
+		} else if (reserveNames.contains(athleteToPlay)){
+			athleteToPlayObject = athleteToPlay;
 			
 		} else {
 			System.out.println("No such athlete exists, please check your spelling");

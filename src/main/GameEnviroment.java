@@ -217,28 +217,9 @@ public class GameEnviroment {
 		 return yesOrNo;
 	 }
 		 	
-		  
- 	 public void requestSub(Team team, Market market) {
- 		int finishedSubs = 1;
- 		 
- 		while (finishedSubs == 1) {
-	 		System.out.println("Which player would you like to take off? ");
-	 		String playerToSubString = scanner3.nextLine();
+	
 	 		
-	 		System.out.println("Which player would you like to put on? ");
-	 		String playerToPlayString = scanner2.nextLine();
-	 		
-	 		team.makeSubstituion(playerToSubString, playerToPlayString, market);
-	 		
-	 		team.printFullRoster(team);
-	 		
-	 		System.out.println("Would you like to make another Sub?");
-	 		
-	 		System.out.println("\tEnter 1 for YES or Enter 2 for NO ");
-	 		finishedSubs = scanner.nextInt();
- 		}
-	 		
-	 	}
+	 	
 
 	 
 	/**
