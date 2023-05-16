@@ -13,7 +13,7 @@ public class Item {
 	private String itemAtributes; 
 	 private int rarity;
 	 private int sellBackPriceprivate ;
-	 private int contractPrice;
+	 private int itemPrice;
 	 private String description;
 	 private int offenceIncrease;
 	 private int defenceIncrease;
@@ -29,13 +29,22 @@ public class Item {
 		this.offenceIncrease = offenceIncrease;
 		this.defenceIncrease = defenceIncrease;
 		this.staminaIncrease = staminaIncrease;
-		this.contractPrice = contractPrice;
+		this.itemPrice = contractPrice;
 		this.name = name;
 		this.rarity = rarity;
 	}
 	
 	public String toString() {
-		return (name + "\n\tOffence Increase: " + offenceIncrease + "\n\tDefense Increase: " + defenceIncrease + "\n\tPrice: $" + contractPrice + "\n\tRarity: " + rarity);
+		return getName() + "\n"; 
+	}
+	
+	public String printForSelection() {
+		return ("<html>" + name
+				+ "<br><blockquote>\tOff Increase: " + offenceIncrease 
+				+ "<br>Def Increase: " + defenceIncrease 
+				+ "<br>Price: $" + itemPrice 
+				+ "<br>Rarity: " + rarity
+				+"</blockquote></html>");
 	}
 
 	
@@ -59,10 +68,10 @@ public class Item {
 		this.itemAtributes = itemAtributes;
 	}
 	public int getRarity() {
-		return rarity;
+		return this.rarity;
 	}
 	public void setRarity(int rarity) {
-		rarity = rarity;
+		this.rarity = rarity;
 	}
 	public int getSellBackPriceprivate() {
 		return sellBackPriceprivate;
@@ -70,11 +79,11 @@ public class Item {
 	public void setSellBackPriceprivate(int sellBackPriceprivate) {
 		this.sellBackPriceprivate = sellBackPriceprivate;
 	}
-	public int getContractPrice() {
-		return contractPrice;
+	public int getItemPrice() {
+		return itemPrice;
 	}
-	public void setContractPrice(int contractPrice) {
-		this.contractPrice = contractPrice;
+	public void setItemPrice(int itemPrice) {
+		this.itemPrice = itemPrice;
 	}
 	public String getDescription() {
 		return description;

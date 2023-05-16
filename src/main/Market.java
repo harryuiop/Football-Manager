@@ -149,11 +149,11 @@ public class Market {
 				System.out.println("Please pick a valid number");
 				itemInput = scanner.nextInt();
 			} 	
-			player.setMoneyBalance(player.getMoneyBalance() - (catalog.get(itemInput - 1)).getContractPrice());
+			player.setMoneyBalance(player.getMoneyBalance() - (catalog.get(itemInput - 1)).getItemPrice());
 			
 			while (catalog.size() > 0) {
 			
-			player.addItemToInventoy(catalog.get(itemInput - 1));
+			player.addItemToInventory(catalog.get(itemInput - 1));
 			catalog.remove(catalog.get(itemInput - 1));
 			
 			System.out.println("\n\tTo purchase an item, enter it's numer or 0 to exit");
@@ -167,7 +167,7 @@ public class Market {
 			
 			if (catalog.size() == 1) {
 				System.out.println("\n\tThe market is now empty\n");
-				player.setMoneyBalance(player.getMoneyBalance() - (catalog.get(itemInput - 1)).getContractPrice());
+				player.setMoneyBalance(player.getMoneyBalance() - (catalog.get(itemInput - 1)).getItemPrice());
 				return;
 			}	
 			
@@ -176,7 +176,7 @@ public class Market {
 			}
 			
 			
-			player.setMoneyBalance(player.getMoneyBalance() - (catalog.get(itemInput - 1)).getContractPrice());
+			player.setMoneyBalance(player.getMoneyBalance() - (catalog.get(itemInput - 1)).getItemPrice());
 
 			
 			}
@@ -204,6 +204,8 @@ public class Market {
 	
 	/**
 	 * This method returns a boolean based on if the players requested can be afforded. this verson is used if 
+	 * 
+	 * CALLUM: THESE TWO FUNCTIONS CAN BE COMBINED AND PUT INTO THE PURCHASABLE INTERFACE
 	 * @return
 	 */
 	public boolean BuyPlayerAndMoneyUpdater(Player player, Athlete athlete, Team team) {
@@ -213,6 +215,18 @@ public class Market {
 			
 			team.addStartingPlayer(athlete); // adds to the startPlayers array list in the player class 
 			wavierList.remove(athlete); // remove the players new athlete from the waiver list
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean BuyItemAndMoneyUpdater(Player player, Item item, Team team) {
+		
+		if (player.getMoneyBalance() - item.getItemPrice() > 0) { // checks if player has enough money
+			player.setMoneyBalance(player.getMoneyBalance() - item.getItemPrice()); // updates the new bank balance 
+			
+			player.addItemToInventory(item); // adds to the startPlayers array list in the player class 
 			return true;
 		} else {
 			return false;
