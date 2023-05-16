@@ -35,6 +35,7 @@ public class ClubGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(Team team, GameEnviroment game, Market market, Player player) {
+		System.out.println(team.getReserveName());
 		frmClub = new JFrame();
 		frmClub.setMinimumSize(new Dimension(700,500));
 		frmClub.getContentPane().setEnabled(false);
@@ -97,37 +98,89 @@ public class ClubGUI {
 		playerStats.setBounds(12, 162, 256, 128);
 		frmClub.getContentPane().add(playerStats);
 		
-		JButton player1 = new JButton("Player 1");
+		Athlete p1 = team.getStartingName().get(0);
+		JButton player1 = new JButton(p1.getName(p1));
 		player1.setBounds(348, 261, 117, 25);
 		frmClub.getContentPane().add(player1);
+		player1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				playerStats.setText(p1.printForSelection());
+				
+			}
+		});
 		
-		JButton player2 = new JButton("Player 2");
+		Athlete p2 = team.getStartingName().get(1);
+		JButton player2 = new JButton(p2.getName(p2));
 		player2.setBounds(464, 259, 117, 29);
 		frmClub.getContentPane().add(player2);
+		player2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				playerStats.setText(p2.printForSelection());
+			}
+		});
 		
-		JButton player3 = new JButton("Player 3");
+		Athlete p3 = team.getStartingName().get(2);
+		JButton player3 = new JButton(p3.getName(p3));
 		player3.setBounds(348, 293, 117, 29);
 		frmClub.getContentPane().add(player3);
+		player3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				playerStats.setText(p3.printForSelection());
+			}
+		});
 		
-		JButton player4 = new JButton("Player 4");
+		Athlete p4 = team.getStartingName().get(3);
+		JButton player4 = new JButton(p4.getName(p4));
 		player4.setBounds(464, 293, 117, 29);
 		frmClub.getContentPane().add(player4);
+		player4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				playerStats.setText(p4.printForSelection());
+			}
+		});
 		
-		JButton btnNewButton_1 = new JButton("New button");
+		Athlete p5 = team.getReserveName().get(0);
+		JButton btnNewButton_1 = new JButton(p5.getName(p5));
 		btnNewButton_1.setBounds(297, 439, 117, 29);
 		frmClub.getContentPane().add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				playerStats.setText(p5.printForSelection());
+			}
+		});
 		
-		JButton btnNewButton_2 = new JButton("New button");
+		Athlete p6 = team.getReserveName().get(1);
+		JButton btnNewButton_2 = new JButton(p6.getName(p6));
 		btnNewButton_2.setBounds(412, 439, 117, 29);
 		frmClub.getContentPane().add(btnNewButton_2);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				playerStats.setText(p6.printForSelection());
+
+			}
+		});
 		
-		JButton btnNewButton_3 = new JButton("New button");
-		btnNewButton_3.setBounds(297, 409, 117, 29);
+		Athlete p7 = team.getReserveName().get(2);
+		JButton btnNewButton_3 = new JButton(p7.getName(p7));
 		frmClub.getContentPane().add(btnNewButton_3);
+		btnNewButton_3.setBounds(297, 409, 117, 29);
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				playerStats.setText(p7.printForSelection());
+
+			}
+		});
 		
-		JButton btnNewButton_4 = new JButton("New button");
+		
+		Athlete p8 = team.getReserveName().get(3);
+		JButton btnNewButton_4 = new JButton(p8.getName(p8));
 		btnNewButton_4.setBounds(412, 409, 117, 29);
 		frmClub.getContentPane().add(btnNewButton_4);
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				playerStats.setText(p8.printForSelection());
+			}
+		});
 		
 		JLabel reserveLabel = new JLabel("Reserves");
 		reserveLabel.setForeground(Color.WHITE);
