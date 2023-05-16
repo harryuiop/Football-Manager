@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 
 public class AthleteSelectionGUI {
 	
@@ -43,8 +44,10 @@ public class AthleteSelectionGUI {
 		frmAthleteSelection.getContentPane().setLayout(null);
 		
 		JLabel displayerInfo = new JLabel();
+		displayerInfo.setForeground(new Color(28, 113, 216));
+		displayerInfo.setBackground(new Color(255, 255, 255));
 		displayerInfo.setFont(new Font("Dialog", Font.PLAIN, 20));
-		displayerInfo.setBounds(294, 64, 310, 217);
+		displayerInfo.setBounds(212, 12, 310, 217);
 		frmAthleteSelection.getContentPane().add(displayerInfo);
 		
 		
@@ -62,17 +65,17 @@ public class AthleteSelectionGUI {
 		athleteListModel.addAll(market.getWavierList());
 		athleteJList.setBorder(UIManager.getBorder("DesktopIcon.border"));
 		athleteJList.setFont(new Font("Dialog", Font.BOLD, 15));
-		athleteJList.setBounds(18, 12, 258, 414);
+		athleteJList.setBounds(18, 12, 181, 414);
 		frmAthleteSelection.getContentPane().add(athleteJList);
 		JLabel balance = new JLabel();
 		balance.setFont(new Font("Dialog", Font.BOLD, 16));
-		balance.setBounds(294, 27, 117, 25);
+		balance.setBounds(571, 432, 117, 25);
 		frmAthleteSelection.getContentPane().add(balance);
 		String balAsStr = "$" + player.getMoneyBalance();
 		balance.setText(balAsStr);
 		
 		JLabel lblCurrentTeam = new JLabel();
-		lblCurrentTeam.setBounds(294, 399, 384, 27);
+		lblCurrentTeam.setBounds(204, 391, 384, 27);
 		frmAthleteSelection.getContentPane().add(lblCurrentTeam);
 		
 		JButton btnPurchase = new JButton("Purchase");
@@ -118,6 +121,11 @@ public class AthleteSelectionGUI {
 		JLabel lblOptionallyAddNickname = new JLabel("Optionally add nickname");
 		lblOptionallyAddNickname.setBounds(270, 438, 181, 15);
 		frmAthleteSelection.getContentPane().add(lblOptionallyAddNickname);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(AthleteSelectionGUI.class.getResource("/main/images/anfield.jpeg")));
+		lblNewLabel.setBounds(-234, -215, 934, 687);
+		frmAthleteSelection.getContentPane().add(lblNewLabel);
 		
 	
 		

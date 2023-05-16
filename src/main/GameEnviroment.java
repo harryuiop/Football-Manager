@@ -81,16 +81,27 @@ public class GameEnviroment {
 	 
 	 public void closeAthleteSelectionGUI(Team team, GameEnviroment game, AthleteSelectionGUI athsel, Market market, Player player) {
 		 athsel.frmAthleteSelection.dispose();
+		 LaunchClubGUI(team, game, market, player);
 		 
-		 ClubGUI club = new ClubGUI(team, game, market, player);
-		 club.frmClub.setVisible(true);
 	 }
 	 
-	 public void closeAthleteSelectionGUI() {
-		 
+	 public void LaunchClubGUI(Team team, GameEnviroment game, Market market, Player player) {
+		 ClubGUI club = new ClubGUI(team, game, market, player);
+		 club.frmClub.setVisible(true);
 		 
 	 }
-	 	
+	 
+	 public void closeClubGUI() {
+		 
+	 }
+	 
+	 public void LaunchMarketGUI(Team team, GameEnviroment game, Market marketobj, Player player) {
+		 MarketGUI market = new MarketGUI(team, game, marketobj, player);
+		 market.frmTheMarket.setVisible(true);
+		 
+	 }
+	 
+
 	 
 	 
 	 

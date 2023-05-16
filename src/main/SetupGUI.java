@@ -127,6 +127,10 @@ public class SetupGUI{
         lblFootballManager.setBounds(136, 34, 332, 40);
         frmSetupGUI.getContentPane().add(lblFootballManager);
         
+        JLabel lblNewLabel_1 = new JLabel("");
+        lblNewLabel_1.setBounds(12, 0, 70, 15);
+        frmSetupGUI.getContentPane().add(lblNewLabel_1);
+        
         
         tglbtnNewToggleButton.addActionListener(e -> {
             if (tglbtnPro.isSelected()) {

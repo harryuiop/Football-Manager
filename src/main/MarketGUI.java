@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 import javax.swing.ListSelectionModel;
@@ -23,18 +24,19 @@ public class MarketGUI {
 	/**
 	 * Create the application.
 	 */
-	public MarketGUI(Team team, GameEnviroment game, Market market, Item item) {
+	public MarketGUI(Team team, GameEnviroment game, Market market, Player player) {
 		items = market.getCatalog();
 		athletes = market.getWavierList();
-		initialize(team, game, market, item, this);
+		initialize(team, game, market, this);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Team team, GameEnviroment game, Market market, Item item, MarketGUI marketGUI) {
+	private void initialize(Team team, GameEnviroment game, Market market, MarketGUI marketGUI) {
 		frmTheMarket = new JFrame();
 		frmTheMarket.setTitle("The Market");
+		frmTheMarket.setMinimumSize(new Dimension(700,500));
 		frmTheMarket.setBounds(100, 100, 600, 400);
 		frmTheMarket.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTheMarket.getContentPane().setLayout(null);
