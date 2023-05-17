@@ -15,7 +15,7 @@ public class Player {
 		athlete.applyItemBuff(item);
 	}
 	
-	public void addItemToInventoy(Item item) {
+	public void addItemToInventory(Item item) {
 		inventory.add(item);
 		System.out.println("\nYou have purchased " + item.getName() + " and it has been added to your inventory");
 	}

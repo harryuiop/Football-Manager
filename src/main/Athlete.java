@@ -91,7 +91,14 @@ public class Athlete {
 	
 	
 	public String printForSelection() {
-		return ("<html>" + name + "<br><blockquote>\tOffence:" + offence + "<br>	Defense: " + defence + "<br>Position: " + position + "<br>Contract Price: $" + contractPrice + "<br>Sell Back Price $" + sellBackPrice + "<br>Rarity " + rarity +"</blockquote></html>");
+		return ("<html>" + name 
+				+ "<br><blockquote>\tOffence:" + offence 
+				+ "<br>	Defense: " + defence 
+				+ "<br>Position: " + position 
+				+ "<br>Contract Price: $" + contractPrice 
+				+ "<br>Sell Back Price $" + sellBackPrice 
+				+ "<br>Rarity " + rarity 
+				+"</blockquote></html>");
 	}
 	
 	
