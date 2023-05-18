@@ -208,12 +208,31 @@ public class Market {
 	 * CALLUM: THESE TWO FUNCTIONS CAN BE COMBINED AND PUT INTO THE PURCHASABLE INTERFACE
 	 * @return
 	 */
-	public boolean BuyPlayerAndMoneyUpdater(Player player, Athlete athlete, Team team) {
+	public boolean SellPlayerAndMoneyUpdater(Player player, Athlete athlete, Team team) {
+		
+		player.setMoneyBalance(player.getMoneyBalance() + athlete.getContractPrice(athlete)); // updates the new bank balance 
+		
+		if (team.getStartingName().contains(athlete)) {
+			team.getStartingName().remove(athlete);
+		}
+		else {
+			team.getReserveName().remove(athlete);
+		}
+		return true;
+	}
+	
+	
+	public boolean BuyPlayerAndMoneyUpdater(Player player, Athlete athlete, Team team, Boolean startingFull) {
 		
 		if (player.getMoneyBalance() - athlete.getContractPrice(athlete) > 0) { // checks if player has enough money
 			player.setMoneyBalance(player.getMoneyBalance() - athlete.getContractPrice(athlete)); // updates the new bank balance 
-			
-			team.addStartingPlayer(athlete); // adds to the startPlayers array list in the player class 
+			if (startingFull == false) {
+				team.addStartingPlayer(athlete); // adds to the startPlayers array list in the player class 
+			}
+			else {
+				team.addReservePlayer(athlete); // adds to the reservePlayers array list in the player class 
+
+			}
 			wavierList.remove(athlete); // remove the players new athlete from the waiver list
 			return true;
 		} else {
