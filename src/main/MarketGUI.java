@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JList;
-
+import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -284,6 +284,17 @@ public class MarketGUI {
 		frmTheMarket.getContentPane().add(btnSell);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (team.getStartingName().size() < 4 || team.getReserveName().size() < 4) {
+					JOptionPane.showMessageDialog(frmTheMarket, "Your team is not full! Buy players to fill your team");
+				}
+				else {
+					frmTheMarket.dispose();
+					game.LaunchClubGUI(team, game, market, player);
+				}
+			}
+		});
 		btnBack.setBounds(12, 645, 117, 25);
 		frmTheMarket.getContentPane().add(btnBack);
 		

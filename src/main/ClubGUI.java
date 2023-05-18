@@ -90,6 +90,7 @@ public class ClubGUI {
 		JButton btnNewButton = new JButton("Market");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frmClub.dispose();
 				game.LaunchMarketGUI(team, game, market, player);
 			}
 		});
