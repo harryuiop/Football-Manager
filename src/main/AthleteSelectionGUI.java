@@ -89,7 +89,7 @@ public class AthleteSelectionGUI {
 				counter++;
 				if (counter < 5) {
 					Athlete athToBuy = athleteJList.getSelectedValue();
-					market.BuyPlayerAndMoneyUpdater(player, athToBuy, team);
+					market.BuyPlayerAndMoneyUpdater(player, athToBuy, team, false);
 					athleteListModel.removeElement(athToBuy);
 					String balAsStr = "$" + player.getMoneyBalance();
 					balance.setText(balAsStr);	
