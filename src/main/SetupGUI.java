@@ -95,7 +95,7 @@ public class SetupGUI{
 		            lblNewLabel.setText("Must be 3-15 characters and not contain special characters");
 		        }
 				
-				if (isvalid == true && game.getDifficulty() == 1 | game.getDifficulty() == 0) {
+				if (isvalid == true && (game.getDifficulty() == 1 | game.getDifficulty() == 0)) {
 					game.closeSetupGUI(team, game, setup, market, poplayers, player);
 				}
 				
@@ -154,7 +154,7 @@ public class SetupGUI{
         tglbtnPro.addActionListener(e -> {
             if (tglbtnNewToggleButton.isSelected()) {
             	tglbtnPro.setSelected(false);
-            	game.setDifficulty(0);
+            	game.setDifficulty(2);
             }
         });
 		

@@ -51,6 +51,11 @@ public class AthleteSelectionGUI {
 		displayerInfo.setBounds(174, 12, 221, 237);
 		frmAthleteSelection.getContentPane().add(displayerInfo);
 		
+		textField = new JTextField();
+		textField.setBackground(Color.LIGHT_GRAY);
+		textField.setBounds(149, 436, 114, 19);
+		frmAthleteSelection.getContentPane().add(textField);
+		textField.setColumns(10);
 		
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
 		JList<Athlete> athleteJList = new JList<Athlete>(athleteListModel);
@@ -62,6 +67,8 @@ public class AthleteSelectionGUI {
 				Athlete ath = athleteJList.getSelectedValue();
 				if (ath != null) {
 					displayerInfo.setText(ath.printForSelection());
+					textField.setText("");
+
 				}
 			}
 		});
@@ -77,6 +84,11 @@ public class AthleteSelectionGUI {
 		String balAsStr = "$" + player.getMoneyBalance();
 		balance.setText(balAsStr);
 		
+		JLabel lblOptionallyAddNickname = new JLabel("Optionally add nickname");
+		lblOptionallyAddNickname.setBounds(270, 438, 181, 15);
+		frmAthleteSelection.getContentPane().add(lblOptionallyAddNickname);
+		
+		
 		JLabel lblCurrentTeam = new JLabel();
 		lblCurrentTeam.setBounds(204, 391, 384, 27);
 		frmAthleteSelection.getContentPane().add(lblCurrentTeam);
@@ -86,6 +98,9 @@ public class AthleteSelectionGUI {
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String nickname = textField.getText();
+				System.out.println(nickname.isBlank());
+				
 				if (team.getStartingName().size() < 4) {
 					Athlete athToBuy = athleteJList.getSelectedValue();
 					market.BuyPlayerAndMoneyUpdater(player, athToBuy, team, false);
@@ -94,6 +109,9 @@ public class AthleteSelectionGUI {
 					balance.setText(balAsStr);	
 					String athToStr = athToBuy.getName(athToBuy);
 					lblCurrentTeam.setText(athToStr + " has been added to your starting team");	
+					if (!nickname.isBlank()) {
+						athToBuy.setName(textField.getText());
+					}
 					if (team.getStartingName().size() == 4 && team.getReserveName().size() == 4) {
 						game.closeAthleteSelectionGUI(team, game, athsel, market, player);			
 					
@@ -107,10 +125,14 @@ public class AthleteSelectionGUI {
 					balance.setText(balAsStr);
 					String athToStr = athToBuy.getName(athToBuy);
 					lblCurrentTeam.setText(athToStr + " has been added to your reserves");
+					if (!nickname.isBlank()) {
+						athToBuy.setName(textField.getText());
+					}
 					if (team.getStartingName().size() == 4 && team.getReserveName().size() == 4) {
 						game.closeAthleteSelectionGUI(team, game, athsel, market, player);			
 					
 					} 
+					
 				}
 			}
 		});
@@ -119,15 +141,7 @@ public class AthleteSelectionGUI {
 		btnPurchase.setBounds(18, 433, 117, 25);
 		frmAthleteSelection.getContentPane().add(btnPurchase);
 		
-		textField = new JTextField();
-		textField.setBackground(Color.LIGHT_GRAY);
-		textField.setBounds(149, 436, 114, 19);
-		frmAthleteSelection.getContentPane().add(textField);
-		textField.setColumns(10);
 		
-		JLabel lblOptionallyAddNickname = new JLabel("Optionally add nickname");
-		lblOptionallyAddNickname.setBounds(270, 438, 181, 15);
-		frmAthleteSelection.getContentPane().add(lblOptionallyAddNickname);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(AthleteSelectionGUI.class.getResource("/main/images/anfield.jpeg")));
