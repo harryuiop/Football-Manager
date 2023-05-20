@@ -17,19 +17,19 @@ import java.awt.event.ActionEvent;
 public class SubstituionGUI {
 
 	JFrame frame;
-
+	
 
 	/**
 	 * Create the application.
 	 */
-	public SubstituionGUI(Team team) {
-		initialize(team);
+	public SubstituionGUI(Team team, GameEnviroment game, Market market, Player player) {
+		initialize(team, game, market, player);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Team team) {
+	private void initialize(Team team, GameEnviroment game, Market market, Player player) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,7 +81,12 @@ public class SubstituionGUI {
 		JButton confirm = new JButton("New button");
 		confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Athlete r = res.getSelectedValue();
+				Athlete s = start.getSelectedValue();
+				team.makeSubstituion(s, r);
+				game.LaunchClubGUI(team, game, null, null);
 				close();
+				
 			}
 		});
 		confirm.setBounds(79, 219, 117, 25);

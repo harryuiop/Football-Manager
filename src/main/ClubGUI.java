@@ -126,14 +126,12 @@ public class ClubGUI {
         JToggleButton subToggle = new JToggleButton("Toggle Sub");
         subToggle.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		SubstituionGUI sub = new SubstituionGUI(team);
+        		SubstituionGUI sub = new SubstituionGUI(team, game, market, player);
         		sub.frame.setVisible(true);
+        		game.closeClubGUI();
         	}
         });
        
-
-
-            
   
         subToggle.setBounds(546, 420, 117, 29);
         frmClub.getContentPane().add(subToggle);

@@ -93,6 +93,7 @@ public class GameEnviroment {
 	 
 	 public void closeClubGUI() {
 		 
+		 
 	 }
 	 
 	 public void LaunchMarketGUI(Team team, GameEnviroment game, Market marketobj, Player player) {
