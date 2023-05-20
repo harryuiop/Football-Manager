@@ -11,6 +11,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JMenuItem;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -20,8 +21,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JToggleButton;
+import javax.swing.MenuElement;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ClubGUI {
 
@@ -40,22 +46,7 @@ public class ClubGUI {
         this.subOn = false;
     }
 
-    public void canSub(ClubGUI clubGUI, Team team) {
-        if (clubGUI.counter == 2 && clubGUI.subOn == false) {
-            System.out.println("substitution submitted");
-            team.makeSubstituion(holder.get(0), holder.get(1));
-            clubGUI.counter = 0;
-            holder.clear();
-       
-        } else if (clubGUI.counter > 2 && clubGUI.subOn == true) {
-            clubGUI.counter = 0;
-            holder.clear();
-        }
-    }
 
-    public void setTag() {
-
-    }
 
     /**
      * Initialize the contents of the frame.
@@ -63,7 +54,6 @@ public class ClubGUI {
      * @param clubGUI
      */
     public void initialize(Team team, GameEnviroment game, Market market, Player player, ClubGUI clubGUI) {
-        System.out.println(team.getReserveName());
         frmClub = new JFrame();
         frmClub.setMinimumSize(new Dimension(700, 500));
         frmClub.getContentPane().setEnabled(false);
@@ -75,7 +65,6 @@ public class ClubGUI {
         frmClub.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frmClub.getContentPane().setLayout(null);
         
-        System.out.println(team.getReserveName().size());
         
         
         JLabel lblWelcomeToThe = new JLabel("Welcome to the Clubroom");
@@ -124,7 +113,7 @@ public class ClubGUI {
         renderer.setBackground(Color.WHITE);
 
         JLabel lblSubMode = new JLabel("false");
-        lblSubMode.setBounds(562, 402, 101, 16);
+        lblSubMode.setBounds(551, 396, 101, 16);
         frmClub.getContentPane().add(lblSubMode);
 
         
@@ -134,48 +123,46 @@ public class ClubGUI {
         frmClub.getContentPane().add(lblPlayerStats);
         									
         								
-        JButton subToggle = new JButton("Toggle Substituion");	
+        JToggleButton subToggle = new JToggleButton("Toggle Sub");
         subToggle.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                clubGUI.counter = 0;
-                holder.clear();
-                if (clubGUI.subOn == false) {
-                    clubGUI.subOn = true;
-                } else {
-                    clubGUI.subOn = false;
-                }
-            String submode = " " + clubGUI.subOn;
-            lblSubMode.setText(submode);
-            }
+        	public void actionPerformed(ActionEvent e) {
+        		SubstituionGUI sub = new SubstituionGUI(team);
+        		sub.frame.setVisible(true);
+        	}
         });
+       
+
+
+            
+  
         subToggle.setBounds(546, 420, 117, 29);
         frmClub.getContentPane().add(subToggle);
-
+        
         
         Athlete p1 = team.getStartingName().get(0);
         JButton player1 = new JButton(p1.getName(p1));
-        player1.setBounds(348, 261, 117, 25);
+        player1.setBounds(348, 259, 117, 31);
         frmClub.getContentPane().add(player1);
         player1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	lblPlayerStats.setText(p1.printForSelection());
                 holder.add(p1);
                 clubGUI.counter++;
-                canSub(clubGUI, team);
+
             }
         });
 
         
         Athlete p2 = team.getStartingName().get(1);
         JButton player2 = new JButton(p2.getName(p2));
-        player2.setBounds(464, 259, 117, 29);
+        player2.setBounds(464, 259, 117, 31);
         frmClub.getContentPane().add(player2);
         player2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	lblPlayerStats.setText(p2.printForSelection());
                 holder.add(p2);
                 clubGUI.counter++;
-                canSub(clubGUI, team);
+
             }
         });
 
@@ -189,7 +176,7 @@ public class ClubGUI {
             	lblPlayerStats.setText(p3.printForSelection());
                 holder.add(p3);
                 clubGUI.counter++;
-                canSub(clubGUI, team);
+
             }
         });
 
@@ -203,7 +190,7 @@ public class ClubGUI {
             	lblPlayerStats.setText(p4.printForSelection());
                 holder.add(p4);
                 clubGUI.counter++;
-                canSub(clubGUI, team);
+
             }
         });
 
@@ -216,7 +203,7 @@ public class ClubGUI {
             	lblPlayerStats.setText(p5.printForSelection());
                 holder.add(p5);
                 clubGUI.counter++;
-                canSub(clubGUI, team);
+
             }
         });
         
@@ -230,7 +217,7 @@ public class ClubGUI {
             	lblPlayerStats.setText(p6.printForSelection());
                 holder.add(p6);
                 clubGUI.counter++;
-                canSub(clubGUI, team);
+
             }
         });
         
@@ -244,7 +231,7 @@ public class ClubGUI {
             	lblPlayerStats.setText(p7.printForSelection());
                 holder.add(p7);
                 clubGUI.counter++;
-                canSub(clubGUI, team);
+
             }
         });
 
@@ -258,7 +245,7 @@ public class ClubGUI {
             	lblPlayerStats.setText(p8.printForSelection());
                 holder.add(p8);
                 clubGUI.counter++;
-                canSub(clubGUI, team);
+
             }
         });
 
@@ -278,14 +265,32 @@ public class ClubGUI {
         tglbtnNewToggleButton.setBounds(12, 460, 162, 29);
         frmClub.getContentPane().add(tglbtnNewToggleButton);
         
-    	allButtons.add(player1);
-    	allButtons.add(player2);
-    	allButtons.add(player3);
-    	allButtons.add(player4);
-    	allButtons.add(player5);
-    	allButtons.add(player6);
-    	allButtons.add(player7);
-    	allButtons.add(player8);
+        allButtons.clear();
+        allButtons.add(player1);
+        allButtons.add(player2);
+        allButtons.add(player3);
+        allButtons.add(player4);
+        allButtons.add(player5);
+        allButtons.add(player6);
+        allButtons.add(player7);
+        allButtons.add(player8);
     }
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
+	}
 }
 
