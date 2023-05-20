@@ -98,7 +98,7 @@ public class AthleteSelectionGUI {
 				
 					
 					
-				} else if (counter > 4 && counter < 9) {
+				} else if (counter > 4 && counter <= 7) {
 					Athlete athToBuy = athleteJList.getSelectedValue();
 					market.reserveBuyPlayerAndMoneyUpdater(player, athToBuy, team);
 					athleteListModel.removeElement(athToBuy);
