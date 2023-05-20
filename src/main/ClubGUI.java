@@ -27,22 +27,26 @@ public class ClubGUI {
 
     JFrame frmClub;
     int counter = 0;
-    boolean subOn = false;
+    boolean subOn;
     ArrayList<Athlete> holder = new ArrayList<Athlete>();
+    ArrayList<JButton> allButtons = new ArrayList<JButton>();
+
 
     /**
      * Create the application.
      */
     public ClubGUI(Team team, GameEnviroment game, Market market, Player player) {
         initialize(team, game, market, player, this);
+        this.subOn = false;
     }
 
     public void canSub(ClubGUI clubGUI, Team team) {
         if (clubGUI.counter == 2 && clubGUI.subOn == false) {
-            System.out.println("churrrrr");
+            System.out.println("substitution submitted");
             team.makeSubstituion(holder.get(0), holder.get(1));
             clubGUI.counter = 0;
             holder.clear();
+       
         } else if (clubGUI.counter > 2 && clubGUI.subOn == true) {
             clubGUI.counter = 0;
             holder.clear();
@@ -70,19 +74,24 @@ public class ClubGUI {
         frmClub.setBounds(100, 100, 450, 300);
         frmClub.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frmClub.getContentPane().setLayout(null);
-
+        
+        System.out.println(team.getReserveName().size());
+        
+        
         JLabel lblWelcomeToThe = new JLabel("Welcome to the Clubroom");
         lblWelcomeToThe.setForeground(new Color(0, 0, 0));
         lblWelcomeToThe.setFont(new Font("Accanthis ADF Std No3", Font.BOLD, 15));
         lblWelcomeToThe.setBounds(27, 122, 241, 55);
         frmClub.getContentPane().add(lblWelcomeToThe);
 
+        
         JLabel lblStartingLineup = new JLabel("Starting Lineup");
         lblStartingLineup.setForeground(Color.WHITE);
         lblStartingLineup.setFont(new Font("Accanthis ADF Std No3", Font.BOLD, 14));
         lblStartingLineup.setBounds(427, 234, 134, 15);
         frmClub.getContentPane().add(lblStartingLineup);
 
+        
         JButton marketButton = new JButton("Market");
         marketButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -94,16 +103,19 @@ public class ClubGUI {
         marketButton.setBounds(12, 409, 162, 49);
         frmClub.getContentPane().add(marketButton);
 
+        
         JButton selMatchButton = new JButton("Select Match");
         selMatchButton.setFont(new Font("Dialog", Font.BOLD, 14));
         selMatchButton.setBounds(12, 360, 162, 47);
         frmClub.getContentPane().add(selMatchButton);
 
+        
         JLabel lblCurrentWeek = new JLabel("Current Week ");
         lblCurrentWeek.setFont(new Font("Dialog", Font.PLAIN, 13));
         lblCurrentWeek.setBounds(6, 297, 168, 25);
         frmClub.getContentPane().add(lblCurrentWeek);
 
+        
         DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
         DefaultListCellRenderer renderer = new DefaultListCellRenderer();
         athleteListModel.addAll(team.getReserveName());
@@ -111,20 +123,20 @@ public class ClubGUI {
         renderer.setOpaque(true); // make the cell renderer background opaque
         renderer.setBackground(Color.WHITE);
 
-        JLabel lblSubMode = new JLabel("");
+        JLabel lblSubMode = new JLabel("false");
         lblSubMode.setBounds(562, 402, 101, 16);
         frmClub.getContentPane().add(lblSubMode);
 
+        
         JLabel lblPlayerStats = new JLabel("");
         lblPlayerStats.setHorizontalAlignment(SwingConstants.CENTER);
         lblPlayerStats.setBounds(27, 162, 233, 128);
         frmClub.getContentPane().add(lblPlayerStats);
-
-        JButton subToggle = new JButton("Toggle Substituion");
+        									
+        								
+        JButton subToggle = new JButton("Toggle Substituion");	
         subToggle.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String submode = " " + clubGUI.subOn;
-                lblSubMode.setText(submode);
                 clubGUI.counter = 0;
                 holder.clear();
                 if (clubGUI.subOn == false) {
@@ -132,12 +144,14 @@ public class ClubGUI {
                 } else {
                     clubGUI.subOn = false;
                 }
+            String submode = " " + clubGUI.subOn;
+            lblSubMode.setText(submode);
             }
         });
-
         subToggle.setBounds(546, 420, 117, 29);
         frmClub.getContentPane().add(subToggle);
 
+        
         Athlete p1 = team.getStartingName().get(0);
         JButton player1 = new JButton(p1.getName(p1));
         player1.setBounds(348, 261, 117, 25);
@@ -148,11 +162,10 @@ public class ClubGUI {
                 holder.add(p1);
                 clubGUI.counter++;
                 canSub(clubGUI, team);
-                Athlete p11 = team.getStartingName().get(0);
-                player1.setText(p11.getName(p11));
             }
         });
 
+        
         Athlete p2 = team.getStartingName().get(1);
         JButton player2 = new JButton(p2.getName(p2));
         player2.setBounds(464, 259, 117, 29);
@@ -163,11 +176,10 @@ public class ClubGUI {
                 holder.add(p2);
                 clubGUI.counter++;
                 canSub(clubGUI, team);
-                Athlete p22 = team.getStartingName().get(1);
-                player2.setText(p22.getName(p22));
             }
         });
 
+        
         Athlete p3 = team.getStartingName().get(2);
         JButton player3 = new JButton(p3.getName(p3));
         player3.setBounds(348, 293, 117, 29);
@@ -178,10 +190,10 @@ public class ClubGUI {
                 holder.add(p3);
                 clubGUI.counter++;
                 canSub(clubGUI, team);
-                player3.setText(p3.getName(p3));
             }
         });
 
+        
         Athlete p4 = team.getStartingName().get(3);
         JButton player4 = new JButton(p4.getName(p4));
         player4.setBounds(464, 293, 117, 29);
@@ -192,7 +204,6 @@ public class ClubGUI {
                 holder.add(p4);
                 clubGUI.counter++;
                 canSub(clubGUI, team);
-                player4.setText(p4.getName(p4));
             }
         });
 
@@ -206,9 +217,9 @@ public class ClubGUI {
                 holder.add(p5);
                 clubGUI.counter++;
                 canSub(clubGUI, team);
-                player5.setText(p5.getName(p5));
             }
         });
+        
 
         Athlete p6 = team.getReserveName().get(1);
         JButton player6 = new JButton(p6.getName(p6));
@@ -220,9 +231,9 @@ public class ClubGUI {
                 holder.add(p6);
                 clubGUI.counter++;
                 canSub(clubGUI, team);
-                player6.setText(p6.getName(p6));
             }
         });
+        
 
         Athlete p7 = team.getReserveName().get(2);
         JButton player7 = new JButton(p7.getName(p7));
@@ -234,10 +245,10 @@ public class ClubGUI {
                 holder.add(p7);
                 clubGUI.counter++;
                 canSub(clubGUI, team);
-                player7.setText(p7.getName(p7));
             }
         });
 
+        
         Athlete p8 = team.getReserveName().get(3);
         JButton player8 = new JButton(p8.getName(p8));
         player8.setBounds(412, 409, 117, 29);
@@ -248,10 +259,10 @@ public class ClubGUI {
                 holder.add(p8);
                 clubGUI.counter++;
                 canSub(clubGUI, team);
-                player8.setText(p8.getName(p8));
             }
         });
 
+        
         JLabel reserveLabel = new JLabel("Reserves");
         reserveLabel.setForeground(Color.WHITE);
         reserveLabel.setFont(new Font("Lucida Grande", Font.BOLD, 14));
@@ -266,5 +277,15 @@ public class ClubGUI {
         JToggleButton tglbtnNewToggleButton = new JToggleButton("Info");
         tglbtnNewToggleButton.setBounds(12, 460, 162, 29);
         frmClub.getContentPane().add(tglbtnNewToggleButton);
+        
+    	allButtons.add(player1);
+    	allButtons.add(player2);
+    	allButtons.add(player3);
+    	allButtons.add(player4);
+    	allButtons.add(player5);
+    	allButtons.add(player6);
+    	allButtons.add(player7);
+    	allButtons.add(player8);
     }
 }
+

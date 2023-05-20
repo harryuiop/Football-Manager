@@ -84,21 +84,22 @@ public class AthleteSelectionGUI {
 		JButton btnPurchase = new JButton("Purchase");
 		btnPurchase.setBackground(Color.GRAY);
 		btnPurchase.addActionListener(new ActionListener() {
-		int counter = 0;
 			public void actionPerformed(ActionEvent e) {
-				counter++;
-				if (counter < 5) {
+				
+				if (team.getStartingName().size() < 4) {
 					Athlete athToBuy = athleteJList.getSelectedValue();
 					market.BuyPlayerAndMoneyUpdater(player, athToBuy, team, false);
 					athleteListModel.removeElement(athToBuy);
 					String balAsStr = "$" + player.getMoneyBalance();
 					balance.setText(balAsStr);	
 					String athToStr = athToBuy.getName(athToBuy);
-					lblCurrentTeam.setText(athToStr + " has been added to your starting team");
-				
+					lblCurrentTeam.setText(athToStr + " has been added to your starting team");	
+					if (team.getStartingName().size() == 4 && team.getReserveName().size() == 4) {
+						game.closeAthleteSelectionGUI(team, game, athsel, market, player);			
 					
+					} 
 					
-				} else if (counter > 4 && counter <= 7) {
+				} else if (team.getStartingName().size() > 3 && team.getReserveName().size() < 4) {
 					Athlete athToBuy = athleteJList.getSelectedValue();
 					market.reserveBuyPlayerAndMoneyUpdater(player, athToBuy, team);
 					athleteListModel.removeElement(athToBuy);
@@ -106,9 +107,10 @@ public class AthleteSelectionGUI {
 					balance.setText(balAsStr);
 					String athToStr = athToBuy.getName(athToBuy);
 					lblCurrentTeam.setText(athToStr + " has been added to your reserves");
+					if (team.getStartingName().size() == 4 && team.getReserveName().size() == 4) {
+						game.closeAthleteSelectionGUI(team, game, athsel, market, player);			
 					
-				} else {
-					game.closeAthleteSelectionGUI(team, game, athsel, market, player);
+					} 
 				}
 			}
 		});
