@@ -91,9 +91,8 @@ public class GameEnviroment {
 		 
 	 }
 	 
-	 public void closeClubGUI() {
-		 
-		 
+	 public void closeClubGUI(ClubGUI clubGUI) {
+		 clubGUI.frmClub.dispose();
 	 }
 	 
 	 public void LaunchMarketGUI(Team team, GameEnviroment game, Market marketobj, Player player) {

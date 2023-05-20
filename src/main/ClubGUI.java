@@ -99,10 +99,11 @@ public class ClubGUI {
         frmClub.getContentPane().add(selMatchButton);
 
         
-        JLabel lblCurrentWeek = new JLabel("Current Week ");
-        lblCurrentWeek.setFont(new Font("Dialog", Font.PLAIN, 13));
-        lblCurrentWeek.setBounds(6, 297, 168, 25);
+        JLabel lblCurrentWeek = new JLabel("Current Week - " + game.getCurrentWeekNum() + "/" + game.getChoosenNumWeeks());
+        lblCurrentWeek.setFont(new Font("Dialog", Font.PLAIN, 12));
+        lblCurrentWeek.setBounds(12, 286, 168, 25);
         frmClub.getContentPane().add(lblCurrentWeek);
+        
 
         
         DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
@@ -112,10 +113,6 @@ public class ClubGUI {
         renderer.setOpaque(true); // make the cell renderer background opaque
         renderer.setBackground(Color.WHITE);
 
-        JLabel lblSubMode = new JLabel("false");
-        lblSubMode.setBounds(551, 396, 101, 16);
-        frmClub.getContentPane().add(lblSubMode);
-
         
         JLabel lblPlayerStats = new JLabel("");
         lblPlayerStats.setHorizontalAlignment(SwingConstants.CENTER);
@@ -123,17 +120,17 @@ public class ClubGUI {
         frmClub.getContentPane().add(lblPlayerStats);
         									
         								
-        JToggleButton subToggle = new JToggleButton("Toggle Sub");
+        JToggleButton subToggle = new JToggleButton("Substitution");
         subToggle.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		SubstituionGUI sub = new SubstituionGUI(team, game, market, player);
         		sub.frame.setVisible(true);
-        		game.closeClubGUI();
+        		closeClubGUI(game);
         	}
         });
        
   
-        subToggle.setBounds(546, 420, 117, 29);
+        subToggle.setBounds(548, 410, 134, 49);
         frmClub.getContentPane().add(subToggle);
         
         
@@ -273,22 +270,8 @@ public class ClubGUI {
         allButtons.add(player7);
         allButtons.add(player8);
     }
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
-	}
+    public void closeClubGUI(GameEnviroment game) {
+    	game.closeClubGUI(this);
+    }
 }
 
