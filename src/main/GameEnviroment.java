@@ -100,6 +100,16 @@ public class GameEnviroment {
 		 market.frmTheMarket.setVisible(true);
 		 
 	 }
+
+	public void LaunchMatchSelectionGUI(Team team, GameEnviroment game, Player player) {
+		 MatchSelectionGUI matchSelect = new MatchSelectionGUI(team, game, player);
+		 matchSelect.frmMatchSelect.setVisible(true);
+	 }
+	 
+	 public void LaunchMatchGUI(Team team, GameEnviroment game, Player player, ArrayList<Athlete> opposingTeam, JFrame matchSelect) {
+		 MatchGUI match = new MatchGUI(team, game, player, opposingTeam, matchSelect);
+		 match.frmMatch.setVisible(true);
+	 }
 	 
 
 	 
