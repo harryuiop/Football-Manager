@@ -142,6 +142,12 @@ public class Athlete {
 		return rarity;
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	
 }
+
+	
+

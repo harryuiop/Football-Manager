@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+
 public class GameEnviroment {
 	
 	 private int currentWeekNum; 

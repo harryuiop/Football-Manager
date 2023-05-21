@@ -94,6 +94,11 @@ public class ClubGUI {
 
         
         JButton selMatchButton = new JButton("Select Match");
+        selMatchButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		game.LaunchMatchSelectionGUI(team, game, player);
+        	}
+        });
         selMatchButton.setFont(new Font("Dialog", Font.BOLD, 14));
         selMatchButton.setBounds(12, 360, 162, 47);
         frmClub.getContentPane().add(selMatchButton);
