@@ -19,14 +19,14 @@ public class MatchSelectionGUI {
 	/**
 	 * Create the application.
 	 */
-	public MatchSelectionGUI(Team team, GameEnviroment game, Player player) {
-		initialize(team, game, player, this);
+	public MatchSelectionGUI(Team team, GameEnviroment game, Player player, JFrame frmClub) {
+		initialize(team, game, player, frmClub, this);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Team team, GameEnviroment game, Player player, MatchSelectionGUI matchSelectionGUI) {
+	private void initialize(Team team, GameEnviroment game, Player player, JFrame frmClub, MatchSelectionGUI matchSelectionGUI) {
 		frmMatchSelect = new JFrame();
 		frmMatchSelect.setTitle("Match Selection");
 		frmMatchSelect.setBounds(100, 100, 700, 500);
@@ -36,7 +36,7 @@ public class MatchSelectionGUI {
 		JLabel lblMatchSelection = new JLabel("Match Selection");
 		lblMatchSelection.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblMatchSelection.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMatchSelection.setBounds(205, 23, 252, 71);
+		lblMatchSelection.setBounds(215, 24, 252, 71);
 		frmMatchSelect.getContentPane().add(lblMatchSelection);
 		
 		
@@ -80,7 +80,7 @@ public class MatchSelectionGUI {
 		
 		JLabel lblNewLabel = new JLabel("Select your opponent:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(215, 105, 242, 22);
+		lblNewLabel.setBounds(214, 105, 242, 22);
 		frmMatchSelect.getContentPane().add(lblNewLabel);
 		
 		JLabel lblGame1 = new JLabel("Match Result");
@@ -94,5 +94,16 @@ public class MatchSelectionGUI {
 		JLabel lblGame1_2 = new JLabel("Match Result");
 		lblGame1_2.setBounds(532, 297, 74, 14);
 		frmMatchSelect.getContentPane().add(lblGame1_2);
+		
+		JButton btnBackClub = new JButton("Back to Club");
+		btnBackClub.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmClub.setVisible(true);
+				frmMatchSelect.setVisible(false);
+				
+			}
+		});
+		btnBackClub.setBounds(10, 427, 109, 23);
+		frmMatchSelect.getContentPane().add(btnBackClub);
 	}
 }

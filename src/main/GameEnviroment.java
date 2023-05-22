@@ -103,9 +103,10 @@ public class GameEnviroment {
 		 
 	 }
 
-	public void LaunchMatchSelectionGUI(Team team, GameEnviroment game, Player player) {
-		 MatchSelectionGUI matchSelect = new MatchSelectionGUI(team, game, player);
+	public MatchSelectionGUI LaunchMatchSelectionGUI(Team team, GameEnviroment game, Player player, JFrame frmClub) {
+		 MatchSelectionGUI matchSelect = new MatchSelectionGUI(team, game, player, frmClub);
 		 matchSelect.frmMatchSelect.setVisible(true);
+		 return matchSelect;
 	 }
 	 
 	 public void LaunchMatchGUI(Team team, GameEnviroment game, Player player, ArrayList<Athlete> opposingTeam, JFrame matchSelect) {

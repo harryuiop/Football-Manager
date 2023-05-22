@@ -36,7 +36,8 @@ public class ClubGUI {
     boolean subOn;
     ArrayList<Athlete> holder = new ArrayList<Athlete>();
     ArrayList<JButton> allButtons = new ArrayList<JButton>();
-
+    private MatchSelectionGUI matchSelectionGUI;
+    private boolean isMatchSelectCreated;
 
     /**
      * Create the application.
@@ -44,6 +45,7 @@ public class ClubGUI {
     public ClubGUI(Team team, GameEnviroment game, Market market, Player player) {
         initialize(team, game, market, player, this);
         this.subOn = false;
+        this.isMatchSelectCreated = false;
     }
 
 
@@ -54,6 +56,7 @@ public class ClubGUI {
      * @param clubGUI
      */
     public void initialize(Team team, GameEnviroment game, Market market, Player player, ClubGUI clubGUI) {
+    	
         frmClub = new JFrame();
         frmClub.setMinimumSize(new Dimension(700, 500));
         frmClub.getContentPane().setEnabled(false);
@@ -96,7 +99,15 @@ public class ClubGUI {
         JButton selMatchButton = new JButton("Select Match");
         selMatchButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		game.LaunchMatchSelectionGUI(team, game, player);
+        		if (isMatchSelectCreated) {
+        			matchSelectionGUI.frmMatchSelect.setVisible(true);
+        			frmClub.setVisible(false);
+        		}
+        		else {
+            		matchSelectionGUI = game.LaunchMatchSelectionGUI(team, game, player, frmClub);
+            		frmClub.setVisible(false);
+            		isMatchSelectCreated = true;
+        		}
         	}
         });
         selMatchButton.setFont(new Font("Dialog", Font.BOLD, 14));
