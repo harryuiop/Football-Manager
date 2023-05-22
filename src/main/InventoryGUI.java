@@ -93,7 +93,7 @@ public class InventoryGUI {
 		
 		JLabel itemSaleText = new JLabel("");
 		itemSaleText.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
-		itemSaleText.setBounds(411, 8, 235, 29);
+		itemSaleText.setBounds(411, 6, 235, 29);
 		frmInventory.getContentPane().add(itemSaleText);
 		
 		

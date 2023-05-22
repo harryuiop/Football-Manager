@@ -99,7 +99,6 @@ public class AthleteSelectionGUI {
 			public void actionPerformed(ActionEvent e) {
 				
 				String nickname = textField.getText();
-				System.out.println(nickname.isBlank());
 				
 				if (team.getStartingName().size() < 4) {
 					Athlete athToBuy = athleteJList.getSelectedValue();
