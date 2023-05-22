@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 
 public class SubstituionGUI {
 
-	JFrame frame;
+	JFrame frmSubstitutions;
 	
 
 	/**
@@ -31,16 +31,17 @@ public class SubstituionGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(Team team, GameEnviroment game, Market market, Player player, SubstituionGUI gui) {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 258, 303);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmSubstitutions = new JFrame();
+		frmSubstitutions.setTitle("Substitutions");
+		frmSubstitutions.setBounds(100, 100, 258, 303);
+		frmSubstitutions.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSubstitutions.getContentPane().setLayout(null);
 		
 		
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
 		JList<Athlete> res = new JList<Athlete>(athleteListModel);
 		res.setBounds(141, 43, 100, 186);
-		frame.getContentPane().add(res);
+		frmSubstitutions.getContentPane().add(res);
 		res.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		res.setForeground(Color.DARK_GRAY);
 		res.setBackground(Color.LIGHT_GRAY);
@@ -61,8 +62,8 @@ public class SubstituionGUI {
 		DefaultListModel<Athlete> athleteListModel2 = new DefaultListModel<Athlete>();
 		JList<Athlete> start = new JList<Athlete>(athleteListModel2);
 		start.setBounds(17, 43, 100, 186);
-		frame.getContentPane().add(start);
-		frame.getContentPane().add(res);
+		frmSubstitutions.getContentPane().add(start);
+		frmSubstitutions.getContentPane().add(res);
 		start.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		start.setForeground(Color.DARK_GRAY);
 		start.setBackground(Color.LIGHT_GRAY);
@@ -86,22 +87,22 @@ public class SubstituionGUI {
 				Athlete s = start.getSelectedValue();
 				team.makeSubstituion(s, r);
 				game.LaunchClubGUI(team, game, market, player);
-				gui.frame.dispose();
+				gui.frmSubstitutions.dispose();
 				
 			}
 		});
 		confirm.setBounds(69, 241, 117, 25);
-		frame.getContentPane().add(confirm);
+		frmSubstitutions.getContentPane().add(confirm);
 		
 		JLabel Starting = new JLabel("Starting");
 		Starting.setBounds(42, 15, 61, 16);
-		frame.getContentPane().add(Starting);
+		frmSubstitutions.getContentPane().add(Starting);
 		
 		JLabel Reserves = new JLabel("Reserves");
 		Reserves.setBounds(161, 15, 72, 16);
-		frame.getContentPane().add(Reserves);
+		frmSubstitutions.getContentPane().add(Reserves);
 	}
 	public void close() {
-		this.frame.dispose();
+		this.frmSubstitutions.dispose();
 	}
 }

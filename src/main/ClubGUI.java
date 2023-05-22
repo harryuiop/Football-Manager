@@ -73,7 +73,7 @@ public class ClubGUI {
         JLabel lblWelcomeToThe = new JLabel("Welcome to the Clubroom");
         lblWelcomeToThe.setForeground(new Color(0, 0, 0));
         lblWelcomeToThe.setFont(new Font("Accanthis ADF Std No3", Font.BOLD, 15));
-        lblWelcomeToThe.setBounds(27, 122, 241, 55);
+        lblWelcomeToThe.setBounds(19, 115, 241, 55);
         frmClub.getContentPane().add(lblWelcomeToThe);
 
         
@@ -117,7 +117,7 @@ public class ClubGUI {
         
         JLabel lblCurrentWeek = new JLabel("Current Week - " + game.getCurrentWeekNum() + "/" + game.getChoosenNumWeeks());
         lblCurrentWeek.setFont(new Font("Dialog", Font.PLAIN, 12));
-        lblCurrentWeek.setBounds(12, 286, 168, 25);
+        lblCurrentWeek.setBounds(12, 294, 168, 25);
         frmClub.getContentPane().add(lblCurrentWeek);
         
 
@@ -132,7 +132,7 @@ public class ClubGUI {
         
         JLabel lblPlayerStats = new JLabel("");
         lblPlayerStats.setHorizontalAlignment(SwingConstants.CENTER);
-        lblPlayerStats.setBounds(27, 162, 233, 128);
+        lblPlayerStats.setBounds(19, 154, 233, 147);
         frmClub.getContentPane().add(lblPlayerStats);
         									
         								
@@ -140,7 +140,7 @@ public class ClubGUI {
         subToggle.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		SubstituionGUI sub = new SubstituionGUI(team, game, market, player);
-        		sub.frame.setVisible(true);
+        		sub.frmSubstitutions.setVisible(true);
         		closeClubGUI(game);
         	}
         });
@@ -266,6 +266,18 @@ public class ClubGUI {
         reserveLabel.setFont(new Font("Lucida Grande", Font.BOLD, 14));
         reserveLabel.setBounds(377, 382, 84, 25);
         frmClub.getContentPane().add(reserveLabel);
+        
+        JToggleButton inventory = new JToggleButton("Inventory");
+        inventory.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		InventoryGUI invgui = new InventoryGUI(team, game, market, player);
+        		invgui.frmInventory.setVisible(true);
+        		closeClubGUI(game);
+        	}
+        });
+        
+        inventory.setBounds(548, 358, 134, 49);
+        frmClub.getContentPane().add(inventory);
 
         JLabel background = new JLabel("");
         background.setIcon(new ImageIcon(ClubGUI.class.getResource("/main/images/clubroom.jpg")));
