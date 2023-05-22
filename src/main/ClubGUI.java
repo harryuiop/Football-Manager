@@ -207,7 +207,7 @@ public class ClubGUI {
 
         Athlete p5 = team.getReserveName().get(0);
         JButton player5 = new JButton(p5.getName(p5));
-        player5.setBounds(297, 439, 117, 29);
+        player5.setBounds(254, 420, 117, 29);
         frmClub.getContentPane().add(player5);
         player5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -221,7 +221,7 @@ public class ClubGUI {
 
         Athlete p6 = team.getReserveName().get(1);
         JButton player6 = new JButton(p6.getName(p6));
-        player6.setBounds(412, 439, 117, 29);
+        player6.setBounds(363, 420, 117, 29);
         frmClub.getContentPane().add(player6);
         player6.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -236,7 +236,7 @@ public class ClubGUI {
         Athlete p7 = team.getReserveName().get(2);
         JButton player7 = new JButton(p7.getName(p7));
         frmClub.getContentPane().add(player7);
-        player7.setBounds(297, 409, 117, 29);
+        player7.setBounds(254, 386, 117, 29);
         player7.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	lblPlayerStats.setText(p7.printForSelection());
@@ -249,7 +249,7 @@ public class ClubGUI {
         
         Athlete p8 = team.getReserveName().get(3);
         JButton player8 = new JButton(p8.getName(p8));
-        player8.setBounds(412, 409, 117, 29);
+        player8.setBounds(363, 386, 117, 29);
         frmClub.getContentPane().add(player8);
         player8.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -264,7 +264,7 @@ public class ClubGUI {
         JLabel reserveLabel = new JLabel("Reserves");
         reserveLabel.setForeground(Color.WHITE);
         reserveLabel.setFont(new Font("Lucida Grande", Font.BOLD, 14));
-        reserveLabel.setBounds(377, 382, 84, 25);
+        reserveLabel.setBounds(335, 360, 84, 25);
         frmClub.getContentPane().add(reserveLabel);
         
         JToggleButton inventory = new JToggleButton("Inventory");

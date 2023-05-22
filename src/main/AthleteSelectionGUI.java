@@ -46,9 +46,9 @@ public class AthleteSelectionGUI {
 		
 		JLabel displayerInfo = new JLabel();
 		displayerInfo.setForeground(Color.BLACK);
-		displayerInfo.setBackground(new Color(255, 255, 255));
+		displayerInfo.setBackground(Color.GRAY);
 		displayerInfo.setFont(new Font("Lucida Grande", Font.BOLD, 20));
-		displayerInfo.setBounds(174, 12, 221, 237);
+		displayerInfo.setBounds(179, 12, 232, 261);
 		frmAthleteSelection.getContentPane().add(displayerInfo);
 		
 		textField = new JTextField();
@@ -140,6 +140,12 @@ public class AthleteSelectionGUI {
 		
 		btnPurchase.setBounds(18, 433, 117, 25);
 		frmAthleteSelection.getContentPane().add(btnPurchase);
+		
+		JList list = new JList();
+		list.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		list.setBackground(Color.LIGHT_GRAY);
+		list.setBounds(174, 12, 221, 261);
+		frmAthleteSelection.getContentPane().add(list);
 		
 		
 		
