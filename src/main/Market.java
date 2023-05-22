@@ -11,8 +11,8 @@ public class Market {
 	private ArrayList<Item> unseenItems = new ArrayList<Item>();
 	
 	private ArrayList<Athlete> wavierList = new ArrayList<Athlete>();
-	private ArrayList<Athlete> unSeenPlayers = new ArrayList<Athlete>();
-	private ArrayList<Athlete> seenPlayers = new ArrayList<Athlete>();
+	public ArrayList<Athlete> unSeenPlayers = new ArrayList<Athlete>();
+	public ArrayList<Athlete> seenPlayers = new ArrayList<Athlete>();
 	
 	Scanner scanner2 = new  Scanner(System.in);
 
@@ -36,25 +36,29 @@ public class Market {
 	public void addItemToUnseenItems(Item item) {
 		unseenItems.add(item);
 	}
+	
+	public void addPlayersToUnseenPlayers(Athlete ath) {
+		unSeenPlayers.add(ath);
+	}
 	 
 	
 	/**
 	 * adds athlete to wavierList being called from Athlete Class
-	 * @param athlete
+	 * @param athlete 
 	 */
 	public void initalWavier(PotentialPlayers potentialplayers) {
 		
-		ArrayList<Athlete> unSeenPlayers = potentialplayers.getAllPlayers();
-
+		unSeenPlayers = potentialplayers.getAllPlayers(); // pulls all the randomly generated players from potentialplayers class
+		
 		int counter = 0;
 		while (counter < 20) {
 			int nextPlayer = rand.nextInt(0, unSeenPlayers.size());
 			Athlete chooseAth = unSeenPlayers.get(nextPlayer);
-			unSeenPlayers.remove(chooseAth);
 			wavierList.add(chooseAth);
+			unSeenPlayers.remove(chooseAth);
 			counter++;
 			}
-			
+		
 		}
 	
 	/**
@@ -62,17 +66,20 @@ public class Market {
 	 */
 	public void rotateWavier() {
 		
-		if (unSeenPlayers.size() < 3) {
+
+		if (unSeenPlayers.size() < 12) {
 			for(Athlete ath: seenPlayers) {
 				unSeenPlayers.add(ath);
 				seenPlayers.remove(ath);
 			}
 		}
 		
+		
 		wavierList.clear();
 		
 		int counter = 0;
-		while (counter < 3) {
+
+		while (counter < 12) {
 			if (unSeenPlayers.size() > 0) {
 				int nextPlayer = rand.nextInt(0, unSeenPlayers.size());
 				Athlete choosenPlayer = unSeenPlayers.get(nextPlayer);
@@ -84,24 +91,6 @@ public class Market {
 			}
 		}
 	}
-	
-	
-	
-	
-	/**
-	 * This method will get called once at the start of the program to set the first market rotation
-	 */
-	public void initalMarketItems() {
-		int counter = 0;
-		while (counter < 3) {
-			int nextItem = rand.nextInt(0, unseenItems.size());
-			Item choosenItem = unseenItems.get(nextItem);
-			catalog.add(choosenItem);
-			unseenItems.remove(choosenItem);
-			counter++;
-		}
-	}
-	
 	
 	/**
 	 * This method can be called at any time in order to change the items in the market
@@ -132,56 +121,22 @@ public class Market {
 	}
 	
 	
-	
-	
 	/**
-	 * this method will rotate the market and print it out for the users
+	 * This method will get called once at the start of the program to set the first market rotation
 	 */
-	public void goToMarket(Player player) {
-		rotateMarketItems();
-
-		int itemInput = scanner.nextInt();
-		if (itemInput == 0) {
-			return;
-		} else {
-
-			if (itemInput > catalog.size()) {
-				System.out.println("Please pick a valid number");
-				itemInput = scanner.nextInt();
-			} 	
-			player.setMoneyBalance(player.getMoneyBalance() - (catalog.get(itemInput - 1)).getItemPrice());
-			
-			while (catalog.size() > 0) {
-			
-			player.addItemToInventory(catalog.get(itemInput - 1));
-			catalog.remove(catalog.get(itemInput - 1));
-			
-			System.out.println("\n\tTo purchase an item, enter it's numer or 0 to exit");
-			System.out.println("\tYour balance is: $" + player.getMoneyBalance());
-			itemInput = scanner.nextInt();
-			
-			if (itemInput > catalog.size()) {
-				System.out.println("Please pick a valid number");
-				itemInput = scanner.nextInt();
-			} 
-			
-			if (catalog.size() == 1) {
-				System.out.println("\n\tThe market is now empty\n");
-				player.setMoneyBalance(player.getMoneyBalance() - (catalog.get(itemInput - 1)).getItemPrice());
-				return;
-			}	
-			
-			if (itemInput == 0) {
-				return;
-			}
-			
-			
-			player.setMoneyBalance(player.getMoneyBalance() - (catalog.get(itemInput - 1)).getItemPrice());
-
-			
-			}
+	public void initalMarketItems() {
+		int counter = 0;
+		while (counter < 3) {
+			int nextItem = rand.nextInt(0, unseenItems.size());
+			Item choosenItem = unseenItems.get(nextItem);
+			catalog.add(choosenItem);
+			unseenItems.remove(choosenItem);
+			counter++;
 		}
 	}
+	
+	
+
 	
 	
 	/**

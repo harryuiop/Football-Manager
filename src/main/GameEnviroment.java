@@ -79,8 +79,13 @@ public class GameEnviroment {
 		 poplayers.createPlayers(game.chosenNumWeeks); // calls the method to create the players
 		 setPlayersStartBalance(game, player); // sets the players start balance with respect to difficulty 
 		 poplayers.getAllPlayers(); // makes the method add players to waiver list accessible 
+		 
 		 market.initalWavier(poplayers); // creates the waiver list by adding from potential players to waiver list
+
+		 
 		 market.createItems(); 
+
+	
 		 
 		 AthleteSelectionGUI athsel = new AthleteSelectionGUI(team, game, market, player);
 		 athsel.frmAthleteSelection.setVisible(true);
