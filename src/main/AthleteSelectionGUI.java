@@ -51,6 +51,11 @@ public class AthleteSelectionGUI {
 		displayerInfo.setBounds(179, 12, 232, 261);
 		frmAthleteSelection.getContentPane().add(displayerInfo);
 		
+		JLabel lblPlayerCondition = new JLabel("");
+		lblPlayerCondition.setBounds(179, 328, 216, 67);
+		frmAthleteSelection.getContentPane().add(lblPlayerCondition);
+		
+		
 		textField = new JTextField();
 		textField.setBackground(Color.LIGHT_GRAY);
 		textField.setBounds(149, 436, 114, 19);
@@ -98,9 +103,15 @@ public class AthleteSelectionGUI {
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String nickname = textField.getText();
+				lblPlayerCondition.setText("");
+				lblCurrentTeam.setText("");
 				
-				if (team.getStartingName().size() < 4) {
+				String nickname = textField.getText();
+				if (athleteJList.getSelectedValue() == null){
+					lblPlayerCondition.setText("Please Select a player for purchase");
+				}
+				
+				else if (team.getStartingName().size() < 4) {
 					Athlete athToBuy = athleteJList.getSelectedValue();
 					market.BuyPlayerAndMoneyUpdater(player, athToBuy, team, false);
 					athleteListModel.removeElement(athToBuy);
@@ -132,7 +143,7 @@ public class AthleteSelectionGUI {
 					
 					} 
 					
-				}
+				} 
 			}
 		});
 		
