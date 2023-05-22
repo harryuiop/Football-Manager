@@ -2,14 +2,12 @@
 	-	implement: second half of match
 	-	implement: end game screen
 	-	imlpement: random events
-	-	implement: the inventory 
 	-	implement: interface to meet the design approach specification 
 	-	bug fix: market rotation to work after week one
-	-	bug fix: whiteboard text formatting
 	-	bug fix: athlete selection bug
 	- 	bug fix: nicknames
 	-	bug fix: abality to start game without selecting a difficulty
-	-	bug fix: Items need to dissapear after bought
+	-	bug fix: Items need to dissapear after bought from the market
 	
 
     
