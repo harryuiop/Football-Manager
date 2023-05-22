@@ -40,7 +40,6 @@ public class MatchSelectionGUI{
 		lblMatchSelection.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMatchSelection.setBounds(215, 24, 252, 71);
 		frmMatchSelect.getContentPane().add(lblMatchSelection);
-		
 		JLabel lblSelectIndicator = new JLabel("");
 		lblSelectIndicator.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectIndicator.setBounds(35, 338, 605, 42);
