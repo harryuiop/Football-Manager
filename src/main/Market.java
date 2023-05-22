@@ -77,7 +77,7 @@ public class Market {
 				int nextPlayer = rand.nextInt(0, unSeenPlayers.size());
 				Athlete choosenPlayer = unSeenPlayers.get(nextPlayer);
 				wavierList.add(choosenPlayer);
-				unseenItems.remove(choosenPlayer);
+				unSeenPlayers.remove(choosenPlayer);
 				counter++;
 				} else {
 					counter++;					
