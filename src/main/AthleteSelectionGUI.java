@@ -27,6 +27,7 @@ public class AthleteSelectionGUI {
 	JFrame frmAthleteSelection;
 	private JTextField textField;
 
+	
 	/**
 	 * Create the application.
 	 */
@@ -34,6 +35,7 @@ public class AthleteSelectionGUI {
 		initialize(team, game, this, market, player);
 	}
 
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -44,12 +46,14 @@ public class AthleteSelectionGUI {
 		frmAthleteSelection.setTitle("Athlete Selection");
 		frmAthleteSelection.getContentPane().setLayout(null);
 		
+		
 		JLabel displayerInfo = new JLabel();
 		displayerInfo.setForeground(Color.BLACK);
 		displayerInfo.setBackground(Color.GRAY);
 		displayerInfo.setFont(new Font("Lucida Grande", Font.BOLD, 20));
 		displayerInfo.setBounds(179, 12, 232, 261);
 		frmAthleteSelection.getContentPane().add(displayerInfo);
+		
 		
 		JLabel lblPlayerCondition = new JLabel("");
 		lblPlayerCondition.setBounds(179, 328, 216, 67);
@@ -61,6 +65,7 @@ public class AthleteSelectionGUI {
 		textField.setBounds(149, 436, 114, 19);
 		frmAthleteSelection.getContentPane().add(textField);
 		textField.setColumns(10);
+		
 		
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
 		JList<Athlete> athleteJList = new JList<Athlete>(athleteListModel);
@@ -77,6 +82,7 @@ public class AthleteSelectionGUI {
 			}
 		});
 		
+		
 		athleteListModel.addAll(market.getWavierList());
 		athleteJList.setFont(new Font("Dialog", Font.BOLD, 15));
 		athleteJList.setBounds(18, 12, 144, 414);
@@ -87,6 +93,7 @@ public class AthleteSelectionGUI {
 		frmAthleteSelection.getContentPane().add(balance);
 		String balAsStr = "$" + player.getMoneyBalance();
 		balance.setText(balAsStr);
+		
 		
 		JLabel lblOptionallyAddNickname = new JLabel("Optionally add nickname");
 		lblOptionallyAddNickname.setBounds(270, 438, 181, 15);
@@ -150,6 +157,7 @@ public class AthleteSelectionGUI {
 		
 		btnPurchase.setBounds(18, 433, 117, 25);
 		frmAthleteSelection.getContentPane().add(btnPurchase);
+		
 		
 		JList list = new JList();
 		list.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
