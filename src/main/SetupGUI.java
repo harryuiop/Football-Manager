@@ -86,17 +86,19 @@ public class SetupGUI{
 				boolean isvalid = false;	
 				isvalid = game.chooseTeamName(team, name);
 				if (isvalid) {
-		            team.setName(name);
-		            lblNewLabel.setText("Name Updated");
-		            lblNewLabel.setForeground(new Color(0, 200, 0));
-		            lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		            
 		        } else {
 		            lblNewLabel.setForeground(new Color(139, 0, 0));
 		            lblNewLabel.setText("Must be 3-15 characters and not contain special characters");
 		        }
 				
-				if (isvalid == true && (game.getDifficulty() == 1 | game.getDifficulty() == 0)) {
+				System.out.println(game.getDifficulty());
+				
+				if (isvalid == true && game.getDifficulty() == 1 | game.getDifficulty() == 2) {
 					game.closeSetupGUI(team, game, setup, market, poplayers, player);
+				} else if (game.getDifficulty() == 0) {
+					lblNewLabel.setForeground(new Color(139, 0, 0));
+					lblNewLabel.setText("Choose a difficulty");
 				}
 				
 			}
@@ -141,20 +143,18 @@ public class SetupGUI{
         lblNewLabel_2.setBounds(6, 0, 600, 372);
         frmSetupGUI.getContentPane().add(lblNewLabel_2);
         
-       
-        
-        
+      
         tglbtnNewToggleButton.addActionListener(e -> {
+        	game.setDifficulty(1);
             if (tglbtnPro.isSelected()) {
             	tglbtnNewToggleButton.setSelected(false);
-            	game.setDifficulty(1);
             	
             }
         });
         tglbtnPro.addActionListener(e -> {
+        	game.setDifficulty(2);
             if (tglbtnNewToggleButton.isSelected()) {
             	tglbtnPro.setSelected(false);
-            	game.setDifficulty(2);
             }
         });
 		

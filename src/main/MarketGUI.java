@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ListModel;
+import javax.swing.ImageIcon;
 
 public class MarketGUI {
 
@@ -202,6 +203,7 @@ public class MarketGUI {
 						lblSuccessPurchase.setText(athToBuy.getName(athToBuy) + " and the item " + itemToBuy.getName() + " have been added");
 						athleteListModel.removeElement(athToBuy);
 						lblAvailableMoney.setText("Available Money: $" + player.getMoneyBalance());
+						
 					}
 
 
@@ -311,7 +313,7 @@ public class MarketGUI {
 				
 			}
 		});
-		btnClear.setBounds(160, 645, 149, 25);
+		btnClear.setBounds(128, 645, 149, 25);
 		frmTheMarket.getContentPane().add(btnClear);
 		
 		JLabel lblSellplayer = new JLabel("Sell:");

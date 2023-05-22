@@ -56,7 +56,6 @@ public class Team {
 			athleteToSubObject = athleteToSub;
 			
 		} else {
-			System.out.println("No such athlete exists, please check your spelling");
 		}
 		
 		if (startingNames.contains(athleteToPlay)) {
@@ -66,7 +65,6 @@ public class Team {
 			athleteToPlayObject = athleteToPlay;
 			
 		} else {
-			System.out.println("No such athlete exists, please check your spelling");
 		}
 
 		if (startingNames.contains(athleteToSubObject)) {
