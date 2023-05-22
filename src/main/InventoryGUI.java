@@ -38,12 +38,14 @@ public class InventoryGUI {
 		
 		
 		JLabel itemInfo = new JLabel("");
-		itemInfo.setBounds(139, 6, 146, 264);
+		itemInfo.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		itemInfo.setBounds(453, -41, 200, 264);
 		frmInventory.getContentPane().add(itemInfo);
 		
 		
 		JLabel playerStats = new JLabel("");
-		playerStats.setBounds(433, 6, 200, 223);
+		playerStats.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		playerStats.setBounds(142, 24, 200, 223);
 		frmInventory.getContentPane().add(playerStats);
 		
 		
@@ -51,12 +53,15 @@ public class InventoryGUI {
 		JList itemJlist = new JList(items);
 		itemJlist.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
-            	itemInfo.setText(itemJlist.getSelectedValue() + "");
+				Item item = (Item) itemJlist.getSelectedValue();
+				if (item != null) {
+					itemInfo.setText(item.printForSelection());
 			}
-		});
+		}		
+	});
 		
 		
-		itemJlist.setBounds(6, 6, 124, 264);
+		itemJlist.setBounds(317, 36, 124, 234);
 		frmInventory.getContentPane().add(itemJlist);
 		itemJlist.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		itemJlist.setForeground(Color.DARK_GRAY);
@@ -68,12 +73,15 @@ public class InventoryGUI {
 		JList playerJlist = new JList(athletes);
 		playerJlist.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
-            	playerStats.setText(playerJlist.getSelectedValue()+ "");
+				Athlete choosen = (Athlete) playerJlist.getSelectedValue();
+				if (choosen != null) {
+					playerStats.setText(choosen.printForSelection());
 			}
-		});
+		}
+	});
 		
 		
-		playerJlist.setBounds(297, 6, 124, 264);
+		playerJlist.setBounds(6, 36, 124, 234);
 		frmInventory.getContentPane().add(playerJlist);
 		playerJlist.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		playerJlist.setForeground(Color.DARK_GRAY);
@@ -83,17 +91,74 @@ public class InventoryGUI {
 		playerJlist.setFont(new Font("Dialog", Font.BOLD, 15));
 		
 		
+		JLabel itemSaleText = new JLabel("");
+		itemSaleText.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		itemSaleText.setBounds(411, 8, 235, 29);
+		frmInventory.getContentPane().add(itemSaleText);
+		
+		
+		JButton sellButton = new JButton("Sell Item");
+		sellButton.setBounds(546, 202, 100, 29);
+		frmInventory.getContentPane().add(sellButton);
+		sellButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Item item = (Item) itemJlist.getSelectedValue();
+				if (item != null) {
+					player.sellItem(item, items.indexOf(item));
+					items.clear();
+					items.addAll(player.getInventory());
+					itemInfo.setText("");
+					itemSaleText.setText("You have sold " + item.getName() + " For $" + item.getSellBackPriceprivate());
+					
+				}
+			}
+		});
+		
+		
 		JButton applyButton = new JButton("Apply");
 		applyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				game.LaunchClubGUI(team, game, market, player);
-				gui.frmInventory.dispose();
+				Athlete choosen = (Athlete) playerJlist.getSelectedValue();
+				Item item = (Item) itemJlist.getSelectedValue();
+				if (item != null && choosen != null) {
+					player.useItem(choosen, item);
+					player.removeItem(items.indexOf(item));
+					game.LaunchClubGUI(team, game, market, player);
+					close();
+				} else {
+					
+				}
 			}
 		});
 		applyButton.setBounds(546, 241, 100, 29);
 		frmInventory.getContentPane().add(applyButton);
 		
-	}
+	
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				game.LaunchClubGUI(team, game, market, player);
+				close();		
+			}
+		});
+		btnBack.setBounds(443, 241, 100, 29);
+		frmInventory.getContentPane().add(btnBack);
+		
+		JLabel lblPlayers = new JLabel("Players");
+		lblPlayers.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblPlayers.setBounds(39, 8, 61, 16);
+		frmInventory.getContentPane().add(lblPlayers);
+		
+		JLabel lblNewLabel = new JLabel("Items");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		lblNewLabel.setBounds(357, 8, 61, 16);
+		frmInventory.getContentPane().add(lblNewLabel);
+		
+
+		
+		
+}
 	
 	public void close() {
 		this.frmInventory.dispose();

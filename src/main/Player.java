@@ -19,7 +19,12 @@ public class Player {
 		inventory.add(item);
 		System.out.println("\nYou have purchased " + item.getName() + " and it has been added to your inventory");
 	}
-
+	
+	public void sellItem(Item item, int index) {
+		int price = item.getSellBackPriceprivate();
+		setMoneyBalance(getMoneyBalance() + price); 
+		removeItem(index);
+	}
 	
 	/**
 	 * all necessary setters and getters to the class
@@ -37,6 +42,8 @@ public class Player {
 	public void setMoneyBalance(int moneyBalance) {
 		this.moneyBalance = moneyBalance;
 	}
-	
+	public void removeItem(int index) {
+		this.inventory.remove(index);
+	}
 	
 }

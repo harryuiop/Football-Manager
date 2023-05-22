@@ -137,6 +137,7 @@ public class ClubGUI {
         									
         								
         JToggleButton subToggle = new JToggleButton("Substitution");
+        subToggle.setFont(new Font("Lucida Grande", Font.BOLD, 13));
         subToggle.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		SubstituionGUI sub = new SubstituionGUI(team, game, market, player);
@@ -268,6 +269,7 @@ public class ClubGUI {
         frmClub.getContentPane().add(reserveLabel);
         
         JToggleButton inventory = new JToggleButton("Inventory");
+        inventory.setFont(new Font("Lucida Grande", Font.BOLD, 13));
         inventory.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		InventoryGUI invgui = new InventoryGUI(team, game, market, player);
