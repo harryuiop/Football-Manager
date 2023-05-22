@@ -24,13 +24,13 @@ public class SubstituionGUI {
 	 * Create the application.
 	 */
 	public SubstituionGUI(Team team, GameEnviroment game, Market market, Player player) {
-		initialize(team, game, market, player);
+		initialize(team, game, market, player, this);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Team team, GameEnviroment game, Market market, Player player) {
+	private void initialize(Team team, GameEnviroment game, Market market, Player player, SubstituionGUI gui) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 258, 303);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,6 +86,7 @@ public class SubstituionGUI {
 				Athlete s = start.getSelectedValue();
 				team.makeSubstituion(s, r);
 				game.LaunchClubGUI(team, game, market, player);
+				gui.frame.dispose();
 				
 			}
 		});
