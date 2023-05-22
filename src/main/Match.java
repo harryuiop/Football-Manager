@@ -1,5 +1,6 @@
 package main;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Match {
 	
@@ -12,6 +13,10 @@ public class Match {
 	private int playersScore;
 	
 	
+	Match(){
+		opposingScore = 0;
+		playersScore = 0;
+	}
 	/**
 	 * The Main game-loop: Works by each players' starting athlete facing the opponents opposite and a 'point' is gained when 
 	 * an attackers offence stat is greater than a defenders defence stat
@@ -21,53 +26,93 @@ public class Match {
 	 * @param opponent
 	 * @return
 	 */
-	public String matchPlay(GameEnviroment game, Player player, Team team, ArrayList<Athlete> opponent){
-		String matchResult;
+	public String matchUp(GameEnviroment game, Player player, Team team, Athlete playersAth, Athlete oppsAth, String inPossesion){
+		Random statRange = new Random();
+		String matchUpResult = "Win";
 		
-		setPlayersScore(0);
-		setOpposingScore(0);
+		int playerOffStat = playersAth.getOffence();
+		int oppOffStat = oppsAth.getOffence();
 		
-		for(int i = 0; i < 5; i++){
-			Athlete opponentMatchUp = opponent.get(i);
-			Athlete playerMatchUp = team.getStartingName().get(i);
+		int playerDefStat = playersAth.getDefence();
+		int oppDefStat = playersAth.getDefence();
+		
+		int playerStat = statRange.nextInt(0,10);
+		int playerPlusOrMinus = statRange.nextInt(0,1);
+		
+		int opponentStat = statRange.nextInt(0,10);
+		int opponentPlusOrMinus = statRange.nextInt(0,1);
+		
 
-			System.out.println(playerMatchUp.getName(playerMatchUp) + " is facing " + opponentMatchUp.getName(opponentMatchUp));
-			if (i < 2){
-				if (playerMatchUp.getOffence() > opponentMatchUp.getDefence()){
-					playersScore++;
-					System.out.println("You have scored!\nScore " + playersScore + ":" + opposingScore + "\n");
-
-				} else {
-					System.out.println("You have failed to score\n" + playerMatchUp.getName(playerMatchUp) + "has lost stamina\n");
-					playerMatchUp.setStamina(playerMatchUp.getStamina() - 10);
+		
+		
+		switch(inPossesion) {
+			case "player":
+				
+				switch(playerPlusOrMinus) {
+				case 0:
+					playerOffStat += playerStat;
+					break;
+				case 1:
+					playerOffStat -= playerStat;
+					break;
 				}
-			} else {
-				if (playerMatchUp.getDefence() > opponentMatchUp.getOffence()){
-					System.out.println("You have successfully defended.\n");
-				} else {
-					opposingScore++;
-					System.out.println("You have been scored on\nScore " + playersScore + ":" + opposingScore + "\n" + playerMatchUp.getName(playerMatchUp) + "has lost stamina\n");
-					playerMatchUp.setStamina(playerMatchUp.getStamina() - 10);
-
+				
+				switch(opponentPlusOrMinus) {
+				case 0:
+					oppDefStat += opponentStat;
+					break;
+				case 1:
+					oppDefStat -= opponentStat;
+					break;
 				}
-			}
-
+				
+				if (playerOffStat > oppDefStat) {
+					setPlayersScore(getPlayersScore()+1);
+					matchUpResult = "Won";
+				}
+				else if (playerOffStat < oppDefStat) {
+					matchUpResult = "Lost";
+				}
+				else {
+					matchUpResult = "Draw";
+				}
+				break;
+			case "opp":
+				
+				switch(playerPlusOrMinus) {
+				case 0:
+					playerDefStat += playerStat;
+					break;
+				case 1:
+					playerDefStat -= playerStat;
+					break;
+				}
+				
+				switch(opponentPlusOrMinus) {
+				case 0:
+					oppOffStat += opponentStat;
+					break;
+				case 1:
+					oppOffStat -= opponentStat;
+					break;
+				}
+				
+				if (playerDefStat > oppOffStat) {
+					matchUpResult = "Won";
+				}
+				else if (playerDefStat < oppOffStat){
+					setOpposingScore(getOpposingScore()+1);
+					matchUpResult = "Lost";
+				}
+				else {
+					matchUpResult = "Draw";
+				}
+				break;
+				
 		}
-		
-		for(Athlete ath: team.getStartingName()) {
-			ath.setStamina(ath.getStamina() - 10);
-		}
-		
-		if(playersScore > opposingScore){
-			matchResult = "You Win";
-		} else if(playersScore < opposingScore){
-			matchResult = "You Lose";
-		} else {
-			matchResult = "Draw";
-		}
-		
-		return matchResult;
+		return matchUpResult;
 	}
+	
 	
 	/**
 	 * all necessary setters and getters to the class

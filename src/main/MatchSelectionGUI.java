@@ -11,22 +11,24 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class MatchSelectionGUI {
+public class MatchSelectionGUI{
 
 	JFrame frmMatchSelect;
 	private ArrayList<Athlete> opposingTeam;
 
+
+
 	/**
 	 * Create the application.
 	 */
-	public MatchSelectionGUI(Team team, GameEnviroment game, Player player, JFrame frmClub) {
-		initialize(team, game, player, frmClub, this);
+	public MatchSelectionGUI(Team team, GameEnviroment game, Market market, Player player, JFrame frmClub) {
+		initialize(team, game, market, player, frmClub, this);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Team team, GameEnviroment game, Player player, JFrame frmClub, MatchSelectionGUI matchSelectionGUI) {
+	private void initialize(Team team, GameEnviroment game, Market market, Player player, JFrame frmClub, MatchSelectionGUI matchSelectionGUI) {
 		frmMatchSelect = new JFrame();
 		frmMatchSelect.setTitle("Match Selection");
 		frmMatchSelect.setBounds(100, 100, 700, 500);
@@ -53,12 +55,11 @@ public class MatchSelectionGUI {
 		JButton btnTeam3 = new JButton("teamThree");
 		
 
-		
 
 		btnTeam1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				opposingTeam = oppositionGenerator.createOpposingTeam(game, 1);
-				game.LaunchMatchGUI(team, game, player, opposingTeam, frmMatchSelect);
+				game.LaunchMatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
 				btnTeam1.setEnabled(false);
 				frmMatchSelect.setVisible(false);
 				btnBye.setEnabled(false);
@@ -71,7 +72,7 @@ public class MatchSelectionGUI {
 		btnTeam2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				opposingTeam = oppositionGenerator.createOpposingTeam(game, 2);
-				game.LaunchMatchGUI(team, game, player, opposingTeam, frmMatchSelect);
+				game.LaunchMatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
 				btnTeam2.setEnabled(false);
 				frmMatchSelect.setVisible(false);
 				btnBye.setEnabled(false);
@@ -84,7 +85,7 @@ public class MatchSelectionGUI {
 		btnTeam3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				opposingTeam = oppositionGenerator.createOpposingTeam(game, 3);
-				game.LaunchMatchGUI(team, game, player, opposingTeam, frmMatchSelect);
+				game.LaunchMatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
 				btnTeam3.setEnabled(false);
 				frmMatchSelect.setVisible(false);
 				btnBye.setEnabled(false);
@@ -108,7 +109,7 @@ public class MatchSelectionGUI {
 				lblByeIndicator.setText("Athlete Stamina Replenished! Proceed to the Next Week");;
 			}
 		});
-		btnBye.setBounds(486, 427, 89, 23);
+		btnBye.setBounds(449, 427, 109, 23);
 		frmMatchSelect.getContentPane().add(btnBye);
 		
 		JLabel lblNewLabel = new JLabel("Select your opponent:");
@@ -120,13 +121,13 @@ public class MatchSelectionGUI {
 		lblGame1.setBounds(81, 297, 74, 14);
 		frmMatchSelect.getContentPane().add(lblGame1);
 		
-		JLabel lblGame1_1 = new JLabel("Match Result");
-		lblGame1_1.setBounds(307, 297, 74, 14);
-		frmMatchSelect.getContentPane().add(lblGame1_1);
+		JLabel lblGame2 = new JLabel("Match Result");
+		lblGame2.setBounds(307, 297, 74, 14);
+		frmMatchSelect.getContentPane().add(lblGame2);
 		
-		JLabel lblGame1_2 = new JLabel("Match Result");
-		lblGame1_2.setBounds(532, 297, 74, 14);
-		frmMatchSelect.getContentPane().add(lblGame1_2);
+		JLabel lblGame3 = new JLabel("Match Result");
+		lblGame3.setBounds(532, 297, 74, 14);
+		frmMatchSelect.getContentPane().add(lblGame3);
 		
 		JButton btnBackClub = new JButton("Back to Club");
 		btnBackClub.addActionListener(new ActionListener() {
@@ -140,10 +141,22 @@ public class MatchSelectionGUI {
 		frmMatchSelect.getContentPane().add(btnBackClub);
 		
 		JButton btnNextWeek = new JButton("Next Week");
-		btnNextWeek.setBounds(585, 427, 89, 23);
+		btnNextWeek.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (game.getCurrentWeekNum() <= game.getChoosenNumWeeks()) {
+					game.setCurrentWeekNum(game.getCurrentWeekNum() + 1);
+					frmClub.dispose();
+					game.LaunchClubGUI(team, game, market, player);
+					market.rotateWavier();
+					market.rotateMarketItems();
+					frmMatchSelect.dispose();
+				}
+				
+			}
+		});
+		btnNextWeek.setBounds(564, 427, 110, 23);
 		frmMatchSelect.getContentPane().add(btnNextWeek);
 		
-		
-
 	}
+
 }

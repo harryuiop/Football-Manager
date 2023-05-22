@@ -104,7 +104,7 @@ public class ClubGUI {
         			frmClub.setVisible(false);
         		}
         		else {
-            		matchSelectionGUI = game.LaunchMatchSelectionGUI(team, game, player, frmClub);
+            		matchSelectionGUI = game.LaunchMatchSelectionGUI(team, game, market, player, frmClub);
             		frmClub.setVisible(false);
             		isMatchSelectCreated = true;
         		}

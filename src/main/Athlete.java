@@ -12,6 +12,7 @@ public class Athlete {
 	private int sellBackPrice;
 	private String description;
 	private int rarity;
+	private boolean injuryStatus;
 	
 	
 	/**
@@ -32,6 +33,7 @@ public class Athlete {
 		this.sellBackPrice = generatePlayerSbPrice(contractPrice);
 		this.description = generateDescription(defence, offence, name);
 		this.rarity = rarity;
+		this.injuryStatus = false;
 	}
 	
 	
@@ -146,7 +148,13 @@ public class Athlete {
 		this.name = name;
 	}
 
+	public boolean getInjuryStatus() {
+		return injuryStatus;
+	}
 	
+	public void setInjuryStatus(Boolean status) {
+		this.injuryStatus = status;
+	}
 }
 
 	

@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
@@ -11,24 +12,26 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class MatchGUI {
+public class MatchGUI{
 
 	JFrame frmMatch;
-	
+	private int buttonPressCount;
 
 
 	/**
 	 * Create the application.
 	 */
-	public MatchGUI(Team team, GameEnviroment game, Player player, ArrayList<Athlete> opposingTeam, JFrame matchSelectionGUI) {
+	public MatchGUI(Team team, GameEnviroment game, Player player, ArrayList<Athlete> opposingTeam, MatchSelectionGUI matchSelectionGUI) {
+		this.buttonPressCount = 0;
 		initialize(team, game, player, opposingTeam, matchSelectionGUI, this);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Team team, GameEnviroment game, Player player, ArrayList<Athlete> opposingTeam, JFrame matchSelectionGUI, MatchGUI matchGUI) {
+	private void initialize(Team team, GameEnviroment game, Player player, ArrayList<Athlete> opposingTeam, MatchSelectionGUI matchSelectionGUI, MatchGUI matchGUI) {
 		Match match = new Match();
+		
 		
 		frmMatch = new JFrame();
 		frmMatch.setTitle("Match");
@@ -39,7 +42,7 @@ public class MatchGUI {
 		JLabel lblScore = new JLabel("0-0");
 		lblScore.setFont(new Font("Tahoma", Font.BOLD, 22));
 		lblScore.setHorizontalAlignment(SwingConstants.CENTER);
-		lblScore.setBounds(384, 87, 108, 89);
+		lblScore.setBounds(391, 11, 108, 89);
 		frmMatch.getContentPane().add(lblScore);
 		
 		JLabel lblAthlete1 = new JLabel("athlete1");
@@ -99,12 +102,33 @@ public class MatchGUI {
 		frmMatch.getContentPane().add(lblOpp4);
 		
 		
+		JLabel lblLineup1 = new JLabel("Lineup Result");
+		lblLineup1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLineup1.setBounds(347, 111, 195, 31);
+		frmMatch.getContentPane().add(lblLineup1);
+		
+		JLabel lblLineup2 = new JLabel("Lineup Result");
+		lblLineup2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLineup2.setBounds(347, 184, 195, 31);
+		frmMatch.getContentPane().add(lblLineup2);
+		
+		JLabel lblLineup3 = new JLabel("Lineup Result");
+		lblLineup3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLineup3.setBounds(347, 256, 195, 31);
+		frmMatch.getContentPane().add(lblLineup3);
+		
+		JLabel lblLineup4 = new JLabel("Lineup Result");
+		lblLineup4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLineup4.setBounds(347, 339, 195, 31);
+		frmMatch.getContentPane().add(lblLineup4);
+		
+		
 		
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmMatch.dispose();
-				matchSelectionGUI.setVisible(true);
+				matchSelectionGUI.frmMatchSelect.setVisible(true);
 			}
 		});
 		btnContinue.setBounds(785, 527, 89, 23);
@@ -114,26 +138,97 @@ public class MatchGUI {
 		JButton btnPlay = new JButton("Play");
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (team.getStartingName().get(0).getOffence() > opposingTeam.get(0).getDefence()) {
-					match.setPlayersScore(match.getPlayersScore() + 1);
+				buttonPressCount += 1;
+				switch(buttonPressCount) {
+					case 1:
+						String matchUpResult = match.matchUp(game, player, team, team.getStartingName().get(buttonPressCount - 1), opposingTeam.get(buttonPressCount - 1), "player");
+						switch(matchUpResult) {
+						case "Won":
+							lblLineup1.setText(team.getStartingName().get(buttonPressCount - 1) + " won their match up");
+							lblLineup1.setForeground(Color.green);
+							break;
+						case "Lost":
+							lblLineup1.setText(team.getStartingName().get(buttonPressCount - 1) + " lost their match up");
+							lblLineup1.setForeground(Color.red);
+							break;
+						case "Draw":
+							lblLineup1.setText(team.getStartingName().get(buttonPressCount - 1) + " drew their match up");
+							lblLineup1.setForeground(Color.gray);	
+							break;
+						}
+						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
+						break;
+					case 2:
+						matchUpResult = match.matchUp(game, player, team, team.getStartingName().get(buttonPressCount - 1), opposingTeam.get(buttonPressCount - 1), "player");
+						switch(matchUpResult) {
+						case "Won":
+							lblLineup2.setText(team.getStartingName().get(buttonPressCount - 1) + " won their match up");
+							lblLineup2.setForeground(Color.green);
+							break;
+						case "Lost":
+							lblLineup2.setText(team.getStartingName().get(buttonPressCount - 1) + " lost their match up");
+							lblLineup2.setForeground(Color.red);
+							break;
+						case "Draw":
+							lblLineup2.setText(team.getStartingName().get(buttonPressCount - 1) + " drew their match up");
+							lblLineup2.setForeground(Color.gray);
+							break;
+						}
+						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
+						break;
+						
+					case 3:
+						matchUpResult = match.matchUp(game, player, team, team.getStartingName().get(buttonPressCount - 1), opposingTeam.get(buttonPressCount - 1), "opp");
+						switch(matchUpResult) {
+						case "Won":
+							lblLineup3.setText(team.getStartingName().get(buttonPressCount - 1) + " won their match up");
+							lblLineup3.setForeground(Color.green);
+							break;
+						case "Lost":
+							lblLineup3.setText(team.getStartingName().get(buttonPressCount - 1) + " lost their match up");
+							lblLineup3.setForeground(Color.red);
+							break;
+						case "Draw":
+							lblLineup3.setText(team.getStartingName().get(buttonPressCount - 1) + " drew their match up");
+							lblLineup3.setForeground(Color.gray);
+							break;
+						}
+						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
+						break;
+						
+					case 4:
+						matchUpResult = match.matchUp(game, player, team, team.getStartingName().get(buttonPressCount - 1), opposingTeam.get(buttonPressCount - 1), "opp");
+						switch(matchUpResult) {
+						case "Won":
+							lblLineup4.setText(team.getStartingName().get(buttonPressCount - 1) + " won their match up");
+							lblLineup4.setForeground(Color.green);
+							btnPlay.setEnabled(false);
+							break;
+						case "Lost":
+							lblLineup4.setText(team.getStartingName().get(buttonPressCount - 1) + " lost their match up");
+							lblLineup4.setForeground(Color.red);
+							btnPlay.setEnabled(false);
+							break;
+						case "Draw":
+							lblLineup4.setText(team.getStartingName().get(buttonPressCount - 1) + " drew their match up");
+							lblLineup4.setForeground(Color.gray);
+							btnPlay.setEnabled(false);
+							break;
+						}
+						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
+						break;
 				}
-				if (team.getStartingName().get(1).getOffence() > opposingTeam.get(1).getDefence()) {
-					match.setPlayersScore(match.getPlayersScore() + 1);
-				}
-				if (team.getStartingName().get(2).getOffence() > opposingTeam.get(2).getDefence()) {
-					match.setPlayersScore(match.getPlayersScore() + 1);
-				}
-				if (team.getStartingName().get(3).getOffence() > opposingTeam.get(3).getDefence()) {
-					match.setPlayersScore(match.getPlayersScore() + 1);
-				}
+
+				
 				lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
-				btnPlay.setEnabled(false);
 				btnContinue.setEnabled(true);
 				
 			}
 		});
 		btnPlay.setBounds(399, 417, 89, 23);
 		frmMatch.getContentPane().add(btnPlay);
+		
+
 		
 
 		

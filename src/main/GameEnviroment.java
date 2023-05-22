@@ -16,6 +16,7 @@ public class GameEnviroment {
 	 private int currentInjuryCount;
 	 private boolean starterStatus;  //checks to see if the player has selected their starting team
 	 private int winAmount;
+	 private int weeklyWinAmount;
 	 
 	 /**
 		 * 	  creates a scanner method to invoke the Scanner Class to use user inputs
@@ -37,7 +38,11 @@ public class GameEnviroment {
 		 PotentialPlayers potentialPlayers = new PotentialPlayers(); // create an instance to the player creations
 		 Player player = new Player(); // creates instance of the player class
 		 Market market = new Market(); // creates instance of the market class
-
+		 
+		 currentWeekNum = 1;
+		 weeklyWinAmount = 0;
+		 winAmount = 0;
+		 
 		 launchSetupGUI(team, game,  market, potentialPlayers, player);
 		 
 		 //market.pickInitalTeam(market, team, player); // calls the main method for the logic behind creating the initial team
@@ -103,14 +108,14 @@ public class GameEnviroment {
 		 
 	 }
 
-	public MatchSelectionGUI LaunchMatchSelectionGUI(Team team, GameEnviroment game, Player player, JFrame frmClub) {
-		 MatchSelectionGUI matchSelect = new MatchSelectionGUI(team, game, player, frmClub);
+	public MatchSelectionGUI LaunchMatchSelectionGUI(Team team, GameEnviroment game, Market market, Player player, JFrame frmClub) {
+		 MatchSelectionGUI matchSelect = new MatchSelectionGUI(team, game, market, player, frmClub);
 		 matchSelect.frmMatchSelect.setVisible(true);
 		 return matchSelect;
 	 }
 	 
-	 public void LaunchMatchGUI(Team team, GameEnviroment game, Player player, ArrayList<Athlete> opposingTeam, JFrame matchSelect) {
-		 MatchGUI match = new MatchGUI(team, game, player, opposingTeam, matchSelect);
+	 public void LaunchMatchGUI(Team team, GameEnviroment game, Player player, ArrayList<Athlete> opposingTeam, MatchSelectionGUI matchSelectionGUI) {
+		 MatchGUI match = new MatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
 		 match.frmMatch.setVisible(true);
 	 }
 	 
@@ -138,68 +143,7 @@ public class GameEnviroment {
 	 * @param team
 	 * @param player
 	 */
-	public void matchSelection(GameEnviroment game, Team team, Player player, Market market) {
-		 
-		 PotentialPlayers opponent = new PotentialPlayers(); //creates an instance of potential players for the opposing team
-		 
-		 Match match = new Match(); //Creates a new match instance
-		 
-		 //Creates the three different teams the player can face
-		 ArrayList<Athlete> easyOpponent = opponent.createOpposingTeam(game, 1);
-		 ArrayList<Athlete> mediumOpponent = opponent.createOpposingTeam(game, 2);
-		 ArrayList<Athlete> hardOpponent = opponent.createOpposingTeam(game, 3);
-		 
-		 //Array for the available opponent; used for visual splash 
-		 ArrayList<String> opponentName = new ArrayList<String>();
-		 opponentName.add("Easy");
-		 opponentName.add("Medium");
-		 opponentName.add("Hard");
 	
-		 //Array of opponents that the player hasn't played as of yet
-		 ArrayList<ArrayList<Athlete>> opponentsLeft = new ArrayList<ArrayList<Athlete>>(); 
-		 
-		 //Adds the opponent teams to an array
-		 opponentsLeft.add(easyOpponent);
-		 opponentsLeft.add(mediumOpponent);
-		 opponentsLeft.add(hardOpponent);
-		 
-
-		 Scanner scanner3 = new Scanner(System.in);
-
-		 //Loops until the all opponents have been faced
-		 while (opponentsLeft.size() > 0) {
-			 System.out.println(matchSelectionString(game, team, player, opponentsLeft)); //Output splash of the available opponents
-			 
-			 int i = 1;
-			 for(String opp: opponentName) {
-
-				 System.out.println("\t" + i + ". " + opp);
-				 i++;
-			 }
-			 //Checks if the player has a valid input 
-			 try {
-				 
-				 int opponentSelection = scanner3.nextInt();
-				 
-				 if (opponentSelection > 0 && opponentSelection <= opponentsLeft.size()) { 
-					 String result = match.matchPlay(game, player, team, opponentsLeft.get(opponentSelection-1));
-					 System.out.println(result);
-					 opponentsLeft.remove(opponentSelection-1);
-					 opponentName.remove(opponentSelection-1);
-				 } else {
-					 throw new InputMismatchException();
-				 }
-				 
-				 }
-			 catch(InputMismatchException e) {
-				 System.out.println("Invalid input!" + "\n");
-		         scanner.nextLine();
-	        
-			 } 
-			
-		 }
-		 market.goToMarket(player);
-	 }
 	 
 		 
 	 public int askToMakeSub() {
@@ -398,6 +342,12 @@ public class GameEnviroment {
 	}
 	public void setStarterStatus() {
 		this.starterStatus = false;
+	}
+	public int getWeeklyWinAmount() {
+		return weeklyWinAmount;
+	}
+	public void setWeeklyAmount(int win) {
+		this.weeklyWinAmount = win;
 	}
 
 }
