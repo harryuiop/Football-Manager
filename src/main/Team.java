@@ -86,7 +86,6 @@ public class Team {
 			reserveNames.add(athleteToPlayObject);
 		
 		} else {
-			System.out.println("you fucked up");
 		}
 	}
 	

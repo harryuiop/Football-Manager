@@ -17,7 +17,6 @@ public class Player {
 	
 	public void addItemToInventory(Item item) {
 		inventory.add(item);
-		System.out.println("\nYou have purchased " + item.getName() + " and it has been added to your inventory");
 	}
 	
 	public void sellItem(Item item, int index) {
