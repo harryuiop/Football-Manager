@@ -165,27 +165,28 @@ public class MatchSelectionGUI{
 		JButton btnNextWeek = new JButton("Next Week");
 		btnNextWeek.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (game.getCurrentWeekNum() <= game.getChoosenNumWeeks()) {
+				if (game.getCurrentWeekNum() < game.getChoosenNumWeeks()) {
 					game.setCurrentWeekNum(game.getCurrentWeekNum() + 1);
 					frmClub.dispose();
 					game.LaunchClubGUI(team, game, market, player);
 					market.rotateWavier();
 					market.rotateMarketItems();
 					frmMatchSelect.dispose();
+					
+					// random event generation
+					int guess = random.nextInt(100);
+					if (guess > 90) {
+						int playerLeavingIndex = random.nextInt(team.getReserveName().size());
+						Athlete playerToQuit = team.getReserveName().get(playerLeavingIndex);
+						team.removeReservePlayer(playerLeavingIndex);
+						JOptionPane.showMessageDialog(frmMatchSelect, playerToQuit.getName(playerToQuit) + " has retierd from your team.");
+					}
+				}
+				else {
+					game.LaunchGameEnd(game, player);
 				}
 				
-				// random event generation
-				int guess = random.nextInt(100);
-				if (guess > 0) {
-					int playerLeavingIndex = random.nextInt(team.getReserveName().size());
-					Athlete playerToQuit = team.getReserveName().get(playerLeavingIndex);
-					team.removeReservePlayer(playerLeavingIndex);
-					JOptionPane.showMessageDialog(frmMatchSelect, playerToQuit.getName(playerToQuit) + " has retierd from your team.");
-				}
-				
-				
-				
-				
+
 				
 			}
 		});

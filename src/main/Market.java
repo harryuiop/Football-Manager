@@ -66,7 +66,6 @@ public class Market {
 	 */
 	public void rotateWavier() {
 		
-
 		if (unSeenPlayers.size() < 12) {
 			for(Athlete ath: seenPlayers) {
 				unSeenPlayers.add(ath);
@@ -87,10 +86,12 @@ public class Market {
 				unSeenPlayers.remove(choosenPlayer);
 				counter++;
 				} else {
-					counter++;					
+					counter++;
+				}
+					
 			}
 		}
-	}
+
 	
 	/**
 	 * This method can be called at any time in order to change the items in the market
@@ -118,6 +119,7 @@ public class Market {
 					counter++;					
 			}
 		}
+
 	}
 	
 	
@@ -201,6 +203,8 @@ public class Market {
 			player.setMoneyBalance(player.getMoneyBalance() - item.getItemPrice()); // updates the new bank balance 
 			
 			player.addItemToInventory(item); // adds to the startPlayers array list in the player class 
+			catalog.remove(item);
+			unseenItems.add(item);
 			return true;
 		} else {
 			return false;

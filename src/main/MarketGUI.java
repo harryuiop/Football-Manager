@@ -199,7 +199,7 @@ public class MarketGUI {
 						}
 						Item itemToBuy = itemList.getSelectedValue();
 						market.BuyItemAndMoneyUpdater(player, itemToBuy, team);
-						athleteListModel.removeElement(itemToBuy);
+						itemListModel.removeElement(itemToBuy);
 						lblSuccessPurchase.setText(athToBuy.getName(athToBuy) + " and the item " + itemToBuy.getName() + " have been added");
 						athleteListModel.removeElement(athToBuy);
 						lblAvailableMoney.setText("Available Money: $" + player.getMoneyBalance());
@@ -235,7 +235,7 @@ public class MarketGUI {
 				else if (itemList.getSelectedValue()!= null) {
 					Item itemToBuy = itemList.getSelectedValue();
 					market.BuyItemAndMoneyUpdater(player, itemToBuy, team);
-					athleteListModel.removeElement(itemToBuy);
+					itemListModel.removeElement(itemToBuy);
 					lblSuccessPurchase.setText(itemToBuy.getName() + " has been added to your inventory");
 					lblAvailableMoney.setText("Available Money: $" + player.getMoneyBalance());
 				}
