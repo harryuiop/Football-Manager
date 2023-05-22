@@ -58,7 +58,7 @@ public class Match {
 					playerOffStat -= playerStat;
 					break;
 				}
-				System.out.println(playerOffStat);
+				
 				
 				switch(opponentPlusOrMinus) {
 				case 0:
