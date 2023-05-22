@@ -73,7 +73,6 @@ public class AthleteSelectionGUI {
 				if (ath != null) {
 					displayerInfo.setText(ath.printForSelection());
 					textField.setText("");
-
 				}
 			}
 		});
@@ -120,7 +119,8 @@ public class AthleteSelectionGUI {
 					String athToStr = athToBuy.getName(athToBuy);
 					lblCurrentTeam.setText(athToStr + " has been added to your starting team");	
 					if (!nickname.isBlank()) {
-						athToBuy.setName(textField.getText());
+						athToBuy.setName(athToBuy.getName(athToBuy) + " (" + textField.getText() + ")");
+
 					}
 					if (team.getStartingName().size() == 4 && team.getReserveName().size() == 4) {
 						game.closeAthleteSelectionGUI(team, game, athsel, market, player);			
@@ -136,7 +136,7 @@ public class AthleteSelectionGUI {
 					String athToStr = athToBuy.getName(athToBuy);
 					lblCurrentTeam.setText(athToStr + " has been added to your reserves");
 					if (!nickname.isBlank()) {
-						athToBuy.setName(textField.getText());
+						athToBuy.setName(athToBuy.getName(athToBuy) + " (" + textField.getText() + ")");
 					}
 					if (team.getStartingName().size() == 4 && team.getReserveName().size() == 4) {
 						game.closeAthleteSelectionGUI(team, game, athsel, market, player);			
