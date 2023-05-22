@@ -26,6 +26,8 @@ public class Match {
 	 * @param opponent
 	 * @return
 	 */
+	
+	
 	public String matchUp(GameEnviroment game, Player player, Team team, Athlete playersAth, Athlete oppsAth, String inPossesion){
 		Random statRange = new Random();
 		String matchUpResult = "Win";
@@ -36,10 +38,10 @@ public class Match {
 		int playerDefStat = playersAth.getDefence();
 		int oppDefStat = playersAth.getDefence();
 		
-		int playerStat = statRange.nextInt(0,10);
+		int playerStat = statRange.nextInt(0,20);
 		int playerPlusOrMinus = statRange.nextInt(0,1);
 		
-		int opponentStat = statRange.nextInt(0,10);
+		int opponentStat = statRange.nextInt(0,20);
 		int opponentPlusOrMinus = statRange.nextInt(0,1);
 		
 
@@ -56,6 +58,7 @@ public class Match {
 					playerOffStat -= playerStat;
 					break;
 				}
+				System.out.println(playerOffStat);
 				
 				switch(opponentPlusOrMinus) {
 				case 0:
@@ -72,6 +75,7 @@ public class Match {
 				}
 				else if (playerOffStat < oppDefStat) {
 					matchUpResult = "Lost";
+					playersAth.setStamina(playersAth.getStamina()-10);;
 				}
 				else {
 					matchUpResult = "Draw";
@@ -102,6 +106,7 @@ public class Match {
 				}
 				else if (playerDefStat < oppOffStat){
 					setOpposingScore(getOpposingScore()+1);
+					playersAth.setStamina(playersAth.getStamina()-10);;
 					matchUpResult = "Lost";
 				}
 				else {
@@ -111,6 +116,18 @@ public class Match {
 				
 		}
 		return matchUpResult;
+	}
+	
+	public String winnerString() {
+		if (getPlayersScore() > getOpposingScore()) {
+			return "You Win: " + getPlayersScore() + "-" + getOpposingScore();
+		}
+		else if (getPlayersScore() < getOpposingScore()){
+			return "You Lose: " + getPlayersScore() + "-" + getOpposingScore();
+		}
+		else {
+			return "Draw: " + getPlayersScore() + "-" + getOpposingScore();
+		}
 	}
 	
 	

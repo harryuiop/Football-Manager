@@ -90,6 +90,24 @@ public class Team {
 		}
 	}
 	
+	public boolean teamHealthy(Team team) {
+		//checks to see if everyone in the starting team is "healthy" (stamina is > 0)
+		boolean isHealthy = true;
+		for (Athlete ath : team.getStartingName()) {
+			if (ath.getInjuryStatus() == true) {
+				isHealthy = false;
+			}
+		}
+		return isHealthy;
+	}
+	
+	public void weekPlayed(Team team) {
+		//exhausts all starting players 
+		for (Athlete ath : team.getStartingName()) {
+			ath.setStamina(ath.getStamina() - 10);
+		}
+	}
+	
 	/**
 	 * all necessary setters and getters to the class
 	 * @return

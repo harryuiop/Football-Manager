@@ -122,11 +122,18 @@ public class MatchGUI{
 		lblLineup4.setBounds(347, 339, 195, 31);
 		frmMatch.getContentPane().add(lblLineup4);
 		
+		JLabel lblWinResult = new JLabel("");
+		lblWinResult.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWinResult.setBounds(347, 405, 195, 31);
+		frmMatch.getContentPane().add(lblWinResult);
+		
 		
 		
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				player.setMoneyBalance(player.getMoneyBalance()+1000);
+				team.weekPlayed(team);
 				frmMatch.dispose();
 				matchSelectionGUI.frmMatchSelect.setVisible(true);
 			}
@@ -215,7 +222,9 @@ public class MatchGUI{
 							btnPlay.setEnabled(false);
 							break;
 						}
+						
 						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
+						lblWinResult.setText(match.winnerString());
 						break;
 				}
 
@@ -225,8 +234,9 @@ public class MatchGUI{
 				
 			}
 		});
-		btnPlay.setBounds(399, 417, 89, 23);
+		btnPlay.setBounds(399, 461, 89, 23);
 		frmMatch.getContentPane().add(btnPlay);
+		
 		
 
 		

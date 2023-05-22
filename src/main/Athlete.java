@@ -28,6 +28,7 @@ public class Athlete {
 		this.name = name;
 		this.offence = offence;
 		this.defence = defence;
+		this.stamina = 100;
 		this.position = position;
 		this.contractPrice = generatePlayerContractPrice(defence, offence);
 		this.sellBackPrice = generatePlayerSbPrice(contractPrice);
@@ -95,7 +96,8 @@ public class Athlete {
 	public String printForSelection() {
 		return ("<html>" + name 
 				+ "<br><blockquote>\tOffence:" + offence 
-				+ "<br>	Defense: " + defence 
+				+ "<br>	Defense: " + defence
+				+ "<br> Stamina: " + stamina
 				+ "<br>Position: " + position 
 				+ "<br>Contract Price: $" + contractPrice 
 				+ "<br>Sell Back Price $" + sellBackPrice 
@@ -114,6 +116,9 @@ public class Athlete {
 	
 	public void setStamina(int stamina) {
 		this.stamina = stamina;
+		if (this.stamina <= 0) {
+			setInjuryStatus(true);
+		}
 	}
 	
 	public int getOffence() {

@@ -41,28 +41,38 @@ public class MatchSelectionGUI{
 		lblMatchSelection.setBounds(215, 24, 252, 71);
 		frmMatchSelect.getContentPane().add(lblMatchSelection);
 		
-		JLabel lblByeIndicator = new JLabel("");
-		lblByeIndicator.setHorizontalAlignment(SwingConstants.CENTER);
-		lblByeIndicator.setBounds(143, 338, 401, 42);
-		frmMatchSelect.getContentPane().add(lblByeIndicator);
+		JLabel lblSelectIndicator = new JLabel("");
+		lblSelectIndicator.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectIndicator.setBounds(35, 338, 605, 42);
+		frmMatchSelect.getContentPane().add(lblSelectIndicator);
 		
 		
 		PotentialPlayers oppositionGenerator = new PotentialPlayers();
 		
 		JButton btnBye = new JButton("Take a Bye");
+		
 		JButton btnTeam1 = new JButton("teamOne");
 		JButton btnTeam2 = new JButton("teamTwo");
 		JButton btnTeam3 = new JButton("teamThree");
+		
+		JButton btnBackClub = new JButton("Back to Club");
 		
 
 
 		btnTeam1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				opposingTeam = oppositionGenerator.createOpposingTeam(game, 1);
-				game.LaunchMatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
-				btnTeam1.setEnabled(false);
-				frmMatchSelect.setVisible(false);
-				btnBye.setEnabled(false);
+				boolean isTeamHealthy = team.teamHealthy(team);
+				
+				if(isTeamHealthy) {
+					opposingTeam = oppositionGenerator.createOpposingTeam(game, 1);
+					game.LaunchMatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
+					btnTeam1.setEnabled(false);
+					frmMatchSelect.setVisible(false);
+					btnBye.setEnabled(false);
+				} else {
+					lblSelectIndicator.setText("Athlete on your starting team is injured! Go back to the club to make a Sub");
+				}
+				
 			}
 		});
 		btnTeam1.setBounds(35, 156, 154, 130);
@@ -71,11 +81,17 @@ public class MatchSelectionGUI{
 		
 		btnTeam2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				opposingTeam = oppositionGenerator.createOpposingTeam(game, 2);
-				game.LaunchMatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
-				btnTeam2.setEnabled(false);
-				frmMatchSelect.setVisible(false);
-				btnBye.setEnabled(false);
+				boolean isTeamHealthy = team.teamHealthy(team);
+				
+				if(isTeamHealthy) {
+					opposingTeam = oppositionGenerator.createOpposingTeam(game, 1);
+					game.LaunchMatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
+					btnTeam2.setEnabled(false);
+					frmMatchSelect.setVisible(false);
+					btnBye.setEnabled(false);
+				} else {
+					lblSelectIndicator.setText("Athlete on your starting team is injured! Go back to the club to make a Sub");
+				}
 			}
 		});
 		btnTeam2.setBounds(263, 156, 154, 130);
@@ -84,11 +100,17 @@ public class MatchSelectionGUI{
 
 		btnTeam3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				opposingTeam = oppositionGenerator.createOpposingTeam(game, 3);
-				game.LaunchMatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
-				btnTeam3.setEnabled(false);
-				frmMatchSelect.setVisible(false);
-				btnBye.setEnabled(false);
+				boolean isTeamHealthy = team.teamHealthy(team);
+				
+				if(isTeamHealthy) {
+					opposingTeam = oppositionGenerator.createOpposingTeam(game, 1);
+					game.LaunchMatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
+					btnTeam3.setEnabled(false);
+					frmMatchSelect.setVisible(false);
+					btnBye.setEnabled(false);
+				} else {
+					lblSelectIndicator.setText("Athlete on your starting team is injured! Go back to the club to make a Sub");
+				}
 			}
 		});
 		btnTeam3.setBounds(486, 156, 154, 130);
@@ -106,7 +128,8 @@ public class MatchSelectionGUI{
 				btnTeam1.setEnabled(false);
 				btnTeam2.setEnabled(false);
 				btnTeam3.setEnabled(false);
-				lblByeIndicator.setText("Athlete Stamina Replenished! Proceed to the Next Week");;
+				btnBackClub.setEnabled(false);
+				lblSelectIndicator.setText("Bye Taken and Athlete Stamina Replenished! Proceed to the Next Week");;
 			}
 		});
 		btnBye.setBounds(449, 427, 109, 23);
@@ -129,7 +152,7 @@ public class MatchSelectionGUI{
 		lblGame3.setBounds(532, 297, 74, 14);
 		frmMatchSelect.getContentPane().add(lblGame3);
 		
-		JButton btnBackClub = new JButton("Back to Club");
+
 		btnBackClub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmClub.setVisible(true);
