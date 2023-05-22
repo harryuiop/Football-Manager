@@ -113,8 +113,8 @@ public class GameEnviroment {
 		 
 	 }
 
-	public MatchSelectionGUI LaunchMatchSelectionGUI(Team team, GameEnviroment game, Market market, Player player, JFrame frmClub) {
-		 MatchSelectionGUI matchSelect = new MatchSelectionGUI(team, game, market, player, frmClub);
+	public MatchSelectionGUI LaunchMatchSelectionGUI(Team team, GameEnviroment game, Market market, Player player, JFrame frmClub, ClubGUI clubgui) {
+		 MatchSelectionGUI matchSelect = new MatchSelectionGUI(team, game, market, player, frmClub, clubgui);
 		 matchSelect.frmMatchSelect.setVisible(true);
 		 return matchSelect;
 	 }

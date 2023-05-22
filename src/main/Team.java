@@ -1,4 +1,5 @@
 package main;
+import java.rmi.server.RemoteServer;
 import java.util.ArrayList;
 
 public class Team {
@@ -13,34 +14,6 @@ public class Team {
 		reserveNames = new ArrayList<Athlete>();
 	}
 	
-	public void printFullRoster(Team team) {
-		 for(Athlete ath: team.getStartingName()) {
-			 System.out.println(ath + "\n ----------------");
-		 }
-		 
-		 System.out.println("\n\tYour reserves are: ");
-		 for(Athlete ath: team.getReserveName()) {
-			 System.out.println(ath + "\n ----------------");
-		 }
-	}
-	
-	public Athlete findAthleteByNameInStartingNames(Market market, String name) {
-		for (Athlete athlete : startingNames) {
-	        if (athlete.getName(athlete).equals(name)) {
-	            return athlete;
-	        }
-	    }
-	    return null; // if no athlete with the given name is found
-	}
-	
-	public Athlete findAthleteByNameInReserveNames(Market market, String name) {
-		for (Athlete athlete : reserveNames) {
-	        if (athlete.getName(athlete).equals(name)) {
-	            return athlete;
-	        }
-	    }
-	    return null; // if no athlete with the given name is found
-	}
 	
 	public void makeSubstituion(Athlete athleteToSub, Athlete athleteToPlay) {
 		
@@ -103,6 +76,11 @@ public class Team {
 		for (Athlete ath : team.getStartingName()) {
 			ath.setStamina(ath.getStamina() - 10);
 		}
+	}
+	
+	
+	public void removeReservePlayer(int index) {
+		reserveNames.remove(index);
 	}
 	
 	/**

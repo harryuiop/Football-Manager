@@ -4,12 +4,14 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.util.Random;
 
 public class MatchSelectionGUI{
 
@@ -18,22 +20,20 @@ public class MatchSelectionGUI{
 
 
 
-	/**
-	 * Create the application.
-	 */
-	public MatchSelectionGUI(Team team, GameEnviroment game, Market market, Player player, JFrame frmClub) {
-		initialize(team, game, market, player, frmClub, this);
+	public MatchSelectionGUI(Team team, GameEnviroment game, Market market, Player player, JFrame frmClub, ClubGUI clubgui) {
+	    initialize(team, game, market, player, frmClub, this, clubgui);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Team team, GameEnviroment game, Market market, Player player, JFrame frmClub, MatchSelectionGUI matchSelectionGUI) {
+	private void initialize(Team team, GameEnviroment game, Market market, Player player, JFrame frmClub, MatchSelectionGUI matchSelectionGUI, ClubGUI clubgui) {
 		frmMatchSelect = new JFrame();
 		frmMatchSelect.setTitle("Match Selection");
 		frmMatchSelect.setBounds(100, 100, 700, 500);
 		frmMatchSelect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMatchSelect.getContentPane().setLayout(null);
+		Random random = new Random();
 		
 		JLabel lblMatchSelection = new JLabel("Match Selection");
 		lblMatchSelection.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -173,6 +173,19 @@ public class MatchSelectionGUI{
 					market.rotateMarketItems();
 					frmMatchSelect.dispose();
 				}
+				
+				// random event generation
+				int guess = random.nextInt(100);
+				if (guess > 0) {
+					int playerLeavingIndex = random.nextInt(team.getReserveName().size());
+					Athlete playerToQuit = team.getReserveName().get(playerLeavingIndex);
+					team.removeReservePlayer(playerLeavingIndex);
+					JOptionPane.showMessageDialog(frmMatchSelect, playerToQuit.getName(playerToQuit) + " has retierd from your team.");
+				}
+				
+				
+				
+				
 				
 			}
 		});
