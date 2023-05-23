@@ -143,11 +143,21 @@ public class MatchGUI{
 		btnContinue.setEnabled(false);
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String gameResult;
 				player.setMoneyBalance(player.getMoneyBalance()+1000);
-				
 				team.gamePlayedStamDecr(team);
 				frmMatch.dispose();
 				matchSelectionGUI.frmMatchSelect.setVisible(true);
+				if (match.getPlayersScore() > match.getOpposingScore()) {
+					gameResult = "You Win " + match.getPlayersScore() + "-" + match.getOpposingScore() + "... $1000 won. New balance: $" + player.getMoneyBalance();
+				}
+				else if (match.getPlayersScore() < match.getOpposingScore()){
+					gameResult = "You Lose: " + match.getPlayersScore() + "-" + match.getOpposingScore() + "... No money won";
+				}
+				else {
+					gameResult = "Draw: " + match.getPlayersScore() + "-" + match.getOpposingScore() + "... No money won";
+				}
+				JOptionPane.showMessageDialog(frmMatch,gameResult);
 			}
 		});
 		btnContinue.setBounds(785, 635, 89, 23);
@@ -163,7 +173,7 @@ public class MatchGUI{
 						String matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 1)), opposingTeam.get((buttonPressCount - 1)), "player");
 						switch(matchUpResult) {
 						case "Won":
-							lblLineup1.setText(team.getStartingName().get((buttonPressCount - 1)) + " won their match up");
+							lblLineup1.setText(team.getStartingName().get((buttonPressCount - 1)) + " scored!");
 							lblLineup1.setForeground(Color.green);
 							break;
 						case "Lost":
@@ -181,7 +191,7 @@ public class MatchGUI{
 						matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 1)), opposingTeam.get((buttonPressCount - 1)), "player");
 						switch(matchUpResult) {
 						case "Won":
-							lblLineup2.setText(team.getStartingName().get((buttonPressCount - 1)) + " won their match up");
+							lblLineup2.setText(team.getStartingName().get((buttonPressCount - 1)) + " scored!");
 							lblLineup2.setForeground(Color.green);
 							break;
 						case "Lost":
@@ -200,7 +210,7 @@ public class MatchGUI{
 						matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 1)), opposingTeam.get((buttonPressCount - 1)), "opp");
 						switch(matchUpResult) {
 						case "Won":
-							lblLineup3.setText(team.getStartingName().get((buttonPressCount - 1)) + " won their match up");
+							lblLineup3.setText(team.getStartingName().get((buttonPressCount - 1)) + " defended against " + opposingTeam.get((buttonPressCount - 1)));
 							lblLineup3.setForeground(Color.green);
 							break;
 						case "Lost":
@@ -219,7 +229,7 @@ public class MatchGUI{
 						matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 1)), opposingTeam.get((buttonPressCount - 1)), "opp");
 						switch(matchUpResult) {
 						case "Won":
-							lblLineup4.setText(team.getStartingName().get((buttonPressCount - 1)) + " won their match up");
+							lblLineup4.setText(team.getStartingName().get((buttonPressCount - 1)) + " defended against " + opposingTeam.get((buttonPressCount - 1)));
 							lblLineup4.setForeground(Color.green);
 							btnPlay.setEnabled(false);
 							break;
@@ -274,7 +284,7 @@ public class MatchGUI{
 							matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 5)), opposingTeam.get((buttonPressCount - 5)), "player");
 							switch(matchUpResult) {
 							case "Won":
-								lblLineup1.setText(team.getStartingName().get((buttonPressCount - 5)) + " won their match up");
+								lblLineup1.setText(team.getStartingName().get((buttonPressCount - 5)) + " scored!");
 								lblLineup1.setForeground(Color.green);
 								break;
 							case "Lost":
@@ -296,7 +306,7 @@ public class MatchGUI{
 						matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 5)), opposingTeam.get((buttonPressCount - 5)), "player");
 						switch(matchUpResult) {
 						case "Won":
-							lblLineup2.setText(team.getStartingName().get((buttonPressCount - 5)) + " won their match up");
+							lblLineup2.setText(team.getStartingName().get((buttonPressCount - 5)) + " scored!");
 							lblLineup2.setForeground(Color.green);
 							break;
 						case "Lost":
@@ -311,10 +321,10 @@ public class MatchGUI{
 						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
 						break;
 					case 7:
-						matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 5)), opposingTeam.get((buttonPressCount - 5)), "player");
+						matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 5)), opposingTeam.get((buttonPressCount - 5)), "opp");
 						switch(matchUpResult) {
 						case "Won":
-							lblLineup3.setText(team.getStartingName().get((buttonPressCount - 5)) + " won their match up");
+							lblLineup3.setText(team.getStartingName().get((buttonPressCount - 5)) + " defended against " + opposingTeam.get((buttonPressCount - 5)));
 							lblLineup3.setForeground(Color.green);
 							break;
 						case "Lost":
@@ -329,10 +339,10 @@ public class MatchGUI{
 						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
 						break;
 					case 8:
-						matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 5)), opposingTeam.get((buttonPressCount - 5)), "player");
+						matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 5)), opposingTeam.get((buttonPressCount - 5)), "opp");
 						switch(matchUpResult) {
 						case "Won":
-							lblLineup4.setText(team.getStartingName().get((buttonPressCount - 5)) + " won their match up");
+							lblLineup4.setText(team.getStartingName().get((buttonPressCount - 5)) + " defended against " + opposingTeam.get((buttonPressCount - 5)));
 							lblLineup4.setForeground(Color.green);
 							break;
 						case "Lost":
@@ -344,6 +354,10 @@ public class MatchGUI{
 							lblLineup4.setForeground(Color.gray);
 							break;
 						}
+						btnContinue.setEnabled(true);
+						btnForfeit.setEnabled(false);
+						btnHalfTime.setEnabled(false);
+						btnPlay.setEnabled(false);
 						match.gameWin(game, match);
 						lblHalf.setText("Full-Time");
 						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
@@ -354,9 +368,7 @@ public class MatchGUI{
 
 				}
 
-				
-
-				btnContinue.setEnabled(true);
+			
 				
 			}
 		});
