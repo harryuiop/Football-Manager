@@ -160,6 +160,9 @@ public class Athlete {
 	public void setInjuryStatus(Boolean status) {
 		this.injuryStatus = status;
 	}
+	public int getPosition(Athlete ath) {
+		return ath.position;
+	}
 }
 
 	

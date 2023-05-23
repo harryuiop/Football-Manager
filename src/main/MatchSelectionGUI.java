@@ -165,6 +165,25 @@ public class MatchSelectionGUI{
 		JButton btnNextWeek = new JButton("Next Week");
 		btnNextWeek.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int guess = random.nextInt(100);
+				if (guess > 5) {
+					int playerLeavingIndex = random.nextInt(team.getReserveName().size());
+					Athlete playerToQuit = team.getReserveName().get(playerLeavingIndex);
+					team.removeReservePlayer(playerLeavingIndex);
+					JOptionPane.showMessageDialog(frmMatchSelect, playerToQuit.getName(playerToQuit) + " has retierd from your team.");
+					
+				} else if (guess > 99 && guess < 99) {
+					int playerLeavingIndex = random.nextInt(team.getStartingName().size());
+					Athlete playerToImprove = team.getReserveName().get(playerLeavingIndex);
+					if (playerToImprove.getPosition(playerToImprove) == 1) {
+						playerToImprove.setOffence(playerToImprove.getOffence() + 10);
+						JOptionPane.showMessageDialog(frmMatchSelect, playerToImprove.getName(playerToImprove) + "'s offence has been increased by 10.");
+					} else {
+						playerToImprove.setDefence(playerToImprove.getDefence() + 10);
+						JOptionPane.showMessageDialog(frmMatchSelect, playerToImprove.getName(playerToImprove) + "'s defence has been increased by 10.");
+					}
+					
+				}
 				if (game.getCurrentWeekNum() < game.getChoosenNumWeeks()) {
 					game.setCurrentWeekNum(game.getCurrentWeekNum() + 1);
 					frmClub.dispose();
@@ -174,19 +193,14 @@ public class MatchSelectionGUI{
 					frmMatchSelect.dispose();
 					
 					// random event generation
-					int guess = random.nextInt(100);
-					if (guess > 90) {
-						int playerLeavingIndex = random.nextInt(team.getReserveName().size());
-						Athlete playerToQuit = team.getReserveName().get(playerLeavingIndex);
-						team.removeReservePlayer(playerLeavingIndex);
-						JOptionPane.showMessageDialog(frmMatchSelect, playerToQuit.getName(playerToQuit) + " has retierd from your team.");
-					}
 				}
 				else {
+					game.closeClubGUI(clubgui);
 					game.LaunchGameEnd(game, player);
+					matchSelectionGUI.frmMatchSelect.dispose();
 				}
 				
-
+				
 				
 			}
 		});
