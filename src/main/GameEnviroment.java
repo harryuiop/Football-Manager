@@ -124,8 +124,8 @@ public class GameEnviroment {
 		 match.frmMatch.setVisible(true);
 	 }
 	 
-	 	 public void LaunchGameEnd(GameEnviroment game, Player player) {
-		 GameEndGUI gameEnd = new GameEndGUI(game, player);
+	 	 public void LaunchGameEnd(GameEnviroment game, Player player, Team team) {
+		 GameEndGUI gameEnd = new GameEndGUI(game, player, team);
 		 gameEnd.frmGameEnd.setVisible(true);
 	 }
 	 
