@@ -59,7 +59,7 @@ public class MatchSelectionGUI{
 
 		btnTeam1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean isTeamHealthy = team.teamHealthy(team);
+				boolean isTeamHealthy = team.startingTeamHealthy(team);
 				
 				if(isTeamHealthy) {
 					opposingTeam = oppositionGenerator.createOpposingTeam(game, 1);
@@ -79,7 +79,7 @@ public class MatchSelectionGUI{
 		
 		btnTeam2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean isTeamHealthy = team.teamHealthy(team);
+				boolean isTeamHealthy = team.startingTeamHealthy(team);
 				
 				if(isTeamHealthy) {
 					opposingTeam = oppositionGenerator.createOpposingTeam(game, 1);
@@ -98,7 +98,7 @@ public class MatchSelectionGUI{
 
 		btnTeam3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean isTeamHealthy = team.teamHealthy(team);
+				boolean isTeamHealthy = team.startingTeamHealthy(team);
 				
 				if(isTeamHealthy) {
 					opposingTeam = oppositionGenerator.createOpposingTeam(game, 1);
@@ -169,7 +169,7 @@ public class MatchSelectionGUI{
 					int playerLeavingIndex = random.nextInt(team.getReserveName().size());
 					Athlete playerToQuit = team.getReserveName().get(playerLeavingIndex);
 					team.removeReservePlayer(playerLeavingIndex);
-					JOptionPane.showMessageDialog(frmMatchSelect, playerToQuit.getName(playerToQuit) + " has retierd from your team.");
+					JOptionPane.showMessageDialog(frmMatchSelect, playerToQuit.getName(playerToQuit) + " has retired from your team.");
 					
 				} else if (guess > 80 && guess < 90) {
 					int playerLeavingIndex = random.nextInt(team.getStartingName().size());
@@ -195,7 +195,7 @@ public class MatchSelectionGUI{
 				}
 				else {
 					game.closeClubGUI(clubgui);
-					game.LaunchGameEnd(game, player);
+					game.LaunchGameEnd(game, player, team);
 					matchSelectionGUI.frmMatchSelect.dispose();
 				}
 				

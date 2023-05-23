@@ -118,6 +118,12 @@ public class Match {
 		return matchUpResult;
 	}
 	
+	public void gameWin(GameEnviroment game, Match match) {
+		if (match.playersScore > match.opposingScore) {
+			game.setWinAmount(game.getWinAmount() + 1);
+		}
+	}
+	
 	public String winnerString() {
 		if (getPlayersScore() > getOpposingScore()) {
 			return "You Win: " + getPlayersScore() + "-" + getOpposingScore();

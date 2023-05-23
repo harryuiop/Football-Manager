@@ -60,7 +60,7 @@ public class Team {
 		}
 	}
 	
-	public boolean teamHealthy(Team team) {
+	public boolean startingTeamHealthy(Team team) {
 		//checks to see if everyone in the starting team is "healthy" (stamina is > 0)
 		boolean isHealthy = true;
 		for (Athlete ath : team.getStartingName()) {
@@ -69,6 +69,27 @@ public class Team {
 			}
 		}
 		return isHealthy;
+	}
+	
+	public boolean reserveTeamHealthy(Team team) {
+		//checks to see if everyone in the starting team is "healthy" (stamina is > 0)
+		boolean isHealthy = true;
+		for (Athlete ath : team.getReserveName()) {
+			if (ath.getInjuryStatus() == true) {
+				isHealthy = false;
+			}
+		}
+		return isHealthy;
+	}
+	
+	public int howManyInjured(ArrayList<Athlete> teamList) {
+		int injuredCount = 0;
+		for (Athlete ath : teamList) {
+			if (ath.getInjuryStatus() == true){
+				injuredCount += 1;
+			}
+		}
+		return injuredCount;
 	}
 	
 	public void gamePlayedStamDecr(Team team) {
