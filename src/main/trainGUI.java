@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 
 public class trainGUI {
 
-	JFrame frame;
+	JFrame frmTrainPlayer;
 
 	/**
 	 * Create the application.
@@ -29,20 +29,21 @@ public class trainGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(Team team, GameEnviroment game, Market market, Player player, JFrame frmClub, MatchSelectionGUI matchSelectionGUI, trainGUI traingui) {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 322, 303);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmTrainPlayer = new JFrame();
+		frmTrainPlayer.setTitle("Train Player");
+		frmTrainPlayer.setBounds(100, 100, 322, 303);
+		frmTrainPlayer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmTrainPlayer.getContentPane().setLayout(null);
 		
 		
 		JLabel playerStats = new JLabel("");
 		playerStats.setBounds(140, 41, 176, 186);
-		frame.getContentPane().add(playerStats);
+		frmTrainPlayer.getContentPane().add(playerStats);
 		
 		DefaultListModel<Athlete> athleteListModel2 = new DefaultListModel<Athlete>();
 		JList<Athlete> list = new JList<Athlete>(athleteListModel2);
 		list.setBounds(17, 41, 100, 186);
-		frame.getContentPane().add(list);
+		frmTrainPlayer.getContentPane().add(list);
 		list.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				Athlete ath = list.getSelectedValue();
@@ -51,7 +52,7 @@ public class trainGUI {
 				}
 			}
 		});
-		frame.getContentPane().add(list);
+		frmTrainPlayer.getContentPane().add(list);
 		athleteListModel2.addAll(team.getReserveName());
 		athleteListModel2.addAll(team.getStartingName());
 
@@ -63,19 +64,19 @@ public class trainGUI {
 				if (ath != null) {
 					ath.setOffence(ath.getOffence() + 10);
 					ath.setDefence(ath.getDefence() + 10);
-					JOptionPane.showMessageDialog(frame, ath.getName(ath) + "'s Offence and Defence has been increased.");
+					JOptionPane.showMessageDialog(frmTrainPlayer, ath.getName(ath) + "'s Offence and Defence has been increased.");
 					game.LaunchClubGUI(team, game, market, player);
-					traingui.frame.dispose();
+					traingui.frmTrainPlayer.dispose();
 					
 				}
 			}
 		});
 		btnNewButton.setBounds(106, 239, 117, 29);
-		frame.getContentPane().add(btnNewButton);
+		frmTrainPlayer.getContentPane().add(btnNewButton);
 		
 		JLabel instructionlbl = new JLabel("Choose a player to train");
 		instructionlbl.setHorizontalAlignment(SwingConstants.CENTER);
 		instructionlbl.setBounds(19, 0, 297, 29);
-		frame.getContentPane().add(instructionlbl);
+		frmTrainPlayer.getContentPane().add(instructionlbl);
 	}
 }
