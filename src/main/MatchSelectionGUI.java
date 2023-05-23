@@ -55,10 +55,11 @@ public class MatchSelectionGUI{
 		
 		JButton btnBackClub = new JButton("Back to Club");
 		
-
+		JButton btnNextWeek = new JButton("Next Week");
 
 		btnTeam1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				btnNextWeek.setEnabled(true);
 				boolean isTeamHealthy = team.startingTeamHealthy(team);
 				
 				if(isTeamHealthy) {
@@ -79,6 +80,7 @@ public class MatchSelectionGUI{
 		
 		btnTeam2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				btnNextWeek.setEnabled(true);
 				boolean isTeamHealthy = team.startingTeamHealthy(team);
 				
 				if(isTeamHealthy) {
@@ -98,6 +100,7 @@ public class MatchSelectionGUI{
 
 		btnTeam3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				btnNextWeek.setEnabled(true);
 				boolean isTeamHealthy = team.startingTeamHealthy(team);
 				
 				if(isTeamHealthy) {
@@ -127,6 +130,7 @@ public class MatchSelectionGUI{
 				btnTeam2.setEnabled(false);
 				btnTeam3.setEnabled(false);
 				btnBackClub.setEnabled(false);
+				btnNextWeek.setEnabled(true);
 				lblSelectIndicator.setText("Bye Taken and Athlete Stamina Replenished! Proceed to the Next Week");
 				
 				trainGUI traingui = new trainGUI(team, game, market, player, frmClub, matchSelectionGUI);
@@ -165,7 +169,8 @@ public class MatchSelectionGUI{
 		btnBackClub.setBounds(10, 427, 109, 23);
 		frmMatchSelect.getContentPane().add(btnBackClub);
 		
-		JButton btnNextWeek = new JButton("Next Week");
+
+		btnNextWeek.setEnabled(false);
 		btnNextWeek.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int guess = random.nextInt(100);
