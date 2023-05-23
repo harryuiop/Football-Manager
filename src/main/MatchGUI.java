@@ -133,7 +133,8 @@ public class MatchGUI{
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				player.setMoneyBalance(player.getMoneyBalance()+1000);
-				team.weekPlayed(team);
+				
+				team.gamePlayedStamDecr(team);
 				frmMatch.dispose();
 				matchSelectionGUI.frmMatchSelect.setVisible(true);
 			}
@@ -237,6 +238,17 @@ public class MatchGUI{
 		btnPlay.setBounds(399, 461, 89, 23);
 		frmMatch.getContentPane().add(btnPlay);
 		
+		JButton btnForfeit = new JButton("Forfeit");
+		btnForfeit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				team.gamePlayedStamDecr(team);
+				frmMatch.dispose();
+				matchSelectionGUI.frmMatchSelect.setVisible(true);
+			}
+		});
+		btnForfeit.setBounds(680, 527, 89, 23);
+		frmMatch.getContentPane().add(btnForfeit);
+		
 		
 
 		
@@ -244,5 +256,4 @@ public class MatchGUI{
 		
 
 	}
-
 }

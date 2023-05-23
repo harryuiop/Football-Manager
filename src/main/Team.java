@@ -71,10 +71,12 @@ public class Team {
 		return isHealthy;
 	}
 	
-	public void weekPlayed(Team team) {
+	public void gamePlayedStamDecr(Team team) {
 		//exhausts all starting players 
 		for (Athlete ath : team.getStartingName()) {
-			ath.setStamina(ath.getStamina() - 10);
+			if (ath.getStamina() > 0) {
+				ath.setStamina(ath.getStamina() - 10);
+			}
 		}
 	}
 	
