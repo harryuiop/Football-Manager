@@ -56,6 +56,7 @@ public class SetupGUI{
 		frmSetupGUI.getContentPane().add(lblPleaseEnterYou);
 		
 		JSlider slider = new JSlider();
+		slider.setBackground(Color.GRAY);
 		slider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				int value = slider.getValue();
@@ -69,7 +70,7 @@ public class SetupGUI{
 		slider.setMajorTickSpacing(1);
 		slider.setMinimum(5);
 		slider.setMaximum(15);
-		slider.setBounds(239, 120, 235, 44);
+		slider.setBounds(229, 120, 251, 44);
 		frmSetupGUI.getContentPane().add(slider);
 		
 		 JLabel lblNewLabel = new JLabel("");
@@ -92,7 +93,6 @@ public class SetupGUI{
 		            lblNewLabel.setText("Must be 3-15 characters and not contain special characters");
 		        }
 				
-				System.out.println(game.getDifficulty());
 				
 				if (isvalid == true && game.getDifficulty() == 1 | game.getDifficulty() == 2) {
 					game.closeSetupGUI(team, game, setup, market, poplayers, player);
@@ -104,24 +104,27 @@ public class SetupGUI{
 			}
 		});
 		
-		btnConfirm.setBounds(247, 212, 94, 16);
+		btnConfirm.setBounds(247, 213, 109, 15);
 		frmSetupGUI.getContentPane().add(btnConfirm);
 		
 		JLabel lblSeasonLength = new JLabel("Season Length: ");
-		lblSeasonLength.setForeground(Color.BLACK);
-		lblSeasonLength.setBounds(147, 139, 209, 24);
+		lblSeasonLength.setFont(new Font("Dialog", Font.BOLD, 11));
+		lblSeasonLength.setForeground(new Color(0, 0, 0));
+		lblSeasonLength.setBounds(129, 138, 209, 24);
 		frmSetupGUI.getContentPane().add(lblSeasonLength);
 		
 		JLabel lblDifficulty = new JLabel("Difficulty:");
-		lblDifficulty.setBounds(156, 174, 76, 24);
+		lblDifficulty.setForeground(new Color(0, 0, 0));
+		lblDifficulty.setFont(new Font("Dialog", Font.BOLD, 11));
+		lblDifficulty.setBounds(168, 176, 76, 24);
 		frmSetupGUI.getContentPane().add(lblDifficulty);
 		
 		JToggleButton tglbtnNewToggleButton = new JToggleButton("Amature");
-		tglbtnNewToggleButton.setBounds(221, 175, 105, 25);
+		tglbtnNewToggleButton.setBounds(247, 176, 105, 25);
 		frmSetupGUI.getContentPane().add(tglbtnNewToggleButton);
 		
 		JToggleButton tglbtnPro = new JToggleButton("Pro");
-		tglbtnPro.setBounds(338, 175, 94, 25);
+		tglbtnPro.setBounds(367, 175, 94, 25);
 		frmSetupGUI.getContentPane().add(tglbtnPro);
 		
 		ButtonGroup buttonGroup = new ButtonGroup();
@@ -135,7 +138,7 @@ public class SetupGUI{
         
         JList list = new JList();
         list.setBackground(Color.GRAY);
-        list.setBounds(142, 104, 332, 136);
+        list.setBounds(129, 104, 360, 136);
         frmSetupGUI.getContentPane().add(list);
         
         JLabel lblNewLabel_2 = new JLabel("");

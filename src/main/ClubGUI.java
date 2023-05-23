@@ -116,7 +116,7 @@ public class ClubGUI {
 
         
         JLabel lblCurrentWeek = new JLabel("Current Week - " + game.getCurrentWeekNum() + "/" + game.getChoosenNumWeeks());
-        lblCurrentWeek.setFont(new Font("Dialog", Font.PLAIN, 12));
+        lblCurrentWeek.setFont(new Font("Dialog", Font.BOLD, 12));
         lblCurrentWeek.setBounds(12, 294, 168, 25);
         frmClub.getContentPane().add(lblCurrentWeek);
         
@@ -247,20 +247,20 @@ public class ClubGUI {
             }
         });
 
-        
-        Athlete p8 = team.getReserveName().get(3);
-        JButton player8 = new JButton(p8.getName(p8));
-        player8.setBounds(363, 386, 117, 29);
-        frmClub.getContentPane().add(player8);
-        player8.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	lblPlayerStats.setText(p8.printForSelection());
-                holder.add(p8);
-                clubGUI.counter++;
+        if (team.getReserveName().size() == 4) {
+	        Athlete p8 = team.getReserveName().get(3);
+	        JButton player8 = new JButton(p8.getName(p8));
+	        player8.setBounds(363, 386, 117, 29);
+	        frmClub.getContentPane().add(player8);
+	        player8.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	            	lblPlayerStats.setText(p8.printForSelection());
+	                holder.add(p8);
+	                clubGUI.counter++;
 
-            }
-        });
-
+	        	}
+	    	});
+	    }
         
         JLabel reserveLabel = new JLabel("Reserves");
         reserveLabel.setForeground(Color.WHITE);
@@ -290,15 +290,7 @@ public class ClubGUI {
         tglbtnNewToggleButton.setBounds(12, 460, 162, 29);
         frmClub.getContentPane().add(tglbtnNewToggleButton);
         
-        allButtons.clear();
-        allButtons.add(player1);
-        allButtons.add(player2);
-        allButtons.add(player3);
-        allButtons.add(player4);
-        allButtons.add(player5);
-        allButtons.add(player6);
-        allButtons.add(player7);
-        allButtons.add(player8);
+     
     }
     public void closeClubGUI(GameEnviroment game) {
     	game.closeClubGUI(this);

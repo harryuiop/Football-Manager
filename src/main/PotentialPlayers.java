@@ -13,16 +13,30 @@ public class PotentialPlayers {
 	/**
 	 * Hard coded names for the generateName() method to pull names from
 	 */
-	ArrayList<String> names = new ArrayList<>(Arrays.asList("Hogan", "John", "Robert", "Michael", "William", "David",
-			"Richard", "Joseph", "Charles", "Thomas", "Christopher", "Daniel", "Matthew", "Anthony", "Donald", "Mark",
-			"Paul", "George", "Steven", "Kenneth", "Andrew", "Edward", "Joshua", "Brian", "Kevin", "Ronald", "Timothy",
-			"Jason", "Jeffrey", "Frank", "Larry", "Scott", "Eric", "Stephen", "Justin", "Brandon", "Gregory", "Samuel",
-			"Benjamin", "Patrick", "Jack", "Alexander", "Tyler", "Zachary", "Ethan", "Noah", "Mason", "David", "Carter",
-			"Owen", "Luke", "Adam", "Connor", "Dylan", "Lucas", "Adrian", "Cameron", "Nathan", "Isaac", "Isaiah", "Levi",
-			"Jordan", "Evan", "Aaron", "Blake", "Cole", "Derek", "Gavin", "Jesse", "Jonah", "Kyle", "Marcus", "Oliver",
-			"Peter", "Ryan", "Sean", "Shane", "Simon", "Spencer", "Theo", "Troy", "Wyatt", "Zachary", "Aidan", "Anthony",
-			"Austin", "Brayden", "Caleb", "Christian", "Colin", "Cooper", "Dominic", "Donovan", "Easton", "Elliot",
-			"Elijah", "Finn", "Gabriel", "Harrison", "Hunter", "Ian", "Jackson"));
+	ArrayList<String> names = new ArrayList<>(Arrays.asList("Hogan", "John", "Robert", "Michael", "William",
+			"David", "Richard", "Joseph", "Charles", "Thomas", "Christopher", "Daniel", "Matthew", "Anthony",
+			"Donald", "Mark", "Paul", "George", "Steven", "Kenneth", "Andrew", "Edward", "Joshua", "Brian",
+			"Kevin", "Ronald", "Timothy", "Jason", "Jeffrey", "Frank", "Larry", "Scott", "Eric", "Stephen",
+			"Justin", "Brandon", "Gregory", "Samuel", "Benjamin", "Patrick", "Jack", "Alexander", "Tyler",
+			"Zachary", "Ethan", "Noah", "Mason", "David", "Carter", "Owen", "Luke", "Adam", "Connor", "Dylan",
+			"Lucas", "Adrian", "Cameron", "Nathan", "Isaac", "Isaiah", "Levi", "Jordan", "Evan", "Aaron", "Blake",
+			"Cole", "Derek", "Gavin", "Jesse", "Jonah", "Kyle", "Marcus", "Oliver", "Peter", "Ryan", "Sean", "Shane",
+			"Simon", "Spencer", "Theo", "Troy", "Wyatt", "Zachary", "Aidan", "Anthony", "Austin", "Brayden", "Caleb",
+			"Christian", "Colin", "Cooper", "Dominic", "Donovan", "Easton", "Elliot", "Elijah", "Finn", "Gabriel",
+			"Harrison", "Hunter", "Ian", "Jackson", "Jasper", "Julian", "Liam", "Mason", "Max", "Micah", "Miles",
+			"Nathaniel", "Nolan", "Oscar", "Preston", "Raymond", "Roman", "Sawyer", "Silas", "Theo", "Isaac", "Ivan", 
+			"Victor", "Felix", "Hugo", "Luca", "Maxime", "Maxence", "Mathis", "Louis", "Théo", "Gabriel", "Clément",
+			"Jules", "Paul", "Antoine", "Augustin", "Arthur", "Romain", "Édouard", "Alexandre", "Valentin", "Pierre",
+			"Félix", "Alexis", "Adrien", "Victor", "Hugo", "Eliott", "Simon", "Basile", "Quentin", "Baptiste", "Rémi",
+			"Axel", "Lucas", "Noah", "Martin", "Mathéo", "Hugo", "Tom", "Clément", "Enzo", "Mathieu", "Quentin", 
+			"Nicolas", "Jonathan", "Thibault", "Clément", "Jordan", "Gaëtan", "Valentin", "Kévin", "Damien",
+			"Antoine", "Édouard", "Benjamin", "Morgan", "Maxime", "Alexandre", "Florian", "Nicolas", "Julien", 
+			"Mathieu", "Thomas", "Anthony", "Hugo", "Maxime", "Paul", "Louis", "Antoine", "Victor", "Benjamin", 
+			"Clément", "Romain", "Jules", "Julien", "Valentin", "Alexis", "Mathieu", "Lucas", "Quentin", "Pierre",
+			"Théo", "Gabriel", "Adrien", "Enzo", "Tom", "Mathis", "Simon", "Rémi", "Alexandre", "Axel", "Eliott",
+			"Martin", "Noah", "Basile", "Nathan", "Hugo", "Ethan", "Timéo", "Maxence", "Mathéo", "Arthur", "Arthur",
+			"Mathis", "Nathan", "Tom", "Noé", "Oscar", "Yanis", "Samuel", "Léo", "Victor", "Théo", "Enzo", "Émilien",
+			"Raphaël", "Maxence", "Clément", "Pierre", "Matéo"));
 		
 	
 	/**
@@ -39,7 +53,7 @@ public class PotentialPlayers {
 	 */
 	public void createPlayers(int numWeeks) {	
 		
-		for (int iteration = numWeeks; iteration > 0; iteration--) {
+		for (int iteration = numWeeks*2; iteration > 0; iteration--) {
 					
 					//The format of the add method is = Offense (Integer), Defense (Integer), Position (Integer), Rarity (Integer), Name (String).
 			

@@ -48,9 +48,9 @@ public class AthleteSelectionGUI {
 		
 		
 		JLabel displayerInfo = new JLabel();
-		displayerInfo.setForeground(Color.BLACK);
+		displayerInfo.setForeground(Color.DARK_GRAY);
 		displayerInfo.setBackground(Color.GRAY);
-		displayerInfo.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+		displayerInfo.setFont(new Font("Dialog", Font.PLAIN, 20));
 		displayerInfo.setBounds(179, 12, 232, 261);
 		frmAthleteSelection.getContentPane().add(displayerInfo);
 		
@@ -88,8 +88,8 @@ public class AthleteSelectionGUI {
 		athleteJList.setBounds(18, 12, 144, 414);
 		frmAthleteSelection.getContentPane().add(athleteJList);
 		JLabel balance = new JLabel();
-		balance.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		balance.setBounds(577, 432, 117, 25);
+		balance.setFont(new Font("Dialog", Font.BOLD, 15));
+		balance.setBounds(532, 433, 117, 25);
 		frmAthleteSelection.getContentPane().add(balance);
 		String balAsStr = "$" + player.getMoneyBalance();
 		balance.setText(balAsStr);
@@ -164,6 +164,10 @@ public class AthleteSelectionGUI {
 		list.setBackground(Color.LIGHT_GRAY);
 		list.setBounds(174, 12, 221, 261);
 		frmAthleteSelection.getContentPane().add(list);
+		
+		JLabel balancelbl = new JLabel("Balance :");
+		balancelbl.setBounds(533, 411, 97, 25);
+		frmAthleteSelection.getContentPane().add(balancelbl);
 		
 		
 		
