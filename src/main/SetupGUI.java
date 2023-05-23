@@ -93,7 +93,6 @@ public class SetupGUI{
 		            lblNewLabel.setText("Must be 3-15 characters and not contain special characters");
 		        }
 				
-				System.out.println(game.getDifficulty());
 				
 				if (isvalid == true && game.getDifficulty() == 1 | game.getDifficulty() == 2) {
 					game.closeSetupGUI(team, game, setup, market, poplayers, player);
