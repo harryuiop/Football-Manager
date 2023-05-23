@@ -185,6 +185,10 @@ public class MatchGUI{
 							lblLineup1.setForeground(Color.gray);	
 							break;
 						}
+						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
+						lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)) + " STM: " + team.getStartingName().get(1).getStamina() + "/100");
+						lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
+						lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
 						break;
 					case 2:
@@ -203,6 +207,10 @@ public class MatchGUI{
 							lblLineup2.setForeground(Color.gray);
 							break;
 						}
+						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
+						lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)) + " STM: " + team.getStartingName().get(1).getStamina() + "/100");
+						lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
+						lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
 						break;
 						
@@ -222,6 +230,10 @@ public class MatchGUI{
 							lblLineup3.setForeground(Color.gray);
 							break;
 						}
+						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
+						lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)) + " STM: " + team.getStartingName().get(1).getStamina() + "/100");
+						lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
+						lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
 						break;
 						
@@ -244,6 +256,10 @@ public class MatchGUI{
 							btnPlay.setEnabled(false);
 							break;
 						}
+						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
+						lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)) + " STM: " + team.getStartingName().get(1).getStamina() + "/100");
+						lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
+						lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 						lblHalf.setText("Half-Time");
 
 						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
@@ -277,11 +293,6 @@ public class MatchGUI{
 							lblWinResult.setText("Starting team is not healthy, please make a Sub");
 						}
 						else {
-							btnHalfTime.setEnabled(false);
-							lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
-							lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)) + " STM: " + team.getStartingName().get(1).getStamina() + "/100");
-							lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
-							lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 							matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 5)), opposingTeam.get((buttonPressCount - 5)), "player");
 							switch(matchUpResult) {
 							case "Won":
@@ -297,6 +308,10 @@ public class MatchGUI{
 								lblLineup1.setForeground(Color.gray);	
 								break;
 							}
+							lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
+							lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)) + " STM: " + team.getStartingName().get(1).getStamina() + "/100");
+							lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
+							lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 							lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
 							break;
 						}
@@ -319,6 +334,10 @@ public class MatchGUI{
 							lblLineup2.setForeground(Color.gray);
 							break;
 						}
+						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
+						lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)) + " STM: " + team.getStartingName().get(1).getStamina() + "/100");
+						lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
+						lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
 						break;
 					case 7:
@@ -337,6 +356,10 @@ public class MatchGUI{
 							lblLineup3.setForeground(Color.gray);
 							break;
 						}
+						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
+						lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)) + " STM: " + team.getStartingName().get(1).getStamina() + "/100");
+						lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
+						lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
 						break;
 					case 8:
@@ -355,10 +378,15 @@ public class MatchGUI{
 							lblLineup4.setForeground(Color.gray);
 							break;
 						}
+						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
+						lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)) + " STM: " + team.getStartingName().get(1).getStamina() + "/100");
+						lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
+						lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 						btnContinue.setEnabled(true);
 						btnForfeit.setEnabled(false);
 						btnPlay.setEnabled(false);
 						match.gameWin(game, match);
+						btnHalfTime.setEnabled(false);
 						lblHalf.setText("Full-Time");
 						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
 						lblWinResult.setText(match.winnerString());
