@@ -18,6 +18,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ListModel;
 import javax.swing.ImageIcon;
+import java.util.Random;
+
 
 public class MarketGUI {
 
@@ -259,6 +261,10 @@ public class MarketGUI {
 		JButton btnSell = new JButton("Sell");
 		btnSell.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				Random random = new Random();
+
+				
 				if (startingAthleteList.getSelectedValue()!=null) {
 					Athlete athToSell = startingAthleteList.getSelectedValue();
 					lblSuccessPurchase.setText(athToSell.getName(athToSell) + " has been sold from your team");
@@ -267,6 +273,17 @@ public class MarketGUI {
 					startingAthleteList.clearSelection();
 					lblAvailableMoney.setText("Available Money: $" + player.getMoneyBalance());
 					lblTeamAthleteStats.setText("");
+					
+					int guess = random.nextInt(100);
+					if (guess > 95) {
+						int playerToJoinIndex = random.nextInt(market.getWavierList().size());
+						Athlete playerToJoin = market.getWavierList().get(playerToJoinIndex);
+						market.removeAthelte(playerToJoin);
+						team.addStartingPlayer(playerToJoin);
+						JOptionPane.showMessageDialog(frmTheMarket, playerToJoin.getName(playerToJoin) + " has joined your team.");
+						startingPlayerTeamListModel.addElement(playerToJoin);
+						startingAthleteList.repaint();
+					}
 				}
 				else if (reserveAthleteList.getSelectedValue()!=null) {
 					Athlete athToSell = reserveAthleteList.getSelectedValue();
@@ -276,12 +293,27 @@ public class MarketGUI {
 					reserveAthleteList.clearSelection();
 					lblAvailableMoney.setText("Available Money: $" + player.getMoneyBalance());
 					lblTeamAthleteStats.setText("");
+					
+					int guess = random.nextInt(100);
+					if (guess > 95) {
+						int playerToJoinIndex = random.nextInt(market.getWavierList().size());
+						Athlete playerToJoin = market.getWavierList().get(playerToJoinIndex);
+						market.removeAthelte(playerToJoin);
+						team.addReservePlayer(playerToJoin);
+						JOptionPane.showMessageDialog(frmTheMarket, playerToJoin.getName(playerToJoin) + " has joined your team.");
+						reservePlayerTeamListModel.addElement(playerToJoin);
+						reserveAthleteList.repaint();
+
+					}
 				}
 				else {
 					lblSuccessPurchase.setText("No player selected to sell");
 				}
+				
+				
 			}
 		});
+		
 		btnSell.setBounds(604, 540, 117, 25);
 		frmTheMarket.getContentPane().add(btnSell);
 		

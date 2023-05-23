@@ -198,6 +198,10 @@ public class Market {
 		}
 	}
 	
+	public void removeAthelte(Athlete ath) {
+		wavierList.remove(ath);
+	}
+	
 	public boolean BuyItemAndMoneyUpdater(Player player, Item item, Team team) {
 		
 		if (player.getMoneyBalance() - item.getItemPrice() > 0) { // checks if player has enough money
