@@ -134,7 +134,7 @@ public class MatchSelectionGUI{
 				lblSelectIndicator.setText("Bye Taken and Athlete Stamina Replenished! Proceed to the Next Week");
 				
 				trainGUI traingui = new trainGUI(team, game, market, player, frmClub, matchSelectionGUI);
-				traingui.frame.setVisible(true);
+				traingui.frmTrainPlayer.setVisible(true);
 				matchSelectionGUI.frmMatchSelect.dispose();
 			}
 		});
