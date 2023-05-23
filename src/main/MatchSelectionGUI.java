@@ -127,7 +127,11 @@ public class MatchSelectionGUI{
 				btnTeam2.setEnabled(false);
 				btnTeam3.setEnabled(false);
 				btnBackClub.setEnabled(false);
-				lblSelectIndicator.setText("Bye Taken and Athlete Stamina Replenished! Proceed to the Next Week");;
+				lblSelectIndicator.setText("Bye Taken and Athlete Stamina Replenished! Proceed to the Next Week");
+				
+				trainGUI traingui = new trainGUI(team, game, market, player, frmClub, matchSelectionGUI);
+				traingui.frame.setVisible(true);
+				matchSelectionGUI.frmMatchSelect.dispose();
 			}
 		});
 		btnBye.setBounds(449, 427, 109, 23);

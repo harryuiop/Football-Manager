@@ -38,6 +38,8 @@
 /Match.class
 /MatchGUI$1.class
 /MatchGUI$2.class
+/MatchGUI$3.class
+/MatchGUI$4.class
 /MatchGUI.class
 /MatchSelectionGUI$1.class
 /MatchSelectionGUI$2.class
@@ -46,6 +48,10 @@
 /MatchSelectionGUI$5.class
 /MatchSelectionGUI$6.class
 /MatchSelectionGUI.class
+/MatchSubGUI$1.class
+/MatchSubGUI$2.class
+/MatchSubGUI$3.class
+/MatchSubGUI.class
 /Player.class
 /PotentialPlayers.class
 /Purchasable.class
@@ -60,9 +66,6 @@
 /SubstituionGUI$3.class
 /SubstituionGUI.class
 /Team.class
-/MatchGUI$3.class
-/MatchGUI$4.class
-/MatchSubGUI$1.class
-/MatchSubGUI$2.class
-/MatchSubGUI$3.class
-/MatchSubGUI.class
+/trainGUI$1.class
+/trainGUI.class
+/trainGUI$2.class
