@@ -45,14 +45,14 @@ public class GameEndGUI {
 		
 		JLabel name = new JLabel("name");
 		name.setHorizontalAlignment(SwingConstants.CENTER);
-		name.setBounds(315, 78, 61, 16);
+		name.setBounds(205, 81, 267, 16);
 		frmGameEnd.getContentPane().add(name);
-		name.setText(team.getName());
+		name.setText("Team: " +team.getName());
 		
 		JLabel duration = new JLabel("druation");
 		duration.setHorizontalAlignment(SwingConstants.CENTER);
-		duration.setBounds(315, 105, 61, 16);
+		duration.setBounds(195, 109, 277, 16);
 		frmGameEnd.getContentPane().add(duration);
-		duration.setText(game.getChoosenNumWeeks()+"");
+		duration.setText("Weeks Played: " + game.getChoosenNumWeeks()+"");
 	}
 }
