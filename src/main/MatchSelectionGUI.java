@@ -49,9 +49,9 @@ public class MatchSelectionGUI{
 		
 		JButton btnBye = new JButton("Take a Bye");
 		
-		JButton btnTeam1 = new JButton("teamOne");
-		JButton btnTeam2 = new JButton("teamTwo");
-		JButton btnTeam3 = new JButton("teamThree");
+		JButton btnTeam1 = new JButton("Easy");
+		JButton btnTeam2 = new JButton("Medium");
+		JButton btnTeam3 = new JButton("Hard");
 		
 		JButton btnBackClub = new JButton("Back to Club");
 		
@@ -145,18 +145,6 @@ public class MatchSelectionGUI{
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(214, 105, 242, 22);
 		frmMatchSelect.getContentPane().add(lblNewLabel);
-		
-		JLabel lblGame1 = new JLabel("Match Result");
-		lblGame1.setBounds(81, 297, 74, 14);
-		frmMatchSelect.getContentPane().add(lblGame1);
-		
-		JLabel lblGame2 = new JLabel("Match Result");
-		lblGame2.setBounds(307, 297, 74, 14);
-		frmMatchSelect.getContentPane().add(lblGame2);
-		
-		JLabel lblGame3 = new JLabel("Match Result");
-		lblGame3.setBounds(532, 297, 74, 14);
-		frmMatchSelect.getContentPane().add(lblGame3);
 		
 
 		btnBackClub.addActionListener(new ActionListener() {

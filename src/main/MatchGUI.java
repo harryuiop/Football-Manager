@@ -54,30 +54,30 @@ public class MatchGUI{
 		frmMatch.getContentPane().add(lblHalf);
 		
 		JLabel lblAthlete1 = new JLabel("athlete1");
-		lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)));
-		lblAthlete1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
+		lblAthlete1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblAthlete1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAthlete1.setBounds(116, 111, 167, 47);
 		frmMatch.getContentPane().add(lblAthlete1);
 		
 		JLabel lblAthlete2 = new JLabel("athlete2");
-		lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)));
+		lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)) + " STM: " + team.getStartingName().get(1).getStamina() + "/100");
 		lblAthlete2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAthlete2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblAthlete2.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblAthlete2.setBounds(116, 184, 167, 47);
 		frmMatch.getContentPane().add(lblAthlete2);
 		
 		JLabel lblAthlete3 = new JLabel("athlete3");
-		lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)));
+		lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
 		lblAthlete3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAthlete3.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblAthlete3.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblAthlete3.setBounds(116, 256, 167, 47);
 		frmMatch.getContentPane().add(lblAthlete3);
 		
 		JLabel lblAthlete4 = new JLabel("athlete4");
-		lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)));
+		lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 		lblAthlete4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAthlete4.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblAthlete4.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblAthlete4.setBounds(116, 329, 167, 47);
 		frmMatch.getContentPane().add(lblAthlete4);
 		
@@ -277,10 +277,11 @@ public class MatchGUI{
 							lblWinResult.setText("Starting team is not healthy, please make a Sub");
 						}
 						else {
-							lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)));
-							lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)));
-							lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)));
-							lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)));
+							btnHalfTime.setEnabled(false);
+							lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
+							lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)) + " STM: " + team.getStartingName().get(1).getStamina() + "/100");
+							lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
+							lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 							matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 5)), opposingTeam.get((buttonPressCount - 5)), "player");
 							switch(matchUpResult) {
 							case "Won":
@@ -356,7 +357,6 @@ public class MatchGUI{
 						}
 						btnContinue.setEnabled(true);
 						btnForfeit.setEnabled(false);
-						btnHalfTime.setEnabled(false);
 						btnPlay.setEnabled(false);
 						match.gameWin(game, match);
 						lblHalf.setText("Full-Time");
