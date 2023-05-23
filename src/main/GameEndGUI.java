@@ -15,14 +15,14 @@ public class GameEndGUI {
 	/**
 	 * Create the application.
 	 */
-	public GameEndGUI(GameEnviroment game, Player player) {
-		initialize(game, player, this);
+	public GameEndGUI(GameEnviroment game, Player player, Team team) {
+		initialize(game, player, this, team);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(GameEnviroment game, Player player, GameEndGUI gameEnd) {
+	private void initialize(GameEnviroment game, Player player, GameEndGUI gameEnd, Team team) {
 		frmGameEnd = new JFrame();
 		frmGameEnd.setTitle("Game End");
 		frmGameEnd.setBounds(100, 100, 700, 500);
@@ -32,7 +32,7 @@ public class GameEndGUI {
 		JLabel lblGameOver = new JLabel("Game Over");
 		lblGameOver.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGameOver.setFont(new Font("Tahoma", Font.BOLD, 25));
-		lblGameOver.setBounds(187, 11, 303, 83);
+		lblGameOver.setBounds(195, 0, 303, 83);
 		frmGameEnd.getContentPane().add(lblGameOver);
 		
 		JLabel lblGameOverStats = new JLabel("");
@@ -42,5 +42,17 @@ public class GameEndGUI {
 		frmGameEnd.getContentPane().add(lblGameOverStats);
 		
 		lblGameOverStats.setText("You finished the game with $" + player.getMoneyBalance() + " and " + game.getWinAmount() + " wins.");
+		
+		JLabel name = new JLabel("name");
+		name.setHorizontalAlignment(SwingConstants.CENTER);
+		name.setBounds(315, 78, 61, 16);
+		frmGameEnd.getContentPane().add(name);
+		name.setText(team.getName());
+		
+		JLabel duration = new JLabel("druation");
+		duration.setHorizontalAlignment(SwingConstants.CENTER);
+		duration.setBounds(315, 105, 61, 16);
+		frmGameEnd.getContentPane().add(duration);
+		duration.setText(game.getChoosenNumWeeks()+"");
 	}
 }

@@ -303,14 +303,11 @@ public class MarketGUI {
 						JOptionPane.showMessageDialog(frmTheMarket, playerToJoin.getName(playerToJoin) + " has joined your team.");
 						reservePlayerTeamListModel.addElement(playerToJoin);
 						reserveAthleteList.repaint();
-
 					}
 				}
 				else {
 					lblSuccessPurchase.setText("No player selected to sell");
 				}
-				
-				
 			}
 		});
 		
@@ -351,8 +348,6 @@ public class MarketGUI {
 		JLabel lblSellplayer = new JLabel("Sell:");
 		lblSellplayer.setBounds(646, 49, 98, 15);
 		frmTheMarket.getContentPane().add(lblSellplayer);
-		
-
 		
 		JLabel lblBuyLabel = new JLabel("Buy:");
 		lblBuyLabel.setBounds(103, 49, 70, 15);
