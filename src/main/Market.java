@@ -9,6 +9,7 @@ public class Market {
 	private ArrayList<Item> catalog = new ArrayList<Item>();
 	private ArrayList<Item> seenItems = new ArrayList<Item>();
 	private ArrayList<Item> unseenItems = new ArrayList<Item>();
+	private ArrayList<Item> holder = new ArrayList<Item>();
 	
 	private ArrayList<Athlete> wavierList = new ArrayList<Athlete>();
 	public ArrayList<Athlete> unSeenPlayers = new ArrayList<Athlete>();
@@ -67,9 +68,10 @@ public class Market {
 	public void rotateWavier() {
 		
 		if (unSeenPlayers.size() < 12) {
+		
 			for(Athlete ath: seenPlayers) {
 				unSeenPlayers.add(ath);
-				seenPlayers.remove(ath);
+				holder.remove(ath);
 			}
 		}
 		
@@ -97,16 +99,14 @@ public class Market {
 	 * This method can be called at any time in order to change the items in the market
 	 */
 	public void rotateMarketItems() {
-		if (unseenItems.size() < 3) {
-			for(Item item: seenItems) {
-				unseenItems.add(item);
-				seenItems.remove(item);
-			}
+
+		if (unseenItems.size() < 5) {
+			unseenItems.addAll(seenItems);
+			seenItems.clear();
 		}
-			
+		
 		catalog.clear();
 	
-		
 		int counter = 0;
 		while (counter < 3) {
 			if (unseenItems.size() > 0) {
@@ -114,6 +114,7 @@ public class Market {
 				Item choosenItem = unseenItems.get(nextItem);
 				catalog.add(choosenItem);
 				unseenItems.remove(choosenItem);
+				seenItems.add(choosenItem);
 				counter++;
 				} else {
 					counter++;					

@@ -116,7 +116,7 @@ public class ClubGUI {
 
         
         JLabel lblCurrentWeek = new JLabel("Current Week - " + game.getCurrentWeekNum() + "/" + game.getChoosenNumWeeks());
-        lblCurrentWeek.setFont(new Font("Dialog", Font.PLAIN, 12));
+        lblCurrentWeek.setFont(new Font("Dialog", Font.BOLD, 12));
         lblCurrentWeek.setBounds(12, 294, 168, 25);
         frmClub.getContentPane().add(lblCurrentWeek);
         

@@ -166,13 +166,13 @@ public class MatchSelectionGUI{
 		btnNextWeek.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int guess = random.nextInt(100);
-				if (guess > 5) {
+				if (guess > 95) {
 					int playerLeavingIndex = random.nextInt(team.getReserveName().size());
 					Athlete playerToQuit = team.getReserveName().get(playerLeavingIndex);
 					team.removeReservePlayer(playerLeavingIndex);
 					JOptionPane.showMessageDialog(frmMatchSelect, playerToQuit.getName(playerToQuit) + " has retierd from your team.");
 					
-				} else if (guess > 99 && guess < 99) {
+				} else if (guess > 80 && guess < 90) {
 					int playerLeavingIndex = random.nextInt(team.getStartingName().size());
 					Athlete playerToImprove = team.getReserveName().get(playerLeavingIndex);
 					if (playerToImprove.getPosition(playerToImprove) == 1) {
