@@ -1,6 +1,7 @@
 
 	-	implement: interface to meet the design approach specification 
-
+	- 	Bug Fix: make obvious when player has no staminia
+	-	Bug Fix: Update week on whiteboard after training player
     
             
 
