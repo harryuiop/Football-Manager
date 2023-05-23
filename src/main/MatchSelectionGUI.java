@@ -37,7 +37,7 @@ public class MatchSelectionGUI{
 		JLabel lblMatchSelection = new JLabel("Match Selection");
 		lblMatchSelection.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblMatchSelection.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMatchSelection.setBounds(215, 24, 252, 71);
+		lblMatchSelection.setBounds(10, 11, 664, 71);
 		frmMatchSelect.getContentPane().add(lblMatchSelection);
 		JLabel lblSelectIndicator = new JLabel("");
 		lblSelectIndicator.setHorizontalAlignment(SwingConstants.CENTER);
@@ -143,7 +143,7 @@ public class MatchSelectionGUI{
 		
 		JLabel lblNewLabel = new JLabel("Select your opponent:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(214, 105, 242, 22);
+		lblNewLabel.setBounds(219, 84, 242, 22);
 		frmMatchSelect.getContentPane().add(lblNewLabel);
 		
 
