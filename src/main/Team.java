@@ -9,7 +9,7 @@ public class Team {
 	private ArrayList<Athlete> reserveNames;
 	
 	
-	Team(){
+	public Team(){
 		startingNames = new ArrayList<Athlete>();
 		reserveNames = new ArrayList<Athlete>();
 	}
