@@ -154,7 +154,6 @@ public class ClubGUI {
         Athlete p1 = team.getStartingName().get(0);
         JButton player1 = new JButton(p1.getName(p1));
         
-        System.out.println(p1.getInjuryStatus());
         
         player1.setBounds(348, 259, 117, 31);
         frmClub.getContentPane().add(player1);
@@ -199,7 +198,6 @@ public class ClubGUI {
         Athlete p3 = team.getStartingName().get(2);
         JButton player3 = new JButton(p3.getName(p3));
         
-        System.out.println(p3.getInjuryStatus());
         
         player3.setBounds(348, 293, 117, 29);
         frmClub.getContentPane().add(player3);
