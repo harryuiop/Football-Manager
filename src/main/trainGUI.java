@@ -65,6 +65,12 @@ public class trainGUI {
 					ath.setOffence(ath.getOffence() + 10);
 					ath.setDefence(ath.getDefence() + 10);
 					JOptionPane.showMessageDialog(frmTrainPlayer, ath.getName(ath) + "'s Offence and Defence has been increased.");
+					for (Athlete athl: team.getStartingName()) {
+						athl.setInjuryStatus(false);
+					}
+					for (Athlete athl: team.getReserveName()) {
+						athl.setInjuryStatus(false);
+					}
 					game.LaunchClubGUI(team, game, market, player);
 					traingui.frmTrainPlayer.dispose();
 					

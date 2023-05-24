@@ -3,7 +3,7 @@
 	- 	Bug Fix: make obvious when player has no staminia
 	-	Bug Fix: Update week on whiteboard after training player
     -	Bug Fix: can't go into match select without full team
-            
+    -	Bug Fix: if player runs out of stam mid game you can switch not him and it crashes
 
        
         

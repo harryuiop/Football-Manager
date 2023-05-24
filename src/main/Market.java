@@ -277,6 +277,10 @@ public class Market {
 		return wavierList;
 	}
 	
+	public ArrayList<Item> getUnseenItems(){
+		return unseenItems;
+	}
+	
 	
 
 	

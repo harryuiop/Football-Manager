@@ -101,11 +101,11 @@ public class ClubGUI {
         	public void actionPerformed(ActionEvent e) {
         		if (isMatchSelectCreated) {
         			matchSelectionGUI.frmMatchSelect.setVisible(true);
-        			frmClub.setVisible(false);
+        			game.closeClubGUI(clubGUI);
         		}
         		else {
             		matchSelectionGUI = game.LaunchMatchSelectionGUI(team, game, market, player, frmClub, clubGUI);
-            		frmClub.setVisible(false);
+            		game.closeClubGUI(clubGUI);
             		isMatchSelectCreated = true;
         		}
         	}
@@ -155,11 +155,17 @@ public class ClubGUI {
         JButton player1 = new JButton(p1.getName(p1));
         player1.setBounds(348, 259, 117, 31);
         frmClub.getContentPane().add(player1);
+        if (p1.getInjuryStatus() == true) {
+        	player1.setBackground(new Color(200, 0, 0));
+        } else  {
+        	player1.setBackground(new Color(238, 238, 238));
+        }
         player1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	lblPlayerStats.setText(p1.printForSelection());
                 holder.add(p1);
                 clubGUI.counter++;
+                
 
             }
         });
@@ -169,11 +175,17 @@ public class ClubGUI {
         JButton player2 = new JButton(p2.getName(p2));
         player2.setBounds(464, 259, 117, 31);
         frmClub.getContentPane().add(player2);
+        if (p2.getInjuryStatus() == true) {
+        	player2.setBackground(new Color(200, 0, 0));
+        } else {
+        	player2.setBackground(new Color(238, 238, 238));
+        }
         player2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	lblPlayerStats.setText(p2.printForSelection());
                 holder.add(p2);
                 clubGUI.counter++;
+                
 
             }
         });
@@ -183,11 +195,17 @@ public class ClubGUI {
         JButton player3 = new JButton(p3.getName(p3));
         player3.setBounds(348, 293, 117, 29);
         frmClub.getContentPane().add(player3);
+        clubGUI.counter++;
+        if (p3.getInjuryStatus() == true) {
+        	player3.setBackground(new Color(200, 0, 0));
+        } else {
+        	player3.setBackground(new Color(238, 238, 238));
+        }
         player3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	lblPlayerStats.setText(p3.printForSelection());
                 holder.add(p3);
-                clubGUI.counter++;
+                
 
             }
         });
@@ -197,11 +215,17 @@ public class ClubGUI {
         JButton player4 = new JButton(p4.getName(p4));
         player4.setBounds(464, 293, 117, 29);
         frmClub.getContentPane().add(player4);
+        if (p4.getInjuryStatus() == true) {
+        	player4.setBackground(new Color(200, 0, 0));
+        } else {
+        	player4.setBackground(new Color(238, 238, 238));
+        }
         player4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	lblPlayerStats.setText(p4.printForSelection());
                 holder.add(p4);
                 clubGUI.counter++;
+                
 
             }
         });
@@ -210,11 +234,17 @@ public class ClubGUI {
         JButton player5 = new JButton(p5.getName(p5));
         player5.setBounds(254, 420, 117, 29);
         frmClub.getContentPane().add(player5);
+        if (p5.getInjuryStatus() == true) {
+        	player5.setBackground(new Color(200, 0, 0));
+        } else {
+        	player5.setBackground(new Color(238, 238, 238));
+        }
         player5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	lblPlayerStats.setText(p5.printForSelection());
                 holder.add(p5);
                 clubGUI.counter++;
+                
 
             }
         });
@@ -224,11 +254,17 @@ public class ClubGUI {
         JButton player6 = new JButton(p6.getName(p6));
         player6.setBounds(363, 420, 117, 29);
         frmClub.getContentPane().add(player6);
+        if (p6.getInjuryStatus() == true) {
+        	player6.setBackground(new Color(200, 0, 0));
+        } else {
+        	player6.setBackground(new Color(238, 238, 238));
+        }
         player6.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	lblPlayerStats.setText(p6.printForSelection());
                 holder.add(p6);
                 clubGUI.counter++;
+                
 
             }
         });
@@ -238,11 +274,17 @@ public class ClubGUI {
         JButton player7 = new JButton(p7.getName(p7));
         frmClub.getContentPane().add(player7);
         player7.setBounds(254, 386, 117, 29);
+        if (p7.getInjuryStatus() == true) {
+        	player7.setBackground(new Color(200, 0, 0));
+        } else {
+        	player7.setBackground(new Color(238, 238, 238));
+        }
         player7.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	lblPlayerStats.setText(p7.printForSelection());
                 holder.add(p7);
                 clubGUI.counter++;
+                
 
             }
         });
@@ -252,11 +294,17 @@ public class ClubGUI {
 	        JButton player8 = new JButton(p8.getName(p8));
 	        player8.setBounds(363, 386, 117, 29);
 	        frmClub.getContentPane().add(player8);
+	        if (p8.getInjuryStatus() == true) {
+	        	player8.setBackground(new Color(200, 0, 0));
+	        } else {
+	        	player8.setBackground(new Color(238, 238, 238));
+	        }
 	        player8.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	            	lblPlayerStats.setText(p8.printForSelection());
 	                holder.add(p8);
 	                clubGUI.counter++;
+	                
 
 	        	}
 	    	});
