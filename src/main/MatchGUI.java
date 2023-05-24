@@ -16,6 +16,16 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import main.LOGIC.GameEnviroment;
+import main.LOGIC.Market;
+import main.LOGIC.Player;
+import main.LOGIC.Team;
+import main.GUI.MatchSelectionGUI;
+import main.LOGIC.Athlete;
+
+import main.LOGIC.Match;
+
+
 public class MatchGUI{
 
 	JFrame frmMatch;

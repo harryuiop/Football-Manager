@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.Athlete;
-import main.PotentialPlayers;
+import main.LOGIC.Athlete;
+import main.LOGIC.PotentialPlayers;
 
 import java.util.ArrayList;
 

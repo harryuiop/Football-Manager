@@ -1,13 +1,15 @@
 package test;
-import main.Player;
-import main.Item;
-import main.Team;
-import main.Athlete;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import main.LOGIC.Athlete;
+import main.LOGIC.Item;
+import main.LOGIC.Player;
+import main.LOGIC.Team;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Assert;
 import org.junit.Before;

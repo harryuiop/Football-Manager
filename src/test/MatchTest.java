@@ -2,9 +2,9 @@ package test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.GameEnviroment;
-import main.Match;
-import main.Athlete;
+import main.LOGIC.Athlete;
+import main.LOGIC.GameEnviroment;
+import main.LOGIC.Match;
 
 import static org.junit.jupiter.api.Assertions.*;
 

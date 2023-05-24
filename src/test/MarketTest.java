@@ -2,10 +2,10 @@ package test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.Item;
-import main.Market;
-import main.Player;
-import main.Team;
+import main.LOGIC.Item;
+import main.LOGIC.Market;
+import main.LOGIC.Player;
+import main.LOGIC.Team;
 
 import static org.junit.jupiter.api.Assertions.*;
 

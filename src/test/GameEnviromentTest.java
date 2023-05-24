@@ -3,8 +3,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.GameEnviroment;
-import main.Team;
+import main.LOGIC.GameEnviroment;
+import main.LOGIC.Team;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

@@ -1,9 +1,14 @@
-package main;
+package main.GUI;
 
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.border.EtchedBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import main.LOGIC.GameEnviroment;
 import main.LOGIC.Market;
@@ -11,56 +16,56 @@ import main.LOGIC.Player;
 import main.LOGIC.Team;
 import main.LOGIC.Athlete;
 
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.SwingConstants;
-import javax.swing.border.EtchedBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
+public class SubstituionGUI {
 
-public class MatchSubGUI {
-
-	JFrame frmMatchSub;
-
+	JFrame frmSubstitutions;
+	
 
 	/**
 	 * Create the application.
 	 */
-	public MatchSubGUI(Team team, GameEnviroment game, Player player, JFrame frmMatch) {
-		initialize(team, game, player, frmMatch, this);
+	public SubstituionGUI(Team team, GameEnviroment game, Market market, Player player) {
+		initialize(team, game, market, player, this);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Team team, GameEnviroment game, Player player, JFrame frmMatch, MatchSubGUI subGUI) {
-		frmMatchSub = new JFrame();
-		frmMatchSub.setTitle("Match Subtitution");
-		frmMatchSub.setBounds(100, 100, 287, 418);
-		frmMatchSub.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMatchSub.getContentPane().setLayout(null);
+	private void initialize(Team team, GameEnviroment game, Market market, Player player, SubstituionGUI gui) {
+		frmSubstitutions = new JFrame();
+		frmSubstitutions.getContentPane().setBackground(Color.GRAY);
+		frmSubstitutions.setTitle("Substitutions");
+		frmSubstitutions.setBounds(100, 100, 294, 418);
+		frmSubstitutions.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSubstitutions.getContentPane().setLayout(null);
+		
 		
 		JLabel lblStartingSelected = new JLabel("Select a Starting player to view Stam");
+		lblStartingSelected.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblStartingSelected.setForeground(new Color(255, 255, 255));
 		lblStartingSelected.setHorizontalAlignment(SwingConstants.CENTER);
-		lblStartingSelected.setBounds(10, 240, 251, 40);
-		frmMatchSub.getContentPane().add(lblStartingSelected);
+		lblStartingSelected.setBounds(10, 240, 258, 40);
+		frmSubstitutions.getContentPane().add(lblStartingSelected);
 		
 		JLabel lblReserveSelected = new JLabel("Select a Reserve player to view Stam");
+		lblReserveSelected.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblReserveSelected.setForeground(new Color(255, 255, 255));
 		lblReserveSelected.setHorizontalAlignment(SwingConstants.CENTER);
-		lblReserveSelected.setBounds(10, 279, 251, 40);
-		frmMatchSub.getContentPane().add(lblReserveSelected);
+		lblReserveSelected.setBounds(10, 292, 258, 40);
+		frmSubstitutions.getContentPane().add(lblReserveSelected);
 		
 		
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
 		JList<Athlete> res = new JList<Athlete>(athleteListModel);
 		res.setBounds(149, 43, 100, 186);
-		frmMatchSub.getContentPane().add(res);
+		frmSubstitutions.getContentPane().add(res);
 		res.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		res.setForeground(Color.DARK_GRAY);
 		res.setBackground(Color.LIGHT_GRAY);
@@ -81,8 +86,8 @@ public class MatchSubGUI {
 		DefaultListModel<Athlete> athleteListModel2 = new DefaultListModel<Athlete>();
 		JList<Athlete> start = new JList<Athlete>(athleteListModel2);
 		start.setBounds(25, 43, 100, 186);
-		frmMatchSub.getContentPane().add(start);
-		frmMatchSub.getContentPane().add(res);
+		frmSubstitutions.getContentPane().add(start);
+		frmSubstitutions.getContentPane().add(res);
 		start.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		start.setForeground(Color.DARK_GRAY);
 		start.setBackground(Color.LIGHT_GRAY);
@@ -105,21 +110,29 @@ public class MatchSubGUI {
 				Athlete r = res.getSelectedValue();
 				Athlete s = start.getSelectedValue();
 				team.makeSubstituion(s, r);
-				frmMatch.setVisible(true);
-				subGUI.frmMatchSub.dispose();
+				game.LaunchClubGUI(team, game, market, player);
+				gui.frmSubstitutions.dispose();
 				
 			}
 		});
-		confirm.setBounds(73, 332, 117, 25);
-		frmMatchSub.getContentPane().add(confirm);
+		confirm.setBounds(79, 343, 117, 25);
+		frmSubstitutions.getContentPane().add(confirm);
 		
 		JLabel Starting = new JLabel("Starting");
-		Starting.setBounds(42, 15, 61, 16);
-		frmMatchSub.getContentPane().add(Starting);
+		Starting.setForeground(new Color(255, 255, 255));
+		Starting.setFont(new Font("Tahoma", Font.BOLD, 12));
+		Starting.setBounds(50, 15, 61, 16);
+		frmSubstitutions.getContentPane().add(Starting);
 		
 		JLabel Reserves = new JLabel("Reserves");
-		Reserves.setBounds(161, 15, 72, 16);
-		frmMatchSub.getContentPane().add(Reserves);
-	}
+		Reserves.setForeground(new Color(255, 255, 255));
+		Reserves.setFont(new Font("Tahoma", Font.BOLD, 12));
+		Reserves.setBounds(169, 15, 72, 16);
+		frmSubstitutions.getContentPane().add(Reserves);
+		
 
+	}
+	public void close() {
+		this.frmSubstitutions.dispose();
+	}
 }

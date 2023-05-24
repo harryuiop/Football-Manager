@@ -3,9 +3,9 @@ package test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.Item;
-import main.Player;
-import main.Athlete;
+import main.LOGIC.Athlete;
+import main.LOGIC.Item;
+import main.LOGIC.Player;
 
 import java.util.ArrayList;
 

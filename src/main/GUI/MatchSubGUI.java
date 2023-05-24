@@ -1,15 +1,8 @@
-package main;
+package main.GUI;
 
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-
-
-import main.LOGIC.GameEnviroment;
-import main.LOGIC.Market;
-import main.LOGIC.Player;
-import main.LOGIC.Team;
-import main.LOGIC.Athlete;
 
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -23,9 +16,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
+import main.LOGIC.GameEnviroment;
+import main.LOGIC.Market;
+import main.LOGIC.Player;
+import main.LOGIC.Team;
+import main.LOGIC.Athlete;
+
 
 public class MatchSubGUI {
 
+	
 	JFrame frmMatchSub;
 
 
