@@ -31,6 +31,7 @@ public class InventoryGUI {
 	 */
 	private void initialize(Team team, GameEnviroment game, Market market, Player player, InventoryGUI gui) {
 		frmInventory = new JFrame();
+		frmInventory.getContentPane().setBackground(Color.GRAY);
 		frmInventory.setTitle("Inventory");
 		frmInventory.setBounds(100, 100, 652, 304);
 		frmInventory.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

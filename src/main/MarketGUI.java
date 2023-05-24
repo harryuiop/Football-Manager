@@ -19,6 +19,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.ListModel;
 import javax.swing.ImageIcon;
 import java.util.Random;
+import java.awt.Color;
+import javax.swing.border.EtchedBorder;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.UIManager;
 
 
 public class MarketGUI {
@@ -44,85 +49,94 @@ public class MarketGUI {
 	 */
 	private void initialize(Team team, GameEnviroment game, Market market, Player player, MarketGUI marketGUI) {
 		frmTheMarket = new JFrame();
+		frmTheMarket.getContentPane().setBackground(Color.PINK);
 		frmTheMarket.setTitle("The Market");
 		frmTheMarket.setMinimumSize(new Dimension(700,500));
-		frmTheMarket.setBounds(100, 100, 818, 710);
+		frmTheMarket.setBounds(100, 100, 818, 503);
 		frmTheMarket.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTheMarket.getContentPane().setLayout(null);
 		
 		JLabel lblWelcomeToThe = new JLabel("Welcome to the Market");
-		lblWelcomeToThe.setBounds(317, 12, 181, 15);
+		lblWelcomeToThe.setBounds(346, 12, 181, 15);
 		frmTheMarket.getContentPane().add(lblWelcomeToThe);
 		
 		JLabel lblCartAmount = new JLabel("Cart Amount: $0");
-		lblCartAmount.setBounds(86, 513, 136, 15);
+		lblCartAmount.setBounds(141, 413, 136, 15);
 		frmTheMarket.getContentPane().add(lblCartAmount);
 		
 		JLabel lblSuccessPurchase = new JLabel("");
-		lblSuccessPurchase.setBounds(12, 577, 531, 25);
+		lblSuccessPurchase.setBounds(287, 437, 414, 25);
 		frmTheMarket.getContentPane().add(lblSuccessPurchase);
 		
-		JLabel lblAvailableMoney = new JLabel("Available Money: $" + player.getMoneyBalance());
-		lblAvailableMoney.setBounds(329, 39, 198, 15);
+		JLabel lblAvailableMoney = new JLabel("Balance: $" + player.getMoneyBalance());
+		lblAvailableMoney.setBounds(373, 39, 198, 15);
 		frmTheMarket.getContentPane().add(lblAvailableMoney);
 		
 		JLabel lblItems = new JLabel("Items:");
-		lblItems.setBounds(23, 348, 70, 15);
+		lblItems.setBounds(101, 277, 70, 28);
 		frmTheMarket.getContentPane().add(lblItems);
 		
 		JLabel lblPlayers = new JLabel("Players:");
-		lblPlayers.setBounds(23, 85, 70, 15);
+		lblPlayers.setBounds(101, 39, 70, 25);
 		frmTheMarket.getContentPane().add(lblPlayers);
 		
 		JLabel lblItemStats = new JLabel("");
-		lblItemStats.setBounds(266, 348, 215, 130);
+		lblItemStats.setBounds(266, 277, 215, 130);
 		frmTheMarket.getContentPane().add(lblItemStats);
 		
 		JLabel lblStartingPlayers = new JLabel("Starters:");
-		lblStartingPlayers.setBounds(552, 85, 70, 15);
+		lblStartingPlayers.setBounds(631, 49, 70, 15);
 		frmTheMarket.getContentPane().add(lblStartingPlayers);
 		
 		JLabel lblReservePlayers = new JLabel("Reserves:");
-		lblReservePlayers.setBounds(552, 224, 80, 15);
+		lblReservePlayers.setBounds(621, 170, 80, 15);
 		frmTheMarket.getContentPane().add(lblReservePlayers);
 		
 		JLabel lblTeamAthleteStats = new JLabel("");
-		lblTeamAthleteStats.setBounds(562, 364, 215, 130);
+		lblTeamAthleteStats.setBounds(562, 304, 215, 130);
 		frmTheMarket.getContentPane().add(lblTeamAthleteStats);
 		
 		JLabel lblAthleteStats = new JLabel("");
-		lblAthleteStats.setBounds(266, 109, 215, 130);
+		lblAthleteStats.setBounds(266, 88, 215, 145);
 		frmTheMarket.getContentPane().add(lblAthleteStats);
 		
 		
 		DefaultListModel<Item> itemListModel = new DefaultListModel<>();
 		itemListModel.addAll(items);
 		JList<Item> itemList = new JList<>(itemListModel);
+		itemList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		itemList.setBackground(new Color(255, 182, 193));
 		itemList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		itemList.setBounds(23, 375, 225, 86);
+		itemList.setBounds(23, 304, 225, 86);
 		frmTheMarket.getContentPane().add(itemList);
 		itemList.getSelectedValue();
 		
 		
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<>();
 		JList<Athlete> athleteList = new JList<>(athleteListModel);
+		athleteList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		athleteList.setBackground(new Color(255, 182, 193));
 		athleteListModel.addAll(athletes);
-		athleteList.setBounds(23, 112, 225, 207);
+		athleteList.setBounds(23, 66, 225, 207);
 		frmTheMarket.getContentPane().add(athleteList);
 		athleteList.getSelectedValue();
 		
 		DefaultListModel<Athlete> startingPlayerTeamListModel = new DefaultListModel<>();
 		JList<Athlete> startingAthleteList = new JList<Athlete>(startingPlayerTeamListModel);
+		startingAthleteList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		startingAthleteList.setBackground(new Color(255, 182, 193));
 		startingPlayerTeamListModel.addAll(team.getStartingName());
-		startingAthleteList.setBounds(552, 112, 225, 100);
+		startingAthleteList.setBounds(552, 66, 225, 100);
 		frmTheMarket.getContentPane().add(startingAthleteList);
 		startingAthleteList.getSelectedValue();
 		
 		DefaultListModel<Athlete> reservePlayerTeamListModel = new DefaultListModel<>();
 		JList<Athlete> reserveAthleteList = new JList<Athlete>(reservePlayerTeamListModel);
+		reserveAthleteList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		reserveAthleteList.setBackground(new Color(255, 182, 193));
 		reservePlayerTeamListModel.addAll(team.getReserveName());
 
-		reserveAthleteList.setBounds(552, 253, 225, 100);
+		reserveAthleteList.setBounds(552, 191, 225, 100);
 		frmTheMarket.getContentPane().add(reserveAthleteList);
 		
 		
@@ -253,7 +267,7 @@ public class MarketGUI {
 				lblAvailableMoney.setText("Available Money: $" + player.getMoneyBalance());
 			}
 		});
-		btnBuy.setBounds(86, 540, 117, 25);
+		btnBuy.setBounds(12, 409, 117, 25);
 		frmTheMarket.getContentPane().add(btnBuy);
 		
 		
@@ -311,7 +325,7 @@ public class MarketGUI {
 			}
 		});
 		
-		btnSell.setBounds(604, 540, 117, 25);
+		btnSell.setBounds(695, 437, 117, 25);
 		frmTheMarket.getContentPane().add(btnSell);
 		
 		JButton btnBack = new JButton("Back");
@@ -326,7 +340,7 @@ public class MarketGUI {
 				}
 			}
 		});
-		btnBack.setBounds(12, 645, 117, 25);
+		btnBack.setBounds(12, 437, 117, 25);
 		frmTheMarket.getContentPane().add(btnBack);
 		
 		JButton btnClear = new JButton("Clear Selections");
@@ -342,15 +356,19 @@ public class MarketGUI {
 				
 			}
 		});
-		btnClear.setBounds(128, 645, 149, 25);
+		btnClear.setBounds(129, 437, 149, 25);
 		frmTheMarket.getContentPane().add(btnClear);
 		
 		JLabel lblSellplayer = new JLabel("Sell:");
-		lblSellplayer.setBounds(646, 49, 98, 15);
+		lblSellplayer.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblSellplayer.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSellplayer.setBounds(596, 1, 117, 33);
 		frmTheMarket.getContentPane().add(lblSellplayer);
 		
 		JLabel lblBuyLabel = new JLabel("Buy:");
-		lblBuyLabel.setBounds(103, 49, 70, 15);
+		lblBuyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBuyLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblBuyLabel.setBounds(68, -4, 122, 42);
 		frmTheMarket.getContentPane().add(lblBuyLabel);
 		
 

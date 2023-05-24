@@ -32,6 +32,7 @@ public class SubstituionGUI {
 	 */
 	private void initialize(Team team, GameEnviroment game, Market market, Player player, SubstituionGUI gui) {
 		frmSubstitutions = new JFrame();
+		frmSubstitutions.getContentPane().setBackground(Color.GRAY);
 		frmSubstitutions.setTitle("Substitutions");
 		frmSubstitutions.setBounds(100, 100, 258, 303);
 		frmSubstitutions.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

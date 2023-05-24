@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.util.Random;
+import java.awt.Color;
 
 public class MatchSelectionGUI{
 	JFrame frmMatchSelect;
@@ -28,8 +29,10 @@ public class MatchSelectionGUI{
 	 */
 	private void initialize(Team team, GameEnviroment game, Market market, Player player, JFrame frmClub, MatchSelectionGUI matchSelectionGUI, ClubGUI clubgui) {
 		frmMatchSelect = new JFrame();
+		frmMatchSelect.setBackground(Color.PINK);
+		frmMatchSelect.getContentPane().setBackground(Color.PINK);
 		frmMatchSelect.setTitle("Stadium");
-		frmMatchSelect.setBounds(100, 100, 700, 500);
+		frmMatchSelect.setBounds(100, 100, 685, 500);
 		frmMatchSelect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMatchSelect.getContentPane().setLayout(null);
 		Random random = new Random();
@@ -50,8 +53,11 @@ public class MatchSelectionGUI{
 		JButton btnBye = new JButton("Take a Bye");
 		
 		JButton btnTeam1 = new JButton("Easy");
+		btnTeam1.setBackground(new Color(255, 228, 225));
 		JButton btnTeam2 = new JButton("Medium");
+		btnTeam2.setBackground(new Color(255, 228, 225));
 		JButton btnTeam3 = new JButton("Hard");
+		btnTeam3.setBackground(new Color(255, 228, 225));
 		
 		JButton btnBackClub = new JButton("Back to Club");
 		
