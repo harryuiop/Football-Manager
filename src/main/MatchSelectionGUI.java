@@ -150,7 +150,7 @@ public class MatchSelectionGUI{
 		btnBackClub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmClub.setVisible(true);
-				frmMatchSelect.setVisible(false);
+				matchSelectionGUI.frmMatchSelect.dispose(); // maybe dont use dispose ????
 				
 			}
 		});
