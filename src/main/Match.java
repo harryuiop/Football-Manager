@@ -13,7 +13,7 @@ public class Match {
 	private int playersScore;
 	
 	
-	Match(){
+	public Match(){
 		opposingScore = 0;
 		playersScore = 0;
 	}
