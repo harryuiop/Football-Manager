@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -34,13 +35,24 @@ public class MatchSubGUI {
 	private void initialize(Team team, GameEnviroment game, Player player, JFrame frmMatch, MatchSubGUI subGUI) {
 		frmMatchSub = new JFrame();
 		frmMatchSub.setTitle("Match Subtitution");
-		frmMatchSub.setBounds(100, 100, 258, 303);
+		frmMatchSub.setBounds(100, 100, 287, 418);
 		frmMatchSub.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMatchSub.getContentPane().setLayout(null);
 		
+		JLabel lblStartingSelected = new JLabel("Select a Starting player to view Stam");
+		lblStartingSelected.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStartingSelected.setBounds(10, 240, 251, 40);
+		frmMatchSub.getContentPane().add(lblStartingSelected);
+		
+		JLabel lblReserveSelected = new JLabel("Select a Reserve player to view Stam");
+		lblReserveSelected.setHorizontalAlignment(SwingConstants.CENTER);
+		lblReserveSelected.setBounds(10, 279, 251, 40);
+		frmMatchSub.getContentPane().add(lblReserveSelected);
+		
+		
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
 		JList<Athlete> res = new JList<Athlete>(athleteListModel);
-		res.setBounds(141, 43, 100, 186);
+		res.setBounds(149, 43, 100, 186);
 		frmMatchSub.getContentPane().add(res);
 		res.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		res.setForeground(Color.DARK_GRAY);
@@ -49,7 +61,7 @@ public class MatchSubGUI {
 			public void valueChanged(ListSelectionEvent e) {
 				Athlete ath = res.getSelectedValue();
 				if (ath != null) {
-					//displayerInfo.setText(ath.printForSelection());
+					lblReserveSelected.setText(ath.getName(ath) + " has " + ath.getStamina() + "/100 Stamina");
 				}
 			}
 		});
@@ -61,7 +73,7 @@ public class MatchSubGUI {
 		
 		DefaultListModel<Athlete> athleteListModel2 = new DefaultListModel<Athlete>();
 		JList<Athlete> start = new JList<Athlete>(athleteListModel2);
-		start.setBounds(17, 43, 100, 186);
+		start.setBounds(25, 43, 100, 186);
 		frmMatchSub.getContentPane().add(start);
 		frmMatchSub.getContentPane().add(res);
 		start.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -71,7 +83,7 @@ public class MatchSubGUI {
 			public void valueChanged(ListSelectionEvent e) {
 				Athlete ath = start.getSelectedValue();
 				if (ath != null) {
-					//displayerInfo.setText(ath.printForSelection());
+					lblStartingSelected.setText(ath.getName(ath) + " has " + ath.getStamina() + "/100 Stamina");
 				}
 			}
 		});
@@ -91,7 +103,7 @@ public class MatchSubGUI {
 				
 			}
 		});
-		confirm.setBounds(69, 241, 117, 25);
+		confirm.setBounds(73, 332, 117, 25);
 		frmMatchSub.getContentPane().add(confirm);
 		
 		JLabel Starting = new JLabel("Starting");

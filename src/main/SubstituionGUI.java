@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class SubstituionGUI {
 
@@ -34,14 +35,29 @@ public class SubstituionGUI {
 		frmSubstitutions = new JFrame();
 		frmSubstitutions.getContentPane().setBackground(Color.GRAY);
 		frmSubstitutions.setTitle("Substitutions");
-		frmSubstitutions.setBounds(100, 100, 258, 303);
+		frmSubstitutions.setBounds(100, 100, 294, 418);
 		frmSubstitutions.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSubstitutions.getContentPane().setLayout(null);
 		
 		
+		JLabel lblStartingSelected = new JLabel("Select a Starting player to view Stam");
+		lblStartingSelected.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblStartingSelected.setForeground(new Color(255, 255, 255));
+		lblStartingSelected.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStartingSelected.setBounds(10, 240, 258, 40);
+		frmSubstitutions.getContentPane().add(lblStartingSelected);
+		
+		JLabel lblReserveSelected = new JLabel("Select a Reserve player to view Stam");
+		lblReserveSelected.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblReserveSelected.setForeground(new Color(255, 255, 255));
+		lblReserveSelected.setHorizontalAlignment(SwingConstants.CENTER);
+		lblReserveSelected.setBounds(10, 292, 258, 40);
+		frmSubstitutions.getContentPane().add(lblReserveSelected);
+		
+		
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
 		JList<Athlete> res = new JList<Athlete>(athleteListModel);
-		res.setBounds(141, 43, 100, 186);
+		res.setBounds(149, 43, 100, 186);
 		frmSubstitutions.getContentPane().add(res);
 		res.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		res.setForeground(Color.DARK_GRAY);
@@ -50,7 +66,7 @@ public class SubstituionGUI {
 			public void valueChanged(ListSelectionEvent e) {
 				Athlete ath = res.getSelectedValue();
 				if (ath != null) {
-					//displayerInfo.setText(ath.printForSelection());
+					lblReserveSelected.setText(ath.getName(ath) + " has " + ath.getStamina() + "/100 Stamina");
 				}
 			}
 		});
@@ -62,7 +78,7 @@ public class SubstituionGUI {
 		
 		DefaultListModel<Athlete> athleteListModel2 = new DefaultListModel<Athlete>();
 		JList<Athlete> start = new JList<Athlete>(athleteListModel2);
-		start.setBounds(17, 43, 100, 186);
+		start.setBounds(25, 43, 100, 186);
 		frmSubstitutions.getContentPane().add(start);
 		frmSubstitutions.getContentPane().add(res);
 		start.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -72,7 +88,7 @@ public class SubstituionGUI {
 			public void valueChanged(ListSelectionEvent e) {
 				Athlete ath = start.getSelectedValue();
 				if (ath != null) {
-					//displayerInfo.setText(ath.printForSelection());
+					lblStartingSelected.setText(ath.getName(ath) + " has " + ath.getStamina() + "/100 Stamina");
 				}
 			}
 		});
@@ -92,16 +108,22 @@ public class SubstituionGUI {
 				
 			}
 		});
-		confirm.setBounds(69, 241, 117, 25);
+		confirm.setBounds(79, 343, 117, 25);
 		frmSubstitutions.getContentPane().add(confirm);
 		
 		JLabel Starting = new JLabel("Starting");
-		Starting.setBounds(42, 15, 61, 16);
+		Starting.setForeground(new Color(255, 255, 255));
+		Starting.setFont(new Font("Tahoma", Font.BOLD, 12));
+		Starting.setBounds(50, 15, 61, 16);
 		frmSubstitutions.getContentPane().add(Starting);
 		
 		JLabel Reserves = new JLabel("Reserves");
-		Reserves.setBounds(161, 15, 72, 16);
+		Reserves.setForeground(new Color(255, 255, 255));
+		Reserves.setFont(new Font("Tahoma", Font.BOLD, 12));
+		Reserves.setBounds(169, 15, 72, 16);
 		frmSubstitutions.getContentPane().add(Reserves);
+		
+
 	}
 	public void close() {
 		this.frmSubstitutions.dispose();
