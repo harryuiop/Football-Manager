@@ -15,19 +15,10 @@ public class Market {
 	public ArrayList<Athlete> unSeenPlayers = new ArrayList<Athlete>();
 	public ArrayList<Athlete> seenPlayers = new ArrayList<Athlete>();
 	
-	Scanner scanner2 = new  Scanner(System.in);
-
-
 	/**
 	 * Creating an instance of Random
 	 */
 	Random rand = new Random();
-	
-	
-	/**
-	 * creates a scanner method to invoke the Scanner Class to use user inputs
-	 */
-	Scanner scanner = new Scanner(System.in);
 	
 	
 	/**
@@ -137,9 +128,6 @@ public class Market {
 			counter++;
 		}
 	}
-	
-	
-
 	
 	
 	/**

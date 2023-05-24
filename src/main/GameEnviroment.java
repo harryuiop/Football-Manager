@@ -18,14 +18,6 @@ public class GameEnviroment {
 	 private int winAmount;
 	 private int weeklyWinAmount;
 	 
-	 /**
-		 * 	  creates a scanner method to invoke the Scanner Class to use user inputs
-		 */
-		Scanner scanner = new Scanner(System.in);
-		Scanner scanner2 = new Scanner(System.in);
-		Scanner scanner3 = new Scanner(System.in);
-
-	
 	
 	 /**
 	  * The main method to run the game, creating all the objects and making things run sequentially. 
@@ -44,24 +36,6 @@ public class GameEnviroment {
 		 winAmount = 0;
 		 
 		 launchSetupGUI(team, game,  market, potentialPlayers, player);
-		 
-		 //market.pickInitalTeam(market, team, player); // calls the main method for the logic behind creating the initial team
-		 //market.pickInitalReserves(market, team, player);
-		 		 
-		 //int chooseToMakeSub = askToMakeSub();
-		 
-		 	//if (chooseToMakeSub == 1) {
-		 		//equestSub(team, market);
-		 	//}
-	 	
-	 	//market.goToMarket(player);
-	 
-	 	//Main game-loop which sends the player to match selection which loops until the last week is hit
-//		 while (currentWeekNum <= chosenNumWeeks) {
-//			 matchSelection(game, team, player, market); //Game Selection screen 
-//			 game.currentWeekNum++; //Go to the next week
-//		 }
-//		gameEnd(player);
 	 }
 	 
 	 
@@ -129,11 +103,6 @@ public class GameEnviroment {
 		 gameEnd.frmGameEnd.setVisible(true);
 	 }
 	 
-
-
-	 
-	 
-	 
 	/**
 	 * The game-end splash screen that prints out the players' win total and money amount
 	 * @param player
@@ -142,54 +111,13 @@ public class GameEnviroment {
 		System.out.println("You have finished the game with " + winAmount + " wins and " + "$" + player.getMoneyBalance());
 	}
 	
+	
 	//String splash for the match selection
 	 public String matchSelectionString(GameEnviroment game, Team team, Player player, ArrayList<ArrayList<Athlete>> opponentsLeft) {
 		 return team.getName() + "\t" + player.getMoneyBalance() + "\t" + currentWeekNum + "/" + chosenNumWeeks + " Weeks\nType the number of the opponent you want to play: \n";
 	 }
 	
-	
-	/**
-	 * Function is called to allow the player to select a match between three opponents. Function is stopped when the 3 opponents have been played.
-	 * @param game
-	 * @param team
-	 * @param player
-	 */
-	
-	 
-		 
-	 public int askToMakeSub() {
-		 boolean isInputValid = false;
-		 int yesOrNo = 0;
-		 while (!isInputValid) {
-			 
-			 System.out.println("Would you like to make substituions?\n\n Enter 1 for YES or Enter 2 for NO ");
-			 
-			 try {
-				 int chooseToMakeSub = scanner.nextInt();
-				 if (chooseToMakeSub == 1) {
-					 isInputValid = true;
-					 yesOrNo = 1;
-				 } else if (chooseToMakeSub == 2) {
-					 isInputValid = true;
-					 yesOrNo = 2;
-				 } else {
-					 throw new InputMismatchException();
-				 }
-				 
-			 } catch(InputMismatchException e) {
-				 System.out.println("Invalid input. Please enter 1 or 2." + "\n");
-				 scanner.nextLine();
-			 }  
-		 }
-		 
-		 return yesOrNo;
-	 }
-		 	
-	
-	 		
-	 	
-
-	 
+ 
 	/**
 	 * prompts user to pick a team name then users setter in Team Class
 	 * @param team
@@ -213,84 +141,9 @@ public class GameEnviroment {
 				 return false;
 			 }
 		 }
-
 		 return true;
-
 	 }
-	 
-	 
-	 
-	 /**
-	  * prompts user to pick the number of weeks desired in their season, if input invalid will loop.
-	  * @param game
-	  */
-	 public int chooseNumWeeks() throws InputMismatchException {
-		 
-		 boolean isInputValid = false;
-		 int finalWeekHolder = 0;
-		 
-		 while (!isInputValid) {
-		 
-			 System.out.println("Choose your season length (5-15 weeks) \n");
-			 
-			 try {
-				 int weeknums = scanner.nextInt();
-				 if (weeknums >= 5 && weeknums <= 15) {
-					 finalWeekHolder = weeknums;
-					 isInputValid = true;
-					 System.out.println("\n\t" + "Your choosen season length is " + finalWeekHolder + " weeks" + "\n");
-				 } else {
-					 throw new InputMismatchException();
-				 }
-				 
-			 } catch(InputMismatchException e) {
-		         System.out.println("Invalid input. Please enter a valid integer." + "\n");
-		         scanner.nextLine();
-	        
-			 } 
-		 
-		}
-		 return finalWeekHolder;
-	 }
-	 
-	 
-	 /**
-	  * prompts user to pick the game difficulty, if input invalid will loop.
-	  * 
-	  */
-	 public int chooseDifficulty() throws InputMismatchException {
-		 
-		 boolean isInputValid = false;
-			 
-		 while (!isInputValid) {
-		 
-			 System.out.println("Choose Difficulty Below " + "\n\t" + "Amateur: Higher Starting Balance (Enter 1)" + "\n\t" + "Pro: Lower Starting Balance (Enter 2)" + "\n");
-			 
-			 try { 
-				 int difficulty = scanner.nextInt();
-				 
-				 if (difficulty == 1) {
-				 System.out.println("\n\t" + "Your choosen game difficulty is Amateur\n");
-				 isInputValid = true;
-				 } 
-				 
-				 else if (difficulty == 2) {
-				 System.out.println("\n\t" + "Your choosen game difficulty is Pro\n");
-				 isInputValid = true;
-				 }
-
-				 
-			 } catch(InputMismatchException e) {
-				 System.out.println("Invalid input. Please enter an integer." + "\n");
-		         scanner.nextLine();
-	        
-			 } 
-		 }
-		 
-		 return difficulty;
-	 }
-	 
-	 
+	 	 
 	 /**
 	  * This method sets the players start balance with respect to the game difficulty. 
 	  * Amateur will start with $1000 and pro will start with $700  
