@@ -299,20 +299,22 @@ public class MatchGUI{
 						break;
 						
 					case 5:
-						lblLineup1.setText("");
-						lblLineup2.setText("");
-						lblLineup3.setText("");
-						lblLineup4.setText("");
-						lblAthlete1.setText("");
-						lblAthlete2.setText("");
-						lblAthlete3.setText("");
-						lblAthlete4.setText("");
-						lblWinResult.setText("");
+
 						if (team.startingTeamHealthy(team) == false) {
 							buttonPressCount -= 1;
 							lblWinResult.setText("Starting team is not healthy, please make a Sub");
 						}
 						else {
+							lblLineup1.setText("");
+							lblLineup2.setText("");
+							lblLineup3.setText("");
+							lblLineup4.setText("");
+							lblAthlete1.setText("");
+							lblAthlete2.setText("");
+							lblAthlete3.setText("");
+							lblAthlete4.setText("");
+							lblWinResult.setText("");
+							lblHalf.setText("Second-Half");
 							matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 5)), opposingTeam.get((buttonPressCount - 5)), "player");
 							switch(matchUpResult) {
 							case "Won":

@@ -28,7 +28,7 @@ public class MatchSelectionGUI{
 	 */
 	private void initialize(Team team, GameEnviroment game, Market market, Player player, JFrame frmClub, MatchSelectionGUI matchSelectionGUI, ClubGUI clubgui) {
 		frmMatchSelect = new JFrame();
-		frmMatchSelect.setTitle("Match Selection");
+		frmMatchSelect.setTitle("Stadium");
 		frmMatchSelect.setBounds(100, 100, 700, 500);
 		frmMatchSelect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMatchSelect.getContentPane().setLayout(null);
