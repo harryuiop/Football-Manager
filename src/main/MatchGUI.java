@@ -50,7 +50,7 @@ public class MatchGUI{
 		lblScore.setBounds(333, 31, 215, 89);
 		frmMatch.getContentPane().add(lblScore);
 		
-		JLabel lblHalf = new JLabel("1st-Half");
+		JLabel lblHalf = new JLabel("First Half");
 		lblHalf.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHalf.setFont(new Font("Tahoma", Font.BOLD, 22));
 		lblHalf.setBounds(333, 388, 215, 62);
@@ -314,7 +314,7 @@ public class MatchGUI{
 							lblAthlete3.setText("");
 							lblAthlete4.setText("");
 							lblWinResult.setText("");
-							lblHalf.setText("Second-Half");
+							lblHalf.setText("Second Half");
 							matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 5)), opposingTeam.get((buttonPressCount - 5)), "player");
 							switch(matchUpResult) {
 							case "Won":
