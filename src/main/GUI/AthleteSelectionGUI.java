@@ -74,6 +74,7 @@ public class AthleteSelectionGUI {
 		textField.setColumns(10);
 		
 		
+		// Athlete List
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
 		JList<Athlete> athleteJList = new JList<Athlete>(athleteListModel);
 		athleteJList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -170,9 +171,11 @@ public class AthleteSelectionGUI {
 		list.setBounds(174, 12, 221, 261);
 		frmAthleteSelection.getContentPane().add(list);
 		
+		
 		JLabel balancelbl = new JLabel("Balance :");
 		balancelbl.setBounds(533, 411, 97, 25);
 		frmAthleteSelection.getContentPane().add(balancelbl);
+		
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(AthleteSelectionGUI.class.getResource("/main/images/anfield.jpeg")));
