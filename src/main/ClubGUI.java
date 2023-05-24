@@ -153,12 +153,17 @@ public class ClubGUI {
         
         Athlete p1 = team.getStartingName().get(0);
         JButton player1 = new JButton(p1.getName(p1));
+        
+        System.out.println(p1.getInjuryStatus());
+        
         player1.setBounds(348, 259, 117, 31);
         frmClub.getContentPane().add(player1);
         if (p1.getInjuryStatus() == true) {
-        	player1.setBackground(new Color(200, 0, 0));
+            System.out.println(p1.getInjuryStatus());
+
+        	player1.setForeground(new Color(200, 0, 0));
         } else  {
-        	player1.setBackground(new Color(238, 238, 238));
+        	player1.setForeground(new Color(0, 0, 0));
         }
         player1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -172,13 +177,13 @@ public class ClubGUI {
 
         
         Athlete p2 = team.getStartingName().get(1);
-        JButton player2 = new JButton(p2.getName(p2));
+        JButton player2 = new JButton(p2.getName(p2));        
         player2.setBounds(464, 259, 117, 31);
         frmClub.getContentPane().add(player2);
         if (p2.getInjuryStatus() == true) {
-        	player2.setBackground(new Color(200, 0, 0));
+        	player2.setForeground(new Color(200, 0, 0));
         } else {
-        	player2.setBackground(new Color(238, 238, 238));
+        	player2.setForeground(new Color(0, 0, 0));
         }
         player2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -193,13 +198,16 @@ public class ClubGUI {
         
         Athlete p3 = team.getStartingName().get(2);
         JButton player3 = new JButton(p3.getName(p3));
+        
+        System.out.println(p3.getInjuryStatus());
+        
         player3.setBounds(348, 293, 117, 29);
         frmClub.getContentPane().add(player3);
         clubGUI.counter++;
         if (p3.getInjuryStatus() == true) {
-        	player3.setBackground(new Color(200, 0, 0));
+        	player3.setForeground(new Color(200, 0, 0));
         } else {
-        	player3.setBackground(new Color(238, 238, 238));
+        	player3.setForeground(new Color(0, 0, 0));
         }
         player3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -216,9 +224,9 @@ public class ClubGUI {
         player4.setBounds(464, 293, 117, 29);
         frmClub.getContentPane().add(player4);
         if (p4.getInjuryStatus() == true) {
-        	player4.setBackground(new Color(200, 0, 0));
+        	player4.setForeground(new Color(200, 0, 0));
         } else {
-        	player4.setBackground(new Color(238, 238, 238));
+        	player4.setForeground(new Color(0, 0, 0));
         }
         player4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -235,9 +243,9 @@ public class ClubGUI {
         player5.setBounds(254, 420, 117, 29);
         frmClub.getContentPane().add(player5);
         if (p5.getInjuryStatus() == true) {
-        	player5.setBackground(new Color(200, 0, 0));
+        	player5.setForeground(new Color(200, 0, 0));
         } else {
-        	player5.setBackground(new Color(238, 238, 238));
+        	player5.setForeground(new Color(0, 0, 0));
         }
         player5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -255,9 +263,9 @@ public class ClubGUI {
         player6.setBounds(363, 420, 117, 29);
         frmClub.getContentPane().add(player6);
         if (p6.getInjuryStatus() == true) {
-        	player6.setBackground(new Color(200, 0, 0));
+        	player6.setForeground(new Color(200, 0, 0));
         } else {
-        	player6.setBackground(new Color(238, 238, 238));
+        	player6.setForeground(new Color(0, 0, 0));
         }
         player6.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -275,9 +283,9 @@ public class ClubGUI {
         frmClub.getContentPane().add(player7);
         player7.setBounds(254, 386, 117, 29);
         if (p7.getInjuryStatus() == true) {
-        	player7.setBackground(new Color(200, 0, 0));
+        	player7.setForeground(new Color(200, 0, 0));
         } else {
-        	player7.setBackground(new Color(238, 238, 238));
+        	player7.setForeground(new Color(0, 0, 0));
         }
         player7.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -295,9 +303,9 @@ public class ClubGUI {
 	        player8.setBounds(363, 386, 117, 29);
 	        frmClub.getContentPane().add(player8);
 	        if (p8.getInjuryStatus() == true) {
-	        	player8.setBackground(new Color(200, 0, 0));
+	        	player8.setForeground(new Color(200, 0, 0));
 	        } else {
-	        	player8.setBackground(new Color(238, 238, 238));
+	        	player8.setForeground(new Color(0, 0, 0));
 	        }
 	        player8.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
@@ -328,7 +336,14 @@ public class ClubGUI {
         
         inventory.setBounds(548, 358, 134, 49);
         frmClub.getContentPane().add(inventory);
-
+        
+        JLabel moneylbl = new JLabel("Balance: ");
+        moneylbl.setFont(new Font("Lucida Grande", Font.BOLD, 12));
+        moneylbl.setForeground(new Color(0, 0, 0));
+        moneylbl.setBounds(167, 294, 105, 20);
+        frmClub.getContentPane().add(moneylbl);
+        moneylbl.setText("Balance: $" + player.getMoneyBalance()+"");
+        
         JLabel background = new JLabel("");
         background.setIcon(new ImageIcon(ClubGUI.class.getResource("/main/images/clubroom.jpg")));
         background.setBounds(-52, -24, 793, 538);

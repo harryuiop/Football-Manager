@@ -147,9 +147,7 @@ public class AthleteSelectionGUI {
 					}
 					if (team.getStartingName().size() == 4 && team.getReserveName().size() == 4) {
 						game.closeAthleteSelectionGUI(team, game, athsel, market, player);			
-					
 					} 
-					
 				} 
 			}
 		});
@@ -168,8 +166,6 @@ public class AthleteSelectionGUI {
 		JLabel balancelbl = new JLabel("Balance :");
 		balancelbl.setBounds(533, 411, 97, 25);
 		frmAthleteSelection.getContentPane().add(balancelbl);
-		
-		
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(AthleteSelectionGUI.class.getResource("/main/images/anfield.jpeg")));
