@@ -85,7 +85,8 @@ public class PotentialPlayers {
 	
 	
 	/**
-	 * 
+	 * This method is called on command to crate an oppsing team in 3 different difficultys in which each
+	 * athlete has higher and lower roundly gernerated stats based on difficulty
 	 */
 	public ArrayList<Athlete> createOpposingTeam(GameEnviroment game, int level) {
 		
@@ -174,44 +175,39 @@ public class PotentialPlayers {
 		}
 	}
 
-
+	/**
+	 * All nessassary getter and setters
+	 * @return
+	 */
 	public ArrayList<Athlete> getPlayersTeam() {
 		return PlayersTeam;
 	}
-
 
 	public void setPlayersTeam(ArrayList<Athlete> playersTeam) {
 		PlayersTeam = playersTeam;
 	}
 
-
 	public ArrayList<String> getNames() {
 		return names;
 	}
-
 
 	public void setName(ArrayList<String> names) {
 		this.names = names;
 	}
 
-
 	public Random getRand() {
 		return rand;
 	}
-
 
 	public void setRand(Random rand) {
 		this.rand = rand;
 	}
 
-
 	public ArrayList<Athlete> getAllPlayers() {
 		return allPlayers;
 	}
 
-
 	public void setAllPlayers(ArrayList<Athlete> allPlayers) {
 		this.allPlayers = allPlayers;
 	}
-
 }

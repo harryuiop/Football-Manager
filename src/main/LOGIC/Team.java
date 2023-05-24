@@ -4,21 +4,26 @@ import java.util.ArrayList;
 
 public class Team {
 	
+	
 	private String name;
 	private ArrayList<Athlete> startingNames; 
 	private ArrayList<Athlete> reserveNames;
 	
 	
+	/**
+	 * Constructor
+	 */
 	public Team(){
 		startingNames = new ArrayList<Athlete>();
 		reserveNames = new ArrayList<Athlete>();
 	}
 	
-	
-	public void makeSubstituion(Athlete athleteToSub, Athlete athleteToPlay) {
-		
-		// first we find if the player is starting or not, then we hold them in a variable
-		
+	/**
+	 * First serches if player is in the starting or reserves, then stores it, these swaps them based off if logic
+	 * @param athleteToSub
+	 * @param athleteToPlay
+	 */
+	public void makeSubstituion(Athlete athleteToSub, Athlete athleteToPlay) {		
 		Athlete athleteToPlayObject = null;
 		Athlete athleteToSubObject = null;
 		
@@ -44,7 +49,6 @@ public class Team {
 			
 			startingNames.remove(athleteToSubObject);
 			reserveNames.add(athleteToSubObject);
-			
 			reserveNames.remove(athleteToPlayObject);
 			startingNames.add(athleteToPlayObject);
 			
@@ -52,16 +56,20 @@ public class Team {
 			
 			reserveNames.remove(athleteToSubObject);
 			startingNames.add(athleteToSubObject);
-			
 			startingNames.remove(athleteToPlayObject);
 			reserveNames.add(athleteToPlayObject);
-		
+			
 		} else {
 		}
 	}
 	
+	
+	/**
+	 * checks to see if everyone in the starting team is "healthy" (stamina is > 0)
+	 * @param team
+	 * @return
+	 */
 	public boolean startingTeamHealthy(Team team) {
-		//checks to see if everyone in the starting team is "healthy" (stamina is > 0)
 		boolean isHealthy = true;
 		for (Athlete ath : team.getStartingName()) {
 			if (ath.getInjuryStatus() == true) {
@@ -71,8 +79,13 @@ public class Team {
 		return isHealthy;
 	}
 	
+	
+	/**
+	 * Checks to see if everyone in the starting team is "healthy" (stamina is > 0)
+	 * @param team
+	 * @return
+	 */
 	public boolean reserveTeamHealthy(Team team) {
-		//checks to see if everyone in the starting team is "healthy" (stamina is > 0)
 		boolean isHealthy = true;
 		for (Athlete ath : team.getReserveName()) {
 			if (ath.getInjuryStatus() == true) {
@@ -82,6 +95,12 @@ public class Team {
 		return isHealthy;
 	}
 	
+	
+	/**
+	 * Counts how many plays in the players team is injured 
+	 * @param teamList
+	 * @return
+	 */
 	public int howManyInjured(ArrayList<Athlete> teamList) {
 		int injuredCount = 0;
 		for (Athlete ath : teamList) {
@@ -92,8 +111,12 @@ public class Team {
 		return injuredCount;
 	}
 	
+	
+	/**
+	 * exhausts all starting players after a matchup by reducing stamina by 10
+	 * @param team
+	 */
 	public void gamePlayedStamDecr(Team team) {
-		//exhausts all starting players 
 		for (Athlete ath : team.getStartingName()) {
 			if (ath.getStamina() > 0) {
 				ath.setStamina(ath.getStamina() - 10);
@@ -131,6 +154,5 @@ public class Team {
 	
 	public ArrayList<Athlete> getReserveName() {
 		return reserveNames;
-	}
-	
+	}	
 }

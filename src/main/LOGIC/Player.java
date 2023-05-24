@@ -15,15 +15,27 @@ public class Player {
 		athlete.applyItemBuff(item);
 	}
 	
+	
+	/**
+	 * Add item to players inventory
+	 * @param item
+	 */
 	public void addItemToInventory(Item item) {
 		inventory.add(item);
 	}
 	
+	
+	/**
+	 * removes item from inventory and updates players balance
+	 * @param item
+	 * @param index
+	 */
 	public void sellItem(Item item, int index) {
 		int price = item.getSellBackPriceprivate();
 		setMoneyBalance(getMoneyBalance() + price); 
 		removeItem(index);
 	}
+	
 	
 	/**
 	 * all necessary setters and getters to the class

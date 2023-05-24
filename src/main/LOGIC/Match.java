@@ -2,7 +2,9 @@ package main.LOGIC;
 import java.util.ArrayList;
 import java.util.Random;
 
+
 public class Match {
+	
 	
 	private ArrayList<Athlete> opposingAttackers;
 	private ArrayList<Athlete> opposingDefenders;
@@ -13,10 +15,15 @@ public class Match {
 	private int playersScore;
 	
 	
+	/**
+	 * Constructor
+	 */
 	public Match(){
 		opposingScore = 0;
 		playersScore = 0;
 	}
+	
+	
 	/**
 	 * The Main game-loop: Works by each players' starting athlete facing the opponents opposite and a 'point' is gained when 
 	 * an attackers offence stat is greater than a defenders defence stat
@@ -26,8 +33,6 @@ public class Match {
 	 * @param opponent
 	 * @return
 	 */
-	
-	
 	public String matchUp(GameEnviroment game, Player player, Team team, Athlete playersAth, Athlete oppsAth, String inPossesion){
 		Random statRange = new Random();
 		String matchUpResult = "Win";
@@ -44,8 +49,6 @@ public class Match {
 		int opponentStat = statRange.nextInt(0,20);
 		int opponentPlusOrMinus = statRange.nextInt(0,1);
 		
-
-		
 		
 		switch(inPossesion) {
 			case "player":
@@ -58,7 +61,6 @@ public class Match {
 					playerOffStat -= playerStat;
 					break;
 				}
-				
 				
 				switch(opponentPlusOrMinus) {
 				case 0:
@@ -118,12 +120,23 @@ public class Match {
 		return matchUpResult;
 	}
 	
+	
+	/**
+	 * Updates game wins
+	 * @param game
+	 * @param match
+	 */
 	public void gameWin(GameEnviroment game, Match match) {
 		if (match.playersScore > match.opposingScore) {
 			game.setWinAmount(game.getWinAmount() + 1);
 		}
 	}
 	
+	
+	/**
+	 * Formatting for JLabel in GUI
+	 * @return
+	 */
 	public String winnerString() {
 		if (getPlayersScore() > getOpposingScore()) {
 			return "You Win: " + getPlayersScore() + "-" + getOpposingScore();

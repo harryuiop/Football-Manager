@@ -32,7 +32,7 @@ public class Market {
 	
 	
 	/**
-	 * 
+	 * Removes an athlete from the wavier list
 	 * @param ath
 	 */
 	public void removeAthelte(Athlete ath) {
@@ -50,7 +50,22 @@ public class Market {
 	 
 	
 	/**
-	 * adds athlete to wavierList being called from Athlete Class
+	 * This method will get called once at the start of the program to set the first market rotation of items
+	 */
+	public void initalMarketItems() {
+		int counter = 0;
+		while (counter < 3) {
+			int nextItem = rand.nextInt(0, unseenItems.size());
+			Item choosenItem = unseenItems.get(nextItem);
+			catalog.add(choosenItem);
+			unseenItems.remove(choosenItem);
+			counter++;
+		}
+	}
+	
+	
+	/**
+	 * creates the intial wavier list starting with 20 athletes, called from game enviroment
 	 * @param athlete 
 	 */
 	public void initalWavier(PotentialPlayers potentialplayers) {
@@ -67,7 +82,9 @@ public class Market {
 	
 	
 	/**
-	 * rotates the wavierlist
+	 * rotates the wavierlist to refresh all new athletes
+	 * first if statment checks to see if there are enough players in the unseen list, else, reset the whole list
+	 * then adds 12 new athletes that havent been seen yet
 	 */
 	public void rotateWavier() {
 		if (unSeenPlayers.size() < 12) {
@@ -93,7 +110,9 @@ public class Market {
 
 	
 	/**
-	 * This method can be called at any time in order to change the items in the market
+	 * rotates the wavierlist to refresh all new items
+	 * first if statment checks to see if there are enough items in the unseen list, else, reset the whole list
+	 * then adds 3 new athletes that havent been seen yet
 	 */
 	public void rotateMarketItems() {
 		if (unseenItems.size() < 5) {
@@ -117,19 +136,6 @@ public class Market {
 	}
 	
 	
-	/**
-	 * This method will get called once at the start of the program to set the first market rotation
-	 */
-	public void initalMarketItems() {
-		int counter = 0;
-		while (counter < 3) {
-			int nextItem = rand.nextInt(0, unseenItems.size());
-			Item choosenItem = unseenItems.get(nextItem);
-			catalog.add(choosenItem);
-			unseenItems.remove(choosenItem);
-			counter++;
-		}
-	}
 	
 	
 	/**
@@ -171,7 +177,7 @@ public class Market {
 	
 	
 	/**
-	 * 
+	 * adds athlete to the starting team and updates balance
 	 * @param player
 	 * @param athlete
 	 * @param team
@@ -196,7 +202,7 @@ public class Market {
 	
 	
 	/**
-	 * 
+	 * adds item to inventory and updates balance
 	 * @param player
 	 * @param item
 	 * @param team
