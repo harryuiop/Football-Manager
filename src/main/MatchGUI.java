@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -42,9 +44,10 @@ public class MatchGUI{
 		frmMatch.getContentPane().setLayout(null);
 		
 		JLabel lblScore = new JLabel("0-0");
+		lblScore.setForeground(new Color(0, 0, 0));
 		lblScore.setFont(new Font("Tahoma", Font.BOLD, 22));
 		lblScore.setHorizontalAlignment(SwingConstants.CENTER);
-		lblScore.setBounds(333, 11, 215, 89);
+		lblScore.setBounds(333, 31, 215, 89);
 		frmMatch.getContentPane().add(lblScore);
 		
 		JLabel lblHalf = new JLabel("1st-Half");
@@ -54,6 +57,7 @@ public class MatchGUI{
 		frmMatch.getContentPane().add(lblHalf);
 		
 		JLabel lblAthlete1 = new JLabel("athlete1");
+		lblAthlete1.setForeground(new Color(0, 0, 0));
 		lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
 		lblAthlete1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblAthlete1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -61,6 +65,7 @@ public class MatchGUI{
 		frmMatch.getContentPane().add(lblAthlete1);
 		
 		JLabel lblAthlete2 = new JLabel("athlete2");
+		lblAthlete2.setForeground(new Color(0, 0, 0));
 		lblAthlete2.setText(team.getStartingName().get(1).getName(team.getStartingName().get(1)) + " STM: " + team.getStartingName().get(1).getStamina() + "/100");
 		lblAthlete2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAthlete2.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -68,6 +73,7 @@ public class MatchGUI{
 		frmMatch.getContentPane().add(lblAthlete2);
 		
 		JLabel lblAthlete3 = new JLabel("athlete3");
+		lblAthlete3.setForeground(new Color(0, 0, 0));
 		lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
 		lblAthlete3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAthlete3.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -75,6 +81,7 @@ public class MatchGUI{
 		frmMatch.getContentPane().add(lblAthlete3);
 		
 		JLabel lblAthlete4 = new JLabel("athlete4");
+		lblAthlete4.setForeground(new Color(0, 0, 0));
 		lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 		lblAthlete4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAthlete4.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -82,6 +89,7 @@ public class MatchGUI{
 		frmMatch.getContentPane().add(lblAthlete4);
 		
 		JLabel lblOpp1 = new JLabel("Opp1");
+		lblOpp1.setForeground(new Color(0, 0, 0));
 		lblOpp1.setText(opposingTeam.get(0).getName(opposingTeam.get(0)));
 		lblOpp1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOpp1.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -89,6 +97,7 @@ public class MatchGUI{
 		frmMatch.getContentPane().add(lblOpp1);
 		
 		JLabel lblOpp2 = new JLabel("Opp2");
+		lblOpp2.setForeground(new Color(0, 0, 0));
 		lblOpp2.setText(opposingTeam.get(1).getName(opposingTeam.get(1)));
 		lblOpp2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOpp2.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -96,6 +105,7 @@ public class MatchGUI{
 		frmMatch.getContentPane().add(lblOpp2);
 		
 		JLabel lblOpp3 = new JLabel("Opp3");
+		lblOpp3.setForeground(new Color(0, 0, 0));
 		lblOpp3.setText(opposingTeam.get(2).getName(opposingTeam.get(2)));
 		lblOpp3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOpp3.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -103,6 +113,7 @@ public class MatchGUI{
 		frmMatch.getContentPane().add(lblOpp3);
 		
 		JLabel lblOpp4 = new JLabel("Opp4");
+		lblOpp4.setForeground(new Color(0, 0, 0));
 		lblOpp4.setText(opposingTeam.get(3).getName(opposingTeam.get(3)));
 		lblOpp4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblOpp4.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -111,28 +122,37 @@ public class MatchGUI{
 		
 		
 		JLabel lblLineup1 = new JLabel("Lineup Result");
+		lblLineup1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblLineup1.setForeground(new Color(0, 0, 0));
 		lblLineup1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLineup1.setBounds(347, 111, 195, 31);
+		lblLineup1.setBounds(331, 118, 230, 31);
 		frmMatch.getContentPane().add(lblLineup1);
 		
 		JLabel lblLineup2 = new JLabel("Lineup Result");
+		lblLineup2.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblLineup2.setForeground(new Color(0, 0, 0));
 		lblLineup2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLineup2.setBounds(347, 184, 195, 31);
+		lblLineup2.setBounds(331, 191, 230, 31);
 		frmMatch.getContentPane().add(lblLineup2);
 		
 		JLabel lblLineup3 = new JLabel("Lineup Result");
+		lblLineup3.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblLineup3.setForeground(new Color(0, 0, 0));
 		lblLineup3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLineup3.setBounds(347, 256, 195, 31);
+		lblLineup3.setBounds(331, 263, 230, 31);
 		frmMatch.getContentPane().add(lblLineup3);
 		
 		JLabel lblLineup4 = new JLabel("Lineup Result");
+		lblLineup4.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblLineup4.setForeground(new Color(0, 0, 0));
 		lblLineup4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLineup4.setBounds(347, 339, 195, 31);
+		lblLineup4.setBounds(331, 346, 230, 31);
 		frmMatch.getContentPane().add(lblLineup4);
 		
 		JLabel lblWinResult = new JLabel("");
+		lblWinResult.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblWinResult.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWinResult.setBounds(116, 528, 653, 31);
+		lblWinResult.setBounds(10, 528, 864, 31);
 		frmMatch.getContentPane().add(lblWinResult);
 		
 		JButton btnHalfTime = new JButton("Inspect Team");
@@ -427,6 +447,11 @@ public class MatchGUI{
 		btnHalfTime.setBounds(366, 494, 149, 23);
 		frmMatch.getContentPane().add(btnHalfTime);
 		
+		
+        JLabel background = new JLabel("");
+        background.setIcon(new ImageIcon(MatchGUI.class.getResource("/main/images/anfield.jpeg")));
+        background.setBounds(-1593, -848, 2551, 1540);
+        frmMatch.getContentPane().add(background);
 		
 
 		
