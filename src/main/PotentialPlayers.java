@@ -175,6 +175,36 @@ public class PotentialPlayers {
 	}
 
 
+	public ArrayList<Athlete> getPlayersTeam() {
+		return PlayersTeam;
+	}
+
+
+	public void setPlayersTeam(ArrayList<Athlete> playersTeam) {
+		PlayersTeam = playersTeam;
+	}
+
+
+	public ArrayList<String> getNames() {
+		return names;
+	}
+
+
+	public void setName(ArrayList<String> names) {
+		this.names = names;
+	}
+
+
+	public Random getRand() {
+		return rand;
+	}
+
+
+	public void setRand(Random rand) {
+		this.rand = rand;
+	}
+
+
 	public ArrayList<Athlete> getAllPlayers() {
 		return allPlayers;
 	}

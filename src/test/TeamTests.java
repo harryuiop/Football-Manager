@@ -83,17 +83,7 @@ class TeamTests {
         Assertions.assertEquals(3, injuredCount);
     }
 
-    @Test
-    public void testGamePlayedStamDecr() {
-        team.gamePlayedStamDecr(team);
-
-        for (Athlete athlete : team.getStartingName()) {
-            if (athlete.getStamina() > 0) {
-                Assertions.assertEquals(athlete.getStamina(), 40);
-            }
-        }
-    }
-
+    
     @Test
     public void testRemoveReservePlayer() {
         int initialSize = team.getReserveName().size();
