@@ -4,6 +4,9 @@ import main.Item;
 import main.Team;
 import main.Athlete;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Assert;
@@ -22,9 +25,8 @@ class TeamTests {
     private Athlete athlete7;
     private Athlete athlete8;
 
-    
 
-    @Before
+    @BeforeEach
     public void setUp() {
         team = new Team();
         athlete1 = new Athlete(50, 40, 1, 1, "John");
@@ -44,15 +46,12 @@ class TeamTests {
         team.addReservePlayer(athlete6);
         team.addReservePlayer(athlete7);
         team.addReservePlayer(athlete8);
-
     }
 
     @Test
     public void testMakeSubstituion() {
-        // Make a substitution in the team
         team.makeSubstituion(athlete1, athlete3);
 
-        // Assert that the substitution was made correctly
         Assert.assertFalse(team.getStartingName().contains(athlete1));
         Assert.assertTrue(team.getStartingName().contains(athlete3));
         Assert.assertFalse(team.getReserveName().contains(athlete3));
@@ -61,22 +60,50 @@ class TeamTests {
 
     @Test
     public void testStartingTeamHealthy() {
-        // Test when all starting players are healthy
         Assert.assertTrue(team.startingTeamHealthy(team));
-
-        // Test when one of the starting players is injured
         athlete1.setInjuryStatus(true);
         Assert.assertFalse(team.startingTeamHealthy(team));
     }
 
     @Test
     public void testReserveTeamHealthy() {
-        // Test when all reserve players are healthy
         Assert.assertTrue(team.reserveTeamHealthy(team));
-
-        // Test when one of the reserve players is injured
-        athlete3.setInjuryStatus(true);
+        athlete5.setInjuryStatus(true);
         Assert.assertFalse(team.reserveTeamHealthy(team));
     }
+    
+    @Test
+    public void testHowManyInjured() {
+        athlete1.setInjuryStatus(true);
+        athlete2.setInjuryStatus(true);
+        athlete3.setInjuryStatus(true);
 
+        int injuredCount = team.howManyInjured(team.getStartingName());
+
+        Assertions.assertEquals(3, injuredCount);
+    }
+
+    @Test
+    public void testGamePlayedStamDecr() {
+        team.gamePlayedStamDecr(team);
+
+        for (Athlete athlete : team.getStartingName()) {
+            if (athlete.getStamina() > 0) {
+                Assertions.assertEquals(athlete.getStamina(), 40);
+            }
+        }
+    }
+
+    @Test
+    public void testRemoveReservePlayer() {
+        int initialSize = team.getReserveName().size();
+        int indexToRemove = 1;
+
+        team.removeReservePlayer(indexToRemove);
+
+        Assertions.assertEquals(initialSize - 1, team.getReserveName().size());
+        Assertions.assertFalse(team.getReserveName().contains(athlete6));
+    }
 }
+
+

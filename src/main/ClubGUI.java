@@ -158,7 +158,6 @@ public class ClubGUI {
         if (p1.getInjuryStatus() == true) {
         	player1.setBackground(new Color(200, 0, 0));
         } else  {
-        	System.out.println("chur 1");
         	player1.setBackground(new Color(238, 238, 238));
         }
         player1.addActionListener(new ActionListener() {
@@ -179,8 +178,6 @@ public class ClubGUI {
         if (p2.getInjuryStatus() == true) {
         	player2.setBackground(new Color(200, 0, 0));
         } else {
-        	System.out.println("chur 2");
-
         	player2.setBackground(new Color(238, 238, 238));
         }
         player2.addActionListener(new ActionListener() {
@@ -202,7 +199,6 @@ public class ClubGUI {
         if (p3.getInjuryStatus() == true) {
         	player3.setBackground(new Color(200, 0, 0));
         } else {
-        	System.out.println("chur 3");
         	player3.setBackground(new Color(238, 238, 238));
         }
         player3.addActionListener(new ActionListener() {
