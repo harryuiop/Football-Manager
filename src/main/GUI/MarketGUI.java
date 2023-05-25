@@ -1,7 +1,6 @@
 package main.GUI;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.util.ArrayList;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -16,22 +15,17 @@ import main.LOGIC.Team;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.ListModel;
-import javax.swing.ImageIcon;
 import java.util.Random;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.UIManager;
 
 
 public class MarketGUI {

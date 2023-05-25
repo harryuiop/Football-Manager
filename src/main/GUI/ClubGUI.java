@@ -2,13 +2,11 @@ package main.GUI;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+
 
 import main.LOGIC.Athlete;
 import main.LOGIC.GameEnviroment;
@@ -17,24 +15,14 @@ import main.LOGIC.Player;
 import main.LOGIC.Team;
 
 import javax.swing.JButton;
-import javax.swing.JList;
-import javax.swing.JMenuItem;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import java.awt.Color;
-import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JToggleButton;
-import javax.swing.MenuElement;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class ClubGUI {
 

@@ -1,7 +1,6 @@
 package main.GUI;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JFrame;
@@ -17,7 +16,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 import main.LOGIC.GameEnviroment;
-import main.LOGIC.Market;
 import main.LOGIC.Player;
 import main.LOGIC.Team;
 import main.LOGIC.Athlete;

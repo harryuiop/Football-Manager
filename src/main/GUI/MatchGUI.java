@@ -1,14 +1,13 @@
 package main.GUI;
 import main.LOGIC.Athlete;
 import main.LOGIC.GameEnviroment;
-import main.LOGIC.Item;
-import main.LOGIC.Market;
+
 import main.LOGIC.Player;
 import main.LOGIC.Team;
 import main.LOGIC.Match;
 
 import java.awt.Color;
-import java.awt.EventQueue;
+
 import java.util.ArrayList;
 import java.util.Collections;
 

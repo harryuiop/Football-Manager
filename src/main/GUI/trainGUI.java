@@ -1,7 +1,5 @@
 package main.GUI;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;

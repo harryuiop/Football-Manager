@@ -5,7 +5,6 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.Dimension;
 import javax.swing.JSlider;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;

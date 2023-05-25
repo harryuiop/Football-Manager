@@ -1,16 +1,12 @@
 package main.GUI;
 
-import java.awt.EventQueue;
+
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.UIManager;
 import javax.swing.JLabel;
 import javax.swing.event.ListSelectionListener;
 
