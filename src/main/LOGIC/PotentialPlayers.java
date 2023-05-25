@@ -94,7 +94,7 @@ public class PotentialPlayers {
 		ArrayList<Athlete> opposingTeam = new ArrayList<Athlete>();
 		
 		switch (level) {
-		
+			//Easy difficulty
 			case 1:
 				
 				// #Rarity: 1 #Attacker
@@ -113,7 +113,7 @@ public class PotentialPlayers {
 				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
 				
 				break;
-				
+			//Medium difficulty	
 			case 2:
 				
 				// #Rarity: 1 #Attacker
@@ -132,7 +132,7 @@ public class PotentialPlayers {
 				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
 				
 				break;
-				
+			//Hard difficulty	
 			case 3:
 				
 				// #Rarity: 1 #Attacker

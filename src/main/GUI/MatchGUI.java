@@ -22,6 +22,15 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Mostly label/button setters. Outsourced the main game logic and game values that need to be set to the logic classes
+ * General idea of gameplay is that an athlete does not know who they are going to match up against so attack and defending positions are neglected as players need both stats. Is reflected in a flip of the team at half time
+ * First-half play: Press play 4 times, teams' athlete loses stamina on a match up loss
+ * Half-time: Sub team or forfeit
+ * Second-half: Same as first
+ * Full-time: Match results in the player losing, drawing or winning. Money awarded for winning and added to player total
+ */
+
 public class MatchGUI{
 
 	public JFrame frmMatch;
@@ -189,7 +198,13 @@ public class MatchGUI{
 		btnContinue.setBounds(785, 635, 89, 23);
 		frmMatch.getContentPane().add(btnContinue);
 		
-		
+		/**
+		 * main game logic: mostly label/button setters. Outsourced the main game logic and game values that need to be set to the logic classes
+		 * General idea of gameplay is that an athlete does not know who they are going to match up against so attack and defending positions are neglected as players need both stats
+		 * First-half play: Press play 4 times
+		 * Half-time: Sub team or forfeit
+		 * Full-time: Match results in the player losing, drawing or winning. Money awarded for winning and added to player total
+		 */
 		JButton btnPlay = new JButton("Play");
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

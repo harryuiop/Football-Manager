@@ -19,7 +19,7 @@ public class Team {
 	}
 	
 	/**
-	 * First serches if player is in the starting or reserves, then stores it, these swaps them based off if logic
+	 * First searches if player is in the starting or reserves, then stores it, these swaps them based off if logic
 	 * @param athleteToSub
 	 * @param athleteToPlay
 	 */

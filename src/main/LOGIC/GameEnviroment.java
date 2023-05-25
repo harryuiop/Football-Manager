@@ -23,10 +23,8 @@ public class GameEnviroment {
 	 private int playerLeaguePoints; 
 	 private int difficulty; 
 	 private int chosenNumWeeks; 
-	 private int currentInjuryCount;
 	 private boolean starterStatus;  //checks to see if the player has selected their starting team
 	 private int winAmount;
-	 private int weeklyWinAmount;
 	 
 	
 	 /**
@@ -40,7 +38,6 @@ public class GameEnviroment {
 		 Player player = new Player(); // creates instance of the player class
 		 Market market = new Market(); // creates instance of the market class
 		 currentWeekNum = 1;
-		 weeklyWinAmount = 0;
 		 winAmount = 0;
 		 launchSetupGUI(team, game,  market, potentialPlayers, player);
 	 }
@@ -276,14 +273,7 @@ public class GameEnviroment {
 	public void setChoosenNumWeeks(int choosenNumWeeks) {
 		this.chosenNumWeeks = choosenNumWeeks;
 	}
-	
-	public int getCurrentInjuryCount() {
-		return currentInjuryCount;
-	}
-	
-	public void setCurrentInjuryCount(int currentInjuryCount) {
-		this.currentInjuryCount = currentInjuryCount;
-	}
+
 	
 	public boolean getStarterStatus() {
 		return starterStatus;
@@ -293,11 +283,4 @@ public class GameEnviroment {
 		this.starterStatus = false;
 	}
 	
-	public int getWeeklyWinAmount() {
-		return weeklyWinAmount;
-	}
-	
-	public void setWeeklyAmount(int win) {
-		this.weeklyWinAmount = win;
-	}
 }

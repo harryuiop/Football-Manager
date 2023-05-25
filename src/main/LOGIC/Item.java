@@ -5,7 +5,7 @@ public class Item {
 	 
 	 private int rarity;
 	 private int itemPrice;
-	 private int sellBackPriceprivate ;
+	 private int sellBackPriceprivate;
 	 private int offenceIncrease;
 	 private int defenceIncrease;
 	 private int staminaIncrease;

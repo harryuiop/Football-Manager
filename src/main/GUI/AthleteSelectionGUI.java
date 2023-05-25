@@ -104,6 +104,9 @@ public class AthleteSelectionGUI {
 		lblCurrentTeam.setBounds(204, 391, 384, 27);
 		frmAthleteSelection.getContentPane().add(lblCurrentTeam);
 		
+		/**
+		 * Checks to see if the athlete is able to be purchased
+		 */
 		JButton btnPurchase = new JButton("Purchase");
 		btnPurchase.setBackground(Color.GRAY);
 		btnPurchase.addActionListener(new ActionListener() {

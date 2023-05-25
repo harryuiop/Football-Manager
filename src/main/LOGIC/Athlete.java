@@ -52,7 +52,6 @@ public class Athlete {
 	/**
 	 * this method calculates the Athlete Sell Back price for the Athlete Constructor.
 	 *  
-	 *  #NOT FINAL FORMULA 
 	 *  
 	 * @param contractPrice
 	 * @return
