@@ -137,7 +137,8 @@ public class ClubGUI {
         renderer.setBackground(Color.WHITE);
 
         
-        JLabel lblPlayerStats = new JLabel("");
+        JLabel lblPlayerStats = new JLabel("Select a Player to view their stats");
+        lblPlayerStats.setFont(new Font("Dialog", Font.BOLD, 11));
         lblPlayerStats.setHorizontalAlignment(SwingConstants.CENTER);
         lblPlayerStats.setBounds(19, 154, 233, 147);
         frmClub.getContentPane().add(lblPlayerStats);
