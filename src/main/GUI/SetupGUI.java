@@ -59,6 +59,7 @@ public class SetupGUI{
 		textField.setColumns(10);
 		
 		lblPleaseEnterYou = new JLabel("Teams Name: ");
+		lblPleaseEnterYou.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblPleaseEnterYou.setBounds(147, 51, 209, 24);
 		frmSetupGUI.getContentPane().add(lblPleaseEnterYou);
 		
