@@ -320,7 +320,6 @@ public class MatchGUI{
 						break;
 						
 					case 5:
-						System.out.println(team.startingTeamHealthy(team));
 						if (team.startingTeamHealthy(team) == false) {
 							lblWinResult.setText("Starting team is not healthy, please make a Sub");
 							buttonPressCount -= 1;
