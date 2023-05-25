@@ -158,8 +158,8 @@ public class MatchSelectionGUI{
 
 		btnBackClub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				game.LaunchClubGUI(team, game, market, player);
-				matchSelectionGUI.frmMatchSelect.setVisible(false);; // maybe dont use dispose ????
+				matchSelectionGUI.frmMatchSelect.setVisible(false);
+    			frmClub.setVisible(true);
 			}
 		});
 		btnBackClub.setBounds(10, 427, 109, 23);

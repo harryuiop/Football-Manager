@@ -96,11 +96,11 @@ public class ClubGUI {
         	public void actionPerformed(ActionEvent e) {
         		if (isMatchSelectCreated) {
         			matchSelectionGUI.frmMatchSelect.setVisible(true);
-        			game.closeClubGUI(clubGUI);
+        			frmClub.setVisible(false);
         		}
         		else {
             		matchSelectionGUI = game.LaunchMatchSelectionGUI(team, game, market, player, frmClub, clubGUI);
-            		game.closeClubGUI(clubGUI);
+        			frmClub.setVisible(false);
             		isMatchSelectCreated = true;
         		}
         	}
@@ -154,7 +154,6 @@ public class ClubGUI {
         player1.setBounds(348, 259, 117, 31);
         frmClub.getContentPane().add(player1);
         if (p1.getInjuryStatus() == true) {
-            System.out.println(p1.getInjuryStatus());
 
         	player1.setForeground(new Color(200, 0, 0));
         } else  {
