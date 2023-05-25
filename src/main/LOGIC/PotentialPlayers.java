@@ -100,17 +100,15 @@ public class PotentialPlayers {
 				// #Rarity: 1 #Attacker
 				opposingTeam.add(new Athlete(rand.nextInt(0, 40), rand.nextInt(0, 20), 1, 2, nameGenerator()));
 				
-				// #Rarity: 1 #Attacker
-				opposingTeam.add(new Athlete(rand.nextInt(0, 40), rand.nextInt(0, 20), 1, 3, nameGenerator()));
-				
 				// #Rarity: 1 #Defender
 				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
+				
+				// #Rarity: 1 #Attacker
+				opposingTeam.add(new Athlete(rand.nextInt(0, 40), rand.nextInt(0, 20), 1, 3, nameGenerator()));
 			
 				// #Rarity: 1 #Defender
 				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 2, nameGenerator()));
 				
-				// #Rarity: 1 #Defender
-				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
 				
 				break;
 			//Medium difficulty	
@@ -119,36 +117,33 @@ public class PotentialPlayers {
 				// #Rarity: 1 #Attacker
 				opposingTeam.add(new Athlete(rand.nextInt(40, 70), rand.nextInt(20, 40), 1, 2, nameGenerator()));
 				
+				// #Rarity: 1 #Defender
+				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
+				
 				// #Rarity: 1 #Attacker
 				opposingTeam.add(new Athlete(rand.nextInt(70, 100), rand.nextInt(40, 75), 1, 3, nameGenerator()));
 				
-				// #Rarity: 1 #Defender
-				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
 			
 				// #Rarity: 1 #Defender
 				opposingTeam.add(new Athlete(rand.nextInt(20, 40), rand.nextInt(40, 70), 2, 2, nameGenerator()));
 				
-				// #Rarity: 1 #Defender
-				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
 				
 				break;
 			//Hard difficulty	
 			case 3:
 				
-				// #Rarity: 1 #Attacker
-				opposingTeam.add(new Athlete(rand.nextInt(40, 70), rand.nextInt(20, 40), 1, 2, nameGenerator()));
-				
-				// #Rarity: 1 #Attacker
-				opposingTeam.add(new Athlete(rand.nextInt(70, 100), rand.nextInt(40, 75), 1, 3, nameGenerator()));
-				
 				// #Rarity: 1 #Defender
-				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
+				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(70, 100), 2, 1, nameGenerator()));
 			
 				// #Rarity: 1 #Defender
-				opposingTeam.add(new Athlete(rand.nextInt(20, 40), rand.nextInt(40, 70), 2, 2, nameGenerator()));
+				opposingTeam.add(new Athlete(rand.nextInt(20, 40), rand.nextInt(70, 100), 2, 2, nameGenerator()));
 				
-				// #Rarity: 1 #Defender
-				opposingTeam.add(new Athlete(rand.nextInt(0, 20), rand.nextInt(0, 40), 2, 1, nameGenerator()));
+				// #Rarity: 1 #Attacker
+				opposingTeam.add(new Athlete(rand.nextInt(60, 100), rand.nextInt(20, 100), 1, 2, nameGenerator()));
+				
+				// #Rarity: 1 #Attacker
+				opposingTeam.add(new Athlete(rand.nextInt(60, 100), rand.nextInt(20, 100), 1, 3, nameGenerator()));
+				
 				
 				break;
 		

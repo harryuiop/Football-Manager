@@ -179,12 +179,12 @@ public class MatchGUI{
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String gameResult;
-				player.setMoneyBalance(player.getMoneyBalance()+1000);
+				player.setMoneyBalance(player.getMoneyBalance()+100);
 				team.gamePlayedStamDecr(team);
 				frmMatch.dispose();
 				matchSelectionGUI.frmMatchSelect.setVisible(true);
 				if (match.getPlayersScore() > match.getOpposingScore()) {
-					gameResult = "You Win " + match.getPlayersScore() + "-" + match.getOpposingScore() + "... $1000 won. New balance: $" + player.getMoneyBalance();
+					gameResult = "You Win " + match.getPlayersScore() + "-" + match.getOpposingScore() + "... $100 won. New balance: $" + player.getMoneyBalance();
 				}
 				else if (match.getPlayersScore() < match.getOpposingScore()){
 					gameResult = "You Lose: " + match.getPlayersScore() + "-" + match.getOpposingScore() + "... No money won";
@@ -223,7 +223,7 @@ public class MatchGUI{
 							break;
 						case "Draw":
 							lblLineup1.setText(team.getStartingName().get((buttonPressCount - 1)) + " drew their match up");
-							lblLineup1.setForeground(Color.gray);	
+							lblLineup1.setForeground(Color.DARK_GRAY);	
 							break;
 						}
 						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
@@ -245,7 +245,7 @@ public class MatchGUI{
 							break;
 						case "Draw":
 							lblLineup2.setText(team.getStartingName().get((buttonPressCount - 1)) + " drew their match up");
-							lblLineup2.setForeground(Color.gray);
+							lblLineup2.setForeground(Color.DARK_GRAY);
 							break;
 						}
 						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
@@ -268,7 +268,7 @@ public class MatchGUI{
 							break;
 						case "Draw":
 							lblLineup3.setText(team.getStartingName().get((buttonPressCount - 1)) + " drew their match up");
-							lblLineup3.setForeground(Color.gray);
+							lblLineup3.setForeground(Color.DARK_GRAY);
 							break;
 						}
 						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
@@ -293,7 +293,7 @@ public class MatchGUI{
 							break;
 						case "Draw":
 							lblLineup4.setText(team.getStartingName().get((buttonPressCount - 1)) + " drew their match up");
-							lblLineup4.setForeground(Color.gray);
+							lblLineup4.setForeground(Color.DARK_GRAY);
 							btnPlay.setEnabled(false);
 							break;
 						}
@@ -327,6 +327,10 @@ public class MatchGUI{
 						}
 						else {
 							btnHalfTime.setEnabled(false);
+							lblOpp1.setText(opposingTeam.get(0).getName(opposingTeam.get(0)));
+							lblOpp2.setText(opposingTeam.get(1).getName(opposingTeam.get(1)));
+							lblOpp3.setText(opposingTeam.get(2).getName(opposingTeam.get(2)));
+							lblOpp4.setText(opposingTeam.get(3).getName(opposingTeam.get(3)));
 							lblLineup1.setText("");
 							lblLineup2.setText("");
 							lblLineup3.setText("");
@@ -349,7 +353,7 @@ public class MatchGUI{
 								break;
 							case "Draw":
 								lblLineup1.setText(team.getStartingName().get((buttonPressCount - 5)) + " drew their match up");
-								lblLineup1.setForeground(Color.gray);	
+								lblLineup1.setForeground(Color.DARK_GRAY);	
 								break;
 							}
 							lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
@@ -375,7 +379,7 @@ public class MatchGUI{
 							break;
 						case "Draw":
 							lblLineup2.setText(team.getStartingName().get((buttonPressCount - 5)) + " drew their match up");
-							lblLineup2.setForeground(Color.gray);
+							lblLineup2.setForeground(Color.DARK_GRAY);
 							break;
 						}
 						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
@@ -397,7 +401,7 @@ public class MatchGUI{
 							break;
 						case "Draw":
 							lblLineup3.setText(team.getStartingName().get((buttonPressCount - 5)) + " drew their match up");
-							lblLineup3.setForeground(Color.gray);
+							lblLineup3.setForeground(Color.DARK_GRAY);
 							break;
 						}
 						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");
@@ -419,7 +423,7 @@ public class MatchGUI{
 							break;
 						case "Draw":
 							lblLineup4.setText(team.getStartingName().get((buttonPressCount - 5)) + " drew their match up");
-							lblLineup4.setForeground(Color.gray);
+							lblLineup4.setForeground(Color.DARK_GRAY);
 							break;
 						}
 						lblAthlete1.setText(team.getStartingName().get(0).getName(team.getStartingName().get(0)) + " STM: " + team.getStartingName().get(0).getStamina() + "/100");

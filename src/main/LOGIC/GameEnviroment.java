@@ -223,9 +223,9 @@ public class GameEnviroment {
 	  */
 	 public void setPlayersStartBalance(GameEnviroment game, Player player) {
 		 if (game.difficulty == 1) {
-			 player.setMoneyBalance(6000);
+			 player.setMoneyBalance(1800);
 		 } else {
-			 player.setMoneyBalance(4000);
+			 player.setMoneyBalance(1400);
 		 }
 	 }
 	 

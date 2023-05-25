@@ -39,7 +39,7 @@ public class MatchSelectionGUI{
 		frmMatchSelect.setBackground(Color.PINK);
 		frmMatchSelect.getContentPane().setBackground(Color.PINK);
 		frmMatchSelect.setTitle("Stadium");
-		frmMatchSelect.setBounds(100, 100, 691, 500);
+		frmMatchSelect.setBounds(100, 100, 680, 500);
 		frmMatchSelect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMatchSelect.getContentPane().setLayout(null);
 		Random random = new Random();
@@ -47,7 +47,7 @@ public class MatchSelectionGUI{
 		JLabel lblMatchSelection = new JLabel("The Stadium");
 		lblMatchSelection.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblMatchSelection.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMatchSelection.setBounds(10, 11, 655, 71);
+		lblMatchSelection.setBounds(10, 11, 644, 71);
 		frmMatchSelect.getContentPane().add(lblMatchSelection);
 		JLabel lblSelectIndicator = new JLabel("");
 		lblSelectIndicator.setHorizontalAlignment(SwingConstants.CENTER);
@@ -127,7 +127,7 @@ public class MatchSelectionGUI{
 				}
 			}
 		});
-		btnTeam3.setBounds(475, 156, 154, 130);
+		btnTeam3.setBounds(466, 156, 154, 130);
 		frmMatchSelect.getContentPane().add(btnTeam3);
 		
 		
@@ -147,12 +147,12 @@ public class MatchSelectionGUI{
 				matchSelectionGUI.frmMatchSelect.dispose();
 			}
 		});
-		btnBye.setBounds(449, 427, 109, 23);
+		btnBye.setBounds(425, 427, 109, 23);
 		frmMatchSelect.getContentPane().add(btnBye);
 		
 		JLabel lblNewLabel = new JLabel("Select your opponent:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 80, 655, 22);
+		lblNewLabel.setBounds(10, 80, 644, 22);
 		frmMatchSelect.getContentPane().add(lblNewLabel);
 		
 
@@ -209,7 +209,7 @@ public class MatchSelectionGUI{
 				
 			}
 		});
-		btnNextWeek.setBounds(564, 427, 110, 23);
+		btnNextWeek.setBounds(544, 427, 110, 23);
 		frmMatchSelect.getContentPane().add(btnNextWeek);
 		
 		
