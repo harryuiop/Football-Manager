@@ -40,15 +40,15 @@ public class MatchSelectionGUI{
 		frmMatchSelect.setBackground(Color.PINK);
 		frmMatchSelect.getContentPane().setBackground(Color.PINK);
 		frmMatchSelect.setTitle("Stadium");
-		frmMatchSelect.setBounds(100, 100, 685, 500);
+		frmMatchSelect.setBounds(100, 100, 691, 500);
 		frmMatchSelect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMatchSelect.getContentPane().setLayout(null);
 		Random random = new Random();
 		
-		JLabel lblMatchSelection = new JLabel("Match Selection");
+		JLabel lblMatchSelection = new JLabel("The Stadium");
 		lblMatchSelection.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblMatchSelection.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMatchSelection.setBounds(10, 11, 664, 71);
+		lblMatchSelection.setBounds(10, 11, 655, 71);
 		frmMatchSelect.getContentPane().add(lblMatchSelection);
 		JLabel lblSelectIndicator = new JLabel("");
 		lblSelectIndicator.setHorizontalAlignment(SwingConstants.CENTER);
@@ -108,7 +108,7 @@ public class MatchSelectionGUI{
 				}
 			}
 		});
-		btnTeam2.setBounds(263, 156, 154, 130);
+		btnTeam2.setBounds(247, 156, 154, 130);
 		frmMatchSelect.getContentPane().add(btnTeam2);
 		
 
@@ -128,18 +128,14 @@ public class MatchSelectionGUI{
 				}
 			}
 		});
-		btnTeam3.setBounds(486, 156, 154, 130);
+		btnTeam3.setBounds(475, 156, 154, 130);
 		frmMatchSelect.getContentPane().add(btnTeam3);
 		
 		
 		btnBye.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for (Athlete Ath: team.getStartingName()) {
-					Ath.setStamina(100);
-				}
-				for (Athlete Ath: team.getReserveName()) {
-					Ath.setStamina(100);
-				}
+				team.regenStam(team.getReserveName());
+				team.regenStam(team.getStartingName());
 				btnTeam1.setEnabled(false);
 				btnTeam2.setEnabled(false);
 				btnTeam3.setEnabled(false);
@@ -157,7 +153,7 @@ public class MatchSelectionGUI{
 		
 		JLabel lblNewLabel = new JLabel("Select your opponent:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(219, 84, 242, 22);
+		lblNewLabel.setBounds(10, 80, 655, 22);
 		frmMatchSelect.getContentPane().add(lblNewLabel);
 		
 
@@ -194,6 +190,7 @@ public class MatchSelectionGUI{
 					
 				}
 				if (game.getCurrentWeekNum() < game.getChoosenNumWeeks()) {
+					team.regenStam(team.getReserveName());
 					game.setCurrentWeekNum(game.getCurrentWeekNum() + 1);
 					frmClub.dispose();
 					game.LaunchClubGUI(team, game, market, player);

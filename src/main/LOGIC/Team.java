@@ -124,6 +124,12 @@ public class Team {
 		}
 	}
 	
+	public void regenStam(ArrayList<Athlete> teamList) {
+		for (Athlete Ath: teamList) {
+			Ath.setStamina(100);
+		}
+	}
+	
 	
 	public void removeReservePlayer(int index) {
 		reserveNames.remove(index);
