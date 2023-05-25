@@ -27,6 +27,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.border.EtchedBorder;
+import javax.swing.SwingConstants;
 
 public class AthleteSelectionGUI {
 	
@@ -60,11 +61,6 @@ public class AthleteSelectionGUI {
 		displayerInfo.setFont(new Font("Dialog", Font.PLAIN, 20));
 		displayerInfo.setBounds(179, 12, 232, 261);
 		frmAthleteSelection.getContentPane().add(displayerInfo);
-		
-		
-		JLabel lblPlayerCondition = new JLabel("");
-		lblPlayerCondition.setBounds(179, 328, 216, 67);
-		frmAthleteSelection.getContentPane().add(lblPlayerCondition);
 		
 		
 		textField = new JTextField();
@@ -117,12 +113,12 @@ public class AthleteSelectionGUI {
 		btnPurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				lblPlayerCondition.setText("");
+
 				lblCurrentTeam.setText("");
 				
 				String nickname = textField.getText();
 				if (athleteJList.getSelectedValue() == null){
-					lblPlayerCondition.setText("Please Select a player for purchase");
+					lblCurrentTeam.setText("Please Select a player for purchase");
 				}
 				
 				else if (team.getStartingName().size() < 4) {
@@ -175,6 +171,12 @@ public class AthleteSelectionGUI {
 		JLabel balancelbl = new JLabel("Balance :");
 		balancelbl.setBounds(533, 411, 97, 25);
 		frmAthleteSelection.getContentPane().add(balancelbl);
+		
+		JLabel lblSelectIndicator = new JLabel("Select 8 Athletes for your team");
+		lblSelectIndicator.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblSelectIndicator.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectIndicator.setBounds(179, 347, 232, 27);
+		frmAthleteSelection.getContentPane().add(lblSelectIndicator);
 		
 		
 		JLabel lblNewLabel = new JLabel("");
