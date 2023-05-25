@@ -94,7 +94,7 @@ public class Athlete {
 	
 	
 	/**
-	 * This method formarts the output of JLists to Labels
+	 * This method formats the output of JLists to Labels
 	 * @return
 	 */
 	public String printForSelection() {
