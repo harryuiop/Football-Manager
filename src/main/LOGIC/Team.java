@@ -81,7 +81,7 @@ public class Team {
 	
 	
 	/**
-	 * Checks to see if everyone in the starting team is "healthy" (stamina is > 0)
+	 * Checks to see if everyone in the reserve team is "healthy" (stamina is > 0)
 	 * @param team
 	 * @return
 	 */
@@ -97,7 +97,7 @@ public class Team {
 	
 	
 	/**
-	 * Counts how many plays in the players team is injured 
+	 * Counts how many players in the players team are injured 
 	 * @param teamList
 	 * @return
 	 */

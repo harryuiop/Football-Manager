@@ -73,10 +73,10 @@ public class MatchSelectionGUI{
 
 		btnTeam1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnNextWeek.setEnabled(true);
 				boolean isTeamHealthy = team.startingTeamHealthy(team);
 				
 				if(isTeamHealthy) {
+					btnNextWeek.setEnabled(true);
 					opposingTeam = oppositionGenerator.createOpposingTeam(game, 1);
 					game.LaunchMatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
 					btnTeam1.setEnabled(false);
@@ -94,10 +94,10 @@ public class MatchSelectionGUI{
 		
 		btnTeam2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnNextWeek.setEnabled(true);
 				boolean isTeamHealthy = team.startingTeamHealthy(team);
 				
 				if(isTeamHealthy) {
+					btnNextWeek.setEnabled(true);
 					opposingTeam = oppositionGenerator.createOpposingTeam(game, 1);
 					game.LaunchMatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
 					btnTeam2.setEnabled(false);
@@ -114,10 +114,10 @@ public class MatchSelectionGUI{
 
 		btnTeam3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnNextWeek.setEnabled(true);
 				boolean isTeamHealthy = team.startingTeamHealthy(team);
 				
 				if(isTeamHealthy) {
+					btnNextWeek.setEnabled(true);
 					opposingTeam = oppositionGenerator.createOpposingTeam(game, 1);
 					game.LaunchMatchGUI(team, game, player, opposingTeam, matchSelectionGUI);
 					btnTeam3.setEnabled(false);
@@ -186,11 +186,11 @@ public class MatchSelectionGUI{
 					} else {
 						playerToImprove.setDefence(playerToImprove.getDefence() + 10);
 						JOptionPane.showMessageDialog(frmMatchSelect, playerToImprove.getName(playerToImprove) + "'s defence has been increased by 10.");
-					}
+					}					
 					
 				}
 				if (game.getCurrentWeekNum() < game.getChoosenNumWeeks()) {
-					team.regenStam(team.getReserveName());
+					//team.regenStam(team.getReserveName());
 					game.setCurrentWeekNum(game.getCurrentWeekNum() + 1);
 					frmClub.dispose();
 					game.LaunchClubGUI(team, game, market, player);

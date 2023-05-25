@@ -306,12 +306,13 @@ public class MatchGUI{
 						break;
 						
 					case 5:
-
+						System.out.println(team.startingTeamHealthy(team));
 						if (team.startingTeamHealthy(team) == false) {
-							buttonPressCount -= 1;
 							lblWinResult.setText("Starting team is not healthy, please make a Sub");
+							buttonPressCount -= 1;
 						}
 						else {
+							btnHalfTime.setEnabled(false);
 							lblLineup1.setText("");
 							lblLineup2.setText("");
 							lblLineup3.setText("");
@@ -342,10 +343,10 @@ public class MatchGUI{
 							lblAthlete3.setText(team.getStartingName().get(2).getName(team.getStartingName().get(2)) + " STM: " + team.getStartingName().get(2).getStamina() + "/100");
 							lblAthlete4.setText(team.getStartingName().get(3).getName(team.getStartingName().get(3)) + " STM: " + team.getStartingName().get(3).getStamina() + "/100");
 							lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
+							lblWinResult.setText("");
 							break;
 						}
-						lblWinResult.setText("");
-						lblScore.setText(match.getPlayersScore() + "-" + match.getOpposingScore());
+
 						break;
 					case 6:
 						matchUpResult = match.matchUp(game, player, team, team.getStartingName().get((buttonPressCount - 5)), opposingTeam.get((buttonPressCount - 5)), "player");

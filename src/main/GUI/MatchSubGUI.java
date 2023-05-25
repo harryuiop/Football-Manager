@@ -42,19 +42,26 @@ public class MatchSubGUI {
 	private void initialize(Team team, GameEnviroment game, Player player, JFrame frmMatch, MatchSubGUI subGUI) {
 		frmMatchSub = new JFrame();
 		frmMatchSub.setTitle("Match Subtitution");
-		frmMatchSub.setBounds(100, 100, 287, 418);
+		frmMatchSub.setBounds(100, 100, 289, 461);
 		frmMatchSub.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMatchSub.getContentPane().setLayout(null);
 		
 		JLabel lblStartingSelected = new JLabel("Select a Starting player to view Stam");
+		lblStartingSelected.setFont(new Font("Dialog", Font.BOLD, 10));
 		lblStartingSelected.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStartingSelected.setBounds(10, 240, 251, 40);
 		frmMatchSub.getContentPane().add(lblStartingSelected);
 		
 		JLabel lblReserveSelected = new JLabel("Select a Reserve player to view Stam");
+		lblReserveSelected.setFont(new Font("Dialog", Font.BOLD, 10));
 		lblReserveSelected.setHorizontalAlignment(SwingConstants.CENTER);
 		lblReserveSelected.setBounds(10, 279, 251, 40);
 		frmMatchSub.getContentPane().add(lblReserveSelected);
+		
+		JLabel lblSelectIndi = new JLabel("");
+		lblSelectIndi.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSelectIndi.setBounds(10, 326, 251, 25);
+		frmMatchSub.getContentPane().add(lblSelectIndi);
 		
 		
 		DefaultListModel<Athlete> athleteListModel = new DefaultListModel<Athlete>();
@@ -102,15 +109,24 @@ public class MatchSubGUI {
 		JButton confirm = new JButton("Confirm");
 		confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Athlete r = res.getSelectedValue();
-				Athlete s = start.getSelectedValue();
-				team.makeSubstituion(s, r);
-				frmMatch.setVisible(true);
-				subGUI.frmMatchSub.dispose();
-				
+				if(res.getSelectedValue() == null && start.getSelectedValue() == null) {
+					frmMatch.setVisible(true);
+					subGUI.frmMatchSub.dispose();
+				}
+				else if(res.getSelectedValue() == null || start.getSelectedValue() == null) {
+					lblSelectIndi.setText("Please select players to sub");
+				}
+				else {
+					Athlete r = res.getSelectedValue();
+					Athlete s = start.getSelectedValue();
+					team.makeSubstituion(s, r);
+					frmMatch.setVisible(true);
+					subGUI.frmMatchSub.dispose();
+				}
+
 			}
 		});
-		confirm.setBounds(73, 332, 117, 25);
+		confirm.setBounds(71, 400, 117, 25);
 		frmMatchSub.getContentPane().add(confirm);
 		
 		JLabel Starting = new JLabel("Starting");
@@ -120,6 +136,20 @@ public class MatchSubGUI {
 		JLabel Reserves = new JLabel("Reserves");
 		Reserves.setBounds(161, 15, 72, 16);
 		frmMatchSub.getContentPane().add(Reserves);
-	}
+		
+		JButton btnClearSelections = new JButton("Clear Selections");
+		btnClearSelections.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblReserveSelected.setText("");
+				lblStartingSelected.setText("");
 
+				res.clearSelection();
+				start.clearSelection();
+			}
+		});
+		btnClearSelections.setBounds(42, 363, 177, 25);
+		frmMatchSub.getContentPane().add(btnClearSelections);
+		
+
+	}
 }

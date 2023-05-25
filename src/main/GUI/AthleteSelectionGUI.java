@@ -175,7 +175,7 @@ public class AthleteSelectionGUI {
 		JLabel lblSelectIndicator = new JLabel("Select 8 Athletes for your team");
 		lblSelectIndicator.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblSelectIndicator.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSelectIndicator.setBounds(179, 347, 232, 27);
+		lblSelectIndicator.setBounds(177, 352, 293, 27);
 		frmAthleteSelection.getContentPane().add(lblSelectIndicator);
 		
 		
