@@ -118,6 +118,7 @@ public class Athlete {
 		return stamina;
 	}
 	
+	//sets an athletes Stamina, if stamina is 0 then the athlete is now "Injured"
 	public void setStamina(int stamina) {
 		this.stamina = stamina;
 		if (this.stamina <= 0) {

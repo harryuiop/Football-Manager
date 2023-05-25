@@ -124,6 +124,10 @@ public class Team {
 		}
 	}
 	
+	/**
+	 * Regenerates a list of athletes back to 100
+	 * @param teamList
+	 */
 	public void regenStam(ArrayList<Athlete> teamList) {
 		for (Athlete Ath: teamList) {
 			Ath.setStamina(100);
