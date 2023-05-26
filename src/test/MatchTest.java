@@ -49,9 +49,7 @@ public class MatchTest {
     public void testMatchUpDraw() {
         Athlete playerAthlete = new Athlete(70, 30, 1, 1, "Callum");
         Athlete opponentAthlete = new Athlete(70, 30, 1, 1, "Callum");
-
         String result = match.matchUp(game, null, null, playerAthlete, opponentAthlete, "player");
-
         assertEquals("Draw", result);
         assertEquals(0, match.getPlayersScore());
         assertEquals(0, match.getOpposingScore());
@@ -62,9 +60,7 @@ public class MatchTest {
     public void testWinnerStringPlayerWins() {
         match.setPlayersScore(2);
         match.setOpposingScore(1);
-
         String result = match.winnerString();
-
         assertEquals("You Win: 2-1", result);
     }
 
@@ -72,9 +68,7 @@ public class MatchTest {
     public void testWinnerStringOpponentWins() {
         match.setPlayersScore(1);
         match.setOpposingScore(3);
-
         String result = match.winnerString();
-
         assertEquals("You Lose: 1-3", result);
     }
 
@@ -82,9 +76,7 @@ public class MatchTest {
     public void testWinnerStringDraw() {
         match.setPlayersScore(2);
         match.setOpposingScore(2);
-
         String result = match.winnerString();
-
         assertEquals("Draw: 2-2", result);
     }
 }

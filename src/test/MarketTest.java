@@ -38,7 +38,7 @@ public class MarketTest {
 
     @Test
     public void testAddItemToUnseenItems() {
-        Item newItem = new Item("Test Item", 5, 5, 5, 1, 100);
+        Item newItem = new Item("Item", 5, 5, 5, 1, 100);
         market.addItemToUnseenItems(newItem);
         assertTrue(market.getUnseenItems().contains(newItem));
     }

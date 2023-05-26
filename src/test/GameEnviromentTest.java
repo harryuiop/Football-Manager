@@ -19,14 +19,14 @@ public class GameEnviromentTest {
     }
 
     @Test
-    public void ChooseTeamNameValidNameTest() {
+    public void ChooseValidNameTest() {
         String name = "My Team";
         boolean result = game.chooseTeamName(new Team(), name);
         Assertions.assertTrue(result);
     }
 
     @Test
-    public void ChooseTeamNameInvalidNameTest() {
+    public void ChooseInvalidNameTest() {
         String name = "Invalid Name1";
         boolean result = game.chooseTeamName(new Team(), name);
         Assertions.assertFalse(result);
