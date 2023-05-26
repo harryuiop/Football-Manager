@@ -201,6 +201,11 @@ public class MarketGUI {
 		btnBuy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				if (market.getWavierList().size() == 1) {
+					market.rotateWavier();
+					athleteListModel.addAll(athletes);
+				}
+				
 				if (athleteList.getSelectedValue()!=null && itemList.getSelectedValue()!= null) {
 					Athlete athToBuy = athleteList.getSelectedValue();
 					if(team.getStartingName().size() == 4 && team.getReserveName().size() == 4) {

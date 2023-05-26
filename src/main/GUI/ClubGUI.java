@@ -342,10 +342,7 @@ public class ClubGUI {
         background.setBounds(-52, -24, 793, 538);
         frmClub.getContentPane().add(background);
 
-        JToggleButton tglbtnNewToggleButton = new JToggleButton("Info");
-        tglbtnNewToggleButton.setBounds(12, 460, 162, 29);
-        frmClub.getContentPane().add(tglbtnNewToggleButton);
-        
+      
      
     }
     public void closeClubGUI(GameEnviroment game) {
